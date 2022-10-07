@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class HistoriaClinica {
     private Paciente paciente;
-    private ArrayList<Diagnostico> diagnosticos  = new ArrayList<Diagnostico>();
+    private ArrayList<Diagnostico> diagnosticos;
     
     public HistoriaClinica(Paciente paciente, ArrayList<Diagnostico> diagnosticos) {
         this.paciente = paciente;
