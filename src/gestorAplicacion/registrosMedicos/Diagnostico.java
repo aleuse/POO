@@ -2,7 +2,7 @@ package registrosMedicos;
 import java.util.ArrayList;
 
 public class Diagnostico {
-    private ArrayList<String> sintomas = new ArrayList<String>();
+    private ArrayList<String> sintomas;
     private String observacion;
     private String medicamiento;
     private int id;
