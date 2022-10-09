@@ -1,4 +1,4 @@
-package registrosMedicos;
+package gestorAplicacion.registrosMedicos;
 import java.util.ArrayList;
 
 public class Diagnostico {
