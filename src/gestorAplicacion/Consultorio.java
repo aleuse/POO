@@ -20,6 +20,9 @@ public class Consultorio {
     private Paciente paciente;
     private String tipoConsultorio;
     private final int id;
+
+    private static ArrayList<Cita> listaCitas = new ArrayList<Cita>();
+
     private Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
     
     //constructor

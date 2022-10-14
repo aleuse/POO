@@ -60,9 +60,9 @@ public class Paciente extends Persona{
 	}
 	
 	
-//	public Boolean piderCita(String fecha, tipoCita tipoCita) {
-//	
-//	}
+	public void piderCita(LocalDateTime fecha, tipoCita tipoCita, String motivo) {
+		Cita cita = new Cita((int)(Math.random()*10000+1), paciente(this), motivo,)
+	}
 	
 //	public void actualizarDatos(Map <Object, String> datos) {
 //		for (int i = 0; i< datos.size(); i++) {
@@ -76,5 +76,8 @@ public class Paciente extends Persona{
 		// Filtrar médicos disponibles para la fecha
 		// Filtrar consultorios disponibles para la fecha
 		admin.asignarExamen(examen, this, medicos, consultorios, fecha);
+
 	}
+
+
 }
