@@ -35,52 +35,12 @@ public class Cita extends Consulta{
 
     //getter & setter
     
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Paciente getPaciente() {
-        return paciente;
-    }
-
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
-
     public String getMotivo() {
         return motivo;
     }
 
     public void setMotivo(String motivo) {
         this.motivo = motivo;
-    }
-
-    public Medico getMedico() {
-        return medico;
-    }
-
-    public void setMedico(Medico medico) {
-        this.medico = medico;
-    }
-
-    public Consultorio getConsultorio() {
-        return consultorio;
-    }
-
-    public void setConsultorio(Consultorio consultorio) {
-        this.consultorio = consultorio;
-    }
-
-    public LocalDateTime getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
     }
 
     public tipoCita getTiposCitas() {
