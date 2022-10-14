@@ -4,6 +4,10 @@
  */
 package gestorAplicacion;
 
+import java.time.LocalDateTime;
+import java.util.Map;
+import java.util.TreeMap;
+
 import gestorAplicacion.personas.*;
 
 /**
@@ -15,17 +19,17 @@ public class Consultorio {
     private Medico medico;
     private Paciente paciente;
     private String tipoConsultorio;
-    private Boolean disponibilidad;
     private final int id;
+    private Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
     
     //constructor
 
-    public Consultorio(Medico medico, Paciente paciente, String tipoConsultorio, Boolean disponibilidad, int id) {
+    public Consultorio(Medico medico, Paciente paciente, String tipoConsultorio, Boolean disponibilidad) {
         this.medico = medico;
         this.paciente = paciente;
         this.tipoConsultorio = tipoConsultorio;
         this.disponibilidad = disponibilidad;
-        this.id = id;
+        this.id = (int)(Math.random()*10000+1);
     }
        
     
@@ -62,6 +66,21 @@ public class Consultorio {
     public void setDisponibilidad(Boolean disponibilidad) {
         this.disponibilidad = disponibilidad;
     }
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public Map<LocalDateTime, Consulta> getConsultas() {
+		return consultas;
+	}
+
+
+	public void setConsultas(Map<LocalDateTime, Consulta> consultas) {
+		this.consultas = consultas;
+	}
    
     //metodos
     

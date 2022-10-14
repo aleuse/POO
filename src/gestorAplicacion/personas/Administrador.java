@@ -1,11 +1,16 @@
 package gestorAplicacion.personas;
 
+import gestorAplicacion.personas.*;
 import gestorAplicacion.Cita;
 import gestorAplicacion.Consultorio;
+import gestorAplicacion.Examen;
+import gestorAplicacion.Pago;
 import gestorAplicacion.tipoCita;
+import gestorAplicacion.tipoExamen;
 import gestorAplicacion.registrosMedicos.*;
 
 import java.time.*;
+import java.util.ArrayList;
 
 public class Administrador {
 	private int id;
@@ -39,6 +44,32 @@ public class Administrador {
 		Cita cita = new Cita(paciente, medico, consultorio, fecha, motivo, tipo);
 		Pago pago = new Pago(14700, false);
 		cita.setPago(pago);
-		pago.setCita(cita);
+		pago.setConsulta(cita);
+	}
+	
+	public void autorizarExamen(Examen examen) {
+			examen.setAutorizado(true);		
+	}
+	
+	public String asignarExamen(Examen examen, Paciente paciente, ArrayList<Medico> medicos, ArrayList<Consultorio> consultorios, LocalDateTime fecha) {
+		if (examen.isAutorizado() == true) {
+			for (Medico m: medicos) {
+				if(m.getConsultas().get(fecha) == null) {
+					examen.setMedico(m);
+					for (Consultorio c: consultorios) {
+						if(c.getConsultas().get(fecha) == null) {
+							examen.setConsultorio(c);
+							examen.setFecha(fecha);
+							examen.setPago(new Pago(37000, examen, false));
+							c.getConsultas().put(fecha, examen);
+						}
+					}
+					m.getConsultas().put(fecha, examen);
+				}
+			}
+			
+			return "Examen agendado exitosamente el " + fecha + " con el médico " + examen.getMedico().getNombre() + "" + examen.getMedico().getApellido() + " en el consultorio " + examen.getConsultorio().getId();
+		}
+		return "No se pudo agendar el examen";
 	}
 }
