@@ -3,6 +3,7 @@ import gestorAplicacion.Cita;
 import gestorAplicacion.Consulta;
 import gestorAplicacion.Examen;
 import gestorAplicacion.tipoExamen;
+import gestorAplicacion.registrosMedicos.Diagnostico;
 import gestorAplicacion.registrosMedicos.HistoriaClinica;
 
 import java.time.LocalDateTime;
@@ -79,8 +80,8 @@ public class Paciente extends Persona{
 
 	}
 
-	public void solicitarEnvioMedicamento (String direccion ){
-		
+	public ArrayList<Diagnostico> solicitarEnvioMedicamento (String direccion ){
+		return Diagnostico.getListado();
 	}
 
 
