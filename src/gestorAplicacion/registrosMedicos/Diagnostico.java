@@ -2,7 +2,6 @@ package gestorAplicacion.registrosMedicos;
 import java.util.ArrayList;
 
 public class Diagnostico {
-    private static ArrayList<Diagnostico> listado= new ArrayList<Diagnostico>();
     private ArrayList<String> sintomas;
     private String observacion;
     private String medicamiento;
@@ -47,17 +46,5 @@ public class Diagnostico {
         this.id = id;
     }
 
-    public void crearDiagnostico(ArrayList<String> sintomas, String observacion, String medicamiento, int id){
-        Diagnostico diag = new Diagnostico (sintomas, observacion, medicamiento, id);
-        listado.add(diag);
-    }
-    
-    public static ArrayList<Diagnostico> getListado() {
-        return listado;
-    }
-
-    public static void setListado(ArrayList<Diagnostico> listado) {
-        Diagnostico.listado = listado;
-    }
 }
 

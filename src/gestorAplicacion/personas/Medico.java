@@ -8,6 +8,7 @@ import gestorAplicacion.Cita;
 import gestorAplicacion.Consultorio;
 
 public class Medico extends Persona{
+    private static ArrayList<Diagnostico> listado= new ArrayList<Diagnostico>();
 	private String especialidad;
 	private boolean disponibilidad;
 	private Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
@@ -36,14 +37,6 @@ public class Medico extends Persona{
         this.disponibilidad = disponibilidad;
     }
 
-    public static ArrayList<Diagnostico> getListado() {
-        return listado;
-    }
-
-    public static void setListado(ArrayList<Diagnostico> listado) {
-        Medico.listado = listado;
-    }
-
     public Map<LocalDateTime, Consulta> getConsultas() {
         return consultas;
     }
@@ -51,5 +44,19 @@ public class Medico extends Persona{
     public void setConsultas(Map<LocalDateTime, Consulta> consultas) {
         this.consultas = consultas;
     }
+    
+    public static ArrayList<Diagnostico> getListado() {
+        return listado;
+    }
+
+    public static void setListado(ArrayList<Diagnostico> listado) {
+        Medico.listado = listado;
+    }
+    
+    public void crearDiagnostico(ArrayList<String> sintomas, String observacion, String medicamiento, int id){
+        Diagnostico diag = new Diagnostico (sintomas, observacion, medicamiento, id);
+        listado.add(diag);
+    }
+
 
 }

@@ -80,9 +80,9 @@ public class Paciente extends Persona{
 
 	}
 
-	public ArrayList<Diagnostico> solicitarEnvioMedicamento (String direccion ){
-		return Diagnostico.getListado();
-	}
+	//public ArrayList<Diagnostico> solicitarEnvioMedicamento (String direccion ){
+	//	return Diagnostico.getListado();
+	//}
 
 
 }
