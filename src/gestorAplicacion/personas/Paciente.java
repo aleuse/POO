@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.Scanner;
 
 
 
@@ -108,9 +109,14 @@ public class Paciente extends Persona{
 //
 //	}
 
-	//public ArrayList<Diagnostico> solicitarEnvioMedicamento (String direccion ){
-	//	return Diagnostico.getListado();
-	//}
+	/*public void solicitarEnvioMedicamento (String direccion ){
+		System.out.println("Ingrese su nombre");
+        String nombre = input.next();
+		ArrayList<Diagnostico> lis = Medico.listado;
+		for(int i = 0; i< lis.size(); i++){
+
+		}
+	}*/
 
 
 }

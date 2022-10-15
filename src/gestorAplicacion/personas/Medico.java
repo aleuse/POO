@@ -10,7 +10,7 @@ import gestorAplicacion.Consultorio;
 import gestorAplicacion.tipoCita;
 
 public class Medico extends Persona{
-    private static ArrayList<Diagnostico> listado= new ArrayList<Diagnostico>();
+    static ArrayList<Diagnostico> listado= new ArrayList<Diagnostico>();
     tipoCita especialidad; 
 	private boolean disponibilidad;
     private Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
