@@ -1,5 +1,6 @@
 package gestorAplicacion.personas;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 import gestorAplicacion.registrosMedicos.*;
