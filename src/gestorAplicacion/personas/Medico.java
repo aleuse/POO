@@ -10,12 +10,12 @@ import gestorAplicacion.Consultorio;
 import gestorAplicacion.tipoCita;
 
 public class Medico extends Persona{
-    private static ArrayList<Diagnostico> listado= new ArrayList<Diagnostico>();
-	tipoCita especialidad; 
+    static ArrayList<Diagnostico> listado= new ArrayList<Diagnostico>();
+    tipoCita especialidad; 
 	private boolean disponibilidad;
-	private Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
-
+    private Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
     static ArrayList<Medico>  medicos = new ArrayList<Medico>();
+
 	
     public Medico(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad,
      String genero, long telefono, String correoElectronico, String direccion, tipoCita especialidad, boolean disponibilidad) {

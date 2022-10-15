@@ -175,9 +175,14 @@ public class Paciente extends Persona{
 //
 //	}
 
-	//public ArrayList<Diagnostico> solicitarEnvioMedicamento (String direccion ){
-	//	return Diagnostico.getListado();
-	//}
+	/*public void solicitarEnvioMedicamento (String direccion ){
+		System.out.println("Ingrese su nombre");
+        String nombre = input.next();
+		ArrayList<Diagnostico> lis = Medico.listado;
+		for(int i = 0; i< lis.size(); i++){
+
+		}
+	}*/
 
 
 }
