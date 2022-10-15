@@ -175,14 +175,26 @@ public class Paciente extends Persona{
 //
 //	}
 
-	/*public void solicitarEnvioMedicamento (String direccion ){
-		System.out.println("Ingrese su nombre");
-        String nombre = input.next();
-		ArrayList<Diagnostico> lis = Medico.listado;
-		for(int i = 0; i< lis.size(); i++){
+	public String solicitarEnvioMedicamento (String direccion ){
+		Scanner input= new Scanner(System.in);
+		System.out.println("Ingrese el nombre del paciente: ");
+		String nombre = input.nextLine();
+		//ArrayList<Diagnostico> lis = Medico.listado;
+		//ArrayList<HistoriaClinica> histo = HistoriaClinica.historia;
+		/*for (HistoriaClinica histori : HistoriaClinica.historia) {
+			//comparo
+			if (nombre == histori){
+				//
 
+			}
+			//comparo nombre
 		}
-	}*/
+		/*for(int i = 0; i< histo.size(); i++){
+			if (nombre == ) {}
+			//System.out.println(lis);
+		}*/
+		return direccion;
+	}
 
 
 }

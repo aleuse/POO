@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class HistoriaClinica {
     private Paciente paciente;
     private ArrayList<Diagnostico> diagnosticos;
+    public static ArrayList<HistoriaClinica> historia= new ArrayList<HistoriaClinica>();
     
     public HistoriaClinica(Paciente paciente, ArrayList<Diagnostico> diagnosticos) {
         this.paciente = paciente;
@@ -31,5 +32,10 @@ public class HistoriaClinica {
         return "El diagnostico es "+ diagnosticos + "El id del diagnostico es "+id;
 
     }
+    public void crearHistoriaClinica(Paciente paciente, ArrayList<Diagnostico> diagnosticos){
+        HistoriaClinica historia1 = new HistoriaClinica(paciente, diagnosticos);
+        historia.add(historia1);
+    }
+
     
 }
