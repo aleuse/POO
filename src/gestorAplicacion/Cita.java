@@ -17,7 +17,7 @@ public class Cita extends Consulta{
     private tipoCita tiposCitas;
     int numeroCitas;
     
-    private static ArrayList<Cita> listaCitas = new ArrayList<Cita>();
+    public static ArrayList<Cita> listaCitas = new ArrayList<Cita>();
     
     //constructor
 

@@ -2,6 +2,7 @@ package gestorAplicacion;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.ArrayList;
 
 import gestorAplicacion.personas.Paciente;
 import gestorAplicacion.personas.tipoDocumento;
@@ -17,7 +18,9 @@ public class test {
 		Consultorio c1 = new Consultorio(null, null, null, true, fecha, null);
 		Consultorio c2 = new Consultorio(null, null, null, true, fecha, null);
 		
-		paciente.pedirCita(fecha, tipoCita.General, "Dolor de cabeza");
+		System.out.println(paciente.pedirCita(fecha, tipoCita.General, "Dolor de cabeza"));
+		ArrayList<Cita> citas= Cita.listaCitas;  
+		System.out.println(Cita.listaCitas);
 		
 		
 
