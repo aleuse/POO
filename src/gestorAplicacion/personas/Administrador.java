@@ -40,24 +40,48 @@ public class Administrador {
 	}
 	
 	// Métodos
-	public void asignarCita(Paciente paciente, Medico medico, Consultorio consultorio, LocalDateTime fecha, String motivo, tipoCita tipo) {
+	public static boolean verificarDisponibilidadMedico(LocalDateTime fecha, Medico medico) {
+		if(medico.getConsultas().get(fecha) == null) {
+			// Para Medico, en su diccionario de Consultas (Key = fecha, value = Consulta) verifica si para la fecha 
+			// especificada el value asociado es igual a null, o sea, NO tiene una consulta asociada y eso significa
+			// que está disponible
+			return true; // Significa que está disponible
+		}
+		else {
+			return false; // Significa que NO está disponible
+		}
+	}
+	
+	public static boolean verificarDisponibilidadConsultorio(LocalDateTime fecha, Consultorio consultorio) {
+		if(consultorio.getConsultas().get(fecha) == null) {
+			// Para Consultorio, en su diccionario de Consultas (Key = fecha, value = Consulta) verifica si para la
+			// fecha especificada (key) el value asociado es igual a null, o sea, NO tiene una consulta asociada y
+			// eso significa que está disponible
+			return true; // Significa que está disponible
+		}
+		else {
+			return false; // Significa que NO está disponible
+		}
+	}
+	
+	public static void asignarCita(Paciente paciente, Medico medico, Consultorio consultorio, LocalDateTime fecha, String motivo, tipoCita tipo) {
 		Cita cita = new Cita(paciente, medico, consultorio, fecha, motivo, tipo);
 		Pago pago = new Pago(14700, false);
 		cita.setPago(pago);
 		pago.setConsulta(cita);
 	}
 	
-	public void autorizarExamen(Examen examen) {
+	public static void autorizarExamen(Examen examen) {
 			examen.setAutorizado(true);		
 	}
 	
-	public String asignarExamen(Examen examen, Paciente paciente, ArrayList<Medico> medicos, ArrayList<Consultorio> consultorios, LocalDateTime fecha) {
+	public static String asignarExamen(Examen examen, Paciente paciente, ArrayList<Medico> medicos, ArrayList<Consultorio> consultorios, LocalDateTime fecha) {
 		if (examen.isAutorizado() == true) {
 			for (Medico m: medicos) {
-				if(m.getConsultas().get(fecha) == null) {
+				if(Administrador.verificarDisponibilidadMedico(fecha, m)) {
 					examen.setMedico(m);
 					for (Consultorio c: consultorios) {
-						if(c.getConsultas().get(fecha) == null) {
+						if(Administrador.verificarDisponibilidadConsultorio(fecha, c)) {
 							examen.setConsultorio(c);
 							examen.setFecha(fecha);
 							examen.setPago(new Pago(37000, examen, false));

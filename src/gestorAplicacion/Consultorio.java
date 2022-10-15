@@ -20,9 +20,6 @@ public class Consultorio {
     private Paciente paciente;
     private String tipoConsultorio;
     private final int id;
-
-    private static ArrayList<Cita> listaCitas = new ArrayList<Cita>();
-
     private Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
     
     //constructor
@@ -31,7 +28,6 @@ public class Consultorio {
         this.medico = medico;
         this.paciente = paciente;
         this.tipoConsultorio = tipoConsultorio;
-        this.disponibilidad = disponibilidad;
         this.id = (int)(Math.random()*10000+1);
     }
        
@@ -61,15 +57,6 @@ public class Consultorio {
     public void setTipoConsultorio(String tipoConsultorio) {
         this.tipoConsultorio = tipoConsultorio;
     }
-
-    public Boolean isDisponibilidad() {
-        return disponibilidad;
-    }
-
-    public void setDisponibilidad(Boolean disponibilidad) {
-        this.disponibilidad = disponibilidad;
-    }
-
 
 	public int getId() {
 		return id;

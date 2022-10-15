@@ -1,10 +1,10 @@
 package gestorAplicacion.personas;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 import gestorAplicacion.registrosMedicos.*;
 import gestorAplicacion.Cita;
+import gestorAplicacion.Consulta;
 import gestorAplicacion.Consultorio;
 
 public class Medico extends Persona{

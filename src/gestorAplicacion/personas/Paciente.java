@@ -73,10 +73,10 @@ public class Paciente extends Persona{
 	
 	public void solicitarExamen(tipoExamen tipo, LocalDateTime fecha) {
 		Examen examen = new Examen((int)(Math.random()*10000+1), this, tipo, false);
-		admin.autorizarExamen(examen);
+		Administrador.autorizarExamen(examen);
 		// Filtrar médicos disponibles para la fecha
 		// Filtrar consultorios disponibles para la fecha
-		admin.asignarExamen(examen, this, medicos, consultorios, fecha);
+		Administrador.asignarExamen(examen, this, medicos, consultorios, fecha);
 
 	}
 
