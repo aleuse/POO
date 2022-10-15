@@ -7,26 +7,30 @@ import gestorAplicacion.registrosMedicos.*;
 import gestorAplicacion.Cita;
 import gestorAplicacion.Consulta;
 import gestorAplicacion.Consultorio;
+import gestorAplicacion.tipoCita;
 
 public class Medico extends Persona{
     private static ArrayList<Diagnostico> listado= new ArrayList<Diagnostico>();
-	private String especialidad;
+	tipoCita especialidad; 
 	private boolean disponibilidad;
 	private Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
+
+    static ArrayList<Medico>  medicos = new ArrayList<Medico>();
 	
     public Medico(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad,
-     String genero, long telefono, String correoElectronico, String direccion, String especialidad, boolean disponibilidad) {
+     String genero, long telefono, String correoElectronico, String direccion, tipoCita especialidad, boolean disponibilidad) {
 		super(nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, direccion);
 		this.especialidad = especialidad;
 		this.disponibilidad = disponibilidad;
+        medicos.add(this);
 		
 	}
 
-    public String getEspecialidad() {
+    public tipoCita getEspecialidad() {
         return especialidad;
     }
 
-    public void setEspecialidad(String especialidad) {
+    public void setEspecialidad(tipoCita especialidad) {
         this.especialidad = especialidad;
     }
 

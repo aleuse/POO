@@ -7,6 +7,7 @@ package gestorAplicacion;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.ArrayList;
 
 import gestorAplicacion.personas.*;
 
@@ -21,14 +22,17 @@ public class Consultorio {
     private String tipoConsultorio;
     private final int id;
     private Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
+    public static ArrayList<Consultorio> consultorios = new ArrayList<Consultorio>();
     
     //constructor
 
-    public Consultorio(Medico medico, Paciente paciente, String tipoConsultorio, Boolean disponibilidad) {
+    public Consultorio(Medico medico, Paciente paciente, String tipoConsultorio, Boolean disponibilidad, LocalDateTime fecha, Consulta consulta) {
         this.medico = medico;
         this.paciente = paciente;
         this.tipoConsultorio = tipoConsultorio;
         this.id = (int)(Math.random()*10000+1);
+        consultorios.add(this);
+        consultas.put(fecha, consulta);
     }
        
     

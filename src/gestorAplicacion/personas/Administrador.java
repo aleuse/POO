@@ -64,8 +64,8 @@ public class Administrador {
 		}
 	}
 	
-	public static void asignarCita(Paciente paciente, Medico medico, Consultorio consultorio, LocalDateTime fecha, String motivo, tipoCita tipo) {
-		Cita cita = new Cita(paciente, medico, consultorio, fecha, motivo, tipo);
+	public static void asignarCita(Paciente paciente, Medico medico, Consultorio consultorio, LocalDateTime fecha,String motivo, tipoCita tipo) {
+		Cita cita = new Cita(paciente,motivo, medico, consultorio, fecha, tipo);
 		Pago pago = new Pago(14700, false);
 		cita.setPago(pago);
 		pago.setConsulta(cita);

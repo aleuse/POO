@@ -1,5 +1,5 @@
 package gestorAplicacion.personas;
 
-enum tipoDocumento {
+public enum tipoDocumento {
 	CEDULA, TARJETA_DE_IDENTIDAD, CEDULA_DE_EXTRANJERIA
 }

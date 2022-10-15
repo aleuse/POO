@@ -32,6 +32,9 @@ public class Cita extends Consulta{
         numeroCitas++;
         listaCitas.add(this);
     }
+    public Cita(Paciente paciente, String motivo, Medico medico, Consultorio consultorio, LocalDateTime fecha, tipoCita tipoCita) {
+    	this((int)(Math.random()*10000+1),paciente, motivo, medico, consultorio, fecha, tipoCita);
+    }
 
     //getter & setter
     

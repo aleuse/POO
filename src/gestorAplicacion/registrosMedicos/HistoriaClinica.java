@@ -1,4 +1,5 @@
 package gestorAplicacion.registrosMedicos;
+import gestorAplicacion.personas.Paciente;
 import java.util.ArrayList;
 
 public class HistoriaClinica {
@@ -27,8 +28,8 @@ public class HistoriaClinica {
     }
 
     public String visualizarDiagnostico(Diagnostico diagnosticos, int id) {
-        return "El diagnostico es "+ diagnosticos;
-        return "El id del diagnostico es "+id;
+        return "El diagnostico es "+ diagnosticos + "El id del diagnostico es "+id;
+
     }
     
 }
