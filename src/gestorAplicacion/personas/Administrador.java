@@ -70,6 +70,7 @@ public class Administrador {
 		cita.setPago(pago);
 		pago.setConsulta(cita);
         medico.consultas.put(fecha, cita);
+        consultorio.consultas.put(fecha, cita);
 	}
 	
 	public static void autorizarExamen(Examen examen) {
