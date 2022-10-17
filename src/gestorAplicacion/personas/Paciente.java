@@ -102,7 +102,7 @@ public class Paciente extends Persona{
 		ArrayList<Cita> citas = Cita.listaCitas;
 		//Se busca la cita que se quiere reagendar
 		for (int i = 0; i<citas.size(); i++) {
-			if (citas.get(i).getPaciente() == this && citas.get(i).getFecha() == fecha) {
+			if (citas.get(i).getPaciente() == this) {
 				cita = citas.get(i);
 				break;
 			}
@@ -119,42 +119,79 @@ public class Paciente extends Persona{
 				//Se pregunta si se desea cambiar el medico
 				System.out.println("El medico con el que tenia previamente su cita no esta disponible para esa nueva fecha, ¿desea proceder con un nuevo medico?");
 				String ans = sc.nextLine();
-				if (ans == "Si" || ans == "si") {
-					//Se busca un medico con disponibilidad
-					ArrayList<Medico> medicos = Medico.medicos;
-					Medico medico = null;
-					for (int i = 0; i<medicos.size(); i++){
-						if ( medicos.get(i).especialidad == cita.getTiposCitas() && Administrador.verificarDisponibilidadMedico(fecha, medicos.get(i)) == true) {
-							medico = medicos.get(i);
-							cita.setMedico(medico);
-							cita.setFecha(fecha);
-							break;
-						}
-					}
-					//Se verifica si el consultorio esta disponible para la nueva fecha
-					if (Administrador.verificarDisponibilidadConsultorio(fecha, cita.getConsultorio())==true) {
-						return "Su cita ha sido reagendada exitosamente, su nuevo medico será : "+ medico.getNombre()+" "+medico.getApellido()+ " en el mismo consultorio \n";
-					}
-					//Si el consultorio no esta disponible, se busca un nuevo consultorio
-					else {
-						ArrayList<Consultorio> consultorios = Consultorio.consultorios;
-						Consultorio consultorio = null;
-						for (int i = 0; i< consultorios.size(); i++) {
-							//Se recorre la lista de los consultorios creados y se verifica si el consultorio esta disponible en la fecha que se requiere la cita
-							if(Administrador.verificarDisponibilidadConsultorio(fecha, consultorios.get(i)) == true){
-								consultorio = consultorios.get(i);
-								cita.setConsultorio(consultorio);
+				switch(ans) {
+					case "si":
+						//Se busca un medico con disponibilidad
+						ArrayList<Medico> medicos = Medico.medicos;
+						Medico medico = null;
+						for (int i = 0; i<medicos.size(); i++){
+							if ( medicos.get(i).especialidad == cita.getTiposCitas() && Administrador.verificarDisponibilidadMedico(fecha, medicos.get(i)) == true) {
+								medico = medicos.get(i);
+								cita.setMedico(medico);
+								cita.setFecha(fecha);
 								break;
 							}
 						}
-						return "Su cita ha sido reagendada exitosamente, su nuevo medico será : "+ medico.getNombre()+" "+medico.getApellido()+ " y esta será en el consultorio: "+consultorio.getId()+ "\n";
+						//Se verifica si el consultorio esta disponible para la nueva fecha
+						if (Administrador.verificarDisponibilidadConsultorio(fecha, cita.getConsultorio())==true) {
+							return "Su cita ha sido reagendada exitosamente, su nuevo medico será : "+ medico.getNombre()+" "+medico.getApellido()+ " en el mismo consultorio \n";
+						}
+						//Si el consultorio no esta disponible, se busca un nuevo consultorio
+						else {
+							ArrayList<Consultorio> consultorios = Consultorio.consultorios;
+							Consultorio consultorio = null;
+							for (int i = 0; i< consultorios.size(); i++) {
+								//Se recorre la lista de los consultorios creados y se verifica si el consultorio esta disponible en la fecha que se requiere la cita
+								if(Administrador.verificarDisponibilidadConsultorio(fecha, consultorios.get(i)) == true){
+									consultorio = consultorios.get(i);
+									cita.setConsultorio(consultorio);
+									break;
+								}
+							}
+							return "Su cita ha sido reagendada exitosamente, su nuevo medico será : "+ medico.getNombre()+" "+medico.getApellido()+ " y esta será en el consultorio: "+consultorio.getId()+ "\n";
+						}
 					}
+					return "No fue posible reagendar su cita, debido a que no hay disponibilidad de citas, vuelvalo a intentar mas tarde";
 				}
-				return "No fue posible reagendar su cita, debido a que no hay disponibilidad de citas, buelvalo a intentar mas tarde";
 			}
+			return "Hubo un problema reagendando su cita, vuelvalo a intentar mas tarde";
 		}
-		return "Hubo un problema reagendando su cita, vuelvalo a intentar mas tarde";
-	}
+					
+// 					//Se busca un medico con disponibilidad
+// 					ArrayList<Medico> medicos = Medico.medicos;
+// 					Medico medico = null;
+// 					for (int i = 0; i<medicos.size(); i++){
+// 						if ( medicos.get(i).especialidad == cita.getTiposCitas() && Administrador.verificarDisponibilidadMedico(fecha, medicos.get(i)) == true) {
+// 							medico = medicos.get(i);
+// 							cita.setMedico(medico);
+// 							cita.setFecha(fecha);
+// 							break;
+// 						}
+// 					}
+// 					//Se verifica si el consultorio esta disponible para la nueva fecha
+// 					if (Administrador.verificarDisponibilidadConsultorio(fecha, cita.getConsultorio())==true) {
+// 						return "Su cita ha sido reagendada exitosamente, su nuevo medico será : "+ medico.getNombre()+" "+medico.getApellido()+ " en el mismo consultorio \n";
+// 					}
+// 					//Si el consultorio no esta disponible, se busca un nuevo consultorio
+// 					else {
+// 						ArrayList<Consultorio> consultorios = Consultorio.consultorios;
+// 						Consultorio consultorio = null;
+// 						for (int i = 0; i< consultorios.size(); i++) {
+// 							//Se recorre la lista de los consultorios creados y se verifica si el consultorio esta disponible en la fecha que se requiere la cita
+// 							if(Administrador.verificarDisponibilidadConsultorio(fecha, consultorios.get(i)) == true){
+// 								consultorio = consultorios.get(i);
+// 								cita.setConsultorio(consultorio);
+// 								break;
+// 							}
+// 						}
+// 						return "Su cita ha sido reagendada exitosamente, su nuevo medico será : "+ medico.getNombre()+" "+medico.getApellido()+ " y esta será en el consultorio: "+consultorio.getId()+ "\n";
+// 					}
+// 				}
+// //				return "No fue posible reagendar su cita, debido a que no hay disponibilidad de citas, vuelvalo a intentar mas tarde";
+// 			}
+// 		}
+// 		return "Hubo un problema reagendando su cita, vuelvalo a intentar mas tarde";
+// 	}
 	
 	
 		

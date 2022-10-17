@@ -69,6 +69,7 @@ public class Administrador {
 		Pago pago = new Pago(14700, false);
 		cita.setPago(pago);
 		pago.setConsulta(cita);
+        medico.consultas.put(fecha, cita);
 	}
 	
 	public static void autorizarExamen(Examen examen) {

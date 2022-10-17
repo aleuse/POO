@@ -13,7 +13,7 @@ public class Medico extends Persona{
     static ArrayList<Diagnostico> listado= new ArrayList<Diagnostico>();
     tipoCita especialidad; 
 	private boolean disponibilidad;
-    private Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
+    Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
     static ArrayList<Medico>  medicos = new ArrayList<Medico>();
 
 	
