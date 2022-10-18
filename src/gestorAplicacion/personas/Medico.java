@@ -50,16 +50,10 @@ public class Medico extends Persona{
         this.consultas = consultas;
     }
     
-    public static ArrayList<Diagnostico> getListado() {
-        return listado;
-    }
-
-    public static void setListado(ArrayList<Diagnostico> listado) {
-        Medico.listado = listado;
-    }
     
-    public void crearDiagnostico(ArrayList<String> sintomas, String observacion, String medicamiento, int id){
-        Diagnostico diag = new Diagnostico (sintomas, observacion, medicamiento, id);
+    
+    public void crearDiagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, ArrayList<String> medicamiento, int id){
+        Diagnostico diag = new Diagnostico (persona, sintomas, observacion, medicamiento, id);
         listado.add(diag);
     }
 

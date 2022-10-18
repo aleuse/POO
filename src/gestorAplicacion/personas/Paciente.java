@@ -22,19 +22,21 @@ public class Paciente extends Persona{
 	private ArrayList<String> sintomas;
 	private HistoriaClinica historiaClinica;
 	private Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
+	private boolean pagado;
 
 	//Constructores
 	public Paciente(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad, String genero, long telefono, String correoElectronico, String direccion, String eps, 
-			ArrayList<String> sintomas, HistoriaClinica historiaClinica) {
+			ArrayList<String> sintomas, HistoriaClinica historiaClinica, boolean pagado) {
 		super(nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, direccion);
 		setEps(eps);
 		setSintomas(sintomas);
 		setHistoriaClinica(historiaClinica);
+		this.pagado = pagado;
 		
 	}
 	
 	public Paciente() {
-		this(null,null, null, 0, 0, null, 0, null, null,null, new ArrayList<String>(), null);
+		this(null,null, null, 0, 0, null, 0, null, null,null, new ArrayList<String>(), null, false);
 	}
 
 	//Getters y setters
@@ -64,6 +66,14 @@ public class Paciente extends Persona{
 
 	public void setConsultas(Map<LocalDateTime, Consulta> consultas) {
 		this.consultas = consultas;
+	}
+
+	public boolean isPagado() {
+		return pagado;
+	}
+
+	public void setPagado(boolean pagado) {
+		this.pagado = pagado;
 	}
 	
 	//Metodos
@@ -188,6 +198,33 @@ public class Paciente extends Persona{
 		Scanner input= new Scanner(System.in);
 		System.out.println("Ingrese el nombre del paciente: ");
 		String nombre = input.nextLine();
+		ArrayList<Diagnostico> lis = Medico.listado;
+
+		for (Diagnostico medi : lis) {
+			if (medi.getPersona().getNombre() == nombre){
+				System.out.println(medi.getMedicamiento());
+			}
+			String option;
+			while (true) {
+				System.out.println("¿Deseas confirmar el envio de medicamentos?");
+				System.out.println("1. Si");
+				System.out.println("2. No");
+				option = input.next();
+				if (option.equals("1")) {
+					if (medi.getPersona().pagado == true){
+
+					}
+					else{
+						System.out.println("Debes pagar la consulta antes de pedir los medicamentos");
+					}
+
+				}
+				if (option.equals("2")) {
+					
+				}
+
+			}
+		}
 		//ArrayList<Diagnostico> lis = Medico.listado;
 		//ArrayList<HistoriaClinica> histo = HistoriaClinica.historia;
 		/*for (HistoriaClinica histori : HistoriaClinica.historia) {
@@ -204,6 +241,7 @@ public class Paciente extends Persona{
 		}*/
 		return direccion;
 	}
+
 
 
 }
