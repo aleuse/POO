@@ -208,6 +208,7 @@ public class Paciente extends Persona{
 		System.out.println("Ingrese el nombre del paciente: ");
 		String nombre = input.nextLine();
 		ArrayList<Diagnostico> lis = Medico.listado;
+		int cont = 1;
 
 		for (Diagnostico medi : lis) {
 			if (medi.getPersona().getNombre() == nombre){
@@ -223,7 +224,8 @@ public class Paciente extends Persona{
 						if (medi.getPersona().pagado == true){
 							System.out.println("Por Favor ingrese su direccion de domicilio: ");
 							String domicilio = input.nextLine();
-							Entrega.crearEntrega(1, medi.getPersona().getNombre(),domicilio,medi.getMedicamiento(), estadoEntrega.En_camino);
+							Entrega.crearEntrega(cont, medi.getPersona().getNombre(),domicilio,medi.getMedicamiento(), estadoEntrega.En_camino);
+							cont++;
 							System.out.println("el proceso ha sido exitoso");
 						}
 						else{
