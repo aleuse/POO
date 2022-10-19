@@ -4,11 +4,12 @@ import gestorAplicacion.personas.Paciente;
 
 public class Entrega {
     private int id;
-    private Paciente paciente;
+    private String paciente;
     private String domicilio;
     private ArrayList<String> medicamentos;
     private estadoEntrega estado;
-    public Entrega(int id, Paciente paciente, String domicilio, ArrayList<String> medicamentos, estadoEntrega estado) {
+    public static ArrayList<Entrega> lista= new ArrayList<Entrega>();
+    public Entrega(int id, String paciente, String domicilio, ArrayList<String> medicamentos, estadoEntrega estado) {
         this.id = id;
         this.paciente = paciente;
         this.domicilio = domicilio;
@@ -21,10 +22,10 @@ public class Entrega {
     public void setId(int id) {
         this.id = id;
     }
-    public Paciente getPaciente() {
+    public String getPaciente() {
         return paciente;
     }
-    public void setPaciente(Paciente paciente) {
+    public void setPaciente(String paciente) {
         this.paciente = paciente;
     }
     public String getDomicilio() {
@@ -44,6 +45,10 @@ public class Entrega {
     }
     public void setEstado(estadoEntrega estado) {
         this.estado = estado;
+    }
+    public static void crearEntrega(int id, String paciente,String domicilio, ArrayList<String> medicamentos,estadoEntrega estado){
+        Entrega entrega = new Entrega (id, paciente, domicilio, medicamentos, estado);
+        lista.add(entrega);
     }
     
     

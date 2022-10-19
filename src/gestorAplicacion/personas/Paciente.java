@@ -2,11 +2,13 @@ package gestorAplicacion.personas;
 import gestorAplicacion.Cita;
 import gestorAplicacion.Consulta;
 import gestorAplicacion.Examen;
+import gestorAplicacion.estadoEntrega;
 import gestorAplicacion.tipoCita;
 import gestorAplicacion.tipoExamen;
 import gestorAplicacion.registrosMedicos.Diagnostico;
 import gestorAplicacion.registrosMedicos.HistoriaClinica;
 import gestorAplicacion.Consultorio;
+import gestorAplicacion.Entrega;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -201,7 +203,7 @@ public class Paciente extends Persona{
 //
 //	}
 
-	public String solicitarEnvioMedicamento (String direccion ){
+	public void solicitarEnvioMedicamento (){
 		Scanner input= new Scanner(System.in);
 		System.out.println("Ingrese el nombre del paciente: ");
 		String nombre = input.nextLine();
@@ -210,45 +212,30 @@ public class Paciente extends Persona{
 		for (Diagnostico medi : lis) {
 			if (medi.getPersona().getNombre() == nombre){
 				System.out.println(medi.getMedicamiento());
-			}
-			String option;
-			while (true) {
-				System.out.println("¿Deseas confirmar el envio de medicamentos?");
-				System.out.println("1. Si");
-				System.out.println("2. No");
-				option = input.next();
-				if (option.equals("1")) {
-					if (medi.getPersona().pagado == true){
 
+				String option;
+				while (true) {
+					System.out.println("¿Deseas confirmar el envio de medicamentos?");
+					System.out.println("1. Si");
+					System.out.println("2. No");
+					option = input.next();
+					if (option.equals("1")) {
+						if (medi.getPersona().pagado == true){
+							System.out.println("Por Favor ingrese su direccion de domicilio: ");
+							String domicilio = input.nextLine();
+							Entrega.crearEntrega(1, medi.getPersona().getNombre(),domicilio,medi.getMedicamiento(), estadoEntrega.En_camino);
+							System.out.println("el proceso ha sido exitoso");
+						}
+						else{
+							System.out.println("Debes pagar la consulta antes de pedir los medicamentos");
+						}
 					}
-					else{
-						System.out.println("Debes pagar la consulta antes de pedir los medicamentos");
+					if (option.equals("2")) {
+						break;
 					}
-
 				}
-				if (option.equals("2")) {
-					
-				}
-
 			}
 		}
-		//ArrayList<Diagnostico> lis = Medico.listado;
-		//ArrayList<HistoriaClinica> histo = HistoriaClinica.historia;
-		/*for (HistoriaClinica histori : HistoriaClinica.historia) {
-			//comparo
-			if (nombre == histori){
-				//
-
-			}
-			//comparo nombre
-		}
-		/*for(int i = 0; i< histo.size(); i++){
-			if (nombre == ) {}
-			//System.out.println(lis);
-		}*/
-		return direccion;
+			
 	}
-
-
-
 }
