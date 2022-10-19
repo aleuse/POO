@@ -107,6 +107,13 @@ public class Paciente extends Persona{
 		}
 	}
 	
+	public String solicitarExamen(tipoExamen tipo, LocalDateTime fecha) {
+		Examen examen = new Examen((int)(Math.random()*10000+1), this, tipo, false);
+		Administrador.autorizarExamen(examen);
+		// Filtrar médicos disponibles para la fecha
+		// Filtrar consultorios disponibles para la fecha
+		return Administrador.asignarExamen(examen, this, Medico.medicos, Consultorio.consultorios, fecha);
+	}
 	public String reagendarCita(LocalDateTime fecha) {
 		Cita cita = null;
 		ArrayList<Cita> citas = Cita.listaCitas;

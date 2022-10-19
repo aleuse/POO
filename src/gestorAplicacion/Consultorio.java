@@ -21,24 +21,35 @@ public class Consultorio {
     private Paciente paciente;
     private String tipoConsultorio;
     private final int id;
+    private boolean disponibilidad;
     public Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
     public static ArrayList<Consultorio> consultorios = new ArrayList<Consultorio>();
     
     //constructor
 
-    public Consultorio(Medico medico, Paciente paciente, String tipoConsultorio, Boolean disponibilidad, LocalDateTime fecha, Consulta consulta) {
+    public Consultorio(Medico medico, Paciente paciente, String tipoConsultorio, boolean disponibilidad, LocalDateTime fecha, Consulta consulta) {
         this.medico = medico;
         this.paciente = paciente;
         this.tipoConsultorio = tipoConsultorio;
         this.id = (int)(Math.random()*10000+1);
+        this.disponibilidad = disponibilidad;
         consultorios.add(this);
         consultas.put(fecha, consulta);
     }
        
-    
-    //getter & setter     
+  
         
-    public Medico getMedico() {
+    public Consultorio(Medico medico, Paciente paciente, String tipoConsultorio, boolean disponibilidad) {
+    	this.medico = medico;
+        this.paciente = paciente;
+        this.tipoConsultorio = tipoConsultorio;
+        this.disponibilidad = disponibilidad;
+    	this.id = (int)(Math.random()*10000+1);
+	}
+
+    //getter & setter     
+    
+	public Medico getMedico() {
         return medico;
     }
 
@@ -74,6 +85,16 @@ public class Consultorio {
 
 	public void setConsultas(Map<LocalDateTime, Consulta> consultas) {
 		this.consultas = consultas;
+	}
+
+
+	public boolean isDisponibilidad() {
+		return disponibilidad;
+	}
+
+
+	public void setDisponibilidad(boolean disponibilidad) {
+		this.disponibilidad = disponibilidad;
 	}
    
     //metodos
