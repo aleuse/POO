@@ -12,7 +12,7 @@ import java.time.*;
  * @author Roger Vera
  */
 public abstract class Consulta {
-	protected int id;
+    protected int id;
     protected Paciente paciente;
     protected Medico medico;
     protected Consultorio consultorio;

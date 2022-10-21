@@ -5,7 +5,6 @@ import java.util.Scanner;
 //no se en que clase va a ir la interfaz, puse consulta pero no tengo idea :(
 public class Consulta {
     public static Scanner input = new Scanner(system.in);
-
     public static void main(String[] args) {
         while (true) {
             System.out.println("Bienveniedo al Sistema Medico");
