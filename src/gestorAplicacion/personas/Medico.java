@@ -4,34 +4,30 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 import gestorAplicacion.registrosMedicos.*;
-import gestorAplicacion.Cita;
+//import gestorAplicacion.Cita;
 import gestorAplicacion.Consulta;
-import gestorAplicacion.Consultorio;
+//import gestorAplicacion.Consultorio;
 import gestorAplicacion.tipoCita;
-import java.time.*;
 
 public class Medico extends Persona{
+	private static final long serialVersionUID = 1L;
     public static ArrayList<Diagnostico> listado = new ArrayList<Diagnostico>();
     public tipoCita especialidad;
     public tipoMedico especialista;
     private boolean disponibilidad;
     public Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
     public static ArrayList<Medico> medicos = new ArrayList<Medico>();
-    public static ArrayList<Consulta> listado_consulta = new ArrayList<Consulta>(); //crea la consulta
 
     //constructor
     public Medico(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad,
-            String genero, long telefono, String correoElectronico, String direccion, tipoCita especialidad,
-            tipoMedico especialista, boolean disponibilidad, Map<LocalDateTime, Consulta> consultas) {
+            String genero, long telefono, String correoElectronico, String direccion, tipoCita especialidad, boolean disponibilidad) {
         super(nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, direccion);
         this.especialidad = especialidad;
-        this.especialista = especialista;
         this.disponibilidad = disponibilidad;
-        this.consultas = consultas;
+        medicos.add(this);
+
     }
-    
     public Medico(){super();};
-    
     //getter & setter
     public tipoCita getEspecialidad() {
         return especialidad;
@@ -82,12 +78,5 @@ public class Medico extends Persona{
         return tmSolicitado;
     }
 
-    
-    //metodo crearConsulta
-    
-    /*public void crearConsulta(int id, Paciente paciente, Medico medico, Consultorio consultorio, LocalDateTime fecha, Pago pago){
-        Consulta consult = new Consulta (id,paciente, medico, consultorio,fecha,pago);
-        listado_consulta.add(consult);
-    }*/
 
 }

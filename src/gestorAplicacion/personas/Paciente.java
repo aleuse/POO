@@ -20,6 +20,7 @@ import java.util.Scanner;
 
 
 public class Paciente extends Persona{
+	private static final long serialVersionUID = 1L;
 	private String eps;
 	private ArrayList<String> sintomas;
 	private HistoriaClinica historiaClinica;

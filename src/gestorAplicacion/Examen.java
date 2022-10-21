@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author Roger Vera
  */
 public class Examen extends Consulta {
-
+	private static final long serialVersionUID = 1L;
     private tipoExamen tipo;
     private boolean autorizado;
     public static ArrayList<Examen> listaExamenes=new ArrayList<Examen>();

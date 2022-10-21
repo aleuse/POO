@@ -12,7 +12,7 @@ import gestorAplicacion.personas.*;
  * @author Roger Vera
  */
 public class Cita extends Consulta{
-    
+	private static final long serialVersionUID = 1L;
     private String motivo;
     private tipoCita tiposCitas;
     int numeroCitas;
