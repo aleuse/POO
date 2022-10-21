@@ -19,6 +19,14 @@ public class Entrega {
         this.estado = estado;
     }
     
+    public Entrega(String paciente, String domicilio, ArrayList<String> medicamentos, estadoEntrega estado) {
+        this.id = (int)(Math.random()*10000+1);
+        this.paciente = paciente;
+        this.domicilio = domicilio;
+        this.medicamentos = medicamentos;
+        this.estado = estado;
+    }
+    
     //getter & setter
     public int getId() {
         return id;

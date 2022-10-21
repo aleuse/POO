@@ -21,19 +21,46 @@ public class Cita extends Consulta{
     
     //constructor
 
-    public Cita(int id, Paciente paciente, String motivo, Medico medico, Consultorio consultorio, LocalDateTime fecha, tipoCita tiposCitas) {
-        this.id = id;
-        this.paciente = paciente;
+    public Cita(int id, Paciente paciente, String motivo, Medico medico, Consultorio consultorio, LocalDateTime fecha, Pago pago, tipoCita tiposCitas) {
+        super(id, paciente, medico, consultorio, fecha, pago);
         this.motivo = motivo;
-        this.medico = medico;
-        this.consultorio = consultorio;
-        this.fecha = fecha;
         this.tiposCitas = tiposCitas;
         numeroCitas++;
         listaCitas.add(this);
     }
-    public Cita(Paciente paciente, String motivo, Medico medico, Consultorio consultorio, LocalDateTime fecha, tipoCita tipoCita) {
-    	this((int)(Math.random()*10000+1),paciente, motivo, medico, consultorio, fecha, tipoCita);
+    public Cita(Paciente paciente, String motivo, Medico medico, Consultorio consultorio, LocalDateTime fecha, Pago pago, tipoCita tiposCitas) {
+    	super(paciente, medico, consultorio, fecha, pago);
+    	this.motivo = motivo;
+    	this.tiposCitas = tiposCitas;
+    	listaCitas.add(this);
+    }
+    
+    public Cita(int id, Paciente paciente, String motivo, Medico medico, Consultorio consultorio, LocalDateTime fecha, tipoCita tiposCitas) {
+        super(id, paciente, medico, consultorio, fecha, null);
+        this.motivo = motivo;
+        this.tiposCitas = tiposCitas;
+        numeroCitas++;
+        listaCitas.add(this);
+    }
+    public Cita(Paciente paciente, String motivo, Medico medico, Consultorio consultorio, LocalDateTime fecha, tipoCita tiposCitas) {
+    	super(paciente, medico, consultorio, fecha, null);
+    	this.motivo = motivo;
+    	this.tiposCitas = tiposCitas;
+    	listaCitas.add(this);
+    }
+    
+    public Cita(int id, Paciente paciente, String motivo, tipoCita tiposCitas) {
+    	super(id, paciente, null, null, null, null);
+    	this.motivo = motivo;
+    	this.tiposCitas = tiposCitas;
+    	listaCitas.add(this);
+    }
+    
+    public Cita(Paciente paciente, String motivo, tipoCita tiposCitas) {
+    	super(paciente, null, null, null, null);
+    	this.motivo = motivo;
+    	this.tiposCitas = tiposCitas;
+    	listaCitas.add(this);
     }
 
     //getter & setter

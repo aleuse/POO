@@ -22,21 +22,36 @@ public class Examen extends Consulta {
     
     // Constructor
     public Examen(int id, Paciente paciente, tipoExamen tipo, boolean autorizado) {
-    	this(id, paciente, null, null, null, null, tipo, autorizado);
+    	super(id, paciente, null, null, null, null);
+    	this.tipo = tipo;
+    	this.autorizado = autorizado;
+    	listaExamenes.add(this);
+    }
+    
+    public Examen(Paciente paciente, tipoExamen tipo, boolean autorizado) {
+    	super(paciente, null, null, null, null);
+    	this.tipo = tipo;
+    	this.autorizado = autorizado;
+    	listaExamenes.add(this);
     }
     
     public Examen(int id, Paciente paciente, Medico medico, Consultorio consultorio, LocalDateTime fecha, 
     		Pago pago, tipoExamen tipo, boolean autorizado) {
-    	this.id = id;
-    	this.paciente = paciente;
-    	this.medico = medico;
-    	this.consultorio = consultorio;
-    	this.fecha = fecha;
-    	this.pago = pago;
+    	super(id, paciente, medico, consultorio, fecha, pago);
     	this.tipo = tipo;
     	this.autorizado = autorizado;
         listaExamenes.add(this);
     }
+    
+    public Examen(Paciente paciente, Medico medico, Consultorio consultorio, LocalDateTime fecha, 
+    		Pago pago, tipoExamen tipo, boolean autorizado) {
+    	super(paciente, medico, consultorio, fecha, pago);
+    	this.tipo = tipo;
+    	this.autorizado = autorizado;
+        listaExamenes.add(this);
+    }
+    
+    
     
     // Getters y Setters
     public tipoExamen getTipo() {
