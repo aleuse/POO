@@ -7,11 +7,14 @@ public class HistoriaClinica {
     private ArrayList<Diagnostico> diagnosticos;
     public static ArrayList<HistoriaClinica> historia= new ArrayList<HistoriaClinica>();
     
+    //constructor
     public HistoriaClinica(Paciente paciente, ArrayList<Diagnostico> diagnosticos) {
         this.paciente = paciente;
         this.diagnosticos = diagnosticos;
     }
+    public HistoriaClinica(){}
 
+    //getter & setter
     public Paciente getPaciente() {
         return paciente;
     }
@@ -35,6 +38,14 @@ public class HistoriaClinica {
     public void crearHistoriaClinica(Paciente paciente, ArrayList<Diagnostico> diagnosticos){
         HistoriaClinica historia1 = new HistoriaClinica(paciente, diagnosticos);
         historia.add(historia1);
+    }
+    public static HistoriaClinica buscarPaciente(int solicitado){// se ingresa el num de la cc y se busca en la lista cuantas hay
+        for (HistoriaClinica ee : historia) {
+            if(ee.getPaciente().getNumeroDocumento()==solicitado){
+                return ee.getPaciente().consultarHistorioaClinica();
+            }
+        }
+        return new HistoriaClinica();
     }
 
     

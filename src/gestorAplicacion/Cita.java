@@ -76,4 +76,13 @@ public class Cita extends Consulta{
                 "\nMedico: " + getMedico() + "\nConsultorio: " + getConsultorio() +
                 "\nFecha: " + getFecha();
     }
+    public static int informeCitas(tipoCita solicitado){// se ingresa el tipo de Cita y se busca en la lista cuantas hay
+        int tcSolicitada=0;
+        for (Cita tc : listaCitas) {
+            if(tc.getTiposCitas()==solicitado){
+                tcSolicitada++;
+            }
+        }
+        return tcSolicitada;
+    }
 }

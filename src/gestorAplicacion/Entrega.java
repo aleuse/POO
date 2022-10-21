@@ -9,6 +9,8 @@ public class Entrega {
     private ArrayList<String> medicamentos;
     private estadoEntrega estado;
     public static ArrayList<Entrega> lista= new ArrayList<Entrega>();
+    
+    //constructor
     public Entrega(int id, String paciente, String domicilio, ArrayList<String> medicamentos, estadoEntrega estado) {
         this.id = id;
         this.paciente = paciente;
@@ -16,6 +18,8 @@ public class Entrega {
         this.medicamentos = medicamentos;
         this.estado = estado;
     }
+    
+    //getter & setter
     public int getId() {
         return id;
     }
@@ -46,9 +50,21 @@ public class Entrega {
     public void setEstado(estadoEntrega estado) {
         this.estado = estado;
     }
+    
+    //metodos
     public static void crearEntrega(int id, String paciente,String domicilio, ArrayList<String> medicamentos,estadoEntrega estado){
         Entrega entrega = new Entrega (id, paciente, domicilio, medicamentos, estado);
         lista.add(entrega);
+    }
+    
+    public static int informeEntregas(estadoEntrega solicitado){// se ingresa el tipo de entrega y se busca en la lista cuantas hay
+        int eeSolicitada=0;
+        for (Entrega ee : lista) {
+            if(ee.getEstado()==solicitado){
+                eeSolicitada++;
+            }
+        }
+        return eeSolicitada;
     }
     
     

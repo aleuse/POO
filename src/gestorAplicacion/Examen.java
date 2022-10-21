@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 import gestorAplicacion.personas.Medico;
 import gestorAplicacion.personas.Paciente;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Examen extends Consulta {
 
     private tipoExamen tipo;
     private boolean autorizado;
+    public static ArrayList<Examen> listaExamenes=new ArrayList<Examen>();
     
     // Constructor
     public Examen(int id, Paciente paciente, tipoExamen tipo, boolean autorizado) {
@@ -33,19 +35,34 @@ public class Examen extends Consulta {
     	this.pago = pago;
     	this.tipo = tipo;
     	this.autorizado = autorizado;
+        listaExamenes.add(this);
     }
     
-	// Getters y Setters
-	public tipoExamen getTipo() {
-		return tipo;
-	}
-	public void setTipo(tipoExamen tipo) {
-		this.tipo = tipo;
-	}
-	public boolean isAutorizado() {
-		return autorizado;
-	}
-	public void setAutorizado(boolean autorizado) {
-		this.autorizado = autorizado;
-	}
+    // Getters y Setters
+    public tipoExamen getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(tipoExamen tipo) {
+        this.tipo = tipo;
+    }
+
+    public boolean isAutorizado() {
+        return autorizado;
+    }
+
+    public void setAutorizado(boolean autorizado) {
+        this.autorizado = autorizado;
+    }
+
+    //metodo
+    public static int informeExamenes(tipoExamen solicitado) {// se ingresa el tipo de examen y se busca en la lista cuantos hay
+        int teSolicitado = 0;
+        for (Examen te : listaExamenes) {
+            if (te.getTipo() == solicitado) {
+                teSolicitado++;
+            }
+        }
+        return teSolicitado;
+    }
 }

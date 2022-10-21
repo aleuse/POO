@@ -9,5 +9,15 @@ package gestorAplicacion;
  * @author Roger Vera
  */
 public enum tipoExamen {
-    Sangre,Laboratorio,RayosX,Citoquimico;    
+    Sangre(12000),Laboratorio(14000),RayosX(40000),Citoquimico(12000);    
+    
+    private int valorExamen;
+    //constructor
+    private tipoExamen(int precio){
+        this.valorExamen = precio;
+    }
+    //getter
+    public int getValorExamen(){
+        return this.valorExamen;
+    }
 }

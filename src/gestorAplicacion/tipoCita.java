@@ -10,6 +10,16 @@ package gestorAplicacion;
  */
 public enum tipoCita {
     
-    General, Prioritaria, Optometría, Audiometria,Pediatria,laboratorio;
+    General(14700), Prioritaria(14700), Optometria(25000), Audiometria(25000),Pediatria(25000),laboratorio(25000);
     
+    
+    private int valorCita;
+    //constructor
+    private tipoCita(int precio){
+        this.valorCita = precio;
+    }
+    //getter
+    public int getValorCita(){
+        return this.valorCita;
+    }
 }

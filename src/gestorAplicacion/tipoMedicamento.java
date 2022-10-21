@@ -9,7 +9,19 @@ package gestorAplicacion;
  * @author Roger Vera
  */
 public enum tipoMedicamento {
-    Acetaminofen,Amoxicilina,Ibuprofeno,LagrimasArtificiales;   
+    Acetaminofen(140),Amoxicilina(250),Ibuprofeno(190),LagrimasArtificiales(8000);   
     //Acetaminofen,Amoxicilina,Ibuprofeno venta por unidad
     //LagrimasArtificiales venta por frasco
+    
+    private int valorMed;
+    //constructor
+    private tipoMedicamento(int precio){
+        this.valorMed = precio;
+    }
+    //getter
+    public int getValorMed(){
+        return this.valorMed;
+    }
+    
 }
+
