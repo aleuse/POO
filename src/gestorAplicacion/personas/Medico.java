@@ -31,6 +31,7 @@ public class Medico extends Persona{
     }
     
     public Medico(){super();};
+    
     //getter & setter
     public tipoCita getEspecialidad() {
         return especialidad;
@@ -81,6 +82,7 @@ public class Medico extends Persona{
         return tmSolicitado;
     }
 
+    
     //metodo crearConsulta
     
     public void crearConsulta(int id, Paciente paciente, Medico medico, Consultorio consultorio, LocalDateTime fecha, Pago pago){
