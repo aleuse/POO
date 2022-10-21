@@ -9,10 +9,12 @@ import gestorAplicacion.tipoCita;
 import gestorAplicacion.tipoExamen;
 import gestorAplicacion.registrosMedicos.*;
 
+import java.io.Serializable;
 import java.time.*;
 import java.util.ArrayList;
 
-public class Administrador {
+public class Administrador implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String nombre;
 	
@@ -88,9 +90,11 @@ public class Administrador {
 							examen.setFecha(fecha);
 							examen.setPago(new Pago(37000, examen, false));
 							c.getConsultas().put(fecha, examen);
+							break;
 						}
 					}
 					m.getConsultas().put(fecha, examen);
+					break;
 				}
 			}
 			

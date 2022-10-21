@@ -20,12 +20,13 @@ import java.util.Scanner;
 
 
 public class Paciente extends Persona{
+	private static final long serialVersionUID = 1L;
 	private String eps;
 	private ArrayList<String> sintomas;
 	private HistoriaClinica historiaClinica;
 	private Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
 	private boolean pagado;
-	public static ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
+        public static int pacientes;
 
 	//Constructores
 	public Paciente(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad, String genero, long telefono, String correoElectronico, String direccion, String eps, 
@@ -35,11 +36,8 @@ public class Paciente extends Persona{
 		setSintomas(sintomas);
 		setHistoriaClinica(historiaClinica);
 		this.pagado = pagado;
-        pacientes.add(this);
-<<<<<<< Updated upstream
+                pacientes++;
 		
-=======
->>>>>>> Stashed changes
 	}
 	
 	public Paciente() {
@@ -126,7 +124,7 @@ public class Paciente extends Persona{
 		}
 		//Se verifica que tanto el medico como el consultorio esten disponible en la nueva fecha
 		if(Administrador.verificarDisponibilidadMedico(fecha,cita.getMedico()) == true && Administrador.verificarDisponibilidadConsultorio(fecha, cita.getConsultorio())==true){
-			((Consulta) cita).setFecha(fecha);
+			cita.setFecha(fecha);
 			return true;
 		}
 		else {
@@ -186,8 +184,9 @@ public class Paciente extends Persona{
 		// Filtrar consultorios disponibles para la fecha
 		return Administrador.asignarExamen(examen, this, Medico.medicos, Consultorio.consultorios, fecha);
 	}
-
-/*public String cancelarCita(LocalDateTime fecha, tipoCita tipoCita) {
+	
+	
+//	public String cancelarCita(LocalDateTime fecha, tipoCita tipoCita) {
 //		Cita cita = null;
 //		ArrayList<Cita> citas = Cita.listaCitas;
 //		//Se busca la cita que se quiere reagendar
@@ -198,7 +197,7 @@ public class Paciente extends Persona{
 //			}
 //		}
 //		cita.cia
-//	}*/
+//	}
 	
 	public HistoriaClinica consultarHistorioaClinica() {
 		return getHistoriaClinica();

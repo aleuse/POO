@@ -4,10 +4,10 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
 
-import gestorAplicacion.personas.Paciente;
-import gestorAplicacion.personas.tipoDocumento;
-import gestorAplicacion.personas.Administrador;
-import gestorAplicacion.personas.Medico;
+import baseDatos.*;
+import gestorAplicacion.*;
+import gestorAplicacion.personas.*;
+import gestorAplicacion.registrosMedicos.*;
 
 public class test {
 
@@ -133,7 +133,7 @@ public class test {
 		System.out.println(Administrador.verificarDisponibilidadMedico(fecha3, medico3));
 	}
 	
-	public static void main(String[] args) {
+	public static void testCitas() {
 		Paciente paciente = new Paciente("Camilo", "Martinez", tipoDocumento.CEDULA, 1074074689, 25, "masculino", 300762957,"mcm@gmail.com", "cra87#12-34", "SURA", null, null, false);
 		Paciente paciente1 = new Paciente("Maria", "Jaramillo", tipoDocumento.CEDULA, 9403862, 43, "femenino", 301762849,"mj@gmail.com", "calle 3", "SURA", null, null, false);
 		LocalDateTime fecha = LocalDateTime.of(2022, Month.NOVEMBER, 25, 15,30);
@@ -148,9 +148,100 @@ public class test {
 		System.out.println(paciente.pedirCita(LocalDateTime.of(2022, Month.NOVEMBER, 25, 16,30), tipoCita.Audiometria, null)); 
 		System.out.println(paciente1.reagendarCita(LocalDateTime.of(2022, Month.NOVEMBER, 25, 16,30)));
 		System.out.println(c1.consultas);
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(Medico.medicos);
+		System.out.println(Consultorio.consultorios);
+		Serializador.main(args);
+		System.out.println(Medico.medicos);
+		System.out.println(Consultorio.consultorios);
+		
+		
+		// Deserializar administrador
+		ArrayList<Administrador> administrador = Deserializador.<Administrador> deserializar("administrador");
+		Administrador admin = administrador.get(0);
 
+		// Deserializar fechas
+		ArrayList<LocalDateTime> fechas = (Deserializador.<LocalDateTime> deserializar("fechas"));
+		LocalDateTime fecha1 = fechas.get(0);
+		LocalDateTime fecha2 = fechas.get(1);
+		LocalDateTime fecha3 = fechas.get(2);
+		LocalDateTime fecha4 = fechas.get(3);
+
+		// Deserializar consultas
+		ArrayList<Consulta> consultas = Deserializador.<Consulta> deserializar("consultas");
+		Cita cita1 = (Cita) consultas.get(0);
+		Cita cita2 = (Cita) consultas.get(1);
+		Cita cita3 = (Cita) consultas.get(2);
+		        
+		// Deserializar pacientes 
+		ArrayList<Paciente> pacientes = Deserializador.<Paciente> deserializar("pacientes");
+		Paciente paciente1 = pacientes.get(0);
+		        
+		// Deserializar medicos
+		ArrayList<Medico> medicos = Deserializador.<Medico> deserializar("medicos");
+		Medico medico1 = medicos.get(0);
+		Medico medico2 = medicos.get(1);
+		Medico medico3 = medicos.get(2);
+		        
+		// Deserializar consultorios
+		ArrayList<Consultorio> consultorios =  Deserializador.<Consultorio> deserializar("consultorios");
+		Consultorio consultorio1 = consultorios.get(0);
+		Consultorio consultorio2 = consultorios.get(1);
+		Consultorio consultorio3 = consultorios.get(2);
+		        
+		//System.out.println(administrador);
+		//System.out.println(fechas);
+		//System.out.println(consultas);
+		//System.out.println(pacientes);
+		//System.out.println(medicos);
+		//System.out.println(consultorios);
 		
 		
+		Medico.medicos.add(medico1);
+		Medico.medicos.add(medico2);
+		Medico.medicos.add(medico3);
+		Consultorio.consultorios.add(consultorio1);
+		Consultorio.consultorios.add(consultorio2);
+		Consultorio.consultorios.add(consultorio3);
+		
+		System.out.println(Medico.medicos);
+		System.out.println(Consultorio.consultorios);
+		        
+		System.out.println(paciente1.solicitarExamen(tipoExamen.Sangre, fecha1));
+		System.out.println(Administrador.verificarDisponibilidadConsultorio(fecha1, consultorio3));
+		System.out.println(Administrador.verificarDisponibilidadMedico(fecha1, medico3));
+		System.out.println("----------------------------------------------------------------------");
+		System.out.println(paciente1.solicitarExamen(tipoExamen.Laboratorio, fecha3));
+		System.out.println("Consultorio1, Medico1");
+		System.out.println(Administrador.verificarDisponibilidadConsultorio(fecha3, consultorio1));
+		System.out.println(Administrador.verificarDisponibilidadMedico(fecha3, medico1));
+		System.out.println("Consultorio2, Medico2");
+		System.out.println(Administrador.verificarDisponibilidadConsultorio(fecha3, consultorio2));
+		System.out.println(Administrador.verificarDisponibilidadMedico(fecha3, medico2));
+		System.out.println("Consultorio3, Medico3");
+		System.out.println(Administrador.verificarDisponibilidadConsultorio(fecha3, consultorio3));
+		System.out.println(Administrador.verificarDisponibilidadMedico(fecha3, medico3));
+		        
+		        
+		// Serializar administrador
+		Serializador.serializar(administrador, "administrador");
+		
+		// Serializar fechas
+		Serializador.serializar(fechas, "fechas");
+		        
+		// Serializar consultas
+		Serializador.serializar(consultas, "consultas");
+		        
+		// Serializar pacientes
+		Serializador.serializar(pacientes, "pacientes");
+		        
+		// Serializar medicos
+		Serializador.serializar(medicos, "medicos");
+		        
+		// Serializar consultorios
+		Serializador.serializar(consultorios, "consultorios");
 
 	}
 

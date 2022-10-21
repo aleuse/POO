@@ -1,6 +1,9 @@
 package gestorAplicacion;
 
-public class Pago {
+import java.io.Serializable;
+
+public class Pago implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private int valor;
 	private Consulta consulta;

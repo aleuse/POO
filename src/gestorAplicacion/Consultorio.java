@@ -4,6 +4,7 @@
  */
 package gestorAplicacion;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.TreeMap;
@@ -15,8 +16,8 @@ import gestorAplicacion.personas.*;
  *
  * @author Roger Vera
  */
-public class Consultorio {
-    
+public class Consultorio implements Serializable{
+	private static final long serialVersionUID = 1L;
     private Medico medico;
     private Paciente paciente;
     private String tipoConsultorio;
@@ -45,6 +46,7 @@ public class Consultorio {
         this.tipoConsultorio = tipoConsultorio;
         this.disponibilidad = disponibilidad;
     	this.id = (int)(Math.random()*10000+1);
+    	consultorios.add(this);
 	}
 
     //getter & setter     

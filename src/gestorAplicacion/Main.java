@@ -20,7 +20,7 @@ public class Main {
         System.out.println("                  (0 0)           ");
         System.out.println("          ---oOO-- (_) ----oOO---        ");
         System.out.println("  ╔════════════════════════════════════════╗   ");
-        System.out.println("  ║ Bienveniedo al Sistema Medico! ♥       ║   ");
+        System.out.println("  ║ Bienveniedo al Sistema Medico! ♥  ║   ");
         System.out.println("  ╚════════════════════════════════════════╝   ");
         System.out.println("           -------------------           ");
         System.out.println("                 |__|__|       ");

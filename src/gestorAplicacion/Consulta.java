@@ -5,14 +5,17 @@
 package gestorAplicacion;
 
 import gestorAplicacion.personas.*;
+
+import java.io.Serializable;
 import java.time.*;
 
 /**
  *
  * @author Roger Vera
  */
-public abstract class Consulta {
-    protected int id;
+public abstract class Consulta implements Serializable {
+	private static final long serialVersionUID = 1L;
+	protected int id;
     protected Paciente paciente;
     protected Medico medico;
     protected Consultorio consultorio;
