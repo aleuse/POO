@@ -56,7 +56,7 @@ public class Main {
             case 3:
                 Scanner input= new Scanner(System.in);
                 System.out.println(" elegiste  opcion 3");
-                System.out.println("Ingrese el nombre del paciente Prueba: ");
+                System.out.println("Ingrese el nombre del paciente: ");
 		        String nombre = input.nextLine();
                 ArrayList<Diagnostico> lis = Medico.listado;
                 //System.out.println(Medico.listado.size());
