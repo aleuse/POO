@@ -4,6 +4,12 @@
  */
 package gestorAplicacion;
 import gestorAplicacion.*;
+import gestorAplicacion.personas.Medico;
+import gestorAplicacion.personas.Paciente;
+import gestorAplicacion.personas.tipoDocumento;
+import gestorAplicacion.registrosMedicos.Diagnostico;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -48,7 +54,38 @@ public class Main {
                 System.out.println(" elegiste  opcion 2");
                 break;
             case 3:
+                Scanner input= new Scanner(System.in);
                 System.out.println(" elegiste  opcion 3");
+                System.out.println("Ingrese el nombre del paciente Prueba: ");
+		        String nombre = input.nextLine();
+                ArrayList<Diagnostico> lis = Medico.listado;
+                //System.out.println(Medico.listado.size());
+                int cont = 1;
+                for (Diagnostico medi : lis) {
+                    if (medi.getPersona().getNombre().equals(nombre)){
+                        String option;
+                        while (true) {
+                            System.out.println("¿Deseas confirmar el envio de medicamentos?");
+                            System.out.println("1. Si");
+                            System.out.println("2. No");
+                            option = input.next();
+                            if (option.equals("1")) {
+                                if (medi.getPersona().pagado == true){
+                                    System.out.println("Por Favor ingrese su direccion de domicilio: ");
+                                    String domicilio = input.nextLine();
+                                    Paciente.solicitarEnvioMedicamento(nombre , domicilio);
+                                }
+                            }
+                            else if (option.equals("2")) {
+                                break;
+                            }
+                        }
+                    }else{
+                        System.out.println("El nombre no se encuentra en la base de datos");
+                    }
+                
+
+                }
                 break;
             case 4:
                 System.out.println(" elegiste  opcion 4");

@@ -24,7 +24,7 @@ public class Paciente extends Persona{
 	private ArrayList<String> sintomas;
 	private HistoriaClinica historiaClinica;
 	private Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
-	private boolean pagado;
+	public boolean pagado;
 	public static ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
 
 	//Constructores
@@ -36,10 +36,7 @@ public class Paciente extends Persona{
 		setHistoriaClinica(historiaClinica);
 		this.pagado = pagado;
         pacientes.add(this);
-<<<<<<< Updated upstream
 		
-=======
->>>>>>> Stashed changes
 	}
 	
 	public Paciente() {
@@ -186,8 +183,9 @@ public class Paciente extends Persona{
 		// Filtrar consultorios disponibles para la fecha
 		return Administrador.asignarExamen(examen, this, Medico.medicos, Consultorio.consultorios, fecha);
 	}
-
-/*public String cancelarCita(LocalDateTime fecha, tipoCita tipoCita) {
+	
+	
+//	public String cancelarCita(LocalDateTime fecha, tipoCita tipoCita) {
 //		Cita cita = null;
 //		ArrayList<Cita> citas = Cita.listaCitas;
 //		//Se busca la cita que se quiere reagendar
@@ -198,7 +196,7 @@ public class Paciente extends Persona{
 //			}
 //		}
 //		cita.cia
-//	}*/
+//	}
 	
 	public HistoriaClinica consultarHistorioaClinica() {
 		return getHistoriaClinica();
@@ -212,41 +210,23 @@ public class Paciente extends Persona{
 //
 //	}
 
-	public void solicitarEnvioMedicamento (){
-		Scanner input= new Scanner(System.in);
-		System.out.println("Ingrese el nombre del paciente: ");
-		String nombre = input.nextLine();
+	public static String solicitarEnvioMedicamento (String nombre, String domicilio){
 		ArrayList<Diagnostico> lis = Medico.listado;
 		int cont = 1;
-
 		for (Diagnostico medi : lis) {
-			if (medi.getPersona().getNombre() == nombre){
-				System.out.println(medi.getMedicamiento());
-
+			if (medi.getPersona().getNombre().equals(nombre)){
 				String option;
-				while (true) {
-					System.out.println("¿Deseas confirmar el envio de medicamentos?");
-					System.out.println("1. Si");
-					System.out.println("2. No");
-					option = input.next();
-					if (option.equals("1")) {
-						if (medi.getPersona().pagado == true){
-							System.out.println("Por Favor ingrese su direccion de domicilio: ");
-							String domicilio = input.nextLine();
-							Entrega.crearEntrega(cont, medi.getPersona().getNombre(),domicilio,medi.getMedicamiento(), estadoEntrega.En_camino);
-							cont++;
-							System.out.println("el proceso ha sido exitoso");
-						}
-						else{
-							System.out.println("Debes pagar la consulta antes de pedir los medicamentos");
-						}
-					}
-					if (option.equals("2")) {
-						break;
-					}
+				if (medi.getPersona().pagado == true){
+					Entrega.crearEntrega(cont, medi.getPersona().getNombre(),domicilio,medi.getMedicamiento(), estadoEntrega.En_camino);
+					cont++;
+					return "el proceso ha sido exitoso";
+				}
+				else{
+					return ("Debes pagar la consulta antes de pedir los medicamentos");
 				}
 			}
 		}
+		return domicilio;
 			
 	}
 }

@@ -4,9 +4,9 @@ import gestorAplicacion.personas.Paciente;
 
 public class Diagnostico {
     private Paciente persona;
-    private ArrayList<String> sintomas;
+    public static ArrayList<String> sintomas;
     private String observacion;
-    private ArrayList<String> medicamiento = new ArrayList<String>();
+    public static ArrayList<String> medicamiento = new ArrayList<String>();
     private int id;
    
     public Diagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, ArrayList<String> medicamiento, int id) {
