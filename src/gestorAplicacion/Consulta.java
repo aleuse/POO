@@ -19,6 +19,24 @@ public abstract class Consulta {
     protected LocalDateTime fecha;
     protected Pago pago;
     
+    public Consulta(int id, Paciente paciente, Medico medico, Consultorio consultorio, LocalDateTime fecha, Pago pago) {
+    	this.id= id;
+    	this.paciente = paciente;
+    	this.medico = medico;
+    	this.consultorio = consultorio;
+    	this.fecha = fecha;
+    	this.pago = pago;
+    }
+    
+    public Consulta(Paciente paciente, Medico medico, Consultorio consultorio, LocalDateTime fecha, Pago pago) {
+    	this.id= (int)(Math.random()*10000+1);
+    	this.paciente = paciente;
+    	this.medico = medico;
+    	this.consultorio = consultorio;
+    	this.fecha = fecha;
+    	this.pago = pago;
+    }
+    
     
     public int getId() {
         return id;
