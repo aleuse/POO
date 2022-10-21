@@ -85,9 +85,9 @@ public class Medico extends Persona{
     
     //metodo crearConsulta
     
-    public void crearConsulta(int id, Paciente paciente, Medico medico, Consultorio consultorio, LocalDateTime fecha, Pago pago){
+    /*public void crearConsulta(int id, Paciente paciente, Medico medico, Consultorio consultorio, LocalDateTime fecha, Pago pago){
         Consulta consult = new Consulta (id,paciente, medico, consultorio,fecha,pago);
         listado_consulta.add(consult);
-    }
+    }*/
 
 }

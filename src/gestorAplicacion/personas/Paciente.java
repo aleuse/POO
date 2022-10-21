@@ -36,7 +36,10 @@ public class Paciente extends Persona{
 		setHistoriaClinica(historiaClinica);
 		this.pagado = pagado;
         pacientes.add(this);
+<<<<<<< Updated upstream
 		
+=======
+>>>>>>> Stashed changes
 	}
 	
 	public Paciente() {
@@ -183,9 +186,8 @@ public class Paciente extends Persona{
 		// Filtrar consultorios disponibles para la fecha
 		return Administrador.asignarExamen(examen, this, Medico.medicos, Consultorio.consultorios, fecha);
 	}
-	
-	
-//	public String cancelarCita(LocalDateTime fecha, tipoCita tipoCita) {
+
+/*public String cancelarCita(LocalDateTime fecha, tipoCita tipoCita) {
 //		Cita cita = null;
 //		ArrayList<Cita> citas = Cita.listaCitas;
 //		//Se busca la cita que se quiere reagendar
@@ -196,7 +198,7 @@ public class Paciente extends Persona{
 //			}
 //		}
 //		cita.cia
-//	}
+//	}*/
 	
 	public HistoriaClinica consultarHistorioaClinica() {
 		return getHistoriaClinica();
