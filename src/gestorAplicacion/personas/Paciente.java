@@ -35,7 +35,7 @@ public class Paciente extends Persona{
 		setSintomas(sintomas);
 		setHistoriaClinica(historiaClinica);
 		this.pagado = pagado;
-        pacientes.add(this)
+        pacientes.add(this);
 		
 	}
 	
