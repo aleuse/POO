@@ -123,7 +123,7 @@ public class Paciente extends Persona{
 		}
 		//Se verifica que tanto el medico como el consultorio esten disponible en la nueva fecha
 		if(Administrador.verificarDisponibilidadMedico(fecha,cita.getMedico()) == true && Administrador.verificarDisponibilidadConsultorio(fecha, cita.getConsultorio())==true){
-			cita.setFecha(fecha);
+			((Consulta) cita).setFecha(fecha);
 			return true;
 		}
 		else {
