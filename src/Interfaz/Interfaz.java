@@ -250,6 +250,7 @@ public class Interfaz {
 							}
 							if (medi.getPersona().pagado == false){
 								System.out.println("Debes pagar la consulta antes de pedir los medicamentos");
+								
 						
 							}
 						}
