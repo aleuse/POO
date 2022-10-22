@@ -17,13 +17,19 @@ public class Interfaz {
 	 static ArrayList<Paciente> pacientes = Paciente.pacientes;
 	public static void main(String[] args) {
 		loop: while(true) {
-			System.out.println("Bienvenido a su sistema médico. \nElija a que apartado desea acceder");
-			System.out.println("1. Citas.");
-			System.out.println("2. Exámenes.");
-			System.out.println("3. Finanzas.");
-			System.out.println("4. Resultados y Medicamentos.");
-			System.out.println("5. Administración");
-			System.out.println("0. Salir del sistema");
+			System.out.println("		+-------------------------------------------------------------------------------+	");
+			System.out.println(" 	|						Bienvenido a su Sistema Médico							|   "); 
+			System.out.println(" 	+-------------------------------------------------------------------------------+   ");
+			System.out.println("		+-------------------------------------------------------------------------------+	");
+			System.out.println(" 	|						Elija a que Apartado Desea Acceder:						|   "); 
+			System.out.println("		|   --------------------------------------------------------------------------  |	"); 
+			System.out.println(" 	|								1. Citas.										|   "); 
+			System.out.println(" 	|								2. Exámenes.									|   "); 
+			System.out.println(" 	|								3. Finanzas.									|   "); 
+			System.out.println(" 	|								4. Resultados y Medicamentos.					|   "); 
+			System.out.println(" 	|								5. Administración								|   "); 
+			System.out.println(" 	|								0. Salir del sistema							|   "); 
+			System.out.println(" 	+-------------------------------------------------------------------------------+   ");
 			
 			opcion = sc.nextInt();
 			
@@ -49,7 +55,12 @@ public class Interfaz {
 		}
 
 	static void opcionesCitas() {
-		System.out.println("Escoja una opción: \n 1. Solicitar cita \n 2. Reagendar cita");
+		System.out.println("		+-------------------------------------------------------------------------------+	");
+		System.out.println(" 	|								Escoja una Opción:								|   "); 
+		System.out.println("		|   --------------------------------------------------------------------------  |	"); 
+		System.out.println(" 	|								1. Solicitar cita								|   "); 
+		System.out.println(" 	|								2. Reagendar cita								|   "); 
+		System.out.println(" 	+-------------------------------------------------------------------------------+   ");
 		opcion = sc.nextInt();
 		switch (opcion){
 		case 1:
@@ -86,7 +97,15 @@ public class Interfaz {
 			}
 		}
 
-		System.out.println("Escoja la accion que desea realizar: \n 1.Pagar consultas \n 2. Pagar entregas \n 3. Consultar dinero disponible \n 4. Pago de Nomina \n 5. Ir hacia atras");
+		System.out.println("		+-------------------------------------------------------------------------------+	");
+		System.out.println(" 	|						Escoja la accion que desea realizar:					|   "); 
+		System.out.println("		|   --------------------------------------------------------------------------  |	"); 
+		System.out.println(" 	|								1. Pagar consultas								|   "); 
+		System.out.println(" 	|								2. Pagar entregas								|   "); 
+		System.out.println(" 	|								3. Consultar dinero disponible					|   "); 
+		System.out.println(" 	|								4. Pago de Nomina								|   "); 
+		System.out.println(" 	|								5. Ir hacia atras								|   "); 
+		System.out.println(" 	+-------------------------------------------------------------------------------+   ");
 		opcion = sc.nextInt();
 		
 		switch (opcion){
@@ -101,7 +120,7 @@ public class Interfaz {
 				}
 			}
 
-			System.out.println("Ingrese el ID de la cita que desea pagar (Ingrese el numero -1 para volver atras): ");
+			System.out.println("Ingrese el ID de la cita que desea pagar (Para ir hacia atras ingrese el numero -1): ");
 			int id_consulta = sc.nextInt();
 			if (id_consulta == -1) {
 				break;
@@ -126,7 +145,7 @@ public class Interfaz {
 				}
 			}
 
-			System.out.println("Ingrese el ID de la entrega que desea pagar (Ingrese el numero -1 para volver atras): ");
+			System.out.println("Ingrese el ID de la entrega que desea pagar (Para ir hacia atras ingrese el numero -1): ");
 			int id_entrega = sc.nextInt();
 			if (id_entrega == -1) {
 				break;
@@ -147,10 +166,10 @@ public class Interfaz {
 			System.out.println(" 	|							Bienvenido Administrador							|   "); 
 			System.out.println(" 	+-------------------------------------------------------------------------------+   ");
 			System.out.println("		+-------------------------------------------------------------------------------+	");
-			System.out.println(" 		|		Actualmente el dinero disponible es: " + Administrador.dinero + " 		|   "); 
+			System.out.println(" 		|		Actualmente el Dinero Disponible es: $" + Administrador.dinero + " 		|   "); 
 			System.out.println(" 	+-------------------------------------------------------------------------------+   ");
 
-			System.out.println("Ingrese el numero -1 para volver atras: ");
+			System.out.println("Para ir hacia atras ingrese el numero -1 ");
 			int opcion = sc.nextInt();
 			if (opcion == -1) {
 				break;
@@ -165,7 +184,7 @@ public class Interfaz {
 				}
 			}
 
-			System.out.println("Ingrese el numero del documento del medico al que le deseas pagar (Ingrese el numero -1 para volver atras): ");
+			System.out.println("Ingrese el numero del documento del medico al que le deseas pagar (Para ir hacia atras ingrese el numero -1): ");
 			int numeroDocumento = sc.nextInt();
 			if (numeroDocumento == -1) {
 				break;
@@ -188,7 +207,13 @@ public class Interfaz {
 	}
 	
 	static void resultados() {
-		System.out.println("Escoja una opción: \n 1. Crear diagnostico \n 2. Mostrar diagnosticos \n 3. Solicitar entrega de medicamentos");
+		System.out.println("		+-------------------------------------------------------------------------------+	");
+		System.out.println(" 	|								Escoja una Opción:								|   "); 
+		System.out.println("		|   --------------------------------------------------------------------------  |	"); 
+		System.out.println(" 	|							1. Crear Diagnostico								|   "); 
+		System.out.println(" 	|							2. Mostrar Diagnosticos								|   "); 
+		System.out.println(" 	|							3. Solicitar Entrega de Medicamentos				|   "); 
+		System.out.println(" 	+-------------------------------------------------------------------------------+   ");
 		opcion = sc.nextInt();
 		switch (opcion){
 		case 1:
@@ -213,14 +238,14 @@ public class Interfaz {
 						option = input.next();
 						if (option.equals("1")) {
 							if (medi.getConsulta().getPago().isPagado() == true){
-								System.out.println("Por Favor ingrese su direccion de domicilio: ");
+								System.out.println("Por favor ingrese su direccion de domicilio: ");
 								//System.out.println(medi.getPersona().getNombre());
 								//System.out.println(medi.getPersona().pagado);
 								String domicilio = input.nextLine();
 								//Entrega.crearEntrega(cont, medi.getPersona().getNombre(), domicilio, null, null);
 								Entrega.crearEntrega(cont, medi.getPersona().getNombre(),domicilio,medi.getMedicamiento(), estadoEntrega.En_camino);
 								cont++;
-								System.out.println("el proceso ha sido exitoso");
+								System.out.println("El proceso ha sido exitoso");
 	
 							}
 							if (medi.getPersona().pagado == false){
