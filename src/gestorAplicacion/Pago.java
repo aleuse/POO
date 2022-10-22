@@ -8,6 +8,7 @@ public class Pago implements Serializable{
 	private int valor;
 	private Consulta consulta;
 	private boolean pagado;
+	private Entrega entrega;
 	
 	// Constructor
 	public Pago(int valor, boolean pagado) {

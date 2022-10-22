@@ -17,6 +17,7 @@ public class Administrador implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String nombre;
+	public static long dinero; 
 	
 	// Constructor
 	public Administrador(int id, String nombre) {
@@ -42,6 +43,15 @@ public class Administrador implements Serializable{
 	}
 	
 	// Métodos
+
+	public static void sumarDinero(long cantidad) {
+		Administrador.dinero += cantidad;
+	}
+
+	public static void restarDinero(long cantidad) {
+		Administrador.dinero -= cantidad;
+	}
+
 	public static boolean verificarDisponibilidadMedico(LocalDateTime fecha, Medico medico) {
 		if(medico.getConsultas().get(fecha) == null) {
 			// Para Medico, en su diccionario de Consultas (Key = fecha, value = Consulta) verifica si para la fecha 

@@ -1,7 +1,12 @@
 package Interfaz;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import gestorAplicacion.Consulta;
+import gestorAplicacion.Entrega;
+import gestorAplicacion.personas.Administrador;
+import gestorAplicacion.personas.Medico;
 import gestorAplicacion.personas.Paciente;
 
 public class Interfaz {
@@ -66,14 +71,120 @@ public class Interfaz {
 	static void solicitarExamen() {
 		//codigo para solicitar examen
 	}
+
+
 	static void finanzas() {
-		System.out.println("Escoja una opción: \n 1.Pagar consultas y entregas \n 2. Consultar dinero disponible");
+
+		//Se pide el documento de identidad para buscar el paciente
+		System.out.println("Inserte su documento de identidad");
+		long id = sc.nextLong();
+		Paciente paciente = null;
+
+		for (int i = 0; i < pacientes.size(); i++) {
+			if (id == pacientes.get(i).getNumeroDocumento()) {
+				paciente = pacientes.get(i);
+			}
+		}
+
+		//System.out.println("Quien desea realizar acciones: \n 1. Administrador \n 2. Paciente");
+		//opcion_1 = sc.nextInt();
+
+		System.out.println("Escoja la accion que desea realizar: \n 1.Pagar consultas \n 2. Pagar entregas \n 3. Consultar dinero disponible \n 4. Pago de Nomina \n 5. Ir hacia atras");
 		opcion = sc.nextInt();
+		
 		switch (opcion){
 		case 1:
-			//codigo de paciente
+
+			ArrayList<Consulta>consultas_paciente=(ArrayList<Consulta>)paciente.getConsultas().values();
+
+			for (Consulta c: consultas_paciente) {
+				if (c.getPago().isPagado() == false) {
+					System.out.println("La consulta" + c.getId() + "en la fecha" + c.getFecha() + "esta sin pagar");
+				}
+			}
+
+			System.out.println("Ingrese el ID de la cita que desea pagar (Ingrese el numero -1 para volver atras): ");
+			int id_consulta = sc.nextInt();
+			if (id_consulta == -1) {
+				break;
+			}
+
+			for (Consulta c: consultas_paciente) {
+				if (c.getId() == id_consulta) {
+					c.getPago().setPagado(true);
+					Administrador.sumarDinero(c.getPago().getValor());
+					System.out.println("La consulta" + c.getId() + "en la fecha" + c.getFecha() + "ha sido pagada existosamente");
+				}
+			}
+
+
 		case 2:
-			//codigo de administrador
+
+			ArrayList<Entrega>entregas_paciente=(ArrayList<Entrega>)paciente.getEntregas().values();
+
+			for (Entrega e: entregas_paciente) {
+				if (e.getPago().isPagado() == false) {
+					System.out.println("La entrega" + e.getId() + "esta sin pagar");
+				}
+			}
+
+			System.out.println("Ingrese el ID de la entrega que desea pagar (Ingrese el numero -1 para volver atras): ");
+			int id_entrega = sc.nextInt();
+			if (id_entrega == -1) {
+				break;
+			}
+
+			for (Entrega e: entregas_paciente) {
+				if (e.getId() == id_entrega) {
+					e.getPago().setPagado(true);
+					Administrador.sumarDinero(e.getPago().getValor());
+					System.out.println("La entrega" + e.getId() + "ha sido pagada existosamente");
+				}
+			} 
+		
+			//El dinero disponible es: " +Administrador.dinero   
+
+			
+		case 3:
+			System.out.println("		+-------------------------------------------------------------------------------+	");
+			System.out.println(" 	|							Bienvenido Administrador							|   "); 
+			System.out.println(" 	+-------------------------------------------------------------------------------+   ");
+			System.out.println("		+-------------------------------------------------------------------------------+	");
+			System.out.println(" 		|		Actualmente el dinero disponible es: " + Administrador.dinero + " 		|   "); 
+			System.out.println(" 	+-------------------------------------------------------------------------------+   ");
+
+			System.out.println("Ingrese el numero -1 para volver atras: ");
+			int opcion = sc.nextInt();
+			if (opcion == -1) {
+				break;
+			}
+
+
+		case 4:
+			LocalDateTime fecha = LocalDateTime.of(2022, 10, 1, 00, 00);
+			for (Medico m: Medico.medicos) {
+				if (m.getNomina().get(fecha).isPagado() == false) {
+					System.out.println("El medico" + m.getNombre() + "con documento" + m.getNumeroDocumento() + "no ha recibido su pago desde la fecha" + fecha);
+				}
+			}
+
+			System.out.println("Ingrese el numero del documento del medico al que le deseas pagar (Ingrese el numero -1 para volver atras): ");
+			int numeroDocumento = sc.nextInt();
+			if (numeroDocumento == -1) {
+				break;
+			}
+
+			for (Medico m: Medico.medicos) {
+				if (m.getNumeroDocumento() == numeroDocumento) {
+					m.getNomina().get(fecha).setPagado(true);
+					Administrador.restarDinero(m.getNomina().get(fecha).getValor());
+					System.out.println("El medico" + m.getNombre() + "con documento" + m.getNumeroDocumento() + "ha sido pagado existosamente");
+				}
+			}
+
+		case 5:
+			System.out.println("\n");
+			break;
 		}
 	}
 	

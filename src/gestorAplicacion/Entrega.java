@@ -1,6 +1,8 @@
 package gestorAplicacion;
 import java.util.ArrayList;
 import gestorAplicacion.personas.Paciente;
+import gestorAplicacion.Pago;
+
 
 public class Entrega {
     private int id;
@@ -9,6 +11,7 @@ public class Entrega {
     private ArrayList<String> medicamentos;
     private estadoEntrega estado;
     public static ArrayList<Entrega> lista= new ArrayList<Entrega>();
+    private Pago pago;
     
     //constructor
     public Entrega(int id, String paciente, String domicilio, ArrayList<String> medicamentos, estadoEntrega estado) {
@@ -58,6 +61,15 @@ public class Entrega {
     public void setEstado(estadoEntrega estado) {
         this.estado = estado;
     }
+
+    public Pago getPago() {
+        return pago;
+    }
+
+    public void setPago(Pago pago) {
+        this.pago = pago;
+    }
+
     
     //metodos
     public static void crearEntrega(int id, String paciente,String domicilio, ArrayList<String> medicamentos,estadoEntrega estado){
