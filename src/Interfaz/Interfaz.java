@@ -46,9 +46,8 @@ public class Interfaz {
 				
 		}
 			
-			
-			
 		}
+
 	static void opcionesCitas() {
 		System.out.println("Escoja una opción: \n 1. Solicitar cita \n 2. Reagendar cita");
 		opcion = sc.nextInt();
@@ -88,13 +87,11 @@ public class Interfaz {
 			}
 		}
 
-		//System.out.println("Quien desea realizar acciones: \n 1. Administrador \n 2. Paciente");
-		//opcion_1 = sc.nextInt();
-
 		System.out.println("Escoja la accion que desea realizar: \n 1.Pagar consultas \n 2. Pagar entregas \n 3. Consultar dinero disponible \n 4. Pago de Nomina \n 5. Ir hacia atras");
 		opcion = sc.nextInt();
 		
 		switch (opcion){
+
 		case 1:
 
 			ArrayList<Consulta>consultas_paciente=(ArrayList<Consulta>)paciente.getConsultas().values();
@@ -142,12 +139,11 @@ public class Interfaz {
 					Administrador.sumarDinero(e.getPago().getValor());
 					System.out.println("La entrega" + e.getId() + "ha sido pagada existosamente");
 				}
-			} 
-		
-			//El dinero disponible es: " +Administrador.dinero   
+			}  
 
 			
 		case 3:
+
 			System.out.println("		+-------------------------------------------------------------------------------+	");
 			System.out.println(" 	|							Bienvenido Administrador							|   "); 
 			System.out.println(" 	+-------------------------------------------------------------------------------+   ");
@@ -161,8 +157,8 @@ public class Interfaz {
 				break;
 			}
 
-
 		case 4:
+
 			LocalDateTime fecha = LocalDateTime.of(2022, 10, 1, 00, 00);
 			for (Medico m: Medico.medicos) {
 				if (m.getNomina().get(fecha).isPagado() == false) {
@@ -185,8 +181,10 @@ public class Interfaz {
 			}
 
 		case 5:
+
 			System.out.println("\n");
 			break;
+
 		}
 	}
 	
