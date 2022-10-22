@@ -43,6 +43,7 @@ public class Medico extends Persona{
         this.especialista = especialista;
         this.disponibilidad = disponibilidad;
         this.consultas = consultas;
+        medicos.add(this);
     }
     public Medico(tipoCita especialidad, tipoMedico especialista, boolean disponibilidad,
             Map<LocalDateTime, Consulta> consultas) {
