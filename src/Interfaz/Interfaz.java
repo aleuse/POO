@@ -284,14 +284,13 @@ public class Interfaz {
 		case 2:
 		case 3:
 		Scanner input= new Scanner(System.in);
-			System.out.println("Ingrese el nombre del paciente Prueba: ");
-			String nombre = input.nextLine();
+			System.out.println("Ingrese el documento del paciente: ");
+			int docu = input.nextInt();
 			ArrayList<Diagnostico> lis = Medico.listado;
-			//System.out.println(Medico.listado.size());
 			int cont = 1;
 	
 			for (Diagnostico medi : lis) {
-				if (medi.getPersona().getNombre().equals(nombre)){
+				if (medi.getPersona().getNumeroDocumento() == (docu)){
 					System.out.println(medi.getMedicamiento());
 	
 					String option;
@@ -303,10 +302,7 @@ public class Interfaz {
 						if (option.equals("1")) {
 							if (medi.getConsulta().getPago().isPagado() == true){
 								System.out.println("Por favor ingrese su direccion de domicilio: ");
-								//System.out.println(medi.getPersona().getNombre());
-								//System.out.println(medi.getPersona().pagado);
 								String domicilio = input.nextLine();
-								//Entrega.crearEntrega(cont, medi.getPersona().getNombre(), domicilio, null, null);
 								Entrega.crearEntrega(cont, medi.getPersona().getNombre(),domicilio,medi.getMedicamiento(), estadoEntrega.En_camino);
 								cont++;
 								System.out.println("El proceso ha sido exitoso");
@@ -322,6 +318,10 @@ public class Interfaz {
 							break;
 						}
 					}
+				}
+				else{
+					System.out.println("El documento no se encuentara en la base de datos");
+					break;
 				}
 			}
 		}
