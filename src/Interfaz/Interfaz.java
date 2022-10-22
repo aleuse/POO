@@ -98,7 +98,7 @@ public class Interfaz {
 		}
 
 		System.out.println("		+-------------------------------------------------------------------------------+	");
-		System.out.println(" 	|						Escoja la accion que desea realizar:					|   "); 
+		System.out.println("		|						Escoja la accion que desea realizar:					|   "); 
 		System.out.println("		|   --------------------------------------------------------------------------  |	"); 
 		System.out.println(" 	|								1. Pagar consultas								|   "); 
 		System.out.println(" 	|								2. Pagar entregas								|   "); 
