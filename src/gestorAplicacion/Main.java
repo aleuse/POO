@@ -58,9 +58,16 @@ public class Main {
                 System.out.println(" elegiste  opcion 3");
                 System.out.println("Ingrese el nombre del paciente: ");
 		        String nombre = input.nextLine();
+                Paciente paciente = new Paciente("Camilo", "Martinez", tipoDocumento.CEDULA, 1074074689, 25, "masculino", 300762957,"mcm@gmail.com", "cra87#12-34", "SURA", null, null, false);
+                Diagnostico.sintomas.add("gripa");
+                Diagnostico.medicamiento.add("acetaminofen");
+                Diagnostico diag1 = new Diagnostico (paciente, Diagnostico.sintomas, "observacion", Diagnostico.medicamiento, 1);
+                Medico.listado.add(diag1);
                 ArrayList<Diagnostico> lis = Medico.listado;
-                //System.out.println(Medico.listado.size());
                 int cont = 1;
+                System.out.println(nombre);
+                System.out.println(lis);
+                System.out.println("hola");
                 for (Diagnostico medi : lis) {
                     if (medi.getPersona().getNombre().equals(nombre)){
                         String option;
