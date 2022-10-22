@@ -27,7 +27,7 @@ public class Paciente extends Persona{
 	private Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
 	private Map<LocalDateTime, Entrega> entregas = new TreeMap<LocalDateTime, Entrega>();
 	public boolean pagado;
-    public static int pacientes;
+    public static ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
 
 	//Constructores
 	public Paciente(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad, String genero, long telefono, String correoElectronico, String direccion, String eps, 
@@ -37,7 +37,7 @@ public class Paciente extends Persona{
 		setSintomas(sintomas);
 		setHistoriaClinica(historiaClinica);
 		this.pagado = pagado;
-                pacientes++;
+        pacientes.add(this);
 		
 	}
 	

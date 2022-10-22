@@ -1,24 +1,31 @@
 package Interfaz;
 import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import gestorAplicacion.Consulta;
+import gestorAplicacion.Consultorio;
 import gestorAplicacion.Entrega;
 import gestorAplicacion.estadoEntrega;
+import gestorAplicacion.tipoCita;
 import gestorAplicacion.personas.Administrador;
 import gestorAplicacion.personas.Medico;
 import gestorAplicacion.personas.Paciente;
+import gestorAplicacion.personas.tipoDocumento;
+import gestorAplicacion.personas.tipoMedico;
 import gestorAplicacion.registrosMedicos.Diagnostico;
 
 public class Interfaz {
 	 public static Scanner sc = new Scanner(System.in);
 	 static int opcion;
 	 static ArrayList<Paciente> pacientes = Paciente.pacientes;
+	 
 	public static void main(String[] args) {
 		loop: while(true) {
-			System.out.println("		+-------------------------------------------------------------------------------+	");
-			System.out.println(" 	|						Bienvenido a su Sistema Médico							|   "); 
+			System.out.println("	+-------------------------------------------------------------------------------+	");
+			System.out.println(" 	|						Bienvenido a su Sistema Médico |   "); 
 			System.out.println(" 	+-------------------------------------------------------------------------------+   ");
 			System.out.println("		+-------------------------------------------------------------------------------+	");
 			System.out.println(" 	|						Elija a que Apartado Desea Acceder:						|   "); 
@@ -74,7 +81,56 @@ public class Interfaz {
 					paciente = pacientes.get(i);
 				}
 			}
-			System.out.println("Inserte la fecha en la que");
+			System.out.println("Inserte los siguientes datos para agendar su cita");
+			System.out.println("Año: ");
+			int year = sc.nextInt();
+			System.out.println("Mes (en numero): ");
+			int mes = sc.nextInt();
+			Month month = null;
+			switch (mes) {
+			case 1:
+				month = Month.JANUARY;
+			case 2:
+				month = Month.FEBRUARY;
+			case 3:
+				month = Month.MARCH;
+			case 4:
+				month = Month.APRIL;
+			case 5:
+				month = Month.MAY;
+			case 6:
+				month = Month.JUNE;
+			case 7:
+				month = Month.JULY;
+			case 8:
+				month = Month.AUGUST;
+			case 9:
+				month = Month.SEPTEMBER;
+			case 10:
+				month = Month.OCTOBER;
+			case 11:
+				month = Month.NOVEMBER;
+			case 12:
+				month = Month.DECEMBER;
+			}
+			System.out.println("Día: ");
+			int dia = sc.nextInt();
+			System.out.println("Ahora inserte la hora, primero la hora y luego los minutos.");
+			System.out.println("Hora: ");
+			int hora = sc.nextInt();
+			System.out.println("Minutos: ");
+			int min = sc.nextInt();
+			//Se formatea la fecha
+			LocalDateTime fecha = LocalDateTime.of(year, month,dia, hora, min);
+			System.out.println("Inserte el tipo de cita: ");
+			//Se convierte al enum 
+			tipoCita tipo = tipoCita.valueOf(sc.next());
+			System.out.println("¿Cuál es el motivo de su cita?");
+			String motivo = sc.next();
+			paciente.pedirCita(fecha, tipo, motivo);
+			main(null);
+			break;
+			
 		
 		case 2:
 			//Reagendar cita
