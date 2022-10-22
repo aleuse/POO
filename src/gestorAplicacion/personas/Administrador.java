@@ -53,7 +53,7 @@ public class Administrador implements Serializable{
 	}
 
 	public static boolean verificarDisponibilidadMedico(LocalDateTime fecha, Medico medico) {
-		if(medico.getConsultas().get(fecha) == null) {
+		if(medico.getConsultas().get(fecha) == null  ) {
 			// Para Medico, en su diccionario de Consultas (Key = fecha, value = Consulta) verifica si para la fecha 
 			// especificada el value asociado es igual a null, o sea, NO tiene una consulta asociada y eso significa
 			// que está disponible

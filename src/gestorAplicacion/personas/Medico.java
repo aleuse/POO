@@ -40,7 +40,7 @@ public class Medico extends Persona{
         this.nomina = nomina;
         this.sueldo = sueldo;
         this.medicamiento = medicamiento;
-        this.consultas = consultas;
+
     }
    
     public Medico(tipoCita especialidad, tipoMedico especialista, boolean disponibilidad,
@@ -52,6 +52,16 @@ public class Medico extends Persona{
         medicos.add(this);
     }
 
+    public Medico(String nombre, String apellido, tipoDocumento documento, int numeroDocumento, int edad, String genero, int telefono,
+			String correoElectronico, String direccion, tipoCita especialidad, tipoMedico especialista, boolean disponibilidad) {
+    	super(nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, direccion);
+    	this.especialidad = especialidad;
+        this.especialista = especialista;
+        this.disponibilidad = disponibilidad;
+        medicos.add(this);
+    	
+    }
+    	
 
     public Medico(tipoCita especialidad, tipoMedico especialista, boolean disponibilidad,
             Map<LocalDateTime, Consulta> consultas, Map<LocalDateTime, Pago> nomina, long sueldo,
@@ -67,7 +77,11 @@ public class Medico extends Persona{
 
     public Medico(){super();};
 
-    //getter & setter
+    
+		// TODO Auto-generated constructor stub
+	
+
+	//getter & setter
     public long getSueldo() {
         return sueldo;
     }

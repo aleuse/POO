@@ -127,9 +127,17 @@ public class Interfaz {
 			tipoCita tipo = tipoCita.valueOf(sc.next());
 			System.out.println("¿Cuál es el motivo de su cita?");
 			String motivo = sc.next();
-			paciente.pedirCita(fecha, tipo, motivo);
-			main(null);
-			break;
+			System.out.println(paciente.pedirCita(fecha, tipo, motivo));
+			System.out.println("¿Desea pedir otra cita?");
+			System.out.println("Si la respuesta es sí, presione 1");
+			System.out.println("Si desea volver al menu principal, presione 2");
+			opcion = sc.nextInt();
+			switch(opcion) {
+			case 1:
+				opcionesCitas();
+			case 2:
+				main(null);				
+			}
 			
 		
 		case 2:
