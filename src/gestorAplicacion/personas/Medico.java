@@ -7,6 +7,7 @@ import gestorAplicacion.registrosMedicos.*;
 //import gestorAplicacion.Cita;
 import gestorAplicacion.Consulta;
 import gestorAplicacion.Consultorio;
+import gestorAplicacion.Medicamentos;
 import gestorAplicacion.Pago;
 import gestorAplicacion.tipoCita;
 
@@ -21,6 +22,7 @@ public class Medico extends Persona{
     public static ArrayList<Consulta> listado_consulta = new ArrayList<Consulta>(); //crea la consulta
     public Map<LocalDateTime, Pago> nomina = new TreeMap<LocalDateTime, Pago>();
     private long sueldo;
+    public  ArrayList<Medicamentos> medicamiento = new ArrayList<Medicamentos>();
 
     
     //constructor
@@ -104,7 +106,7 @@ public class Medico extends Persona{
     
     
     //metodos
-    public void crearDiagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, ArrayList<String> medicamiento, int id){
+    public void crearDiagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, ArrayList<Medicamentos> medicamiento, int id){
         Diagnostico diag = new Diagnostico (persona, sintomas, observacion, medicamiento, id);
         listado.add(diag);
     }

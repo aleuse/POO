@@ -1,15 +1,19 @@
 package gestorAplicacion.registrosMedicos;
 import java.util.ArrayList;
+
+import gestorAplicacion.Consulta;
+import gestorAplicacion.Medicamentos;
 import gestorAplicacion.personas.Paciente;
 
 public class Diagnostico {
     private Paciente persona;
-    public static ArrayList<String> sintomas;
+    public  ArrayList<String> sintomas;
     private String observacion;
-    public static ArrayList<String> medicamiento = new ArrayList<String>();
+    public  ArrayList<Medicamentos> medicamiento = new ArrayList<Medicamentos>();
     private int id;
+    public Consulta consulta;
    
-    public Diagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, ArrayList<String> medicamiento, int id) {
+    public Diagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, ArrayList<Medicamentos> medicamiento, int id) {
         this.persona = persona;
         this.sintomas = sintomas;
         this.observacion = observacion;
@@ -42,11 +46,15 @@ public class Diagnostico {
         this.id = id;
     }
 
-    public ArrayList<String> getMedicamiento() {
+    
+
+
+    public ArrayList<Medicamentos> getMedicamiento() {
         return medicamiento;
     }
 
-    public void setMedicamiento(ArrayList<String> medicamiento) {
+
+    public void setMedicamiento(ArrayList<Medicamentos> medicamiento) {
         this.medicamiento = medicamiento;
     }
 
@@ -58,6 +66,16 @@ public class Diagnostico {
 
     public void setPersona(Paciente persona) {
         this.persona = persona;
+    }
+
+
+    public Consulta getConsulta() {
+        return consulta;
+    }
+
+
+    public void setConsulta(Consulta consulta) {
+        this.consulta = consulta;
     }
 
 }
