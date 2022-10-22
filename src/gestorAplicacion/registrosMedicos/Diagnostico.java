@@ -7,13 +7,13 @@ import gestorAplicacion.personas.Paciente;
 
 public class Diagnostico {
     private Paciente persona;
-    public  ArrayList<String> sintomas;
+    public static  ArrayList<String> sintomas;
     private String observacion;
-    public  ArrayList<Medicamentos> medicamiento = new ArrayList<Medicamentos>();
+    public  Medicamentos medicamiento;
     private int id;
     public Consulta consulta;
    
-    public Diagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, ArrayList<Medicamentos> medicamiento, int id) {
+    public Diagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, Medicamentos medicamiento, int id) {
         this.persona = persona;
         this.sintomas = sintomas;
         this.observacion = observacion;
@@ -49,12 +49,12 @@ public class Diagnostico {
     
 
 
-    public ArrayList<Medicamentos> getMedicamiento() {
+    public Medicamentos getMedicamiento() {
         return medicamiento;
     }
 
 
-    public void setMedicamiento(ArrayList<Medicamentos> medicamiento) {
+    public void setMedicamiento(Medicamentos medicamiento) {
         this.medicamiento = medicamiento;
     }
 

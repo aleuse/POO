@@ -8,8 +8,10 @@ import java.util.Scanner;
 import gestorAplicacion.Consulta;
 import gestorAplicacion.Consultorio;
 import gestorAplicacion.Entrega;
+import gestorAplicacion.Medicamentos;
 import gestorAplicacion.estadoEntrega;
 import gestorAplicacion.tipoCita;
+import gestorAplicacion.tipoMedicamento;
 import gestorAplicacion.personas.Administrador;
 import gestorAplicacion.personas.Medico;
 import gestorAplicacion.personas.Paciente;
@@ -283,16 +285,16 @@ public class Interfaz {
 		case 1:
 		case 2:
 		case 3:
-		Scanner input= new Scanner(System.in);
+			Scanner input= new Scanner(System.in);
 			System.out.println("Ingrese el documento del paciente: ");
 			int docu = input.nextInt();
 			ArrayList<Diagnostico> lis = Medico.listado;
 			int cont = 1;
-	
+
 			for (Diagnostico medi : lis) {
 				if (medi.getPersona().getNumeroDocumento() == (docu)){
-					System.out.println(medi.getMedicamiento());
-	
+					System.out.println(medi.medicamiento);
+
 					String option;
 					while (true) {
 						System.out.println("¿Deseas confirmar el envio de medicamentos?");
@@ -300,36 +302,59 @@ public class Interfaz {
 						System.out.println("2. No");
 						option = input.next();
 						if (option.equals("1")) {
-							if (medi.getConsulta().getPago().isPagado() == true){
+							//System.out.println(medi.getPersona().isPagado());
+							if (medi.getPersona().isPagado() == true){
+								//System.out.println(medi.getPersona().isPagado());
 								System.out.println("Por favor ingrese su direccion de domicilio: ");
-								String domicilio = input.nextLine();
-								Entrega.crearEntrega(cont, medi.getPersona().getNombre(),domicilio,medi.getMedicamiento(), estadoEntrega.En_camino);
+								System.out.println();
+								
+								String domicilio1 = input.nextLine();
+
+								Entrega.crearEntrega(cont,medi.getPersona().getNombre(), domicilio1, medi.getMedicamiento(), estadoEntrega.En_camino);
+								
 								cont++;
 								System.out.println("El proceso ha sido exitoso");
-	
+								return;
 							}
-							if (medi.getPersona().pagado == false){
+							else if (medi.getPersona().isPagado() == false){
 								System.out.println("Debes pagar la consulta antes de pedir los medicamentos");
 								
-						
+								String option1;
+								while (true) {
+									System.out.println("¿Deseas pagar la consulta?");
+									System.out.println("1. Si");
+									System.out.println("2. No");
+									option1 = input.next();
+									if (option1.equals("1")) {
+										finanzas();
+									
+									}
+									if (option1.equals("2")) {
+										System.out.println("Proceso finalizado");
+										resultados();
+									}
+								
+								}
 							}
 						}
 						if (option.equals("2")) {
-							break;
+							resultados();
 						}
 					}
 				}
 				else{
 					System.out.println("El documento no se encuentara en la base de datos");
-					break;
+					resultados();
+					
 				}
 			}
+		
 		}
 	}
 	
 	static void administracion() {
 	
-}
+	}
 	
 
 }

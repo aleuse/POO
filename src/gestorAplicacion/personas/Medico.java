@@ -132,7 +132,7 @@ public class Medico extends Persona{
     
     
     //metodos
-    public void crearDiagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, ArrayList<Medicamentos> medicamiento, int id){
+    public void crearDiagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, Medicamentos medicamiento, int id){
         Diagnostico diag = new Diagnostico (persona, sintomas, observacion, medicamiento, id);
         listado.add(diag);
     }
