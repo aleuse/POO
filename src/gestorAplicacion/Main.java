@@ -54,40 +54,6 @@ public class Main {
                 System.out.println(" elegiste  opcion 2");
                 break;
             case 3:
-                Scanner input= new Scanner(System.in);
-                System.out.println(" elegiste  opcion 3");
-                System.out.println("Ingrese el nombre del paciente: ");
-		        String nombre = input.nextLine();
-                ArrayList<Diagnostico> lis = Medico.listado;
-                int cont = 1;
-                System.out.println(nombre);
-                System.out.println(lis);
-                System.out.println("hola");
-                for (Diagnostico medi : lis) {
-                    if (medi.getPersona().getNombre().equals(nombre)){
-                        String option;
-                        while (true) {
-                            System.out.println("¿Deseas confirmar el envio de medicamentos?");
-                            System.out.println("1. Si");
-                            System.out.println("2. No");
-                            option = input.next();
-                            if (option.equals("1")) {
-                                if (medi.getPersona().pagado == true){
-                                    System.out.println("Por Favor ingrese su direccion de domicilio: ");
-                                    String domicilio = input.nextLine();
-                                    Paciente.solicitarEnvioMedicamento(nombre , domicilio);
-                                }
-                            }
-                            else if (option.equals("2")) {
-                                break;
-                            }
-                        }
-                    }else{
-                        System.out.println("El nombre no se encuentra en la base de datos");
-                    }
-                
-
-                }
                 break;
             case 4:
                 System.out.println(" elegiste  opcion 4");

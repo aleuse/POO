@@ -219,24 +219,4 @@ public class Paciente extends Persona{
 //		Administrador.asignarExamen(examen, this, medicos, consultorios, fecha);
 //
 //	}
-
-	public static String solicitarEnvioMedicamento (String nombre, String domicilio){
-		ArrayList<Diagnostico> lis = Medico.listado;
-		int cont = 1;
-		for (Diagnostico medi : lis) {
-			if (medi.getPersona().getNombre().equals(nombre)){
-				String option;
-				if (medi.getPersona().pagado == true){
-					Entrega.crearEntrega(cont, medi.getPersona().getNombre(),domicilio,medi.getMedicamiento(), estadoEntrega.En_camino);
-					cont++;
-					return "el proceso ha sido exitoso";
-				}
-				else{
-					return ("Debes pagar la consulta antes de pedir los medicamentos");
-				}
-			}
-		}
-		return domicilio;
-			
-	}
 }

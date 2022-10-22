@@ -8,13 +8,13 @@ public class Entrega {
     private int id;
     private String paciente;
     private String domicilio;
-    private ArrayList<String> medicamentos;
+    private ArrayList<Medicamentos> medicamentos;
     private estadoEntrega estado;
     public static ArrayList<Entrega> lista= new ArrayList<Entrega>();
     private Pago pago;
     
     //constructor
-    public Entrega(int id, String paciente, String domicilio, ArrayList<String> medicamentos, estadoEntrega estado) {
+    public Entrega(int id, String paciente, String domicilio, ArrayList<Medicamentos> medicamentos, estadoEntrega estado) {
         this.id = id;
         this.paciente = paciente;
         this.domicilio = domicilio;
@@ -22,7 +22,7 @@ public class Entrega {
         this.estado = estado;
     }
     
-    public Entrega(String paciente, String domicilio, ArrayList<String> medicamentos, estadoEntrega estado) {
+    public Entrega(String paciente, String domicilio, ArrayList<Medicamentos> medicamentos, estadoEntrega estado) {
         this.id = (int)(Math.random()*10000+1);
         this.paciente = paciente;
         this.domicilio = domicilio;
@@ -49,10 +49,10 @@ public class Entrega {
     public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
     }
-    public ArrayList<String> getMedicamentos() {
+    public ArrayList<Medicamentos> getMedicamentos() {
         return medicamentos;
     }
-    public void setMedicamentos(ArrayList<String> medicamentos) {
+    public void setMedicamentos(ArrayList<Medicamentos> medicamentos) {
         this.medicamentos = medicamentos;
     }
     public estadoEntrega getEstado() {
@@ -72,7 +72,7 @@ public class Entrega {
 
     
     //metodos
-    public static void crearEntrega(int id, String paciente,String domicilio, ArrayList<String> medicamentos,estadoEntrega estado){
+    public static void crearEntrega(int id, String paciente,String domicilio, ArrayList<Medicamentos> medicamentos,estadoEntrega estado){
         Entrega entrega = new Entrega (id, paciente, domicilio, medicamentos, estado);
         lista.add(entrega);
     }
