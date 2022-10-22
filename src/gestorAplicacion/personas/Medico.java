@@ -26,24 +26,22 @@ public class Medico extends Persona{
 
     
     //constructor
-    //public Medico(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad,
-      //      String genero, long telefono, String correoElectronico, String direccion, tipoCita especialidad, boolean disponibilidad) {
-        //super(nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, direccion);
-        //this.especialidad = especialidad;
-        //this.disponibilidad = disponibilidad;
-        //medicos.add(this);
-
-    //}
 
     public Medico(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad,
             String genero, long telefono, String correoElectronico, String direccion, tipoCita especialidad,
-            tipoMedico especialista, boolean disponibilidad, Map<LocalDateTime, Consulta> consultas) {
+            tipoMedico especialista, boolean disponibilidad, Map<LocalDateTime, Consulta> consultas,
+            Map<LocalDateTime, Pago> nomina, long sueldo, ArrayList<Medicamentos> medicamiento) {
         super(nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, direccion);
         this.especialidad = especialidad;
         this.especialista = especialista;
         this.disponibilidad = disponibilidad;
         this.consultas = consultas;
+        this.nomina = nomina;
+        this.sueldo = sueldo;
+        this.medicamiento = medicamiento;
+        this.consultas = consultas;
     }
+   
     public Medico(tipoCita especialidad, tipoMedico especialista, boolean disponibilidad,
             Map<LocalDateTime, Consulta> consultas) {
         this.especialidad = especialidad;
@@ -51,6 +49,19 @@ public class Medico extends Persona{
         this.disponibilidad = disponibilidad;
         this.consultas = consultas;
         medicos.add(this);
+    }
+
+
+    public Medico(tipoCita especialidad, tipoMedico especialista, boolean disponibilidad,
+            Map<LocalDateTime, Consulta> consultas, Map<LocalDateTime, Pago> nomina, long sueldo,
+            ArrayList<Medicamentos> medicamiento) {
+        this.especialidad = especialidad;
+        this.especialista = especialista;
+        this.disponibilidad = disponibilidad;
+        this.consultas = consultas;
+        this.nomina = nomina;
+        this.sueldo = sueldo;
+        this.medicamiento = medicamiento;
     }
 
     public Medico(){super();};
