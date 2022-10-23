@@ -322,6 +322,7 @@ public class Interfaz {
 					Administrador.sumarDinero(c.getPago().getValor());
 					System.out.println("La consulta" + c.getId() + "en la fecha" + c.getFecha() + "ha sido pagada existosamente");
 				}
+				System.out.println("Todas las consultas han sido pagadas");
 			}
 
 
@@ -333,6 +334,7 @@ public class Interfaz {
 				if (e.getPago().isPagado() == false) {
 					System.out.println("La entrega" + e.getId() + "esta sin pagar");
 				}
+				System.out.println("Todas las entregas han sido pagadas");
 			}
 
 			System.out.println("Ingrese el ID de la entrega que desea pagar (Para ir hacia atras ingrese el numero -1): ");
@@ -372,6 +374,7 @@ public class Interfaz {
 				if (m.getNomina().get(fecha).isPagado() == false) {
 					System.out.println("El medico" + m.getNombre() + "con documento" + m.getNumeroDocumento() + "no ha recibido su pago desde la fecha" + fecha);
 				}
+				System.out.println("Todas las entregas han sido pagadas");
 			}
 
 			System.out.println("Ingrese el numero del documento del medico al que le deseas pagar (Para ir hacia atras ingrese el numero -1): ");
@@ -384,7 +387,7 @@ public class Interfaz {
 				if (m.getNumeroDocumento() == numeroDocumento) {
 					m.getNomina().get(fecha).setPagado(true);
 					Administrador.restarDinero(m.getNomina().get(fecha).getValor());
-					System.out.println("El medico" + m.getNombre() + "con documento" + m.getNumeroDocumento() + "ha sido pagado existosamente");
+					System.out.println("El medico" + m.getNombre() + "con documento" + m.getNumeroDocumento() + "ha sido pagado exitosamente");
 				}
 			}
 
