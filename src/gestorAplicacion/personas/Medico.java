@@ -132,8 +132,8 @@ public class Medico extends Persona{
     
     
     //metodos
-    public void crearDiagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, Medicamentos medicamiento, int id){
-        Diagnostico diag = new Diagnostico (persona, sintomas, observacion, medicamiento, id);
+    public void crearDiagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, Medicamentos medicamiento, int id, Consulta consulta){
+        Diagnostico diag = new Diagnostico (persona, sintomas, observacion, medicamiento, id, consulta);
         listado.add(diag);
     }
     public static int informesMedicos(tipoMedico solicitado) {// se ingresa el tipo de examen y se busca en la lista cuantos hay

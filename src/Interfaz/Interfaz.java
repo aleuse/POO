@@ -5,10 +5,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import gestorAplicacion.Cita;
 import gestorAplicacion.Consulta;
 import gestorAplicacion.Consultorio;
 import gestorAplicacion.Entrega;
 import gestorAplicacion.Medicamentos;
+import gestorAplicacion.Pago;
 import gestorAplicacion.estadoEntrega;
 import gestorAplicacion.tipoCita;
 import gestorAplicacion.tipoMedicamento;
@@ -25,6 +27,16 @@ public class Interfaz {
 	 static ArrayList<Paciente> pacientes = Paciente.pacientes;
 	 
 	public static void main(String[] args) {
+		Paciente paciente = new Paciente("Camilo", "Martinez", tipoDocumento.CEDULA, 1074, 25, "masculino", 300762957,"mcm@gmail.com", "cra87#12-34", "SURA", null, null, true);
+        Diagnostico.sintomas.add("gripa");
+        Medico medico = new Medico();
+       Medicamentos medica = new Medicamentos(tipoMedicamento.Acetaminofen, paciente, 2, 3);
+       Consultorio consu = new Consultorio(medico,paciente, "sala", true);
+	   Cita cita = new Cita(paciente, "gripa", tipoCita.General);
+	   cita.setPago(new Pago(200000, true));
+	   //Consulta consulta = new Consulta (paciente,medico,consu, null, new Pago(50000, true));
+        Diagnostico dia = new Diagnostico(paciente, Diagnostico.sintomas, "no lose dime tu", medica, 1, cita);
+        Medico.listado.add(dia);
 		loop: while(true) {
 			System.out.println("	+-------------------------------------------------------------------------------+	");
 			System.out.println(" 	|						Bienvenido a su Sistema Médico |   "); 
@@ -273,6 +285,11 @@ public class Interfaz {
 	}
 	
 	static void resultados() {
+		System.out.println("       Escoja una Opción: " + "\n" + 
+        "---------------------------"+ "\n" +
+        "   1. Crear Diagnostico" + "\n" + 
+        "   2. Mostrar Diagnosticos" + "\n" +
+        "   3. Solicitar Entrega de Medicamentos");
 		System.out.println("		+-------------------------------------------------------------------------------+	");
 		System.out.println(" 	|								Escoja una Opción:								|   "); 
 		System.out.println("		|   --------------------------------------------------------------------------  |	"); 
@@ -285,69 +302,71 @@ public class Interfaz {
 		case 1:
 		case 2:
 		case 3:
-			Scanner input= new Scanner(System.in);
-			System.out.println("Ingrese el documento del paciente: ");
-			int docu = input.nextInt();
-			ArrayList<Diagnostico> lis = Medico.listado;
-			int cont = 1;
+		
+		Scanner input= new Scanner(System.in);
+		System.out.println("Ingrese el documento del paciente: ");
+		int docu = input.nextInt();
+		ArrayList<Diagnostico> lis = Medico.listado;
+		int cont = 1;
 
-			for (Diagnostico medi : lis) {
-				if (medi.getPersona().getNumeroDocumento() == (docu)){
-					System.out.println(medi.medicamiento);
+		for (Diagnostico medi : lis) {
+            //System.out.println(medi);
+			if (medi.getPersona().getNumeroDocumento() == (docu)){
+				System.out.println(medi.medicamiento.getTipoMed());
 
-					String option;
-					while (true) {
-						System.out.println("¿Deseas confirmar el envio de medicamentos?");
-						System.out.println("1. Si");
-						System.out.println("2. No");
-						option = input.next();
-						if (option.equals("1")) {
+				String option;
+				while (true) {
+					System.out.println("¿Deseas confirmar el envio de medicamentos?");
+					System.out.println("1. Si");
+					System.out.println("2. No");
+					option = input.next();
+					if (option.equals("1")) {
+						//System.out.println(medi.getPersona().isPagado());
+						if (medi.getConsulta().getPago().isPagado() == true){
 							//System.out.println(medi.getPersona().isPagado());
-							if (medi.getPersona().isPagado() == true){
-								//System.out.println(medi.getPersona().isPagado());
-								System.out.println("Por favor ingrese su direccion de domicilio: ");
-								System.out.println();
-								
-								String domicilio1 = input.nextLine();
-
-								Entrega.crearEntrega(cont,medi.getPersona().getNombre(), domicilio1, medi.getMedicamiento(), estadoEntrega.En_camino);
-								
-								cont++;
-								System.out.println("El proceso ha sido exitoso");
-								return;
-							}
-							else if (medi.getPersona().isPagado() == false){
-								System.out.println("Debes pagar la consulta antes de pedir los medicamentos");
-								
-								String option1;
-								while (true) {
-									System.out.println("¿Deseas pagar la consulta?");
-									System.out.println("1. Si");
-									System.out.println("2. No");
-									option1 = input.next();
-									if (option1.equals("1")) {
-										finanzas();
-									
-									}
-									if (option1.equals("2")) {
-										System.out.println("Proceso finalizado");
-										resultados();
-									}
+							System.out.println("Por favor ingrese su direccion de domicilio: ");
+						
+							
+							String domicilio1 = input.next();
+                            System.out.println(domicilio1);
+							Entrega.crearEntrega(cont,medi.getPersona().getNombre(), domicilio1, medi.getMedicamiento(), estadoEntrega.En_camino);
+							cont++;
+							Medicamentos.asignarMed(medi.medicamiento.getTipoMed(), 1);
+							System.out.println("El proceso ha sido exitoso");
+							Interfaz.main(null);
+						}
+						else if (medi.getConsulta().getPago().isPagado() == false){
+							System.out.println("Debes pagar la consulta antes de pedir los medicamentos");
+							
+							String option1;
+							while (true) {
+								System.out.println("¿Deseas pagar la consulta?");
+								System.out.println("1. Si");
+								System.out.println("2. No");
+								option1 = input.next();
+								if (option1.equals("1")) {
+									finanzas();
 								
 								}
+								if (option1.equals("2")) {
+                                    System.out.println("Proceso finalizado");
+                                    resultados();
+								}
+							
 							}
 						}
-						if (option.equals("2")) {
-							resultados();
-						}
+					}
+					if (option.equals("2")) {
+						resultados();
 					}
 				}
-				else{
-					System.out.println("El documento no se encuentara en la base de datos");
-					resultados();
-					
-				}
 			}
+			else{
+				System.out.println("El documento no se encuentara en la base de datos");
+                resultados();
+				
+			}
+		}
 		
 		}
 	}

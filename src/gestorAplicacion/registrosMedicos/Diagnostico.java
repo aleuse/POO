@@ -7,18 +7,19 @@ import gestorAplicacion.personas.Paciente;
 
 public class Diagnostico {
     private Paciente persona;
-    public static  ArrayList<String> sintomas;
+    public static  ArrayList<String> sintomas = new ArrayList<String>();
     private String observacion;
     public  Medicamentos medicamiento;
     private int id;
     public Consulta consulta;
    
-    public Diagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, Medicamentos medicamiento, int id) {
+    public Diagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, Medicamentos medicamiento, int id,Consulta consulta) {
         this.persona = persona;
         this.sintomas = sintomas;
         this.observacion = observacion;
         this.medicamiento = medicamiento;
         this.id = id;
+        this.consulta = consulta;
     }
     
 
