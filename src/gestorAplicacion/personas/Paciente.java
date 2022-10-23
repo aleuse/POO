@@ -28,22 +28,37 @@ public class Paciente extends Persona{
 	private Map<LocalDateTime, Entrega> entregas = new TreeMap<LocalDateTime, Entrega>();
 	public boolean pagado;
     public static ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
-
-	//Constructores
-	public Paciente(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad, String genero, long telefono, String correoElectronico, String direccion, String eps, 
-			ArrayList<String> sintomas, HistoriaClinica historiaClinica, boolean pagado) {
-		super(nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, direccion);
-		setEps(eps);
-		setSintomas(sintomas);
-		setHistoriaClinica(historiaClinica);
-		this.pagado = pagado;
-        pacientes.add(this);
-		
-	}
 	
+//constructores	
 	public Paciente() {
-		this(null,null, null, 0, 0, null, 0, null, null,null, new ArrayList<String>(), null, false);
+		this(null,null, null, 0, 0, null, 0,
+		null, null,null, new ArrayList<String>(), null,
+		new TreeMap<LocalDateTime, Consulta>(), new TreeMap<LocalDateTime, Entrega>(), false);
 	}
+
+	public Paciente(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad,
+			String genero, long telefono, String correoElectronico, String direccion, String eps,
+			ArrayList<String> sintomas, HistoriaClinica historiaClinica, Map<LocalDateTime, Consulta> consultas,
+			Map<LocalDateTime, Entrega> entregas, boolean pagado) {
+		super(nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, direccion);
+		this.eps = eps;
+		this.sintomas = sintomas;
+		this.historiaClinica = historiaClinica;
+		this.consultas = consultas;
+		this.entregas = entregas;
+		this.pagado = pagado;
+	}
+
+	public Paciente(String eps, ArrayList<String> sintomas, HistoriaClinica historiaClinica,
+			Map<LocalDateTime, Consulta> consultas, Map<LocalDateTime, Entrega> entregas, boolean pagado) {
+		this.eps = eps;
+		this.sintomas = sintomas;
+		this.historiaClinica = historiaClinica;
+		this.consultas = consultas;
+		this.entregas = entregas;
+		this.pagado = pagado;
+	}
+
 
 	//Getters y setters
 	public String getEps() {
