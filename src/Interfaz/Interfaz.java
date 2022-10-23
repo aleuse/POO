@@ -9,10 +9,12 @@ import gestorAplicacion.Cita;
 import gestorAplicacion.Consulta;
 import gestorAplicacion.Consultorio;
 import gestorAplicacion.Entrega;
+import gestorAplicacion.Examen;
 import gestorAplicacion.Medicamentos;
 import gestorAplicacion.Pago;
 import gestorAplicacion.estadoEntrega;
 import gestorAplicacion.tipoCita;
+import gestorAplicacion.tipoExamen;
 import gestorAplicacion.tipoMedicamento;
 import gestorAplicacion.personas.Administrador;
 import gestorAplicacion.personas.Medico;
@@ -25,6 +27,7 @@ public class Interfaz {
 	 public static Scanner sc = new Scanner(System.in);
 	 static int opcion;
 	 static ArrayList<Paciente> pacientes = Paciente.pacientes;
+	 static ArrayList<LocalDateTime> fechas = new ArrayList<LocalDateTime>();
 	 
 	public static void main(String[] args) {
 		Paciente paciente = new Paciente("Camilo", "Martinez", tipoDocumento.CEDULA, 1074, 25, "masculino", 300762957,"mcm@gmail.com", "cra87#12-34", "SURA", null, null, true);
@@ -160,6 +163,127 @@ public class Interfaz {
 	}
 	static void solicitarExamen() {
 		//codigo para solicitar examen
+		
+		//Se pide el documento de identidad para buscar el paciente
+		System.out.println("Inserte su documento de identidad");
+		long id = sc.nextLong();
+		Paciente paciente = null;
+		for (int i = 0; i < pacientes.size(); i++) {
+			if (id == pacientes.get(i).getNumeroDocumento()) {
+				paciente = pacientes.get(i);
+			}
+		}
+		
+		// Pedir el tipo de examen que desea solicitar
+		System.out.println("	+-------------------------------------------------------------------------------+	");
+		System.out.println("	|					Escoja el tipo de examen que desea solicitar:				|   "); 
+		System.out.println("	|   --------------------------------------------------------------------------  |	"); 
+		System.out.println(" 	|								1. Sangre										|   "); 
+		System.out.println(" 	|								2. Laboratorio									|   "); 
+		System.out.println(" 	|								3. RayosX										|   "); 
+		System.out.println(" 	|								4. Citoquimico									|   "); 
+		System.out.println(" 	|								5. Ir hacia atrás								|   "); 
+		System.out.println(" 	+-------------------------------------------------------------------------------+   ");
+		do {
+            System.out.print("Ingrese un número válido: ");
+            opcion = sc.nextInt();
+        } while (opcion != 1 & opcion != 2 & opcion != 3 & opcion != 4 & opcion != 5);
+		
+		tipoExamen tipoEx = null;
+		tipoMedico tipoMed = null;
+		switch(opcion) {
+		case 1:
+			tipoEx = tipoExamen.Sangre;
+			tipoMed = tipoMedico.Bacteriologo;
+		case 2:
+			tipoEx = tipoExamen.Laboratorio;
+			tipoMed = tipoMedico.Bacteriologo;
+		case 3:
+			tipoEx = tipoExamen.RayosX;
+			tipoMed = tipoMedico.General;
+		case 4: 
+			tipoEx = tipoExamen.Citoquimico;
+			tipoMed = tipoMedico.Bacteriologo;
+		case 5:
+			System.out.println("\n");
+			break;
+		}
+		
+		System.out.println("A continuación se procederá a autorizar su examen");
+		Examen examen = new Examen((int)(Math.random()*10000+1), paciente, tipoEx, false);
+		// Autorizar el examen
+		System.out.println(paciente.solicitarExamen(examen, tipoEx, tipoMed));
+		
+		
+		// Buscar fecha más cercana con disponibilidad
+		LocalDateTime fechaExamen = Administrador.verificarDisponibilidadFechaExamen(fechas, tipoMed);
+		if(fechaExamen == null) {
+			System.out.println("Lo sentimos, en este momento no tenemos disponibilidad");
+		}
+		else {
+			System.out.println("La fecha más cercana es: " + fechaExamen + ". ¿Desea agendar la cita en esta fecha?");
+			System.out.println("1. Sí");
+			System.out.println("2. No");
+			do {
+	            System.out.print("Ingrese un número válido: ");
+	            opcion = sc.nextInt();
+	        } while (opcion != 1 & opcion != 2);
+			switch(opcion) {
+			case 1:
+				// Agendar examen
+				System.out.println(Administrador.asignarExamen(examen, paciente, Medico.medicos, Consultorio.consultorios, fechaExamen));
+			case 2:
+				// Pedirle una fecha al paciente
+				System.out.println("Inserte los siguientes datos para agendar su examen");
+				System.out.println("Año: ");
+				int year = sc.nextInt();
+				System.out.println("Mes (en número): ");
+				int mes;
+				do {
+		            System.out.print("Ingrese un número válido: ");
+		            mes = sc.nextInt();
+		        } while (mes != 1 & mes != 2 & mes != 3 & mes != 4 & mes != 5 & mes != 6 & mes != 7 & mes != 8 & mes != 9 & mes != 10 & mes != 11 & mes != 12);
+				Month month = null;
+				switch (mes) {
+				case 1:
+					month = Month.JANUARY;
+				case 2:
+					month = Month.FEBRUARY;
+				case 3:
+					month = Month.MARCH;
+				case 4:
+					month = Month.APRIL;
+				case 5:
+					month = Month.MAY;
+				case 6:
+					month = Month.JUNE;
+				case 7:
+					month = Month.JULY;
+				case 8:
+					month = Month.AUGUST;
+				case 9:
+					month = Month.SEPTEMBER;
+				case 10:
+					month = Month.OCTOBER;
+				case 11:
+					month = Month.NOVEMBER;
+				case 12:
+					month = Month.DECEMBER;
+				}
+				System.out.println("Día: ");
+				int day = sc.nextInt();
+				System.out.println("Ahora inserte la hora, primero la hora y luego los minutos (en intervalos de 30 minutos).");
+				System.out.println("Hora: ");
+				int hour = sc.nextInt();
+				System.out.println("Minutos: ");
+				int min = sc.nextInt();
+				fechaExamen = LocalDateTime.of(year, month, day, hour, min);
+				// Agendar el examen
+				System.out.println(Administrador.asignarExamen(examen, paciente, Medico.medicos, Consultorio.consultorios, fechaExamen));
+			}
+		}
+		
+		
 	}
 
 	static void finanzas() {
@@ -210,6 +334,7 @@ public class Interfaz {
 					Administrador.sumarDinero(c.getPago().getValor());
 					System.out.println("La consulta" + c.getId() + "en la fecha" + c.getFecha() + "ha sido pagada existosamente");
 				}
+				System.out.println("Todas las consultas han sido pagadas");
 			}
 
 
@@ -221,6 +346,7 @@ public class Interfaz {
 				if (e.getPago().isPagado() == false) {
 					System.out.println("La entrega" + e.getId() + "esta sin pagar");
 				}
+				System.out.println("Todas las entregas han sido pagadas");
 			}
 
 			System.out.println("Ingrese el ID de la entrega que desea pagar (Para ir hacia atras ingrese el numero -1): ");
@@ -260,6 +386,7 @@ public class Interfaz {
 				if (m.getNomina().get(fecha).isPagado() == false) {
 					System.out.println("El medico" + m.getNombre() + "con documento" + m.getNumeroDocumento() + "no ha recibido su pago desde la fecha" + fecha);
 				}
+				System.out.println("Todas las entregas han sido pagadas");
 			}
 
 			System.out.println("Ingrese el numero del documento del medico al que le deseas pagar (Para ir hacia atras ingrese el numero -1): ");
@@ -272,7 +399,7 @@ public class Interfaz {
 				if (m.getNumeroDocumento() == numeroDocumento) {
 					m.getNomina().get(fecha).setPagado(true);
 					Administrador.restarDinero(m.getNomina().get(fecha).getValor());
-					System.out.println("El medico" + m.getNombre() + "con documento" + m.getNumeroDocumento() + "ha sido pagado existosamente");
+					System.out.println("El medico" + m.getNombre() + "con documento" + m.getNumeroDocumento() + "ha sido pagado exitosamente");
 				}
 			}
 
