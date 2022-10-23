@@ -86,18 +86,18 @@ public class Administrador implements Serializable{
 			return false; // Significa que NO está disponible
 		}
 	}
-	public static LocalDateTime verificarDisponibilidadFechaExamen(ArrayList<LocalDateTime> fechas, tipoMedico tipoMed) {
+	public static LocalDateTime verificarDisponibilidadFechaExamen(ArrayList<LocalDateTime> fechas, tipoMedico tipoMed, ArrayList<Medico> medicos, ArrayList<Consultorio> consultorios) {
 		// Devuelve la fecha más cercana que cumple con tener un consultorio disponible, un médico disponible y que sea especialista
 		// del tipo necesario
 		for(LocalDateTime fecha: fechas) {
 			// Buscar un médico disponible
-			for (Medico m: Medico.medicos) {
+			for (Medico m: medicos) {
 				// Verificar que el médico es un especialista adecuado para dicho examen
 				if (Administrador.verificarTipoMedico(tipoMed, m)) {
 					// Verificar que el médico tenga disponibilidad
 					if(Administrador.verificarDisponibilidadMedico(fecha, m)) {
 						// Buscar un consultorio disponible
-						for (Consultorio c: Consultorio.consultorios) {
+						for (Consultorio c: consultorios) {
 							if(Administrador.verificarDisponibilidadConsultorio(fecha, c)) {
 								return fecha;
 							}
@@ -117,8 +117,8 @@ public class Administrador implements Serializable{
         consultorio.consultas.put(fecha, cita);
 	}
 	
-	public static int autorizarExamen(Examen examen, tipoExamen tipoEx, tipoMedico tipoMed) {
-		for (Medico m: Medico.medicos) {
+	public static int autorizarExamen(Examen examen, tipoMedico tipoMed, ArrayList<Medico> medicos) {
+		for (Medico m: medicos) {
 			// Si hay al menos un médico con la especialidad necesaria para el examen
 			if(m.getEspecialista() == tipoMed){
 				// Se genera un número aleatorio para simular posibles fallos a la hora de autorizar el examen
@@ -141,26 +141,26 @@ public class Administrador implements Serializable{
 			
 	}
 	
-	public static String asignarExamen(Examen examen, Paciente paciente, ArrayList<Medico> medicos, ArrayList<Consultorio> consultorios, LocalDateTime fecha) {
+	public static String asignarExamen(Examen examen, Paciente paciente, ArrayList<Medico> medicos, ArrayList<Consultorio> consultorios, LocalDateTime fecha, tipoMedico tipoMed) {
 		if (examen.isAutorizado() == true) {
 			for (Medico m: medicos) {
-				if(Administrador.verificarDisponibilidadMedico(fecha, m)) {
-					examen.setMedico(m);
-					for (Consultorio c: consultorios) {
-						if(Administrador.verificarDisponibilidadConsultorio(fecha, c)) {
-							examen.setConsultorio(c);
-							examen.setFecha(fecha);
-							examen.setPago(new Pago(37000, examen, false));
-							c.getConsultas().put(fecha, examen);
-							break;
+				if(m.getEspecialista() == tipoMed) {
+					if(Administrador.verificarDisponibilidadMedico(fecha, m)) {
+						examen.setMedico(m);
+						for (Consultorio c: consultorios) {
+							if(Administrador.verificarDisponibilidadConsultorio(fecha, c)) {
+								examen.setConsultorio(c);
+								examen.setFecha(fecha);
+								examen.setPago(new Pago(37000, examen, false));
+								c.getConsultas().put(fecha, examen);
+								
+							}
 						}
 					}
-					m.getConsultas().put(fecha, examen);
-					break;
 				}
+				m.getConsultas().put(fecha, examen);
+				return "Examen agendado exitosamente el " + fecha + " con el médico " + examen.getMedico().getNombre() + "" + examen.getMedico().getApellido() + " en el consultorio " + examen.getConsultorio().getId();
 			}
-			
-			return "Examen agendado exitosamente el " + fecha + " con el médico " + examen.getMedico().getNombre() + "" + examen.getMedico().getApellido() + " en el consultorio " + examen.getConsultorio().getId();
 		}
 		return "No se pudo agendar el examen";
 	}

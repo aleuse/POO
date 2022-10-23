@@ -29,18 +29,15 @@ public class Interfaz {
 	 public static Scanner sc = new Scanner(System.in);
 	 static int opcion;
 	 static ArrayList<Paciente> pacientes = Paciente.pacientes;
+	 static ArrayList<Medico> medicos = Medico.medicos;
+	 static ArrayList<Consultorio> consultorios = Consultorio.consultorios;
 	 static ArrayList<LocalDateTime> fechas = new ArrayList<LocalDateTime>();
 	 
 	public static void main(String[] args) {
-		LocalDateTime fecha = LocalDateTime.of(2022, Month.NOVEMBER, 25, 15,30);
-		 Paciente paciente = new Paciente("Camilo", "Martinez", tipoDocumento.CEDULA, 1074074689, 25, "masculino", 300762957,"mcm@gmail.com", "cra87#12-34", "SURA", false);
-			Paciente paciente1 = new Paciente("Maria", "Jaramillo", tipoDocumento.CEDULA, 9403862, 43, "femenino", 301762849,"mj@gmail.com", "calle 3", "SURA", false);
-			Medico m1 = new Medico("Sara", "Perez", tipoDocumento.CEDULA, 12345678, 50, "femenino", 6048742, "sp@yahoo.com", "calle 43", 
-					tipoCita.General, tipoMedico.General, true);
-			Medico m2 = new Medico("Mauricio", "Fernandez", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.Audiometria, tipoMedico.Fonoaudiologo, true);
-			Medico m3 = new Medico("Carlos", "Munera", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.General, tipoMedico.General, true);
-			Consultorio c1 = new Consultorio(null, null, null, true, fecha, null);
-			Consultorio c2 = new Consultorio(null, null, null, true, fecha, null);
+		
+		
+		
+		
 		loop: while(true) {
 			
 			System.out.println("-------------------------------------" + "\n"+
@@ -192,8 +189,95 @@ public class Interfaz {
 		}
 	}
 	static void solicitarExamen() {
-		//codigo para solicitar examen
+		System.out.println(medicos);
+		System.out.println(Medico.medicos);
+		/*	Colocar esto en Main para testing
+		medicos = new ArrayList<Medico>();
+		consultorios = new ArrayList<Consultorio>();
+		pacientes = new ArrayList<Paciente>();
+		fechas = new ArrayList<LocalDateTime>();
+		LocalDateTime fecha1 = LocalDateTime.of(2022, 10, 15, 12, 30);
+		LocalDateTime fecha2 = LocalDateTime.of(2022, 10, 15, 13, 00);
+		LocalDateTime fecha3 = LocalDateTime.of(2022, 10, 16, 12, 30);
+		LocalDateTime fecha4 = LocalDateTime.of(2022, 10, 16, 13, 00);
+		Cita cita1 = new Cita(null, "Un laboratorio", null, null, fecha1, tipoCita.laboratorio);
+		Cita cita2 = new Cita(null, "Revisión visual", null, null, fecha2, tipoCita.Optometria);
+		Cita cita3 = new Cita(null, "Problemas visuales", null, null, fecha1, tipoCita.Optometria);
+		Paciente paciente1 = new Paciente( "Juan",  "Pérez",  tipoDocumento.CEDULA,  1000,  23,
+				 "masculino",  245687523,  "juanper@gmail.com",  "Carrera 68 # 54",  "Sura" , true);
 		
+		Medico medico1 = new Medico("Susana", "Perez", tipoDocumento.CEDULA, 1000758374, 25, "Mujer", 1000758374, 
+				"susper@gmail.com", "Cra 77 #45 04", tipoCita.General, tipoMedico.Bacteriologo ,true);
+		Medico medico2 = new Medico("Andres", "Lopez", tipoDocumento.CEDULA, 1254687950, 29, "Hombre", 1254687950, 
+				"andlop@gmail.com", "Calle 113 #55 05", tipoCita.General, tipoMedico.Optometra, true);
+		Medico medico3 = new Medico("Mariana", "Garcia", tipoDocumento.CEDULA, 656502354, 28, "Mujer", 656502354, 
+				"margar@gmail.com", "Avenida 7 #8 07", tipoCita.General, tipoMedico.Pediatra, true);
+		medico1.getConsultas().put(fecha1, cita1);
+		medico1.getConsultas().put(fecha2, null);
+		medico1.getConsultas().put(fecha3, null);
+		medico1.getConsultas().put(fecha4, null);
+		
+		medico2.getConsultas().put(fecha1, cita3);
+		medico2.getConsultas().put(fecha2, cita2);
+		medico2.getConsultas().put(fecha3, null);
+		medico2.getConsultas().put(fecha4, null);
+		
+		medico3.getConsultas().put(fecha1, null);
+		medico3.getConsultas().put(fecha2, null);
+		medico3.getConsultas().put(fecha3, null);
+		medico3.getConsultas().put(fecha4, null);
+		
+		medicos.add(medico1);
+		medicos.add(medico2);
+		medicos.add(medico3);
+		
+		Consultorio consultorio1 = new Consultorio(null, null, "Laboratorio", true);
+		Consultorio consultorio2 = new Consultorio(null, null, "Consultorio Optometría", true);
+		Consultorio consultorio3 = new Consultorio(null, null, "Consultorio Optometría", true);
+		
+		consultorio1.getConsultas().put(fecha1, cita1);
+		consultorio1.getConsultas().put(fecha2, null);
+		consultorio1.getConsultas().put(fecha3, null);
+		consultorio1.getConsultas().put(fecha4, null);
+		
+		consultorio2.getConsultas().put(fecha1, cita3);
+		consultorio2.getConsultas().put(fecha2, cita2);
+		consultorio2.getConsultas().put(fecha3, null);
+		consultorio2.getConsultas().put(fecha4, null);
+		
+		consultorio3.getConsultas().put(fecha1, null);
+		consultorio3.getConsultas().put(fecha2, null);
+		consultorio3.getConsultas().put(fecha3, null);
+		consultorio3.getConsultas().put(fecha4, null);
+		
+		consultorios.add(consultorio1);
+		consultorios.add(consultorio2);
+		consultorios.add(consultorio3);
+		
+		pacientes.add(paciente1);
+		fechas.add(fecha1);
+		fechas.add(fecha2);
+		fechas.add(fecha3);
+		fechas.add(fecha4);
+		*/
+		
+		/* 	Documento = 1000
+			Se pueden agendar 3 exámenes ya sea de Sangre, Laboratorio o Citoquímico y estos se agendarán con la médica Susana Pérez
+			No se puede agendar examen de Rayos X por disponibilidad médica
+		*/
+		
+		//codigo para solicitar examen
+		// Paciente
+		// Medico especialista bacteriólogo
+		// Medico especialista optometra
+		// Fechas
+		// Consultas
+		// Agregar consultas a medicos
+		// Agregar consultas a consultorios
+		
+		System.out.println("------------------------------------------------" + "\n"+
+			"Bienvenido a exámenes" + "\n"+
+			"------------------------------------------------" + "\n");
 		//Se pide el documento de identidad para buscar el paciente
 		System.out.println("Inserte su documento de identidad");
 		long id = sc.nextLong();
@@ -211,7 +295,6 @@ public class Interfaz {
 			"1. Sangre " + "\n"+
 			"2. Laboratorio"  + "\n"+
 			"3. RayosX"+ "\n"+
-			"3. Finanzas"+ "\n"+
 			"4. Citoquimico"+ "\n"+
 			"5. Ir hacia atrás	");
 		/*System.out.println("	+-------------------------------------------------------------------------------+	");
@@ -224,104 +307,133 @@ public class Interfaz {
 		System.out.println(" |								5. Ir hacia atrás								|   "); 
 		System.out.println(" +-------------------------------------------------------------------------------+   ");
 		*/
-		do {
-            System.out.print("Ingrese un número válido: ");
-            opcion = sc.nextInt();
-        } while (opcion != 1 & opcion != 2 & opcion != 3 & opcion != 4 & opcion != 5);
 		
 		tipoExamen tipoEx = null;
 		tipoMedico tipoMed = null;
+		System.out.println(tipoEx);
+		System.out.println(tipoMed);
+		do {
+            opcion = sc.nextInt();
+        } while (opcion != 1 & opcion != 2 & opcion != 3 & opcion != 4 & opcion != 5);
+	
 		switch(opcion) {
 		case 1:
 			tipoEx = tipoExamen.Sangre;
 			tipoMed = tipoMedico.Bacteriologo;
+			System.out.println(tipoEx + " 1");
+			break;
 		case 2:
 			tipoEx = tipoExamen.Laboratorio;
 			tipoMed = tipoMedico.Bacteriologo;
+			System.out.println(tipoEx + " 2");
+			break;
 		case 3:
 			tipoEx = tipoExamen.RayosX;
 			tipoMed = tipoMedico.General;
+			System.out.println(tipoEx + " 3");
+			break;
 		case 4: 
 			tipoEx = tipoExamen.Citoquimico;
 			tipoMed = tipoMedico.Bacteriologo;
+			System.out.println(tipoEx + " 4");
+			break;
 		case 5:
-			System.out.println("\n");
 			break;
 		}
-		
+		System.out.println(tipoEx);
+		System.out.println(tipoMed);
+		System.out.println(medicos);
 		System.out.println("A continuación se procederá a autorizar su examen");
 		Examen examen = new Examen((int)(Math.random()*10000+1), paciente, tipoEx, false);
+		int solicitudExamen = paciente.solicitarExamen(examen, tipoMed, medicos);
 		// Autorizar el examen
-		System.out.println(paciente.solicitarExamen(examen, tipoEx, tipoMed));
-		
-		
-		// Buscar fecha más cercana con disponibilidad
-		LocalDateTime fechaExamen = Administrador.verificarDisponibilidadFechaExamen(fechas, tipoMed);
-		if(fechaExamen == null) {
-			System.out.println("Lo sentimos, en este momento no tenemos disponibilidad");
-		}
-		else {
-			System.out.println("La fecha más cercana es: " + fechaExamen + ". ¿Desea agendar la cita en esta fecha?");
-			System.out.println("1. Sí");
-			System.out.println("2. No");
-			do {
-	            System.out.print("Ingrese un número válido: ");
-	            opcion = sc.nextInt();
-	        } while (opcion != 1 & opcion != 2);
-			switch(opcion) {
-			case 1:
-				// Agendar examen
-				System.out.println(Administrador.asignarExamen(examen, paciente, Medico.medicos, Consultorio.consultorios, fechaExamen));
-			case 2:
-				// Pedirle una fecha al paciente
-				System.out.println("Inserte los siguientes datos para agendar su examen");
-				System.out.println("Año: ");
-				int year = sc.nextInt();
-				System.out.println("Mes (en número): ");
-				int mes;
+		if (solicitudExamen == 1) {
+			System.out.println("Examen autorizado con éxito");
+			// Buscar fecha más cercana con disponibilidad
+			LocalDateTime fechaExamen = Administrador.verificarDisponibilidadFechaExamen(fechas, tipoMed, medicos, consultorios);
+			if(fechaExamen == null) {
+				System.out.println("Lo sentimos, en este momento no tenemos disponibilidad");
+				solicitarExamen();
+			}
+			else {
+				System.out.println("La fecha más cercana es: " + fechaExamen + ". ¿Desea agendar la cita en esta fecha?");
+				System.out.println("1. Sí");
+				System.out.println("2. No");
 				do {
-		            System.out.print("Ingrese un número válido: ");
-		            mes = sc.nextInt();
-		        } while (mes != 1 & mes != 2 & mes != 3 & mes != 4 & mes != 5 & mes != 6 & mes != 7 & mes != 8 & mes != 9 & mes != 10 & mes != 11 & mes != 12);
-				Month month = null;
-				switch (mes) {
+		            
+		            opcion = sc.nextInt();
+		        } while (opcion != 1 & opcion != 2);
+				switch(opcion) {
 				case 1:
-					month = Month.JANUARY;
+					// Agendar examen
+					System.out.println(Administrador.asignarExamen(examen, paciente, Medico.medicos, Consultorio.consultorios, fechaExamen, tipoMed));
+					solicitarExamen();
 				case 2:
-					month = Month.FEBRUARY;
-				case 3:
-					month = Month.MARCH;
-				case 4:
-					month = Month.APRIL;
-				case 5:
-					month = Month.MAY;
-				case 6:
-					month = Month.JUNE;
-				case 7:
-					month = Month.JULY;
-				case 8:
-					month = Month.AUGUST;
-				case 9:
-					month = Month.SEPTEMBER;
-				case 10:
-					month = Month.OCTOBER;
-				case 11:
-					month = Month.NOVEMBER;
-				case 12:
-					month = Month.DECEMBER;
+					// Pedirle una fecha al paciente
+					System.out.println("Inserte los siguientes datos para agendar su examen");
+					System.out.println("Año: ");
+					int year = sc.nextInt();
+					System.out.println("Mes (en número): ");
+					int mes;
+					do {
+			            
+			            mes = sc.nextInt();
+			        } while (mes != 1 & mes != 2 & mes != 3 & mes != 4 & mes != 5 & mes != 6 & mes != 7 & mes != 8 & mes != 9 & mes != 10 & mes != 11 & mes != 12);
+					Month month = null;
+					switch (mes) {
+					case 1:
+						month = Month.JANUARY;
+					case 2:
+						month = Month.FEBRUARY;
+					case 3:
+						month = Month.MARCH;
+					case 4:
+						month = Month.APRIL;
+					case 5:
+						month = Month.MAY;
+					case 6:
+						month = Month.JUNE;
+					case 7:
+						month = Month.JULY;
+					case 8:
+						month = Month.AUGUST;
+					case 9:
+						month = Month.SEPTEMBER;
+					case 10:
+						month = Month.OCTOBER;
+					case 11:
+						month = Month.NOVEMBER;
+					case 12:
+						month = Month.DECEMBER;
+					}
+					System.out.println("Día: ");
+					int day = sc.nextInt();
+					System.out.println("Ahora inserte la hora, primero la hora y luego los minutos (en intervalos de 30 minutos).");
+					System.out.println("Hora: ");
+					int hour = sc.nextInt();
+					System.out.println("Minutos: ");
+					int min = sc.nextInt();
+					fechaExamen = LocalDateTime.of(year, month, day, hour, min);
+					// Agendar el examen
+					System.out.println(Administrador.asignarExamen(examen, paciente, Medico.medicos, Consultorio.consultorios, fechaExamen, tipoMed));
+					solicitarExamen();
 				}
-				System.out.println("Día: ");
-				int day = sc.nextInt();
-				System.out.println("Ahora inserte la hora, primero la hora y luego los minutos (en intervalos de 30 minutos).");
-				System.out.println("Hora: ");
-				int hour = sc.nextInt();
-				System.out.println("Minutos: ");
-				int min = sc.nextInt();
-				fechaExamen = LocalDateTime.of(year, month, day, hour, min);
-				// Agendar el examen
-				System.out.println(Administrador.asignarExamen(examen, paciente, Medico.medicos, Consultorio.consultorios, fechaExamen));
 			}
 		}
+		
+		else if (solicitudExamen == 2) {
+			System.out.println("Lo sentimos ha ocurrido un problema y no se ha podido autorizar el examen");
+			solicitarExamen();
+			
+		}
+		else {
+			System.out.println("Lo sentimos, en este momento no tenemos médicos que puedan atender su tipo de examen");
+			solicitarExamen();
+			
+		}
+		
+		
+		
 		
 		
 	}
@@ -504,7 +616,15 @@ public class Interfaz {
 	}
 	
 	static void resultados() {
-		
+		LocalDateTime fecha = LocalDateTime.of(2022, Month.NOVEMBER, 25, 15,30);
+		 Paciente paciente = new Paciente("Camilo", "Martinez", tipoDocumento.CEDULA, 1074074689, 25, "masculino", 300762957,"mcm@gmail.com", "cra87#12-34", "SURA", false);
+			Paciente paciente1 = new Paciente("Maria", "Jaramillo", tipoDocumento.CEDULA, 9403862, 43, "femenino", 301762849,"mj@gmail.com", "calle 3", "SURA", false);
+			Medico m1 = new Medico("Sara", "Perez", tipoDocumento.CEDULA, 12345678, 50, "femenino", 6048742, "sp@yahoo.com", "calle 43", 
+					tipoCita.General, tipoMedico.General, true);
+			Medico m2 = new Medico("Mauricio", "Fernandez", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.Audiometria, tipoMedico.Fonoaudiologo, true);
+			Medico m3 = new Medico("Carlos", "Munera", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.General, tipoMedico.General, true);
+			Consultorio c1 = new Consultorio(null, null, null, true, fecha, null);
+			Consultorio c2 = new Consultorio(null, null, null, true, fecha, null);
 		System.out.println("    Escoja una Opción: " + "\n" + 
         "-------------------------------------"+ "\n" +
         "1. Crear Diagnostico" + "\n" + 

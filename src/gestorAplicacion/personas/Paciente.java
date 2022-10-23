@@ -144,15 +144,15 @@ public class Paciente extends Persona{
 	
 	
 	
-	public String solicitarExamen(Examen examen, tipoExamen tipoEx, tipoMedico tipoMed) {
-		if(Administrador.autorizarExamen(examen, tipoEx, tipoMed) == 1) {
-			return "Examen autorizado con éxito";
+	public int solicitarExamen(Examen examen, tipoMedico tipoMed, ArrayList<Medico> medicos) {
+		if(Administrador.autorizarExamen(examen, tipoMed, medicos) == 1) {
+			return 1;
 		}
-		else if (Administrador.autorizarExamen(examen, tipoEx, tipoMed) == 2) {
-			return "Lo sentimos ha ocurrido un problema y no se ha podido autorizar el examen";
+		else if (Administrador.autorizarExamen(examen, tipoMed, medicos) == 2) {
+			return 2;
 		}
 		else {
-			return "Lo sentimos, en este momento no tenemos médicos que puedan atender su tipo de examen";
+			return 0;
 		}
 	}
 	
