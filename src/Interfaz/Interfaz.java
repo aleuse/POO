@@ -4,12 +4,16 @@ import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.TreeMap;
+import java.util.Map;
 
+import gestorAplicacion.Cita;
 import gestorAplicacion.Consulta;
 import gestorAplicacion.Consultorio;
 import gestorAplicacion.Entrega;
 import gestorAplicacion.Examen;
 import gestorAplicacion.Medicamentos;
+import gestorAplicacion.Pago;
 import gestorAplicacion.estadoEntrega;
 import gestorAplicacion.tipoCita;
 import gestorAplicacion.tipoExamen;
@@ -276,6 +280,50 @@ public class Interfaz {
 
 	static void finanzas() {
 
+		Administrador admin = new Administrador(123, "Julian");
+		Administrador.dinero = 100000;
+
+		Paciente paciente1 = new Paciente("Nancy", "Gutierrez", tipoDocumento.CEDULA,
+		1212, 25, "Mujer", 7589, "nanguti@gmail.com", "Calle 88b #54",
+		null, null, null, new TreeMap<LocalDateTime, Consulta>(), new TreeMap<LocalDateTime, Entrega>(), false);
+
+		LocalDateTime fecha1 = LocalDateTime.of(2022, 10, 2, 00, 00);
+		LocalDateTime fecha2 = LocalDateTime.of(2022, 10, 3, 00, 00);
+		LocalDateTime fecha3 = LocalDateTime.of(2022, 10, 5, 00, 00);
+
+		Medico medico1 = new Medico("Ana", "Marin", tipoDocumento.CEDULA,
+		5671, 45, "Mujer", 3128, "Anamarin@gmail.com", "Carrera 34 #03",
+		tipoCita.General, tipoMedico.General, true, null, null, 50000, null);
+
+		Medico medico2 = new Medico("Juan", "Gomez", tipoDocumento.CEDULA,
+		3416, 45, "Hombre", 3128, "Anamarin@gmail.com", "Carrera 34 #03",
+		tipoCita.General, tipoMedico.General, true, null, null, 50000, null);
+
+		Consultorio consultorio1 = new Consultorio(medico1, paciente1, "xd", true);
+		Consultorio consultorio2 = new Consultorio(medico2, paciente1, "xd", true);
+
+		Cita cita1 = new Cita(paciente1, "gripa", medico1, consultorio1, fecha1, tipoCita.General);
+		Cita cita2 = new Cita(paciente1, "gripa", medico2, consultorio2, fecha2, tipoCita.General);
+		Cita cita3 = new Cita(paciente1, "gripa", medico1, consultorio1, fecha3, tipoCita.General);
+
+		cita1.setPago(new Pago(15000, false));
+		cita2.setPago(new Pago(15000, false));
+		cita3.setPago(new Pago(15000, false));
+
+		paciente1.getConsultas().put(fecha1, cita1);
+		paciente1.getConsultas().put(fecha2, cita2);
+		paciente1.getConsultas().put(fecha3, cita3);
+
+		pacientes.add(paciente1);
+
+		Entrega entrega1 = new Entrega(paciente1, "Calle 88b #54", null, estadoEntrega.En_camino);
+		Entrega entrega2 = new Entrega(paciente1, "Calle 88b #54", null, estadoEntrega.En_camino);
+
+		paciente1.getEntregas().put(fecha1, entrega1);
+		paciente1.getEntregas().put(fecha2, entrega2);
+		entrega1.setPago(new Pago(10000, false));
+		entrega2.setPago(new Pago(10000, false));
+
 		//Se pide el documento de identidad para buscar el paciente
 		System.out.println("Inserte su documento de identidad");
 		long id = sc.nextLong();
@@ -302,7 +350,7 @@ public class Interfaz {
 
 		case 1:
 
-			ArrayList<Consulta>consultas_paciente=(ArrayList<Consulta>)paciente.getConsultas().values();
+			ArrayList<Consulta>consultas_paciente= new ArrayList<>(paciente.getConsultas().values());
 
 			for (Consulta c: consultas_paciente) {
 				if (c.getPago().isPagado() == false) {
@@ -313,7 +361,7 @@ public class Interfaz {
 			System.out.println("Ingrese el ID de la cita que desea pagar (Para ir hacia atras ingrese el numero -1): ");
 			int id_consulta = sc.nextInt();
 			if (id_consulta == -1) {
-				break;
+				finanzas();
 			}
 
 			for (Consulta c: consultas_paciente) {
@@ -322,25 +370,23 @@ public class Interfaz {
 					Administrador.sumarDinero(c.getPago().getValor());
 					System.out.println("La consulta" + c.getId() + "en la fecha" + c.getFecha() + "ha sido pagada existosamente");
 				}
-				System.out.println("Todas las consultas han sido pagadas");
 			}
 
 
 		case 2:
 
-			ArrayList<Entrega>entregas_paciente=(ArrayList<Entrega>)paciente.getEntregas().values();
+			ArrayList<Entrega>entregas_paciente=new ArrayList<> (paciente.getEntregas().values());
 
 			for (Entrega e: entregas_paciente) {
 				if (e.getPago().isPagado() == false) {
 					System.out.println("La entrega" + e.getId() + "esta sin pagar");
 				}
-				System.out.println("Todas las entregas han sido pagadas");
 			}
 
 			System.out.println("Ingrese el ID de la entrega que desea pagar (Para ir hacia atras ingrese el numero -1): ");
 			int id_entrega = sc.nextInt();
 			if (id_entrega == -1) {
-				break;
+				finanzas();
 			}
 
 			for (Entrega e: entregas_paciente) {
@@ -364,7 +410,7 @@ public class Interfaz {
 			System.out.println("Para ir hacia atras ingrese el numero -1 ");
 			int opcion = sc.nextInt();
 			if (opcion == -1) {
-				break;
+				finanzas();
 			}
 
 		case 4:
@@ -374,13 +420,12 @@ public class Interfaz {
 				if (m.getNomina().get(fecha).isPagado() == false) {
 					System.out.println("El medico" + m.getNombre() + "con documento" + m.getNumeroDocumento() + "no ha recibido su pago desde la fecha" + fecha);
 				}
-				System.out.println("Todas las entregas han sido pagadas");
 			}
 
 			System.out.println("Ingrese el numero del documento del medico al que le deseas pagar (Para ir hacia atras ingrese el numero -1): ");
 			int numeroDocumento = sc.nextInt();
 			if (numeroDocumento == -1) {
-				break;
+				finanzas();
 			}
 
 			for (Medico m: Medico.medicos) {
