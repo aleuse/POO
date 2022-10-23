@@ -49,7 +49,7 @@ public class Interfaz {
 			"3. Finanzas"+ "\n"+
 			"4. Resultados y Medicamentos"+ "\n"+
 			"5. Administración	"+ "\n"+
-			"0. Salir del sistema");
+			"0. Salir del sistema"+ "\n");
 			/*System.out.println("	+-------------------------------------------------------------------------------+	");
 			System.out.println(" 	|						Bienvenido a su Sistema Médico |   "); 
 			System.out.println(" 	+-------------------------------------------------------------------------------+   ");
@@ -185,7 +185,92 @@ public class Interfaz {
 					break;
 				}
 			}
-			System.out.println("Inserte la fecha en la que desea cambiar su ");
+			
+			System.out.println("Inserte la fecha actual de su cita: ");
+			System.out.println("Año: ");
+			year = sc.nextInt();
+			System.out.println("Mes (en numero): ");
+			mes = sc.nextInt();
+			month = null;
+			switch (mes) {
+			case 1:
+				month = Month.JANUARY;
+			case 2:
+				month = Month.FEBRUARY;
+			case 3:
+				month = Month.MARCH;
+			case 4:
+				month = Month.APRIL;
+			case 5:
+				month = Month.MAY;
+			case 6:
+				month = Month.JUNE;
+			case 7:
+				month = Month.JULY;
+			case 8:
+				month = Month.AUGUST;
+			case 9:
+				month = Month.SEPTEMBER;
+			case 10:
+				month = Month.OCTOBER;
+			case 11:
+				month = Month.NOVEMBER;
+			case 12:
+				month = Month.DECEMBER;
+			}
+			System.out.println("Día: ");
+			dia = sc.nextInt();
+			System.out.println("Ahora inserte la hora, primero la hora y luego los minutos.");
+			System.out.println("Hora: ");
+			hora = sc.nextInt();
+			System.out.println("Minutos: ");
+			min = sc.nextInt();
+			//Se formatea la fecha
+			LocalDateTime fechaAct = LocalDateTime.of(year, month,dia, hora, min);
+			
+			System.out.println("Inserte nueva fecha de su cita: ");
+			System.out.println("Año: ");
+			year = sc.nextInt();
+			System.out.println("Mes (en numero): ");
+			mes = sc.nextInt();
+			month = null;
+			switch (mes) {
+			case 1:
+				month = Month.JANUARY;
+			case 2:
+				month = Month.FEBRUARY;
+			case 3:
+				month = Month.MARCH;
+			case 4:
+				month = Month.APRIL;
+			case 5:
+				month = Month.MAY;
+			case 6:
+				month = Month.JUNE;
+			case 7:
+				month = Month.JULY;
+			case 8:
+				month = Month.AUGUST;
+			case 9:
+				month = Month.SEPTEMBER;
+			case 10:
+				month = Month.OCTOBER;
+			case 11:
+				month = Month.NOVEMBER;
+			case 12:
+				month = Month.DECEMBER;
+			}
+			System.out.println("Día: ");
+			dia = sc.nextInt();
+			System.out.println("Ahora inserte la hora, primero la hora y luego los minutos.");
+			System.out.println("Hora: ");
+			hora = sc.nextInt();
+			System.out.println("Minutos: ");
+			min = sc.nextInt();
+			//Se formatea la fecha
+			fecha = LocalDateTime.of(year, month,dia, hora, min);
+			
+			paciente.reagendarCita(fechaAct, fecha);
 		}
 	}
 	static void solicitarExamen() {
@@ -485,7 +570,7 @@ public class Interfaz {
 		entrega2.setPago(new Pago(10000, false));
 
 		//Se pide el documento de identidad para buscar el paciente
-		System.out.println("Inserte su documento de identidad");
+		System.out.println("\n"+"Inserte su documento de identidad: ");
 		long id = sc.nextLong();
 		Paciente paciente = null;
 
@@ -495,62 +580,53 @@ public class Interfaz {
 			}
 		}
 
-		System.out.println("-------------------------------------" + "\n"+
-			"Escoja la accion que desea realizar:" + "\n"+
-			"-------------------------------------" + "\n"+
-			"Elija a que Apartado Desea Acceder: " + "\n"+
+		System.out.println("\n" + "--------------------------------------------" + "\n"+
+			"    Escoja la accion que desea realizar:" + "\n"+
+			"--------------------------------------------" + "\n"+ "\n"+
 			"1. Pagar consultas"  + "\n"+
 			"2. Pagar entregas"+ "\n"+
 			"3. Consultar dinero disponible"+ "\n"+
 			"4. Pago de Nomina"+ "\n"+
-			"5. Ir hacia atras	");
+			"5. Ir hacia atras" + "\n");
 
-		/*System.out.println("		+-------------------------------------------------------------------------------+	");
-		System.out.println("		|						Escoja la accion que desea realizar:					|   "); 
-		System.out.println("		|   --------------------------------------------------------------------------  |	"); 
-		System.out.println(" 	|								1. Pagar consultas								|   "); 
-		System.out.println(" 	|								2. Pagar entregas								|   "); 
-		System.out.println(" 	|								3. Consultar dinero disponible					|   "); 
-		System.out.println(" 	|								4. Pago de Nomina								|   "); 
-		System.out.println(" 	|								5. Ir hacia atras								|   "); 
-		System.out.println(" 	+-------------------------------------------------------------------------------+   ");
-		*/
 		opcion = sc.nextInt();
 		
 		switch (opcion){
 
 		case 1:
-
+		
 			ArrayList<Consulta>consultas_paciente= new ArrayList<>(paciente.getConsultas().values());
-
+			//System.out.println("\n");
 			for (Consulta c: consultas_paciente) {
 				if (c.getPago().isPagado() == false) {
-					System.out.println("La consulta" + c.getId() + "en la fecha" + c.getFecha() + "esta sin pagar");
+					System.out.println("La consulta numero " + c.getId() + " en la fecha " + c.getFecha() + " esta sin pagar");
 				}
 			}
-
-			System.out.println("Ingrese el ID de la cita que desea pagar (Para ir hacia atras ingrese el numero -1): ");
+			
+			System.out.println("Ingrese el ID de la consulta que desea pagar (Para ir hacia atras ingrese el numero -1): ");
 			int id_consulta = sc.nextInt();
 			if (id_consulta == -1) {
 				finanzas();
 			}
+			
+			//System.out.println("\n");
 
 			for (Consulta c: consultas_paciente) {
 				if (c.getId() == id_consulta) {
 					c.getPago().setPagado(true);
 					Administrador.sumarDinero(c.getPago().getValor());
-					System.out.println("La consulta" + c.getId() + "en la fecha" + c.getFecha() + "ha sido pagada existosamente");
+					System.out.println("La consulta numero " + c.getId() + " en la fecha " + c.getFecha() + " ha sido pagada exitosamente");
 				}
 			}
-
+			
 
 		case 2:
-
+			
 			ArrayList<Entrega>entregas_paciente=new ArrayList<> (paciente.getEntregas().values());
 
 			for (Entrega e: entregas_paciente) {
 				if (e.getPago().isPagado() == false) {
-					System.out.println("La entrega" + e.getId() + "esta sin pagar");
+					System.out.println("La entrega numero " + e.getId() + " esta sin pagar");
 				}
 			}
 
@@ -564,32 +640,30 @@ public class Interfaz {
 				if (e.getId() == id_entrega) {
 					e.getPago().setPagado(true);
 					Administrador.sumarDinero(e.getPago().getValor());
-					System.out.println("La entrega" + e.getId() + "ha sido pagada existosamente");
+					System.out.println("La entrega numero " + e.getId() + " ha sido pagada exitosamente");
 				}
 			}  
-
+			
 			
 		case 3:
 
-			System.out.println("		+-------------------------------------------------------------------------------+	");
-			System.out.println(" 	|							Bienvenido Administrador							|   "); 
-			System.out.println(" 	+-------------------------------------------------------------------------------+   ");
-			System.out.println("		+-------------------------------------------------------------------------------+	");
-			System.out.println(" 		|		Actualmente el Dinero Disponible es: $" + Administrador.dinero + " 		|   "); 
-			System.out.println(" 	+-------------------------------------------------------------------------------+   ");
+			System.out.println("\n" + "----------------------------------" + "\n"+
+			"     Bienvenido Administrador	" + "\n"+
+			"----------------------------------" + "\n"+
+			"Actualmente el Dinero Disponible es: $" + Administrador.dinero );
 
-			System.out.println("Para ir hacia atras ingrese el numero -1 ");
+			System.out.println("\n" + "Para ir hacia atras ingrese el numero -1 ");
 			int opcion = sc.nextInt();
 			if (opcion == -1) {
 				finanzas();
-			}
+			} 
 
 		case 4:
 
 			LocalDateTime fecha = LocalDateTime.of(2022, 10, 1, 00, 00);
 			for (Medico m: Medico.medicos) {
 				if (m.getNomina().get(fecha).isPagado() == false) {
-					System.out.println("El medico" + m.getNombre() + "con documento" + m.getNumeroDocumento() + "no ha recibido su pago desde la fecha" + fecha);
+					System.out.println("El medico " + m.getNombre() + " con documento " + m.getNumeroDocumento() + " no ha recibido su pago desde la fecha " + fecha);
 				}
 			}
 
@@ -603,7 +677,7 @@ public class Interfaz {
 				if (m.getNumeroDocumento() == numeroDocumento) {
 					m.getNomina().get(fecha).setPagado(true);
 					Administrador.restarDinero(m.getNomina().get(fecha).getValor());
-					System.out.println("El medico" + m.getNombre() + "con documento" + m.getNumeroDocumento() + "ha sido pagado exitosamente");
+					System.out.println("El medico " + m.getNombre() + " con documento " + m.getNumeroDocumento() + " ha sido pagado exitosamente");
 				}
 			}
 
