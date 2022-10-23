@@ -30,16 +30,6 @@ public class Interfaz {
 	 static ArrayList<LocalDateTime> fechas = new ArrayList<LocalDateTime>();
 	 
 	public static void main(String[] args) {
-		Paciente paciente = new Paciente("Camilo", "Martinez", tipoDocumento.CEDULA, 1074, 25, "masculino", 300762957,"mcm@gmail.com", "cra87#12-34", "SURA",null,null, null, null, true);
-        Diagnostico.sintomas.add("gripa");
-        Medico medico = new Medico();
-       Medicamentos medica = new Medicamentos(tipoMedicamento.Acetaminofen, paciente, 2, 3);
-       Consultorio consu = new Consultorio(medico,paciente, "sala", true);
-	   Cita cita = new Cita(paciente, "gripa", tipoCita.General);
-	   cita.setPago(new Pago(200000, true));
-	   //Consulta consulta = new Consulta (paciente,medico,consu, null, new Pago(50000, true));
-        Diagnostico dia = new Diagnostico(paciente, Diagnostico.sintomas, "no lose dime tu", medica, 1, cita);
-        Medico.listado.add(dia);
 		loop: while(true) {
 			
 			System.out.println("-------------------------------------" + "\n"+
