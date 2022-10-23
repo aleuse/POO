@@ -511,7 +511,7 @@ public class Interfaz {
 		
 
 		Administrador admin = new Administrador(123, "Julian");
-		Administrador.dinero = 100000;
+		//Administrador.dinero = 100000;
 
 		Paciente paciente1 = new Paciente("Nancy", "Gutierrez", tipoDocumento.CEDULA,
 		1212, 25, "Mujer", 7589, "nanguti@gmail.com", "Calle 88b #54",
@@ -585,53 +585,57 @@ public class Interfaz {
 			//System.out.println("\n");
 
 			while(true) {
+							
 				for (Consulta c: consultas_paciente) {
 					if (c.getPago().isPagado() == false) {
 						System.out.println("La consulta numero " + c.getId() + " en la fecha " + c.getFecha() + " esta sin pagar");
 					}
 				}
 				
-				System.out.println("Ingrese el ID de la consulta que desea pagar (Para ir hacia atras ingrese el numero -1): ");
+				System.out.println("\n"+"Ingrese el ID de la consulta que desea pagar (Para ir hacia atras ingrese el numero -1): ");
 				int id_consulta = sc.nextInt();
 				if (id_consulta == -1) {
 					finanzas();
 				}
-				
-				//System.out.println("\n");
 
-				for (Consulta c: consultas_paciente) {
-					if (c.getId() == id_consulta) {
-						c.getPago().setPagado(true);
-						Administrador.sumarDinero(c.getPago().getValor());
-						System.out.println("La consulta numero " + c.getId() + " en la fecha " + c.getFecha() + " ha sido pagada exitosamente");
+				else {
+					for (Consulta c: consultas_paciente) {
+						if (c.getId() == id_consulta) {
+							c.getPago().setPagado(true);
+							Administrador.sumarDinero(c.getPago().getValor());
+							System.out.println("La consulta numero " + c.getId() + " en la fecha " + c.getFecha() + " ha sido pagada exitosamente");
+						}
 					}
 				}
 			}
-			
 
 		case 2:
 			
 			ArrayList<Entrega>entregas_paciente=new ArrayList<> (paciente.getEntregas().values());
+			while(true) {
 
-			for (Entrega e: entregas_paciente) {
-				if (e.getPago().isPagado() == false) {
-					System.out.println("La entrega numero " + e.getId() + " esta sin pagar");
+				for (Entrega e: entregas_paciente) {
+					if (e.getPago().isPagado() == false) {
+						System.out.println("La entrega numero " + e.getId() + " esta sin pagar");
+					}
+				}
+
+				System.out.println("\n"+"Ingrese el ID de la entrega que desea pagar (Para ir hacia atras ingrese el numero -1): ");
+				int id_entrega = sc.nextInt();
+				if (id_entrega == -1) {
+					finanzas();
+				}
+
+				else {
+					for (Entrega e: entregas_paciente) {
+						if (e.getId() == id_entrega) {
+							e.getPago().setPagado(true);
+							Administrador.sumarDinero(e.getPago().getValor());
+							System.out.println("La entrega numero " + e.getId() + " ha sido pagada exitosamente");
+						}
+					} 
 				}
 			}
-
-			System.out.println("Ingrese el ID de la entrega que desea pagar (Para ir hacia atras ingrese el numero -1): ");
-			int id_entrega = sc.nextInt();
-			if (id_entrega == -1) {
-				finanzas();
-			}
-
-			for (Entrega e: entregas_paciente) {
-				if (e.getId() == id_entrega) {
-					e.getPago().setPagado(true);
-					Administrador.sumarDinero(e.getPago().getValor());
-					System.out.println("La entrega numero " + e.getId() + " ha sido pagada exitosamente");
-				}
-			}  
 
 		case 3:
 
@@ -694,14 +698,7 @@ public class Interfaz {
         "2. Mostrar Diagnosticos" + "\n" +
         "3. Solicitar Entrega de Medicamentos" + "\n" +
 		"4. Ir hacia atras");
-		/*System.out.println("		+-------------------------------------------------------------------------------+	");
-		System.out.println(" 	|								Escoja una Opción:								|   "); 
-		System.out.println("		|   --------------------------------------------------------------------------  |	"); 
-		System.out.println(" 	|							1. Crear Diagnostico								|   "); 
-		System.out.println(" 	|							2. Mostrar Diagnosticos								|   "); 
-		System.out.println(" 	|							3. Solicitar Entrega de Medicamentos				|   "); 
-		System.out.println(" 	+-------------------------------------------------------------------------------+   ");
-		*/
+
 		opcion = sc.nextInt();
 		switch (opcion){
 		case 1:
