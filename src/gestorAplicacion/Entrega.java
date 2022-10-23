@@ -6,7 +6,7 @@ import gestorAplicacion.Pago;
 
 public class Entrega {
     private int id;
-    private String paciente;
+    private Paciente paciente;
     private String domicilio;
     private Medicamentos medicamentos;
     private estadoEntrega estado;
@@ -14,7 +14,7 @@ public class Entrega {
     private Pago pago;
     
     //constructor
-    public Entrega(int id, String paciente, String domicilio, Medicamentos medicamentos, estadoEntrega estado) {
+    public Entrega(int id, Paciente paciente, String domicilio, Medicamentos medicamentos, estadoEntrega estado) {
         this.id = id;
         this.paciente = paciente;
         this.domicilio = domicilio;
@@ -22,7 +22,7 @@ public class Entrega {
         this.estado = estado;
     }
     
-    public Entrega(String paciente, String domicilio, Medicamentos medicamentos, estadoEntrega estado) {
+    public Entrega(Paciente paciente, String domicilio, Medicamentos medicamentos, estadoEntrega estado) {
         this.id = (int)(Math.random()*10000+1);
         this.paciente = paciente;
         this.domicilio = domicilio;
@@ -37,10 +37,10 @@ public class Entrega {
     public void setId(int id) {
         this.id = id;
     }
-    public String getPaciente() {
+    public Paciente getPaciente() {
         return paciente;
     }
-    public void setPaciente(String paciente) {
+    public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
     public String getDomicilio() {

@@ -28,7 +28,8 @@ public class Consultorio implements Serializable{
     
     //constructor
 
-    public Consultorio(Medico medico, Paciente paciente, String tipoConsultorio, boolean disponibilidad, LocalDateTime fecha, Consulta consulta) {
+    public Consultorio(Medico medico, Paciente paciente, String tipoConsultorio, boolean disponibilidad,
+    LocalDateTime fecha, Consulta consulta) {
         this.medico = medico;
         this.paciente = paciente;
         this.tipoConsultorio = tipoConsultorio;
