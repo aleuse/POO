@@ -30,6 +30,15 @@ public class Interfaz {
 	 static ArrayList<LocalDateTime> fechas = new ArrayList<LocalDateTime>();
 	 
 	public static void main(String[] args) {
+		LocalDateTime fecha = LocalDateTime.of(2022, Month.NOVEMBER, 25, 15,30);
+		 Paciente paciente = new Paciente("Camilo", "Martinez", tipoDocumento.CEDULA, 1074074689, 25, "masculino", 300762957,"mcm@gmail.com", "cra87#12-34", "SURA", false);
+			Paciente paciente1 = new Paciente("Maria", "Jaramillo", tipoDocumento.CEDULA, 9403862, 43, "femenino", 301762849,"mj@gmail.com", "calle 3", "SURA", false);
+			Medico m1 = new Medico("Sara", "Perez", tipoDocumento.CEDULA, 12345678, 50, "femenino", 6048742, "sp@yahoo.com", "calle 43", 
+					tipoCita.General, tipoMedico.General, true);
+			Medico m2 = new Medico("Mauricio", "Fernandez", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.Audiometria, tipoMedico.Fonoaudiologo, true);
+			Medico m3 = new Medico("Carlos", "Munera", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.General, tipoMedico.General, true);
+			Consultorio c1 = new Consultorio(null, null, null, true, fecha, null);
+			Consultorio c2 = new Consultorio(null, null, null, true, fecha, null);
 		loop: while(true) {
 			
 			System.out.println("-------------------------------------" + "\n"+
@@ -103,6 +112,7 @@ public class Interfaz {
 			for (int i = 0; i < pacientes.size(); i++) {
 				if (id == pacientes.get(i).getNumeroDocumento()) {
 					paciente = pacientes.get(i);
+					break;
 				}
 			}
 			System.out.println("Inserte los siguientes datos para agendar su cita");
@@ -160,12 +170,23 @@ public class Interfaz {
 			case 1:
 				opcionesCitas();
 			case 2:
-				main(null);				
+				main(null);
+				break;
 			}
 			
 		
 		case 2:
-			//Reagendar cita
+			//Se pide el documento de identidad para buscar el paciente
+			System.out.println("Inserte su documento de identidad");
+			id = sc.nextLong();
+			paciente = null;
+			for (int i = 0; i < pacientes.size(); i++) {
+				if (id == pacientes.get(i).getNumeroDocumento()) {
+					paciente = pacientes.get(i);
+					break;
+				}
+			}
+			System.out.println("Inserte la fecha en la que desea cambiar su ");
 		}
 	}
 	static void solicitarExamen() {
