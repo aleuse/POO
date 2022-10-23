@@ -47,6 +47,7 @@ public class Paciente extends Persona{
 		this.consultas = consultas;
 		this.entregas = entregas;
 		this.pagado = pagado;
+		pacientes.add(this);
 	}
 
 	public Paciente(String eps, ArrayList<String> sintomas, HistoriaClinica historiaClinica,
@@ -57,6 +58,11 @@ public class Paciente extends Persona{
 		this.consultas = consultas;
 		this.entregas = entregas;
 		this.pagado = pagado;
+	}
+	public Paciente(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad,
+			String genero, long telefono, String correoElectronico, String direccion, String eps,boolean pagado) {
+		this(nombre, apellido, documento,numeroDocumento, edad,genero, telefono, correoElectronico, direccion, eps,
+			new ArrayList<String>(), null, new TreeMap<LocalDateTime, Consulta>(),new TreeMap<LocalDateTime, Entrega>(), pagado);
 	}
 
 
@@ -136,70 +142,7 @@ public class Paciente extends Persona{
 		}
 	}
 	
-	public boolean reagendarCita(LocalDateTime fecha) {
-		Cita cita = null;
-		ArrayList<Cita> citas = Cita.listaCitas;
-		//Se busca la cita que se quiere reagendar
-		for (int i = 0; i<citas.size(); i++) {
-			if (citas.get(i).getPaciente() == this) {
-				cita = citas.get(i);
-				break;
-			}
-		}
-		//Se verifica que tanto el medico como el consultorio esten disponible en la nueva fecha
-		if(Administrador.verificarDisponibilidadMedico(fecha,cita.getMedico()) == true && Administrador.verificarDisponibilidadConsultorio(fecha, cita.getConsultorio())==true){
-			cita.setFecha(fecha);
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
 	
-	//En caso de que el medico no este disponible
-	public boolean reagendarCitaMedico(LocalDateTime fecha) {
-		Cita cita = null;
-		ArrayList<Cita> citas = Cita.listaCitas;
-		for (int i = 0; i<citas.size(); i++) {
-			if (citas.get(i).getPaciente() == this) {
-				cita = citas.get(i);
-				break;
-			}
-		}
-		//Se busca un medico con disponibilidad
-		ArrayList<Medico> medicos = Medico.medicos;
-		Medico medico = null;
-		for(int i = 0; i<medicos.size(); i++) {
-			if(medicos.get(i).especialidad ==  cita.getTiposCitas() && Administrador.verificarDisponibilidadMedico(fecha, medicos.get(i)) == true){
-				medico = medicos.get(i);
-				cita.setMedico(medico);
-				cita.setFecha(fecha);
-				break;
-			}
-			else if(Administrador.verificarDisponibilidadMedico(fecha, medicos.get(i)) == false && i== medicos.size()){
-				return false;
-			}
-		}
-		//Se verifica si el consultorio esta disponible para la nueva fecha
-		if (Administrador.verificarDisponibilidadConsultorio(fecha, cita.getConsultorio())==true && medico != null) {
-			return true;
-		}
-		//Si el consultorio no esta disponible, se busca un nuevo consultorio
-		else {
-			ArrayList<Consultorio> consultorios = Consultorio.consultorios;
-			Consultorio consultorio = null;
-			for (int i = 0; i< consultorios.size(); i++) {
-				//Se recorre la lista de los consultorios creados y se verifica si el consultorio esta disponible en la fecha que se requiere la cita
-				if(Administrador.verificarDisponibilidadConsultorio(fecha, consultorios.get(i)) == true){
-					consultorio = consultorios.get(i);
-					cita.setConsultorio(consultorio);
-					break;
-				}
-			}
-			return true;
-		}
-	}
-
 	
 	public String solicitarExamen(Examen examen, tipoExamen tipoEx, tipoMedico tipoMed) {
 		if(Administrador.autorizarExamen(examen, tipoEx, tipoMed) == 1) {
