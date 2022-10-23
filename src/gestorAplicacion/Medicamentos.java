@@ -16,8 +16,10 @@ public class Medicamentos {
     private int modoUso;//consumir cada x horas
     private ArrayList<Medicamentos> medicamiento = new ArrayList<>();
     
-    //agregar precios medicamentos
-    // asignar un padre que herede
+    public static int cantAcetaminofen=100;
+    public static int cantAmoxicilina=100;
+    public static int cantIbuprofeno=100;
+    public static int cantLagrimasArtificiales=20;
     
     //constructor
     public Medicamentos(tipoMedicamento tipoMed, Paciente paciente, int dosis, int modoUso) {
@@ -28,6 +30,7 @@ public class Medicamentos {
         medicamiento.add(this);
     }
     
+        
     
     //getter & setter
     public tipoMedicamento getTipoMed() {
@@ -64,6 +67,26 @@ public class Medicamentos {
 
     public void setMedicamiento(ArrayList<Medicamentos> medicamiento) {
         this.medicamiento = medicamiento;
+    }
+    
+    //metodos
+    
+    //resta la cantidad de medicamento asignado del inventario de medicamentos
+    public static void asignarMed(tipoMedicamento eleccion,int cantidad){
+        switch (eleccion) {
+            case Acetaminofen:
+                cantAcetaminofen=cantAcetaminofen-cantidad;
+                break;
+            case Amoxicilina:
+                cantAmoxicilina=cantAmoxicilina-cantidad;
+                break;
+            case Ibuprofeno:
+                cantIbuprofeno=cantIbuprofeno-cantidad;
+                break;
+            default:
+                cantLagrimasArtificiales=cantLagrimasArtificiales-cantidad;
+                break;
+        }        
     }
 
 }
