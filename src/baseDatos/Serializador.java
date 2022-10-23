@@ -56,7 +56,7 @@ public class Serializador {
 				"andlop@gmail.com", "Calle 113 #55 05", tipoCita.General, true);
 		Medico medico3 = new Medico("Mariana", "Garcia", tipoDocumento.CEDULA, 656502354, 28, "Mujer", 656502354, 
 				"margar@gmail.com", "Avenida 7 #8 07", tipoCita.General, true);
-		
+
 		medico1.getConsultas().put(fecha1, cita1);
 		medico1.getConsultas().put(fecha2, null);
 		medico1.getConsultas().put(fecha3, null);
