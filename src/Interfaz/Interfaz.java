@@ -35,9 +35,21 @@ public class Interfaz {
 	 
 	public static void main(String[] args) {
 		
+		LocalDateTime fecha = LocalDateTime.of(2022, Month.NOVEMBER, 25, 15,30);
+		 Paciente paciente = new Paciente("Camilo", "Martinez", tipoDocumento.CEDULA, 1074074689, 25, "masculino", 300762957,"mcm@gmail.com", "cra87#12-34", "SURA", false);
+			Paciente paciente1 = new Paciente("Maria", "Jaramillo", tipoDocumento.CEDULA, 9403862, 43, "femenino", 301762849,"mj@gmail.com", "calle 3", "SURA", false);
+			Medico m1 = new Medico("Sara", "Perez", tipoDocumento.CEDULA, 12345678, 50, "femenino", 6048742, "sp@yahoo.com", "calle 43", 
+					tipoCita.General, tipoMedico.General, true);
+			Medico m2 = new Medico("Mauricio", "Fernandez", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.Audiometria, tipoMedico.Fonoaudiologo, true);
+			Medico m3 = new Medico("Carlos", "Munera", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.General, tipoMedico.General, true);
+			Consultorio c1 = new Consultorio(null, null, null, true, fecha, null);
+			Consultorio c2 = new Consultorio(null, null, null, true, fecha, null);
 		
-		
-		
+		System.out.println(paciente1.pedirCita(LocalDateTime.of(2022, Month.NOVEMBER, 25, 15,30), tipoCita.General, null));
+		System.out.println(paciente.pedirCita(LocalDateTime.of(2022, Month.NOVEMBER, 25, 16,30), tipoCita.General, null));
+		System.out.println(paciente1.pedirCita(LocalDateTime.of(2022, Month.NOVEMBER, 25, 16,30), tipoCita.Audiometria, null));
+		int id =Cita.listaCitas.get(0).getId();
+		System.out.println(Cita.listaCitas.get(0).getId());
 		loop: while(true) {
 			
 			System.out.println("-------------------------------------" + "\n"+
@@ -186,48 +198,8 @@ public class Interfaz {
 				}
 			}
 			
-			System.out.println("Inserte la fecha actual de su cita: ");
-			System.out.println("Año: ");
-			year = sc.nextInt();
-			System.out.println("Mes (en numero): ");
-			mes = sc.nextInt();
-			month = null;
-			switch (mes) {
-			case 1:
-				month = Month.JANUARY;
-			case 2:
-				month = Month.FEBRUARY;
-			case 3:
-				month = Month.MARCH;
-			case 4:
-				month = Month.APRIL;
-			case 5:
-				month = Month.MAY;
-			case 6:
-				month = Month.JUNE;
-			case 7:
-				month = Month.JULY;
-			case 8:
-				month = Month.AUGUST;
-			case 9:
-				month = Month.SEPTEMBER;
-			case 10:
-				month = Month.OCTOBER;
-			case 11:
-				month = Month.NOVEMBER;
-			case 12:
-				month = Month.DECEMBER;
-			}
-			System.out.println("Día: ");
-			dia = sc.nextInt();
-			System.out.println("Ahora inserte la hora, primero la hora y luego los minutos.");
-			System.out.println("Hora: ");
-			hora = sc.nextInt();
-			System.out.println("Minutos: ");
-			min = sc.nextInt();
-			//Se formatea la fecha
-			LocalDateTime fechaAct = LocalDateTime.of(year, month,dia, hora, min);
-			
+			System.out.println("Inserte el id de la cita que desea modificar");
+			int idCita = sc.nextInt();
 			System.out.println("Inserte nueva fecha de su cita: ");
 			System.out.println("Año: ");
 			year = sc.nextInt();
@@ -269,8 +241,30 @@ public class Interfaz {
 			min = sc.nextInt();
 			//Se formatea la fecha
 			fecha = LocalDateTime.of(year, month,dia, hora, min);
+			String out = paciente.reagendarCita(idCita, fecha);
+			System.out.println(out);
+			if (out != "Su cita ha sido reagendada exitosamente y será en el mismo consultorio, con el mismo médico") {
+				String ans = sc.nextLine().toLowerCase();
+				switch(ans) {
+					case "si":	
+						paciente.reagendarCitaMedico(idCita,fecha);
+						
+				}
 			
-			paciente.reagendarCita(fechaAct, fecha);
+			}
+
+			
+			System.out.println("¿Desea continuar en la sección de citas?");
+			System.out.println("Si la respuesta es sí, presione 1");
+			System.out.println("Si desea volver al menu principal, presione 2");
+			opcion = sc.nextInt();
+			switch(opcion) {
+			case 1:
+				opcionesCitas();
+			case 2:
+				main(null);
+				break;
+			}
 		}
 	}
 	static void solicitarExamen() {
