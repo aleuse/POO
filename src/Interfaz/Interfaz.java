@@ -35,9 +35,6 @@ public class Interfaz {
 	 
 	public static void main(String[] args) {
 		
-		
-		
-		
 		loop: while(true) {
 			
 			System.out.println("-------------------------------------" + "\n"+
@@ -50,20 +47,7 @@ public class Interfaz {
 			"4. Resultados y Medicamentos"+ "\n"+
 			"5. Administración	"+ "\n"+
 			"0. Salir del sistema"+ "\n");
-			/*System.out.println("	+-------------------------------------------------------------------------------+	");
-			System.out.println(" 	|						Bienvenido a su Sistema Médico |   "); 
-			System.out.println(" 	+-------------------------------------------------------------------------------+   ");
-			System.out.println("		+-------------------------------------------------------------------------------+	");
-			System.out.println(" 	|						Elija a que Apartado Desea Acceder:						|   "); 
-			System.out.println("		|   --------------------------------------------------------------------------  |	"); 
-			System.out.println(" 	|								1. Citas										|   "); 
-			System.out.println(" 	|								2. Exámenes									|   "); 
-			System.out.println(" 	|								3. Finanzas									|   "); 
-			System.out.println(" 	|								4. Resultados y Medicamentos					|   "); 
-			System.out.println(" 	|								5. Administración								|   "); 
-			System.out.println(" 	|								0. Salir del sistema							|   "); 
-			System.out.println(" 	+-------------------------------------------------------------------------------+   ");
-			*/
+
 			opcion = sc.nextInt();
 			
 			switch (opcion) {
@@ -524,6 +508,7 @@ public class Interfaz {
 	}
 
 	static void finanzas() {
+		
 
 		Administrador admin = new Administrador(123, "Julian");
 		Administrador.dinero = 100000;
@@ -580,6 +565,8 @@ public class Interfaz {
 			}
 		}
 
+	
+
 		System.out.println("\n" + "--------------------------------------------" + "\n"+
 			"    Escoja la accion que desea realizar:" + "\n"+
 			"--------------------------------------------" + "\n"+ "\n"+
@@ -594,28 +581,30 @@ public class Interfaz {
 		switch (opcion){
 
 		case 1:
-		
 			ArrayList<Consulta>consultas_paciente= new ArrayList<>(paciente.getConsultas().values());
 			//System.out.println("\n");
-			for (Consulta c: consultas_paciente) {
-				if (c.getPago().isPagado() == false) {
-					System.out.println("La consulta numero " + c.getId() + " en la fecha " + c.getFecha() + " esta sin pagar");
-				}
-			}
-			
-			System.out.println("Ingrese el ID de la consulta que desea pagar (Para ir hacia atras ingrese el numero -1): ");
-			int id_consulta = sc.nextInt();
-			if (id_consulta == -1) {
-				finanzas();
-			}
-			
-			//System.out.println("\n");
 
-			for (Consulta c: consultas_paciente) {
-				if (c.getId() == id_consulta) {
-					c.getPago().setPagado(true);
-					Administrador.sumarDinero(c.getPago().getValor());
-					System.out.println("La consulta numero " + c.getId() + " en la fecha " + c.getFecha() + " ha sido pagada exitosamente");
+			while(true) {
+				for (Consulta c: consultas_paciente) {
+					if (c.getPago().isPagado() == false) {
+						System.out.println("La consulta numero " + c.getId() + " en la fecha " + c.getFecha() + " esta sin pagar");
+					}
+				}
+				
+				System.out.println("Ingrese el ID de la consulta que desea pagar (Para ir hacia atras ingrese el numero -1): ");
+				int id_consulta = sc.nextInt();
+				if (id_consulta == -1) {
+					finanzas();
+				}
+				
+				//System.out.println("\n");
+
+				for (Consulta c: consultas_paciente) {
+					if (c.getId() == id_consulta) {
+						c.getPago().setPagado(true);
+						Administrador.sumarDinero(c.getPago().getValor());
+						System.out.println("La consulta numero " + c.getId() + " en la fecha " + c.getFecha() + " ha sido pagada exitosamente");
+					}
 				}
 			}
 			
@@ -643,8 +632,7 @@ public class Interfaz {
 					System.out.println("La entrega numero " + e.getId() + " ha sido pagada exitosamente");
 				}
 			}  
-			
-			
+
 		case 3:
 
 			System.out.println("\n" + "----------------------------------" + "\n"+
@@ -657,6 +645,7 @@ public class Interfaz {
 			if (opcion == -1) {
 				finanzas();
 			} 
+
 
 		case 4:
 
@@ -700,7 +689,7 @@ public class Interfaz {
 			Consultorio c1 = new Consultorio(null, null, null, true, fecha, null);
 			Consultorio c2 = new Consultorio(null, null, null, true, fecha, null);
 		System.out.println("    Escoja una Opción: " + "\n" + 
-        "-------------------------------------"+ "\n" +
+        "-------------------------------"+ "\n" +
         "1. Crear Diagnostico" + "\n" + 
         "2. Mostrar Diagnosticos" + "\n" +
         "3. Solicitar Entrega de Medicamentos" + "\n" +
