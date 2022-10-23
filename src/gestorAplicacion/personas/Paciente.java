@@ -186,12 +186,16 @@ public class Paciente extends Persona{
 	}
 
 	
-	public String solicitarExamen(tipoExamen tipo, LocalDateTime fecha) {
-		Examen examen = new Examen((int)(Math.random()*10000+1), this, tipo, false);
-		Administrador.autorizarExamen(examen);
-		// Filtrar médicos disponibles para la fecha
-		// Filtrar consultorios disponibles para la fecha
-		return Administrador.asignarExamen(examen, this, Medico.medicos, Consultorio.consultorios, fecha);
+	public String solicitarExamen(Examen examen, tipoExamen tipoEx, tipoMedico tipoMed) {
+		if(Administrador.autorizarExamen(examen, tipoEx, tipoMed) == 1) {
+			return "Examen autorizado con éxito";
+		}
+		else if (Administrador.autorizarExamen(examen, tipoEx, tipoMed) == 2) {
+			return "Lo sentimos ha ocurrido un problema y no se ha podido autorizar el examen";
+		}
+		else {
+			return "Lo sentimos, en este momento no tenemos médicos que puedan atender su tipo de examen";
+		}
 	}
 	
 	

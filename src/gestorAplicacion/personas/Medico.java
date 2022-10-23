@@ -73,6 +73,7 @@ public class Medico extends Persona{
         this.nomina = nomina;
         this.sueldo = sueldo;
         this.medicamiento = medicamiento;
+        medicos.add(this);
     }
 
     public Medico(){super();};
@@ -80,6 +81,14 @@ public class Medico extends Persona{
     
 		// TODO Auto-generated constructor stub
 	
+
+	public Medico(String nombre, String apellido, tipoDocumento documento, long numeroDocumento , int edad, String genero, long telefono,
+			String correoElectronico, String direccion, tipoCita especialidad, boolean disponibilidad) {
+		 super(nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, direccion);
+	        this.especialidad = especialidad;
+	        this.disponibilidad = disponibilidad;
+	        medicos.add(this);
+	}
 
 	//getter & setter
     public long getSueldo() {
