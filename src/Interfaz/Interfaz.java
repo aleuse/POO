@@ -327,9 +327,10 @@ public class Interfaz {
 		// Agregar consultas a medicos
 		// Agregar consultas a consultorios
 		
-		System.out.println("------------------------------------------------" + "\n"+
-			"Bienvenido a exámenes" + "\n"+
-			"------------------------------------------------" + "\n");
+		System.out.format("+-------------------------------------------------+%n");
+		System.out.format("|		Bienvenido a exámenes  		  |%n");
+		System.out.format("+-------------------------------------------------+%n");
+		
 		//Se pide el documento de identidad para buscar el paciente
 		System.out.println("Inserte su documento de identidad");
 		long id = sc.nextLong();
@@ -341,24 +342,18 @@ public class Interfaz {
 		}
 		
 		// Pedir el tipo de examen que desea solicitar
-		System.out.println("------------------------------------------------" + "\n"+
-			"Escoja el tipo de examen que desea solicitar:" + "\n"+
-			"------------------------------------------------" + "\n"+
-			"1. Sangre " + "\n"+
-			"2. Laboratorio"  + "\n"+
-			"3. RayosX"+ "\n"+
-			"4. Citoquimico"+ "\n"+
-			"5. Ir hacia atrás	");
-		/*System.out.println("	+-------------------------------------------------------------------------------+	");
-		System.out.println("	|					Escoja el tipo de examen que desea solicitar:				|   "); 
-		System.out.println("	|   --------------------------------------------------------------------------  |	"); 
-		System.out.println(" |								1. Sangre										|   "); 
-		System.out.println(" |								2. Laboratorio									|   "); 
-		System.out.println(" |								3. RayosX										|   "); 
-		System.out.println(" |								4. Citoquimico									|   "); 
-		System.out.println(" |								5. Ir hacia atrás								|   "); 
-		System.out.println(" +-------------------------------------------------------------------------------+   ");
-		*/
+		
+		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("|	Escoja el tipo de examen que desea solicitar	|%n");
+		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("|		1. Sangre			  	|%n");
+		System.out.format("|		2. Laboratorio				|%n");
+		System.out.format("|		3. Rayos X			  	|%n");
+		System.out.format("|		4. Citoquímico		  	  	|%n");
+		System.out.format("|		5. Ir hacia atrás			|%n");
+		System.out.format("+-------------------------------------------------------+%n");
+		
 		
 		tipoExamen tipoEx = null;
 		tipoMedico tipoMed = null;
@@ -547,14 +542,17 @@ public class Interfaz {
 			}
 		}
 
-		System.out.println("\n" + "--------------------------------------------" + "\n"+
-			"    Escoja la accion que desea realizar:" + "\n"+
-			"--------------------------------------------" + "\n"+ "\n"+
-			"1. Pagar consultas"  + "\n"+
-			"2. Pagar entregas"+ "\n"+
-			"3. Consultar dinero disponible"+ "\n"+
-			"4. Pago de Nomina"+ "\n"+
-			"5. Ir hacia atras" + "\n");
+		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("|	Escoja la accion que desea realizar		|%n");
+		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("|		1. Pagar consultas		  	|%n");
+		System.out.format("|		2. Pagar entregas			|%n");
+		System.out.format("|		3. Consultar dinero disponibles	  	|%n");
+		System.out.format("|		4. Pago de nomina	  	  	|%n");
+		System.out.format("|		5. Ir hacia atrás			|%n");
+		System.out.format("+-------------------------------------------------------+%n");
+		
 
 		opcion = sc.nextInt();
 		
@@ -666,20 +664,17 @@ public class Interfaz {
 			Medico m3 = new Medico("Carlos", "Munera", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.General, tipoMedico.General, true);
 			Consultorio c1 = new Consultorio(null, null, null, true, fecha, null);
 			Consultorio c2 = new Consultorio(null, null, null, true, fecha, null);
-		System.out.println("    Escoja una Opción: " + "\n" + 
-        "-------------------------------------"+ "\n" +
-        "1. Crear Diagnostico" + "\n" + 
-        "2. Mostrar Diagnosticos" + "\n" +
-        "3. Solicitar Entrega de Medicamentos" + "\n" +
-		"4. Ir hacia atras");
-		/*System.out.println("		+-------------------------------------------------------------------------------+	");
-		System.out.println(" 	|								Escoja una Opción:								|   "); 
-		System.out.println("		|   --------------------------------------------------------------------------  |	"); 
-		System.out.println(" 	|							1. Crear Diagnostico								|   "); 
-		System.out.println(" 	|							2. Mostrar Diagnosticos								|   "); 
-		System.out.println(" 	|							3. Solicitar Entrega de Medicamentos				|   "); 
-		System.out.println(" 	+-------------------------------------------------------------------------------+   ");
-		*/
+			System.out.format("+-------------------------------------------------------+%n");
+			System.out.format("|		Escoja una opción			|%n");
+			System.out.format("+-------------------------------------------------------+%n");
+			System.out.format("+-------------------------------------------------------+%n");
+			System.out.format("|		1. Crear diagnostico		  	|%n");
+			System.out.format("|		2. Mostrar diagnósticos			|%n");
+			System.out.format("|		3. Solicitar entra de medicamentos  	|%n");
+			System.out.format("|		4. Ir hacia atrás			|%n");
+			System.out.format("+-------------------------------------------------------+%n");
+			
+			
 		opcion = sc.nextInt();
 		switch (opcion){
 		case 1:
