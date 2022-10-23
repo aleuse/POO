@@ -18,6 +18,7 @@ import gestorAplicacion.estadoEntrega;
 import gestorAplicacion.tipoCita;
 import gestorAplicacion.tipoExamen;
 import gestorAplicacion.tipoMedicamento;
+import gestorAplicacion.herencia.Inmueble;
 import gestorAplicacion.personas.Administrador;
 import gestorAplicacion.personas.Medico;
 import gestorAplicacion.personas.Paciente;
@@ -36,31 +37,21 @@ public class Interfaz {
 	public static void main(String[] args) {
 		
 		loop: while(true) {
-			
-			System.out.println("-------------------------------------" + "\n"+
-			"Bienvenido a su Sistema Médico" + "\n"+
-			"-------------------------------------" + "\n"+
-			"Elija a que Apartado Desea Acceder: " + "\n"+
-			"1. Citas"  + "\n"+
-			"2. Exámenes"+ "\n"+
-			"3. Finanzas"+ "\n"+
-			"4. Resultados y Medicamentos"+ "\n"+
-			"5. Administración	"+ "\n"+
-			"0. Salir del sistema"+ "\n");
-			/*System.out.println("	+-------------------------------------------------------------------------------+	");
-			System.out.println(" 	|						Bienvenido a su Sistema Médico |   "); 
-			System.out.println(" 	+-------------------------------------------------------------------------------+   ");
-			System.out.println("		+-------------------------------------------------------------------------------+	");
-			System.out.println(" 	|						Elija a que Apartado Desea Acceder:						|   "); 
-			System.out.println("		|   --------------------------------------------------------------------------  |	"); 
-			System.out.println(" 	|								1. Citas										|   "); 
-			System.out.println(" 	|								2. Exámenes									|   "); 
-			System.out.println(" 	|								3. Finanzas									|   "); 
-			System.out.println(" 	|								4. Resultados y Medicamentos					|   "); 
-			System.out.println(" 	|								5. Administración								|   "); 
-			System.out.println(" 	|								0. Salir del sistema							|   "); 
-			System.out.println(" 	+-------------------------------------------------------------------------------+   ");
-			*/
+			System.out.format("+-------------------------------------------------+%n");
+			System.out.format("|	Bienvenido a su Sistema Médico		  |%n");
+			System.out.format("+-------------------------------------------------+%n");
+			System.out.format("+-------------------------------------------------+%n");
+			System.out.format("|	Elija a que apartado desea acceder	  |%n");
+			System.out.format("+-------------------------------------------------+%n");
+			System.out.format("+-------------------------------------------------+%n");
+			System.out.format("|		1. Citas			  |%n");
+			System.out.format("|		2. Exámenes			  |%n");
+			System.out.format("|		3. Finanzas			  |%n");
+			System.out.format("|		4. Resultados y Medicamentos	  |%n");
+			System.out.format("|		5. Administración		  |%n");
+			System.out.format("|		0. Salir del sistema		  |%n");
+			System.out.format("+-------------------------------------------------+%n");
+					
 			opcion = sc.nextInt();
 			
 			switch (opcion) {
@@ -85,18 +76,15 @@ public class Interfaz {
 		}
 
 	static void opcionesCitas() {
-		System.out.println("-----------------------------" + "\n"+
-			"     Escoja una Opción:	" + "\n"+
-			"-----------------------------" + "\n"+
-			"1. Solicitar cita " + "\n"+
-			"2. Reagendar cita	" );
-		/*System.out.println("		+-------------------------------------------------------------------------------+	");
-		System.out.println(" 	|								Escoja una Opción:								|   "); 
-		System.out.println("		|   -------------------------------------------------------------------------   |	"); 
-		System.out.println(" 	|								1. Solicitar cita								|   "); 
-		System.out.println(" 	|								2. Reagendar cita								|   "); 
-		System.out.println(" 	+-------------------------------------------------------------------------------+   ");
-		*/
+		System.out.format("+-------------------------------------------------+%n");
+		System.out.format("|		Escoja una opción  		  |%n");
+		System.out.format("+-------------------------------------------------+%n");
+		System.out.format("+-------------------------------------------------+%n");
+		System.out.format("|		1. Solicitar cita		  |%n");
+		System.out.format("|		2. Reagendar cita		  |%n");
+		System.out.format("+-------------------------------------------------+%n");
+		
+		
 		opcion = sc.nextInt();
 		switch (opcion){
 		case 1:
