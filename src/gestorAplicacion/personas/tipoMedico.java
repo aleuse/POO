@@ -14,18 +14,18 @@ import gestorAplicacion.tipoExamen;
 public enum tipoMedico {//casteamos costos
     //el medico general atiende general,prioritaria y rayos x
     // el bacteriologo atiende Sangre,Laboratorio y Citoquimico
-    General      (((int) (tipoCita.General.getValorCita()*0.5))+
-                  ((int) (tipoExamen.RayosX.getValorExamen()*0.5))+
-                  ((int) (tipoCita.Prioritaria.getValorCita()*0.5))),
+    GENERAL      (((int) (tipoCita.GENERAL.getValorCita()*0.5))+
+                  ((int) (tipoExamen.RAYOSX.getValorExamen()*0.5))+
+                  ((int) (tipoCita.PRIORITARIA.getValorCita()*0.5))),
     //Prioritario ((int) (tipoCita.Prioritaria.getValorCita()*0.5)),
     
-    Optometra    ((int) (tipoCita.Optometria.getValorCita()*0.6)),
-    Fonoaudiologo((int) (tipoCita.Audiometria.getValorCita()*0.6)),
-    Pediatra     ((int) (tipoCita.Pediatria.getValorCita()*0.7)), 
+    OPTOMETRA    ((int) (tipoCita.OPTOMETRIA.getValorCita()*0.6)),
+    FONOAUDIOLOGO((int) (tipoCita.AUDIOMETRIA.getValorCita()*0.6)),
+    PEDIATRA     ((int) (tipoCita.PEDIATRA.getValorCita()*0.7)), 
     
-    Bacteriologo (((int)(tipoExamen.Sangre.getValorExamen()*0.7)+
-                 ((int)(tipoExamen.Laboratorio.getValorExamen()*0.7)+
-                 ((int)(tipoExamen.Citoquimico.getValorExamen()*0.7)))));
+    BACTERIOLOGO (((int)(tipoExamen.SANGRE.getValorExamen()*0.7)+
+                 ((int)(tipoExamen.LABORATORIO.getValorExamen()*0.7)+
+                 ((int)(tipoExamen.CITOQUIMICO.getValorExamen()*0.7)))));
     
     private int ComisionMed;
     //constructor
