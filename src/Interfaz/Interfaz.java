@@ -811,12 +811,12 @@ public class Interfaz {
 		}
 		case 2:
 			System.out.println("Por favor dijite la cedula del paciente: ");
-			int cedulaPa = input.nextInt();
-			Paciente paciente5 = null;
+			int cedulaPa1 = input.nextInt();
+			Paciente paciente6 = null;
 			ArrayList<Paciente> paciente2 = Paciente.pacientes;
 			for (Paciente pacientes : paciente2) {
-				if (pacientes.getNumeroDocumento() == cedulaPa){
-					paciente5=pacientes;
+				if (pacientes.getNumeroDocumento() == cedulaPa1){
+					paciente6=pacientes;
 				}
 				else{
 					System.out.println("El documento del paciente no se encuentra en la base de datos");
@@ -825,11 +825,13 @@ public class Interfaz {
 			}
 			ArrayList<HistoriaClinica> histo = HistoriaClinica.historia;
 			for (HistoriaClinica historia : histo) {
-				if (historia.getPaciente().getNumeroDocumento() == paciente5.getNumeroDocumento()){
+				if (historia.getPaciente().getNumeroDocumento() == paciente6.getNumeroDocumento()){
 					System.out.println(historia.getDiagnosticos());
 					resultados();
 				}
 			}
+		break;
+			
 		case 3:
 		System.out.println("Ingrese el documento del paciente: ");
 		int docu = input.nextInt();
