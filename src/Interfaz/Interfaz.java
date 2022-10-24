@@ -38,19 +38,20 @@ public class Interfaz {
 	public static void main(String[] args) {
 		
 		loop: while(true) {
-			System.out.format("	    +-------------------------------------------------------------------------------+	%n");
-			System.out.format(" 	|						  Bienvenido a su Sistema Médico                          |   %n"); 
-			System.out.format(" 	+-------------------------------------------------------------------------------+   %n");
-			System.out.format("		+-------------------------------------------------------------------------------+	%n");
-			System.out.format(" 	|						Elija a que Apartado Desea Acceder:						|   %n"); 
-			System.out.format("		|-----------------------------------------------------------------------------  |	%n"); 
-			System.out.format(" 	|								1. Citas										|   %n"); 
-			System.out.format(" 	|								2. Exámenes									    |   %n"); 
-			System.out.format(" 	|								3. Finanzas									    |   %n"); 
-			System.out.format(" 	|								4. Resultados y Medicamentos					|   %n"); 
-			System.out.format(" 	|								5. Administración								|   %n"); 
-			System.out.format(" 	|								0. Salir del sistema							|   %n"); 
-			System.out.format(" 	+-------------------------------------------------------------------------------+   %n");
+			System.out.format("+-------------------------------------------------+%n");
+			System.out.format("|	Bienvenido a su Sistema Médico		  |%n");
+			System.out.format("+-------------------------------------------------+%n");
+			System.out.format("+-------------------------------------------------+%n");
+			System.out.format("|	Elija a que apartado desea acceder	  |%n");
+			System.out.format("+-------------------------------------------------+%n");
+			System.out.format("+-------------------------------------------------+%n");
+			System.out.format("|		1. Citas			  |%n");
+			System.out.format("|		2. Exámenes			  |%n");
+			System.out.format("|		3. Finanzas			  |%n");
+			System.out.format("|		4. Resultados y Medicamentos	  |%n");
+			System.out.format("|		5. Administración		  |%n");
+			System.out.format("|		0. Salir del sistema		  |%n");
+			System.out.format("+-------------------------------------------------+%n");
 			
 			
 //			System.out.println("-------------------------------------" + "\n"+
@@ -557,16 +558,16 @@ public class Interfaz {
 			}
 		}
 
-		System.out.format("+--------------------------------------------------------+%n");
-		System.out.format("|	Escoja la accion que desea realizar				    |%n");
-		System.out.format("+--------------------------------------------------------+%n");
-		System.out.format("+--------------------------------------------------------+%n");
-		System.out.format("|		1. Pagar consultas		  					  	|%n");
-		System.out.format("|		2. Pagar entregas								|%n");
-		System.out.format("|		3. Consultar dinero disponibles	  				|%n");
-		System.out.format("|		4. Pago de nomina	  	  						|%n");
-		System.out.format("|		5. Ir hacia atrás								|%n");
-		System.out.format("+--------------------------------------------------------+%n");
+		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("|	Escoja la accion que desea realizar		|%n");
+		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("|		1. Pagar consultas		  	|%n");
+		System.out.format("|		2. Pagar entregas			|%n");
+		System.out.format("|		3. Consultar dinero disponibles	  	|%n");
+		System.out.format("|		4. Pago de nomina	  	  	|%n");
+		System.out.format("|		5. Ir hacia atrás			|%n");
+		System.out.format("+-------------------------------------------------------+%n");
 		
 
 		opcion = sc.nextInt();
@@ -697,15 +698,15 @@ public class Interfaz {
 			Diagnostico.sintomas.add("gripa");
 			Diagnostico dia = new Diagnostico(paciente, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
 			Medico.listado.add(dia);
-			System.out.format("+--------------------------------------------------------+%n");
-			System.out.format("|		Escoja una opción								|%n");
-			System.out.format("+--------------------------------------------------------+%n");
-			System.out.format("+--------------------------------------------------------+%n");
-			System.out.format("|		1. Crear diagnostico		  					|%n");
-			System.out.format("|		2. Mostrar diagnósticos							|%n");
-			System.out.format("|		3. Solicitar entra de medicamentos  			|%n");
-			System.out.format("|		4. Ir hacia atrás								|%n");
-			System.out.format("+--------------------------------------------------------+%n");
+			System.out.format("+-------------------------------------------------------+%n");
+			System.out.format("|		Escoja una opción			|%n");
+			System.out.format("+-------------------------------------------------------+%n");
+			System.out.format("+-------------------------------------------------------+%n");
+			System.out.format("|		1. Crear diagnostico		  	|%n");
+			System.out.format("|		2. Mostrar diagnósticos			|%n");
+			System.out.format("|		3. Solicitar entra de medicamentos  	|%n");
+			System.out.format("|		4. Ir hacia atrás			|%n");
+			System.out.format("+-------------------------------------------------------+%n");
 			
 			
 		opcion = sc.nextInt();
