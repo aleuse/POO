@@ -572,7 +572,6 @@ public class Interfaz {
 		case 1:
 		
 			ArrayList<Consulta>consultas_paciente= new ArrayList<>(paciente.getConsultas().values());
-				//System.out.println("\n");
 			while(true) {
 
 				for (Consulta c: consultas_paciente) {
@@ -583,6 +582,7 @@ public class Interfaz {
 	
 				System.out.println("Ingrese el ID de la consulta que desea pagar (Para ir hacia atras ingrese el numero -1): ");
 				int id_entrega = sc.nextInt();
+				System.out.println("\n");
 				if (id_entrega == -1) {
 					finanzas();
 				}
@@ -612,6 +612,7 @@ public class Interfaz {
 	
 				System.out.println("Ingrese el ID de la entrega que desea pagar (Para ir hacia atras ingrese el numero -1): ");
 				int id_entrega = sc.nextInt();
+				System.out.println("\n");
 				if (id_entrega == -1) {
 					finanzas();
 				}
@@ -654,6 +655,7 @@ public class Interfaz {
 
 			System.out.println("Ingrese el numero del documento del medico al que le deseas pagar (Para ir hacia atras ingrese el numero -1): ");
 			int numeroDocumento = sc.nextInt();
+			System.out.println("\n");
 			if (numeroDocumento == -1) {
 				finanzas();
 			}
