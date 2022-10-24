@@ -47,9 +47,6 @@ public class Diagnostico {
         this.id = id;
     }
 
-    
-
-
     public Medicamentos getMedicamiento() {
         return medicamiento;
     }
