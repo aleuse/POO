@@ -701,11 +701,11 @@ public class Interfaz {
 					if (pacientes.getNumeroDocumento() == cedulaPa){
 						paciente5=pacientes;
 					}
-					else{
+				}
+				if(paciente5 == null){
 						System.out.println("El documento del paciente no se encuentra en la base de datos");
 						resultados();
 					}
-				}
 					System.out.println("Inserte los siguientes datos para la fecha de la consulta");
 					LocalDateTime fechaCita = null;
 					System.out.println("Año: ");
@@ -793,21 +793,22 @@ public class Interfaz {
 		}
 		case 2:
 			System.out.println("Por favor dijite la cedula del paciente: ");
-			int cedulaPa = input.nextInt();
-			Paciente paciente5 = null;
+			int cedulaPa1 = input.nextInt();
+			Paciente paciente6 = null;
 			ArrayList<Paciente> paciente2 = Paciente.pacientes;
 			for (Paciente pacientes : paciente2) {
-				if (pacientes.getNumeroDocumento() == cedulaPa){
-					paciente5=pacientes;
+				System.out.println(pacientes.getNumeroDocumento());
+				if (pacientes.getNumeroDocumento() == cedulaPa1){
+					paciente6=pacientes;
 				}
-				else{
-					System.out.println("El documento del paciente no se encuentra en la base de datos");
-					resultados();
-				}
+			}
+			if(paciente6 == null){
+				System.out.println("El documento del paciente no se encuentra en la base de datos");
+				resultados();
 			}
 			ArrayList<HistoriaClinica> histo = HistoriaClinica.historia;
 			for (HistoriaClinica historia : histo) {
-				if (historia.getPaciente().getNumeroDocumento() == paciente5.getNumeroDocumento()){
+				if (historia.getPaciente().getNumeroDocumento() == paciente6.getNumeroDocumento()){
 					System.out.println(historia.getDiagnosticos());
 					resultados();
 				}
