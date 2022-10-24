@@ -693,7 +693,7 @@ public class Interfaz {
 	   		Cita cita = new Cita(paciente, "gripa", tipoCita.GENERAL);
 			cita.setPago(new Pago(200000, true));
 			Diagnostico.sintomas.add("gripa");
-			Diagnostico dia = new Diagnostico(paciente, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
+			Diagnostico dia = new Diagnostico(paciente1, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
 			Medico.listado.add(dia);
 			System.out.format("+-------------------------------------------------------+%n");
 			System.out.format("|		Escoja una opción			|%n");
@@ -724,10 +724,10 @@ public class Interfaz {
 					if (pacientes.getNumeroDocumento() == cedulaPa){
 						paciente5=pacientes;
 					}
-					else{
-						System.out.println("El documento del paciente no se encuentra en la base de datos");
-						resultados();
-					}
+				}
+				if (paciente5==null){
+					System.out.println("El documento del paciente no se encuentra en la base de datos");
+					resultados();
 				}
 					System.out.println("Inserte los siguientes datos para la fecha de la consulta");
 					LocalDateTime fechaCita = null;
@@ -823,10 +823,10 @@ public class Interfaz {
 				if (pacientes.getNumeroDocumento() == cedulaPa1){
 					paciente6=pacientes;
 				}
-				else{
-					System.out.println("El documento del paciente no se encuentra en la base de datos");
-					resultados();
-				}
+			}
+			if (paciente6==null){
+				System.out.println("El documento del paciente no se encuentra en la base de datos");
+				resultados();
 			}
 			ArrayList<HistoriaClinica> histo = HistoriaClinica.historia;
 			for (HistoriaClinica historia : histo) {
