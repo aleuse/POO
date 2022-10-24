@@ -848,6 +848,7 @@ public class Interfaz {
 								System.out.println("2. No");
 								option1 = input.next();
 								if (option1.equals("1")) {
+									System.out.println("Se le redirigira al menu de finanzas");
 									finanzas();
 								
 								}
