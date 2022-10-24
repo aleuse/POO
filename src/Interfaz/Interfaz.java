@@ -690,7 +690,7 @@ public class Interfaz {
 	   		Cita cita = new Cita(paciente, "gripa", tipoCita.General);
 			cita.setPago(new Pago(200000, true));
 			Diagnostico.sintomas.add("gripa");
-			Diagnostico dia = new Diagnostico(paciente, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
+			Diagnostico dia = new Diagnostico(paciente1, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
 			Medico.listado.add(dia);
 			System.out.format("+-------------------------------------------------------+%n");
 			System.out.format("|		Escoja una opción			|%n");
