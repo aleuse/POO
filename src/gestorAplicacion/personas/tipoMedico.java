@@ -19,8 +19,8 @@ public enum tipoMedico {//casteamos costos
                   ((int) (tipoCita.PRIORITARIA.getValorCita()*0.5))),
     //Prioritario ((int) (tipoCita.Prioritaria.getValorCita()*0.5)),
     
-    OPTOMETRA    ((int) (tipoCita.OPTOMETRIA.getValorCita()*0.6)),
-    FONOAUDIOLOGO((int) (tipoCita.AUDIOMETRIA.getValorCita()*0.6)),
+    OPTOMETRIA    ((int) (tipoCita.OPTOMETRIA.getValorCita()*0.6)),
+    FONOAUDIOLOGO((int) (tipoCita.Audiometria.getValorCita()*0.6)),
     PEDIATRA     ((int) (tipoCita.PEDIATRIA.getValorCita()*0.7)), 
 
     BACTERIOLOGO (((int)(tipoExamen.Sangre.getValorExamen()*0.7)+
