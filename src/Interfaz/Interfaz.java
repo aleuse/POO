@@ -811,6 +811,7 @@ public class Interfaz {
 			}
 			
 		}
+		break;
 		case 2:
 			System.out.println("Por favor dijite la cedula del paciente: ");
 			int cedulaPa1 = input.nextInt();
@@ -833,6 +834,8 @@ public class Interfaz {
 					resultados();
 				}
 			}
+			break;
+			
 		case 3:
 		System.out.println("Ingrese el documento del paciente: ");
 		int docu = input.nextInt();
