@@ -820,7 +820,7 @@ public class Interfaz {
 
 		for (Diagnostico medi : lis) {
 			if (medi.getPersona().getNumeroDocumento() == (docu)){
-				System.out.println(medi.medicamiento.getTipoMed());
+				System.out.println("Sus medicamentos son: " + medi.medicamiento.getTipoMed());
 
 				String option;
 				while (true) {
