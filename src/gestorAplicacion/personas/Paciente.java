@@ -142,12 +142,12 @@ public class Paciente extends Persona{
 		}
 	}
 	
-	public String reagendarCita(LocalDateTime fechaActual, LocalDateTime fechaNueva) {
+	public String reagendarCita(int id, LocalDateTime fechaNueva) {
 		Cita cita = null;
 		ArrayList<Cita> citas = Cita.listaCitas;
 		//Se busca la cita que se quiere reagendar
 		for (int i = 0; i<citas.size(); i++) {
-			if (citas.get(i).getPaciente() == this && citas.get(i).getFecha() == fechaActual) {
+			if (citas.get(i).getPaciente() == this && citas.get(i).getId() == id) {
 				cita = citas.get(i);
 				break;
 			}
@@ -155,7 +155,7 @@ public class Paciente extends Persona{
 		//Se verifica que tanto el medico como el consultorio esten disponible en la nueva fecha
 		if(Administrador.verificarDisponibilidadMedico(fechaNueva,cita.getMedico()) == true && Administrador.verificarDisponibilidadConsultorio(fechaNueva, cita.getConsultorio())==true){
 			cita.setFecha(fechaNueva);
-			return "Su cita ha sido reagendada exitosamente y será en el mismo cosultorio, con el mismo médico";
+			return "Su cita ha sido reagendada exitosamente y será en el mismo consultorio, con el mismo médico";
 		}
 		else {
 			return "El medico con el que tenia previamente su cita no esta disponible para esa nueva fecha, ¿desea proceder con un nuevo medico?";
@@ -163,11 +163,12 @@ public class Paciente extends Persona{
 	}
 	
 	//En caso de que el medico no este disponible
-	public boolean reagendarCitaMedico(LocalDateTime fecha) {
+	public String reagendarCitaMedico(int id, LocalDateTime fecha) {
 		Cita cita = null;
 		ArrayList<Cita> citas = Cita.listaCitas;
+		//Se busca la cita que se quiere reagendar
 		for (int i = 0; i<citas.size(); i++) {
-			if (citas.get(i).getPaciente() == this) {
+			if (citas.get(i).getPaciente() == this && citas.get(i).getId() == id) {
 				cita = citas.get(i);
 				break;
 			}
@@ -183,12 +184,12 @@ public class Paciente extends Persona{
 				break;
 			}
 			else if(Administrador.verificarDisponibilidadMedico(fecha, medicos.get(i)) == false && i== medicos.size()){
-				return false;
+				return "No fue posible reagendar su cita, debido a que no hay disponibilidad de citas, vuelvalo a intentar mas tarde";
 			}
 		}
 		//Se verifica si el consultorio esta disponible para la nueva fecha
 		if (Administrador.verificarDisponibilidadConsultorio(fecha, cita.getConsultorio())==true && medico != null) {
-			return true;
+			return "Su cita ha sido reagendada exitosamente, su nuevo medico será : "+ medico.getNombre()+" "+medico.getApellido()+ " en el mismo consultorio \n";
 		}
 		//Si el consultorio no esta disponible, se busca un nuevo consultorio
 		else {
@@ -202,7 +203,7 @@ public class Paciente extends Persona{
 					break;
 				}
 			}
-			return true;
+			return "Su cita ha sido reagendada exitosamente, su nuevo medico será : "+ medico.getNombre()+" "+medico.getApellido()+ " y esta será en el consultorio: "+consultorio.getId()+ "\n";
 		}
 	}
 
