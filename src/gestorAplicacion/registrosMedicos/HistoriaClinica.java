@@ -6,6 +6,7 @@ public class HistoriaClinica {
     private Paciente paciente;
     private ArrayList<Diagnostico> diagnosticos;
     public static ArrayList<HistoriaClinica> historia= new ArrayList<HistoriaClinica>();
+    static HistoriaClinica pacEncontrado;
     
     //constructor
     public HistoriaClinica(Paciente paciente, ArrayList<Diagnostico> diagnosticos) {
@@ -30,6 +31,11 @@ public class HistoriaClinica {
     public void setDiagnosticos(ArrayList<Diagnostico> diagnosticos) {
         this.diagnosticos = diagnosticos;
     }
+    public static HistoriaClinica getPacEncontrado() {
+        return pacEncontrado;
+    }
+    
+    //METODOS
 
     public String visualizarDiagnostico(Diagnostico diagnosticos, int id) {
         return "El diagnostico es "+ diagnosticos + "El id del diagnostico es "+id;
@@ -39,14 +45,16 @@ public class HistoriaClinica {
         HistoriaClinica historia1 = new HistoriaClinica(paciente, diagnosticos);
         historia.add(historia1);
     }
-    public static HistoriaClinica buscarPaciente(int solicitado){// se ingresa el num de la cc y se busca en la lista cuantas hay
+    
+    
+    public static int buscarPaciente(int solicitado){// se ingresa el num de la cc y se busca en la lista cuantas hay
         for (HistoriaClinica ee : historia) {
             if(ee.getPaciente().getNumeroDocumento()==solicitado){
-                return ee.getPaciente().consultarHistorioaClinica();
+                pacEncontrado= ee.getPaciente().consultarHistorioaClinica();
+                return 1;
             }
         }
-        return new HistoriaClinica();
+        return 0;
     }
-
     
 }

@@ -39,7 +39,15 @@ public class Interfaz {
 		
 		loop: while(true) {
 			System.out.format("+-------------------------------------------------+%n");
-			System.out.format("|	Bienvenido a su Sistema Médico		  |%n");
+                        System.out.println("                  (0 0)           ");
+                        System.out.println("          ---oOO-- (_) ----oOO---        ");
+                        System.out.println("  ╔════════════════════════════════════════╗   ");
+                        System.out.println("  ║ Bienveniedo al Sistema Medico! ♥  ║   ");
+                        System.out.println("  ╚════════════════════════════════════════╝   ");
+                        System.out.println("           -------------------           ");
+                        System.out.println("                 |__|__|       ");
+                        System.out.println("                  || ||   ");
+                        System.out.println("                 ooO Ooo");
 			System.out.format("+-------------------------------------------------+%n");
 			System.out.format("+-------------------------------------------------+%n");
 			System.out.format("|	Elija a que apartado desea acceder	  |%n");
@@ -79,7 +87,27 @@ public class Interfaz {
 			case 5:
 				administracion();
 			case 0:
-				System.out.println("Se ha terminado");
+                            System.out.println("Se ha terminado");
+                            System.out.println();
+                            System.out.println("________00000000000___________000000000000_________");
+                            System.out.println("______00000000_____00000___000000_____0000000______");
+                            System.out.println("____0000000_____________000______________00000_____");
+                            System.out.println("___0000000_______________0_________________0000____");
+                            System.out.println("__000000____________________________________0000___");
+                            System.out.println("__00000_____________________________________ 0000__");
+                            System.out.println("_00000______________________________________00000__");
+                            System.out.println("_00000_____________________________________000000__");
+                            System.out.println("__000000_________________________________0000000___");
+                            System.out.println("___0000000______________________________0000000____");
+                            System.out.println("_____000000____________________________000000______");
+                            System.out.println("_______000000________________________000000________");
+                            System.out.println("__________00000_____________________0000___________");
+                            System.out.println("_____________0000_________________0000_____________");
+                            System.out.println("_______________0000_____________000________________");
+                            System.out.println("_________________000_________000___________________");
+                            System.out.println("_________________ __000_____00_____________________");
+                            System.out.println("______________________00__00_______________________");
+                            System.out.println("________________________00_________________________");
 				break loop;
 			}
 
@@ -906,9 +934,295 @@ public class Interfaz {
 		}
 	}
 	
-	static void administracion() {
-	
-	}
+    static void administracion() {
+        System.out.println("Datos del sistema");
+        System.out.println("Se tiene un total de " + Medico.medicos.size() + " medicos y " + Consultorio.consultorios.size() + " consultorios");
+        System.out.println("Se han atendido a " + Paciente.pacientes + " pacientes");
+        System.out.println("Y se ha facturado hasta ahora " + "$" + " pesos");
+        System.out.println("--------------------------------------");
+        System.out.println("Desea visualizar las citas, examanes y entregas realizadas? [1]si  [0]no");
+        do {
+            System.out.print("Ingrese una opcion valida: ");
+            opcion = sc.nextInt();
+        } while (opcion != 1 & opcion != 0);
+        if (opcion == 1) {
+            System.out.println("Citas realizadas");
+            int cant = Cita.informeCitas(tipoCita.GENERAL);
+            int costoUnitario = (tipoCita.GENERAL.getValorCita());
+            System.out.println("General: " + cant + " citas recaudando" + cant * costoUnitario + " pesos");
+
+            cant = Cita.informeCitas(tipoCita.PRIORITARIA);
+            costoUnitario = (tipoCita.PRIORITARIA.getValorCita());
+            System.out.println("Prioritaria: " + cant + " citas recaudando" + cant * costoUnitario + " pesos");
+
+            cant = Cita.informeCitas(tipoCita.OPTOMETRIA);
+            costoUnitario = (tipoCita.OPTOMETRIA.getValorCita());
+            System.out.println("Optometría: " + cant + " citas recaudando" + cant * costoUnitario + " pesos");
+
+            cant = Cita.informeCitas(tipoCita.AUDIOMETRIA);
+            costoUnitario = (tipoCita.AUDIOMETRIA.getValorCita());
+            System.out.println("Audiometria: " + cant + " citas recaudando" + cant * costoUnitario + " pesos");
+
+            cant = Cita.informeCitas(tipoCita.LABORATORIO);
+            costoUnitario = (tipoCita.LABORATORIO.getValorCita());
+            System.out.println("laboratorio: " + cant + " citas recaudando" + cant * costoUnitario + " pesos");
+
+            cant = Cita.informeCitas(tipoCita.PEDIATRIA);
+            costoUnitario = (tipoCita.PEDIATRIA.getValorCita());
+            System.out.println("Pediatria: " + cant + " citas recaudando" + cant * costoUnitario + " pesos");
+            System.out.println("--------------------------------------");
+
+            System.out.println("Examenes realizados");
+            cant = Examen.informeExamenes(tipoExamen.SANGRE);
+            costoUnitario = (tipoExamen.SANGRE.getValorExamen());
+            System.out.println("Sangre: " + cant + " examenes recaudando" + cant * costoUnitario + " pesos");
+
+            cant = Examen.informeExamenes(tipoExamen.LABORATORIO);
+            costoUnitario = (tipoExamen.LABORATORIO.getValorExamen());
+            System.out.println("Laboratorio: " + cant + " examenes recaudando" + cant * costoUnitario + " pesos");
+
+            cant = Examen.informeExamenes(tipoExamen.RAYOSX);
+            costoUnitario = (tipoExamen.RAYOSX.getValorExamen());
+            System.out.println("Rayos X: " + cant + " examenes recaudando" + cant * costoUnitario + " pesos");
+
+            cant = Examen.informeExamenes(tipoExamen.CITOQUIMICO);
+            costoUnitario = (tipoExamen.CITOQUIMICO.getValorExamen());
+            System.out.println("Citoquimico: " + cant + " examenes recaudando" + cant * costoUnitario + " pesos");
+            System.out.println("--------------------------------------");
+
+            System.out.println("Estado de la entrega");
+            cant = Entrega.informeEntregas(estadoEntrega.PROCESADA);
+            System.out.println("Procesada: " + cant + " entregas");
+
+            cant = Entrega.informeEntregas(estadoEntrega.EN_CAMINO);
+            System.out.println("En camino: " + cant + " entregas");
+
+            cant = Entrega.informeEntregas(estadoEntrega.REALIZADA);
+            System.out.println("Realizada: " + cant + " entregas");
+        }
+        System.out.println("--------------------------------------");
+        System.out.println("Se tiene un total de " + HistoriaClinica.historia.size() + " historias clinicas");
+        System.out.println("Desea buscar la historia clinica de un paciente? [1]si  [0]no");
+        do {
+            System.out.print("Ingrese una opcion valida: ");
+            opcion = sc.nextInt();
+        } while (opcion != 1 & opcion != 0);
+        if (opcion == 1) {
+            int cc;
+            do {
+                System.out.print("Ingrese numero de intedificacion: ");
+                cc = sc.nextInt();
+                int resp = HistoriaClinica.buscarPaciente(cc);
+                if (resp == 0) {// no se encontró historiaClinica
+                    System.out.println("Paciente no encontrado");
+                    System.out.println("¿Desea volver a buscar paciente? [1]si  [0]no");
+                    cc = sc.nextInt();
+                } else {
+                    System.out.println("paciente encontrado");
+                    System.out.print(HistoriaClinica.getPacEncontrado());
+                    cc = 0;
+                }
+            } while (cc != 0);
+        }
+
+        System.out.println("--------------------------------------");
+        System.out.println("Con el dinero obtenido hasta ahora " + "x" + " $ se puede:");
+        System.out.println("1. Contratar más medicos");
+        System.out.println("2. Adquirir más consultorios");
+        System.out.println("3. Comprar más medicamentos");
+        System.out.println("0. No utilizar el dinero");
+        System.out.println();
+        System.out.println("¿Que desea hacer?");
+
+        do {
+            System.out.print("Ingrese una opcion valida: ");
+            opcion = sc.nextInt();
+        } while (opcion != 1 & opcion != 2 & opcion != 3 & opcion != 0);
+
+        switch (opcion) {
+            case 1:
+                System.out.println("Se tiene un total de " + Medico.medicos.size() + " medicos");
+                System.out.println("A cada medico se le paga un porcentaje por consulta");
+
+                int med = Medico.informesMedicos(tipoMedico.GENERAL);
+                System.out.println("General: " + med + " especialistas. Comision del 50%");
+
+                med = Medico.informesMedicos(tipoMedico.OPTOMETRIA);
+                System.out.println("Optometra: " + med + " especialistas. Comision del 60%");
+
+                med = Medico.informesMedicos(tipoMedico.FONOAUDIOLOGO);
+                System.out.println("Fonoaudiologo: " + med + " especialistas. Comision del 60%");
+
+                med = Medico.informesMedicos(tipoMedico.PEDIATRA);
+                System.out.println("Pediatra: " + med + " especialistas. Comision del 70%");
+
+                med = Medico.informesMedicos(tipoMedico.BACTERIOLOGO);
+                System.out.println("Bacteriologo: " + med + " especialistas. Comision del 70%");
+
+                System.out.println("Que especialista desea contratar");
+                System.out.println("1. General");
+                System.out.println("2. Optometra");
+                System.out.println("3. Fonoaudiologo");
+                System.out.println("4. Pediatra");
+                System.out.println("5. Bacteriologo");
+
+                do {
+                    System.out.print("Ingrese un numero valido: ");
+                    opcion = sc.nextInt();
+                } while (opcion != 1 & opcion != 2 & opcion != 3 & opcion != 4 & opcion != 5);
+
+                int nuevosMedicos;
+                int mn;
+                tipoMedico nuevo;
+                switch (opcion) {
+                    case 1:
+                        nuevo = tipoMedico.GENERAL;
+                        break;
+                    case 2:
+                        nuevo = tipoMedico.OPTOMETRIA;
+                        break;
+                    case 3:
+                        nuevo = tipoMedico.FONOAUDIOLOGO;
+                        break;
+                    case 4:
+                        nuevo = tipoMedico.PEDIATRA;
+                        break;
+                    default:
+                        nuevo = tipoMedico.BACTERIOLOGO;
+                        break;
+                }
+
+                System.out.println("¿Cuantos medicos de especialidad " + nuevo + " desea contratar?");
+                System.out.print("Ingrese un numero: ");
+                nuevosMedicos = sc.nextInt();
+                mn = 0;
+                for (int i = 0; i < nuevosMedicos; i++) {
+                    double x = Math.random();
+                    if (x > 0.3) {
+                        mn++;
+                        //agg nuevo en el tipoMedico
+
+                        //Medico(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad,String genero,
+                        //long telefono, String correoElectronico, String direccion, tipoMedico nuevo, boolean disponibilidad)
+                    }
+                }
+                if (mn > 0) {
+                    System.out.println("Se han podido contratar " + mn + " especialistas ");
+                    System.out.println("Ahora hay" + Medico.medicos.size() + " medicos");
+                } else {
+                    System.out.println("No se han podido adquirir nuevos especialistas. Lo sentimos");
+                }
+                break;
+            case 2:
+                int cConsultorio = 100000;
+                System.out.println("Se tiene un total de " + Consultorio.consultorios.size() + " consultorios");
+                System.out.println("Actualmente el Dinero Disponible es: $" + Administrador.dinero);
+                System.out.println("Cada consultorio tiene un precio de " + cConsultorio + " pesos");
+                System.out.println("¿Cuantos consultorios desea adquirir?");
+                System.out.print("Ingrese un numero: ");
+                int nuevosConsultorios = sc.nextInt();
+
+                int cn = 0;
+                if (Administrador.dinero < (nuevosConsultorios * cConsultorio)) {
+                    System.out.println("No hay suficiente dinero para comprar " + nuevosConsultorios + " consultorios");
+                    break;
+                } else {
+                    for (int i = 0; i < nuevosConsultorios; i++) {
+                        double x = Math.random();
+                        if (x > 0.4) {
+                            cn++;
+                        }
+                    }
+                }
+
+                if (cn > 0) {
+                    Administrador.dinero = Administrador.dinero - (cn * cConsultorio);
+                    System.out.println("Se han podido adquirir " + cn + " consultorios");
+                    System.out.println("Ahora hay " + Consultorio.consultorios.size() + " consultorios");
+                    System.out.println("Actualmente el Dinero Disponible es: $" + Administrador.dinero);
+                } else {
+                    System.out.println("PROBLEMAS EN LA OBRA!!!");
+                    System.out.println("No se han podido adquirir consultorios");
+                }
+                break;
+            case 3:
+                System.out.println("INVENTARIO MEDICAMENTOS");
+                //ACETAMINOFEN
+                int a = Medicamentos.cantAcetaminofen;
+                tipoMedicamento b = tipoMedicamento.Acetaminofen;
+                int c = b.getValorMed();
+                System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: " + c + " pesos");
+                System.out.print("¿Cuantos unidades de " + b + " desea comprar? : ");
+                int comprar = sc.nextInt();
+                if (c == 0) {
+                } else if (Administrador.dinero < (comprar * c)) {
+                    System.out.println("ERROR FINANCIERO, dinero insuficiente");
+                } else {
+                    Administrador.dinero = Administrador.dinero - (comprar * c);
+                    System.out.println("COMPRA EXITOSA");
+                }
+
+                //AMOXICILINA
+                a = Medicamentos.cantAmoxicilina;
+                b = tipoMedicamento.Amoxicilina;
+                c = b.getValorMed();
+                System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: " + c + " pesos");
+                System.out.print("¿Cuantos unidades de " + b + " desea comprar? : ");
+                comprar = sc.nextInt();
+                if (c == 0) {
+                } else if (Administrador.dinero < (comprar * c)) {
+                    System.out.println("ERROR FINANCIERO, dinero insuficiente");
+                } else {
+                    Administrador.dinero = Administrador.dinero - (comprar * c);
+                    System.out.println("FELICIDADES POR TU COMPRA");
+                }
+
+                //IBUPROFENO
+                a = Medicamentos.cantIbuprofeno;
+                b = tipoMedicamento.Ibuprofeno;
+                c = b.getValorMed();
+                System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: " + c + " pesos");
+                System.out.print("¿Cuantos unidades de " + b + " desea comprar? : ");
+                comprar = sc.nextInt();
+                if (c == 0) {
+                } else if (Administrador.dinero < (comprar * c)) {
+                    System.out.println("ERROR FINANCIERO, dinero insuficiente");
+                } else {
+                    Administrador.dinero = Administrador.dinero - (comprar * c);
+                    System.out.println("ENHORABUENA");
+                }
+
+                //LAGRIMAS ARTIFICIALES
+                a = Medicamentos.cantLagrimasArtificiales;
+                b = tipoMedicamento.LagrimasArtificiales;
+                c = b.getValorMed();
+                System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: " + c + " pesos");
+                System.out.print("¿Cuantos unidades de " + b + " desea comprar? : ");
+                comprar = sc.nextInt();
+                if (c == 0) {
+                } else if (Administrador.dinero < (comprar * c)) {
+                    System.out.println("ERROR FINANCIERO, dinero insuficiente");
+                } else {
+                    Administrador.dinero = Administrador.dinero - (comprar * c);
+                    System.out.println("COMPRA EXITOSA");
+                }
+
+                System.out.println("--- INVENTARIO ACTUALIZADO ---");
+                System.out.println("hay en inventario " + Medicamentos.cantAcetaminofen + " unidades de " + tipoMedicamento.Acetaminofen);
+                System.out.println("hay en inventario " + Medicamentos.cantAmoxicilina + " unidades de " + tipoMedicamento.Amoxicilina);
+                System.out.println("hay en inventario " + Medicamentos.cantIbuprofeno + " unidades de " + tipoMedicamento.Ibuprofeno);
+                System.out.println("hay en inventario " + Medicamentos.cantLagrimasArtificiales + " unidades de " + tipoMedicamento.LagrimasArtificiales);
+
+                System.out.println("Actualmente el Dinero Disponible es: $" + Administrador.dinero);
+
+                System.out.println("--------------------------------------");
+                break;
+            case 0:
+                System.out.println("Actualmente el Dinero Disponible es: $" + Administrador.dinero);
+                break;
+        }//finaliza el switch de utilizar dinero
+
+    }
 	
 
 }
