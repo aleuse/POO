@@ -9,7 +9,7 @@ package gestorAplicacion;
  * @author Roger Vera
  */
 public enum tipoExamen {
-    SANGRE(12000),LABORATORIO(14000),RAYOSX(40000),CITOQUIMICO(12000);    
+    Sangre(12000),Laboratorio(14000),RayosX(40000),Citoquimico(12000);    
     
     private int valorExamen;
     //constructor
