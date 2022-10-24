@@ -10,12 +10,12 @@ package gestorAplicacion;
  */
 public enum tipoCita {
     
-    General(14700), 
-    Prioritaria(14700), 
-    Optometria(25000), 
-    Audiometria(25000),
-    Pediatria(25000),
-    Laboratorio(25000);
+    GENERAL(14700), 
+    PRIORITARIA(14700), 
+    OPTOMETRIA(25000), 
+    AUDIOMETRIA(25000),
+    PEDIATRIA(25000),
+    LABORATORIO(25000);
     
     
     private int valorCita;

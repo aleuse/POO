@@ -64,7 +64,7 @@ public class Interfaz {
 //			"4. Resultados y Medicamentos"+ "\n"+
 //			"5. Administración	"+ "\n"+
 //			"0. Salir del sistema"+ "\n");
-			
+					
 			opcion = sc.nextInt();
 			
 			switch (opcion) {
@@ -376,23 +376,23 @@ public class Interfaz {
 	
 		switch(opcion) {
 		case 1:
-			tipoEx = tipoExamen.Sangre;
-			tipoMed = tipoMedico.Bacteriologo;
+			tipoEx = tipoExamen.SANGRE;
+			tipoMed = tipoMedico.BACTERIOLOGO;
 			System.out.println(tipoEx + " 1");
 			break;
 		case 2:
-			tipoEx = tipoExamen.Laboratorio;
-			tipoMed = tipoMedico.Bacteriologo;
+			tipoEx = tipoExamen.LABORATORIO;
+			tipoMed = tipoMedico.BACTERIOLOGO;
 			System.out.println(tipoEx + " 2");
 			break;
 		case 3:
-			tipoEx = tipoExamen.RayosX;
-			tipoMed = tipoMedico.General;
+			tipoEx = tipoExamen.RAYOSX;
+			tipoMed = tipoMedico.GENERAL;
 			System.out.println(tipoEx + " 3");
 			break;
 		case 4: 
-			tipoEx = tipoExamen.Citoquimico;
-			tipoMed = tipoMedico.Bacteriologo;
+			tipoEx = tipoExamen.CITOQUIMICO;
+			tipoMed = tipoMedico.BACTERIOLOGO;
 			System.out.println(tipoEx + " 4");
 			break;
 		case 5:
@@ -511,18 +511,18 @@ public class Interfaz {
 
 		Medico medico1 = new Medico("Ana", "Marin", tipoDocumento.CEDULA,
 		5671, 45, "Mujer", 3128, "Anamarin@gmail.com", "Carrera 34 #03",
-		tipoCita.General, tipoMedico.General, true, null, null, 50000, null);
+		tipoCita.GENERAL, tipoMedico.GENERAL, true, null, null, 50000, null);
 
 		Medico medico2 = new Medico("Juan", "Gomez", tipoDocumento.CEDULA,
 		3416, 45, "Hombre", 3128, "Anamarin@gmail.com", "Carrera 34 #03",
-		tipoCita.General, tipoMedico.General, true, null, null, 50000, null);
+		tipoCita.GENERAL, tipoMedico.GENERAL, true, null, null, 50000, null);
 
 		Consultorio consultorio1 = new Consultorio(medico1, paciente1, "xd", true);
 		Consultorio consultorio2 = new Consultorio(medico2, paciente1, "xd", true);
 
-		Cita cita1 = new Cita(paciente1, "gripa", medico1, consultorio1, fecha1, tipoCita.General);
-		Cita cita2 = new Cita(paciente1, "gripa", medico2, consultorio2, fecha2, tipoCita.General);
-		Cita cita3 = new Cita(paciente1, "gripa", medico1, consultorio1, fecha3, tipoCita.General);
+		Cita cita1 = new Cita(paciente1, "gripa", medico1, consultorio1, fecha1, tipoCita.GENERAL);
+		Cita cita2 = new Cita(paciente1, "gripa", medico2, consultorio2, fecha2, tipoCita.GENERAL);
+		Cita cita3 = new Cita(paciente1, "gripa", medico1, consultorio1, fecha3, tipoCita.GENERAL);
 
 		cita1.setPago(new Pago(15000, false));
 		cita2.setPago(new Pago(15000, false));
@@ -534,8 +534,8 @@ public class Interfaz {
 
 		pacientes.add(paciente1);
 
-		Entrega entrega1 = new Entrega(paciente1, "Calle 88b #54", null, estadoEntrega.En_camino);
-		Entrega entrega2 = new Entrega(paciente1, "Calle 88b #54", null, estadoEntrega.En_camino);
+		Entrega entrega1 = new Entrega(paciente1, "Calle 88b #54", null, estadoEntrega.EN_CAMINO);
+		Entrega entrega2 = new Entrega(paciente1, "Calle 88b #54", null, estadoEntrega.EN_CAMINO);
 
 		paciente1.getEntregas().put(fecha1, entrega1);
 		paciente1.getEntregas().put(fecha2, entrega2);
@@ -553,14 +553,17 @@ public class Interfaz {
 			}
 		}
 
-		System.out.println("\n" + "--------------------------------------------" + "\n"+
-			"    Escoja la accion que desea realizar:" + "\n"+
-			"--------------------------------------------" + "\n"+ "\n"+
-			"1. Pagar consultas"  + "\n"+
-			"2. Pagar entregas"+ "\n"+
-			"3. Consultar dinero disponible"+ "\n"+
-			"4. Pago de Nomina"+ "\n"+
-			"5. Ir hacia atras" + "\n");
+		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("|	Escoja la accion que desea realizar		|%n");
+		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("|		1. Pagar consultas		  	|%n");
+		System.out.format("|		2. Pagar entregas			|%n");
+		System.out.format("|		3. Consultar dinero disponibles	  	|%n");
+		System.out.format("|		4. Pago de nomina	  	  	|%n");
+		System.out.format("|		5. Ir hacia atrás			|%n");
+		System.out.format("+-------------------------------------------------------+%n");
+		
 
 		opcion = sc.nextInt();
 		
@@ -569,26 +572,29 @@ public class Interfaz {
 		case 1:
 		
 			ArrayList<Consulta>consultas_paciente= new ArrayList<>(paciente.getConsultas().values());
-			//System.out.println("\n");
-			for (Consulta c: consultas_paciente) {
-				if (c.getPago().isPagado() == false) {
-					System.out.println("La consulta numero " + c.getId() + " en la fecha " + c.getFecha() + " esta sin pagar");
-				}
-			}
-			
-			System.out.println("Ingrese el ID de la consulta que desea pagar (Para ir hacia atras ingrese el numero -1): ");
-			int id_consulta = sc.nextInt();
-			if (id_consulta == -1) {
-				finanzas();
-			}
-			
-			//System.out.println("\n");
+				//System.out.println("\n");
+			while(true) {
 
-			for (Consulta c: consultas_paciente) {
-				if (c.getId() == id_consulta) {
-					c.getPago().setPagado(true);
-					Administrador.sumarDinero(c.getPago().getValor());
-					System.out.println("La consulta numero " + c.getId() + " en la fecha " + c.getFecha() + " ha sido pagada exitosamente");
+				for (Consulta c: consultas_paciente) {
+					if (c.getPago().isPagado() == false) {
+						System.out.println("La consulta numero " + c.getId() + " esta sin pagar");
+					}
+				}
+	
+				System.out.println("Ingrese el ID de la consulta que desea pagar (Para ir hacia atras ingrese el numero -1): ");
+				int id_entrega = sc.nextInt();
+				if (id_entrega == -1) {
+					finanzas();
+				}
+	
+				else{
+					for (Consulta c: consultas_paciente) {
+						if (c.getId() == id_entrega) {
+							c.getPago().setPagado(true);
+							Administrador.sumarDinero(c.getPago().getValor());
+							System.out.println("La consulta numero " + c.getId() + " ha sido pagada exitosamente");
+						}
+					} 
 				}
 			}
 			
@@ -597,26 +603,32 @@ public class Interfaz {
 			
 			ArrayList<Entrega>entregas_paciente=new ArrayList<> (paciente.getEntregas().values());
 
-			for (Entrega e: entregas_paciente) {
-				if (e.getPago().isPagado() == false) {
-					System.out.println("La entrega numero " + e.getId() + " esta sin pagar");
+			while(true) {
+				for (Entrega e: entregas_paciente) {
+					if (e.getPago().isPagado() == false) {
+						System.out.println("La entrega numero " + e.getId() + " esta sin pagar");
+					}
 				}
-			}
-
-			System.out.println("Ingrese el ID de la entrega que desea pagar (Para ir hacia atras ingrese el numero -1): ");
-			int id_entrega = sc.nextInt();
-			if (id_entrega == -1) {
-				finanzas();
-			}
-
-			for (Entrega e: entregas_paciente) {
-				if (e.getId() == id_entrega) {
-					e.getPago().setPagado(true);
-					Administrador.sumarDinero(e.getPago().getValor());
-					System.out.println("La entrega numero " + e.getId() + " ha sido pagada exitosamente");
+	
+				System.out.println("Ingrese el ID de la entrega que desea pagar (Para ir hacia atras ingrese el numero -1): ");
+				int id_entrega = sc.nextInt();
+				if (id_entrega == -1) {
+					finanzas();
 				}
-			}  
-			
+	
+				else {
+					for (Entrega e: entregas_paciente) {
+						if (e.getId() == id_entrega) {
+							e.getPago().setPagado(true);
+							Administrador.sumarDinero(e.getPago().getValor());
+							System.out.println("La entrega numero " + e.getId() + " ha sido pagada exitosamente");
+						}
+					}
+				}
+				 
+			}
+			 
+
 			
 		case 3:
 
@@ -667,30 +679,16 @@ public class Interfaz {
 		 Paciente paciente = new Paciente("Camilo", "Martinez", tipoDocumento.CEDULA, 1074074689, 25, "masculino", 300762957,"mcm@gmail.com", "cra87#12-34", "SURA", false);
 			Paciente paciente1 = new Paciente("Maria", "Jaramillo", tipoDocumento.CEDULA, 9403862, 43, "femenino", 301762849,"mj@gmail.com", "calle 3", "SURA", false);
 			Medico m1 = new Medico("Sara", "Perez", tipoDocumento.CEDULA, 12345678, 50, "femenino", 6048742, "sp@yahoo.com", "calle 43", 
-					tipoCita.General, tipoMedico.General, true);
-			Medico m2 = new Medico("Mauricio", "Fernandez", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.Audiometria, tipoMedico.Fonoaudiologo, true);
-			Medico m3 = new Medico("Carlos", "Munera", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.General, tipoMedico.General, true);
+					tipoCita.GENERAL, tipoMedico.GENERAL, true);
+			Medico m2 = new Medico("Mauricio", "Fernandez", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.AUDIOMETRIA, tipoMedico.FONOAUDIOLOGO, true);
+			Medico m3 = new Medico("Carlos", "Munera", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.GENERAL, tipoMedico.GENERAL, true);
 			Consultorio c1 = new Consultorio(null, null, null, true, fecha, null);
 			Consultorio c2 = new Consultorio(null, null, null, true, fecha, null);
-		System.out.println("    Escoja una Opción: " + "\n" + 
-        "-------------------------------------"+ "\n" +
-        "1. Crear Diagnostico" + "\n" + 
-        "2. Mostrar Diagnosticos" + "\n" +
-        "3. Solicitar Entrega de Medicamentos" + "\n" +
-		"4. Ir hacia atras");
-		/*System.out.println("		+-------------------------------------------------------------------------------+	");
-		System.out.println(" 	|								Escoja una Opción:								|   "); 
-		System.out.println("		|   --------------------------------------------------------------------------  |	"); 
-		System.out.println(" 	|							1. Crear Diagnostico								|   "); 
-		System.out.println(" 	|							2. Mostrar Diagnosticos								|   "); 
-		System.out.println(" 	|							3. Solicitar Entrega de Medicamentos				|   "); 
-		System.out.println(" 	+-------------------------------------------------------------------------------+   ");
-		*/
 			Medicamentos medic = new Medicamentos(tipoMedicamento.Acetaminofen, paciente, 2, 3);
-	   		Cita cita = new Cita(paciente, "gripa", tipoCita.General);
+	   		Cita cita = new Cita(paciente, "gripa", tipoCita.GENERAL);
 			cita.setPago(new Pago(200000, true));
 			Diagnostico.sintomas.add("gripa");
-			Diagnostico dia = new Diagnostico(paciente1, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
+			Diagnostico dia = new Diagnostico(paciente, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
 			Medico.listado.add(dia);
 			System.out.format("+-------------------------------------------------------+%n");
 			System.out.format("|		Escoja una opción			|%n");
@@ -721,11 +719,11 @@ public class Interfaz {
 					if (pacientes.getNumeroDocumento() == cedulaPa){
 						paciente5=pacientes;
 					}
-				}
-				if(paciente5 == null){
+					else{
 						System.out.println("El documento del paciente no se encuentra en la base de datos");
 						resultados();
 					}
+				}
 					System.out.println("Inserte los siguientes datos para la fecha de la consulta");
 					LocalDateTime fechaCita = null;
 					System.out.println("Año: ");
@@ -811,31 +809,27 @@ public class Interfaz {
 			}
 			
 		}
-		break;
 		case 2:
 			System.out.println("Por favor dijite la cedula del paciente: ");
-			int cedulaPa1 = input.nextInt();
-			Paciente paciente6 = null;
+			int cedulaPa = input.nextInt();
+			Paciente paciente5 = null;
 			ArrayList<Paciente> paciente2 = Paciente.pacientes;
 			for (Paciente pacientes : paciente2) {
-				System.out.println(pacientes.getNumeroDocumento());
-				if (pacientes.getNumeroDocumento() == cedulaPa1){
-					paciente6=pacientes;
+				if (pacientes.getNumeroDocumento() == cedulaPa){
+					paciente5=pacientes;
 				}
-			}
-			if(paciente6 == null){
-				System.out.println("El documento del paciente no se encuentra en la base de datos");
-				resultados();
+				else{
+					System.out.println("El documento del paciente no se encuentra en la base de datos");
+					resultados();
+				}
 			}
 			ArrayList<HistoriaClinica> histo = HistoriaClinica.historia;
 			for (HistoriaClinica historia : histo) {
-				if (historia.getPaciente().getNumeroDocumento() == paciente6.getNumeroDocumento()){
+				if (historia.getPaciente().getNumeroDocumento() == paciente5.getNumeroDocumento()){
 					System.out.println(historia.getDiagnosticos());
 					resultados();
 				}
 			}
-			break;
-			
 		case 3:
 		System.out.println("Ingrese el documento del paciente: ");
 		int docu = input.nextInt();
@@ -856,7 +850,7 @@ public class Interfaz {
 						if (medi.getConsulta().getPago().isPagado() == true){
 							System.out.println("Por favor ingrese su direccion de domicilio: ");
 							String domicilio1 = input.next();
-							Entrega.crearEntrega(cont,medi.getPersona(), domicilio1, medi.getMedicamiento(), estadoEntrega.En_camino);
+							Entrega.crearEntrega(cont,medi.getPersona(), domicilio1, medi.getMedicamiento(), estadoEntrega.EN_CAMINO);
 							cont++;
 							Medicamentos.asignarMed(medi.medicamiento.getTipoMed(), 1);
 							System.out.println("El proceso ha sido exitoso");

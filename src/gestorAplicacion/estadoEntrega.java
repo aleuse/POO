@@ -1,3 +1,3 @@
 package gestorAplicacion;
 
-public enum estadoEntrega {Procesada, En_camino, Realizada}
+public enum estadoEntrega {PROCESADA, EN_CAMINO, REALIZADA}
