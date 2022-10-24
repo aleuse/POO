@@ -668,7 +668,9 @@ public class Interfaz {
 			Consultorio c2 = new Consultorio(null, null, null, true, fecha, null);
 			Medicamentos medic = new Medicamentos(tipoMedicamento.Acetaminofen, paciente, 2, 3);
 	   		Cita cita = new Cita(paciente, "gripa", tipoCita.General);
-			Diagnostico dia = new Diagnostico(paciente, Diagnostico.sintomas, "no lose dime tu", medic, 1, cita);
+			cita.setPago(new Pago(200000, true));
+			Diagnostico.sintomas.add("gripa");
+			Diagnostico dia = new Diagnostico(paciente, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
 			Medico.listado.add(dia);
 			System.out.format("+-------------------------------------------------------+%n");
 			System.out.format("|		Escoja una opción			|%n");
