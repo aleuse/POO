@@ -72,7 +72,7 @@ public class Entrega {
 
     
     //metodos
-    public static void crearEntrega(int id, String paciente,String domicilio, Medicamentos medicamentos,estadoEntrega estado){
+    public static void crearEntrega(int id, Paciente paciente,String domicilio, Medicamentos medicamentos,estadoEntrega estado){
         Entrega entrega = new Entrega (id, paciente, domicilio, medicamentos, estado);
         lista.add(entrega);
     }

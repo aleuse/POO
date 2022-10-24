@@ -22,9 +22,11 @@ import gestorAplicacion.herencia.Inmueble;
 import gestorAplicacion.personas.Administrador;
 import gestorAplicacion.personas.Medico;
 import gestorAplicacion.personas.Paciente;
+import gestorAplicacion.personas.Persona;
 import gestorAplicacion.personas.tipoDocumento;
 import gestorAplicacion.personas.tipoMedico;
 import gestorAplicacion.registrosMedicos.Diagnostico;
+import gestorAplicacion.registrosMedicos.HistoriaClinica;
 
 public class Interfaz {
 	 public static Scanner sc = new Scanner(System.in);
@@ -664,6 +666,12 @@ public class Interfaz {
 			Medico m3 = new Medico("Carlos", "Munera", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.General, tipoMedico.General, true);
 			Consultorio c1 = new Consultorio(null, null, null, true, fecha, null);
 			Consultorio c2 = new Consultorio(null, null, null, true, fecha, null);
+			Medicamentos medic = new Medicamentos(tipoMedicamento.Acetaminofen, paciente, 2, 3);
+	   		Cita cita = new Cita(paciente, "gripa", tipoCita.General);
+			cita.setPago(new Pago(200000, true));
+			Diagnostico.sintomas.add("gripa");
+			Diagnostico dia = new Diagnostico(paciente, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
+			Medico.listado.add(dia);
 			System.out.format("+-------------------------------------------------------+%n");
 			System.out.format("|		Escoja una opción			|%n");
 			System.out.format("+-------------------------------------------------------+%n");
@@ -676,21 +684,143 @@ public class Interfaz {
 			
 			
 		opcion = sc.nextInt();
+		Scanner input= new Scanner(System.in);
 		switch (opcion){
 		case 1:
+		System.out.println("Por favor dijite la cedula del medico que creara el diagnostico: ");
+		int cedula = input.nextInt();
+		ArrayList<Medico> medicos = Medico.medicos;
+		int contador = 1;
+		for (Medico medico : medicos) {
+			if(medico.getNumeroDocumento() == cedula){
+				System.out.println("Por favor dijite la cedula del paciente");
+				int cedulaPa = input.nextInt();
+				Paciente paciente5 = null;
+				ArrayList<Paciente> paciente2 = Paciente.pacientes;
+				for (Paciente pacientes : paciente2) {
+					if (pacientes.getNumeroDocumento() == cedulaPa){
+						paciente5=pacientes;
+					}
+					else{
+						System.out.println("El documento del paciente no se encuentra en la base de datos");
+						resultados();
+					}
+				}
+					System.out.println("Inserte los siguientes datos para la fecha de la consulta");
+					LocalDateTime fechaCita = null;
+					System.out.println("Año: ");
+					int year = sc.nextInt();
+					System.out.println("Mes (en número): ");
+					int mes;
+					do {
+			            mes = sc.nextInt();
+			        } while (mes != 1 & mes != 2 & mes != 3 & mes != 4 & mes != 5 & mes != 6 & mes != 7 & mes != 8 & mes != 9 & mes != 10 & mes != 11 & mes != 12);
+					Month month = null;
+					switch (mes) {
+					case 1:
+						month = Month.JANUARY;
+					case 2:
+						month = Month.FEBRUARY;
+					case 3:
+						month = Month.MARCH;
+					case 4:
+						month = Month.APRIL;
+					case 5:
+						month = Month.MAY;
+					case 6:
+						month = Month.JUNE;
+					case 7:
+						month = Month.JULY;
+					case 8:
+						month = Month.AUGUST;
+					case 9:
+						month = Month.SEPTEMBER;
+					case 10:
+						month = Month.OCTOBER;
+					case 11:
+						month = Month.NOVEMBER;
+					case 12:
+						month = Month.DECEMBER;
+					}
+					System.out.println("Día: ");
+					int day = sc.nextInt();
+					System.out.println("Ahora inserte la hora, primero la hora y luego los minutos (en intervalos de 30 minutos).");
+					System.out.println("Hora: ");
+					int hour = sc.nextInt();
+					System.out.println("Minutos: ");
+					int min = sc.nextInt();
+					fechaCita = LocalDateTime.of(year, month, day, hour, min);
+					Consulta consul = paciente5.getConsultas().get(fechaCita);
+				System.out.println("Por favor dijite el medicamento a recetar para el paciente"+ "\n" +
+				"-----------------------------------------------------------------"+ "\n" +
+				"1. Acetaminofen" + "\n" + 
+				"2. Amoxicilina" + "\n" +
+				"3. Ibuprofeno"+ "\n" +
+				"4. Lagrimas Artificiales");
+				tipoMedicamento medicamento = null;
+				int  opcion2 = sc.nextInt();
+				switch (opcion2){
+					case 1:
+					medicamento = tipoMedicamento.Acetaminofen;
+					case 2:
+					medicamento = tipoMedicamento.Amoxicilina;
+					case 3:
+					medicamento = tipoMedicamento.Ibuprofeno;
+					case 4:
+					medicamento = tipoMedicamento.LagrimasArtificiales;
+				}
+				System.out.println("Por favor dijite cuantas dosis recetara al paciente");
+				int dosis = input.nextInt();
+				System.out.println("Por favor dijite el modo de uso que recomienda al paciente");
+				int uso = input.nextInt();
+				System.out.println("Por favor dijite los sintomas del paciente");
+				String sintomas = input.next();
+				ArrayList<String> lista = new ArrayList<String>();
+				lista.add(sintomas);
+				System.out.println("Por favor dijite la observacion del paciente");
+				String observacion = input.next();
+
+				Medicamentos medica = new Medicamentos(medicamento, paciente5, dosis, uso);
+				medico.crearDiagnostico(paciente5,lista,observacion,medica,contador, consul);
+				contador++;
+				System.out.println("El diagnostico ha sido creado con exito");
+				resultados();
+			}else{
+				System.out.println("El docuemto no se encuentra en la base de datos");
+				resultados();
+			}
+			
+		}
 		case 2:
+			System.out.println("Por favor dijite la cedula del paciente: ");
+			int cedulaPa = input.nextInt();
+			Paciente paciente5 = null;
+			ArrayList<Paciente> paciente2 = Paciente.pacientes;
+			for (Paciente pacientes : paciente2) {
+				if (pacientes.getNumeroDocumento() == cedulaPa){
+					paciente5=pacientes;
+				}
+				else{
+					System.out.println("El documento del paciente no se encuentra en la base de datos");
+					resultados();
+				}
+			}
+			ArrayList<HistoriaClinica> histo = HistoriaClinica.historia;
+			for (HistoriaClinica historia : histo) {
+				if (historia.getPaciente().getNumeroDocumento() == paciente5.getNumeroDocumento()){
+					System.out.println(historia.getDiagnosticos());
+					resultados();
+				}
+			}
 		case 3:
-		
-		Scanner input= new Scanner(System.in);
 		System.out.println("Ingrese el documento del paciente: ");
 		int docu = input.nextInt();
 		ArrayList<Diagnostico> lis = Medico.listado;
 		int cont = 1;
 
 		for (Diagnostico medi : lis) {
-            //System.out.println(medi);
 			if (medi.getPersona().getNumeroDocumento() == (docu)){
-				System.out.println(medi.medicamiento.getTipoMed());
+				System.out.println("Sus medicamentos son: " + medi.medicamiento.getTipoMed());
 
 				String option;
 				while (true) {
@@ -699,15 +829,10 @@ public class Interfaz {
 					System.out.println("2. No");
 					option = input.next();
 					if (option.equals("1")) {
-						//System.out.println(medi.getPersona().isPagado());
 						if (medi.getConsulta().getPago().isPagado() == true){
-							//System.out.println(medi.getPersona().isPagado());
 							System.out.println("Por favor ingrese su direccion de domicilio: ");
-						
-							
 							String domicilio1 = input.next();
-                            System.out.println(domicilio1);
-							Entrega.crearEntrega(cont,medi.getPersona().getNombre(), domicilio1, medi.getMedicamiento(), estadoEntrega.En_camino);
+							Entrega.crearEntrega(cont,medi.getPersona(), domicilio1, medi.getMedicamiento(), estadoEntrega.En_camino);
 							cont++;
 							Medicamentos.asignarMed(medi.medicamiento.getTipoMed(), 1);
 							System.out.println("El proceso ha sido exitoso");
@@ -723,6 +848,7 @@ public class Interfaz {
 								System.out.println("2. No");
 								option1 = input.next();
 								if (option1.equals("1")) {
+									System.out.println("Se le redirigira al menu de finanzas");
 									finanzas();
 								
 								}
