@@ -1,6 +1,7 @@
 package gestorAplicacion.personas;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Persona implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -13,6 +14,7 @@ public class Persona implements Serializable{
 	protected long telefono;
 	protected String correoElectronico;
 	protected String direccion;
+	
 	
 	public Persona(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad, String genero, long telefono, String correoElectronico, String direccion) {
 		setNombre(nombre);
