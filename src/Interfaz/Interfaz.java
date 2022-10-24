@@ -18,7 +18,6 @@ import gestorAplicacion.estadoEntrega;
 import gestorAplicacion.tipoCita;
 import gestorAplicacion.tipoExamen;
 import gestorAplicacion.tipoMedicamento;
-import gestorAplicacion.herencia.Inmueble;
 import gestorAplicacion.personas.Administrador;
 import gestorAplicacion.personas.Medico;
 import gestorAplicacion.personas.Paciente;
@@ -89,11 +88,14 @@ public class Interfaz {
 		}
 
 	static void opcionesCitas() {
-		System.out.println("-----------------------------" + "\n"+
-			"     Escoja una Opción:	" + "\n"+
-			"-----------------------------" + "\n"+
-			"1. Solicitar cita " + "\n"+
-			"2. Reagendar cita	" );
+		System.out.format("+-------------------------------------------------+%n");
+		System.out.format("|		Escoja una opción  		  |%n");
+		System.out.format("+-------------------------------------------------+%n");
+		System.out.format("+-------------------------------------------------+%n");
+		System.out.format("|		1. Solicitar cita		  |%n");
+		System.out.format("|		2. Reagendar cita		  |%n");
+		System.out.format("+-------------------------------------------------+%n");
+
 		/*System.out.println("		+-------------------------------------------------------------------------------+	");
 		System.out.println(" 	|								Escoja una Opción:								|   "); 
 		System.out.println("		|   -------------------------------------------------------------------------   |	"); 
@@ -333,9 +335,9 @@ public class Interfaz {
 		// Agregar consultas a medicos
 		// Agregar consultas a consultorios
 		
-		System.out.println("------------------------------------------------" + "\n"+
-			"Bienvenido a exámenes" + "\n"+
-			"------------------------------------------------" + "\n");
+		System.out.format("+-------------------------------------------------+%n");
+		System.out.format("|		Bienvenido a exámenes  		  |%n");
+		System.out.format("+-------------------------------------------------+%n");
 		//Se pide el documento de identidad para buscar el paciente
 		System.out.println("Inserte su documento de identidad");
 		long id = sc.nextLong();
@@ -347,14 +349,16 @@ public class Interfaz {
 		}
 		
 		// Pedir el tipo de examen que desea solicitar
-		System.out.println("------------------------------------------------" + "\n"+
-			"Escoja el tipo de examen que desea solicitar:" + "\n"+
-			"------------------------------------------------" + "\n"+
-			"1. Sangre " + "\n"+
-			"2. Laboratorio"  + "\n"+
-			"3. RayosX"+ "\n"+
-			"4. Citoquimico"+ "\n"+
-			"5. Ir hacia atrás	");
+		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("|	Escoja el tipo de examen que desea solicitar	|%n");
+		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("|		1. Sangre			  	|%n");
+		System.out.format("|		2. Laboratorio				|%n");
+		System.out.format("|		3. Rayos X			  	|%n");
+		System.out.format("|		4. Citoquímico		  	  	|%n");
+		System.out.format("|		5. Ir hacia atrás			|%n");
+		System.out.format("+-------------------------------------------------------+%n");
 		/*System.out.println("	+-------------------------------------------------------------------------------+	");
 		System.out.println("	|					Escoja el tipo de examen que desea solicitar:				|   "); 
 		System.out.println("	|   --------------------------------------------------------------------------  |	"); 
@@ -553,16 +557,16 @@ public class Interfaz {
 			}
 		}
 
-		System.out.format("+-------------------------------------------------------+%n");
-		System.out.format("|	Escoja la accion que desea realizar		|%n");
-		System.out.format("+-------------------------------------------------------+%n");
-		System.out.format("+-------------------------------------------------------+%n");
-		System.out.format("|		1. Pagar consultas		  	|%n");
-		System.out.format("|		2. Pagar entregas			|%n");
-		System.out.format("|		3. Consultar dinero disponibles	  	|%n");
-		System.out.format("|		4. Pago de nomina	  	  	|%n");
-		System.out.format("|		5. Ir hacia atrás			|%n");
-		System.out.format("+-------------------------------------------------------+%n");
+		System.out.format("+--------------------------------------------------------+%n");
+		System.out.format("|	Escoja la accion que desea realizar				    |%n");
+		System.out.format("+--------------------------------------------------------+%n");
+		System.out.format("+--------------------------------------------------------+%n");
+		System.out.format("|		1. Pagar consultas		  					  	|%n");
+		System.out.format("|		2. Pagar entregas								|%n");
+		System.out.format("|		3. Consultar dinero disponibles	  				|%n");
+		System.out.format("|		4. Pago de nomina	  	  						|%n");
+		System.out.format("|		5. Ir hacia atrás								|%n");
+		System.out.format("+--------------------------------------------------------+%n");
 		
 
 		opcion = sc.nextInt();
@@ -572,6 +576,7 @@ public class Interfaz {
 		case 1:
 		
 			ArrayList<Consulta>consultas_paciente= new ArrayList<>(paciente.getConsultas().values());
+				//System.out.println("\n");
 			while(true) {
 
 				for (Consulta c: consultas_paciente) {
@@ -582,7 +587,6 @@ public class Interfaz {
 	
 				System.out.println("Ingrese el ID de la consulta que desea pagar (Para ir hacia atras ingrese el numero -1): ");
 				int id_entrega = sc.nextInt();
-				System.out.println("\n");
 				if (id_entrega == -1) {
 					finanzas();
 				}
@@ -612,7 +616,6 @@ public class Interfaz {
 	
 				System.out.println("Ingrese el ID de la entrega que desea pagar (Para ir hacia atras ingrese el numero -1): ");
 				int id_entrega = sc.nextInt();
-				System.out.println("\n");
 				if (id_entrega == -1) {
 					finanzas();
 				}
@@ -655,7 +658,6 @@ public class Interfaz {
 
 			System.out.println("Ingrese el numero del documento del medico al que le deseas pagar (Para ir hacia atras ingrese el numero -1): ");
 			int numeroDocumento = sc.nextInt();
-			System.out.println("\n");
 			if (numeroDocumento == -1) {
 				finanzas();
 			}
@@ -693,17 +695,17 @@ public class Interfaz {
 	   		Cita cita = new Cita(paciente, "gripa", tipoCita.GENERAL);
 			cita.setPago(new Pago(200000, true));
 			Diagnostico.sintomas.add("gripa");
-			Diagnostico dia = new Diagnostico(paciente1, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
+			Diagnostico dia = new Diagnostico(paciente, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
 			Medico.listado.add(dia);
-			System.out.format("+-------------------------------------------------------+%n");
-			System.out.format("|		Escoja una opción			|%n");
-			System.out.format("+-------------------------------------------------------+%n");
-			System.out.format("+-------------------------------------------------------+%n");
-			System.out.format("|		1. Crear diagnostico		  	|%n");
-			System.out.format("|		2. Mostrar diagnósticos			|%n");
-			System.out.format("|		3. Solicitar entra de medicamentos  	|%n");
-			System.out.format("|		4. Ir hacia atrás			|%n");
-			System.out.format("+-------------------------------------------------------+%n");
+			System.out.format("+--------------------------------------------------------+%n");
+			System.out.format("|		Escoja una opción								|%n");
+			System.out.format("+--------------------------------------------------------+%n");
+			System.out.format("+--------------------------------------------------------+%n");
+			System.out.format("|		1. Crear diagnostico		  					|%n");
+			System.out.format("|		2. Mostrar diagnósticos							|%n");
+			System.out.format("|		3. Solicitar entra de medicamentos  			|%n");
+			System.out.format("|		4. Ir hacia atrás								|%n");
+			System.out.format("+--------------------------------------------------------+%n");
 			
 			
 		opcion = sc.nextInt();
@@ -724,10 +726,10 @@ public class Interfaz {
 					if (pacientes.getNumeroDocumento() == cedulaPa){
 						paciente5=pacientes;
 					}
-				}
-				if (paciente5==null){
-					System.out.println("El documento del paciente no se encuentra en la base de datos");
-					resultados();
+					else{
+						System.out.println("El documento del paciente no se encuentra en la base de datos");
+						resultados();
+					}
 				}
 					System.out.println("Inserte los siguientes datos para la fecha de la consulta");
 					LocalDateTime fechaCita = null;
@@ -823,10 +825,10 @@ public class Interfaz {
 				if (pacientes.getNumeroDocumento() == cedulaPa1){
 					paciente6=pacientes;
 				}
-			}
-			if (paciente6==null){
-				System.out.println("El documento del paciente no se encuentra en la base de datos");
-				resultados();
+				else{
+					System.out.println("El documento del paciente no se encuentra en la base de datos");
+					resultados();
+				}
 			}
 			ArrayList<HistoriaClinica> histo = HistoriaClinica.historia;
 			for (HistoriaClinica historia : histo) {

@@ -36,11 +36,11 @@ public class Serializador {
 		serializar(fechas, "fechas");
 		
 		ArrayList<Consulta> consultas = new ArrayList<Consulta>();
-		Cita cita1 = new Cita(null, "Porque sí", null, null, fecha1, tipoCita.General);
+		Cita cita1 = new Cita(null, "Porque sí", null, null, fecha1, tipoCita.GENERAL);
 		consultas.add(cita1);
-		Cita cita2 = new Cita(null, "Dolor de estómago", null, null, fecha2, tipoCita.Prioritaria);
+		Cita cita2 = new Cita(null, "Dolor de estómago", null, null, fecha2, tipoCita.PRIORITARIA);
 		consultas.add(cita2);
-		Cita cita3 = new Cita(null, "Diarrea", null, null, fecha1, tipoCita.Prioritaria);
+		Cita cita3 = new Cita(null, "Diarrea", null, null, fecha1, tipoCita.PRIORITARIA);
 		consultas.add(cita3);
 		serializar(consultas, "consultas");
 		
@@ -51,11 +51,11 @@ public class Serializador {
 		
 		ArrayList<Medico> medicos = new ArrayList<Medico>();
 		Medico medico1 = new Medico("Susana", "Perez", tipoDocumento.CEDULA, 1000758374, 25, "Mujer", 1000758374, 
-				"susper@gmail.com", "Cra 77 #45 04", tipoCita.General, true);
+				"susper@gmail.com", "Cra 77 #45 04", tipoCita.GENERAL, true);
 		Medico medico2 = new Medico("Andres", "Lopez", tipoDocumento.CEDULA, 1254687950, 29, "Hombre", 1254687950, 
-				"andlop@gmail.com", "Calle 113 #55 05", tipoCita.General, true);
+				"andlop@gmail.com", "Calle 113 #55 05", tipoCita.GENERAL, true);
 		Medico medico3 = new Medico("Mariana", "Garcia", tipoDocumento.CEDULA, 656502354, 28, "Mujer", 656502354, 
-				"margar@gmail.com", "Avenida 7 #8 07", tipoCita.General, true);
+				"margar@gmail.com", "Avenida 7 #8 07", tipoCita.GENERAL, true);
 
 		medico1.getConsultas().put(fecha1, cita1);
 		medico1.getConsultas().put(fecha2, null);
