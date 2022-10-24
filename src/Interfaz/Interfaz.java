@@ -659,7 +659,10 @@ public class Interfaz {
 			}
 
 			for (Medico m: Medico.medicos) {
-				if (m.getNumeroDocumento() == numeroDocumento) {
+				if(Administrador.dinero < m.getNomina().get(fecha).getValor()) {
+					System.out.println("No hay suficiente dinero en el sistema para pagarle al medico " + m.getNombre() + " con documento " + m.getNumeroDocumento() );
+				}
+				else if (m.getNumeroDocumento() == numeroDocumento) {
 					m.getNomina().get(fecha).setPagado(true);
 					Administrador.restarDinero(m.getNomina().get(fecha).getValor());
 					System.out.println("El medico " + m.getNombre() + " con documento " + m.getNumeroDocumento() + " ha sido pagado exitosamente");
