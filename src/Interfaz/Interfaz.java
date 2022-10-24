@@ -534,7 +534,7 @@ public class Interfaz {
 		cita3.setPago(new Pago(15000, false));
 
 		paciente1.getConsultas().put(fecha1, cita1);
-		paciente1.getConsultas().put(fecha2, cita2);
+		paciente1.getConsultas().put(fecha2, cita2); 
 		paciente1.getConsultas().put(fecha3, cita3);
 
 		pacientes.add(paciente1);
