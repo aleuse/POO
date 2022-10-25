@@ -17,7 +17,7 @@ public class Diagnostico {
    
     public Diagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, Medicamentos medicamiento, int id,Consulta consulta) {
         this.persona = persona;
-        this.sintomas = sintomas;
+        Diagnostico.sintomas = sintomas;
         this.observacion = observacion;
         this.medicamiento = medicamiento;
         this.id = id;
@@ -25,7 +25,7 @@ public class Diagnostico {
     }
     public Diagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, int id,Consulta consulta) {
         this.persona = persona;
-        this.sintomas = sintomas;
+        Diagnostico.sintomas = sintomas;
         this.observacion = observacion;
         this.id = id;
         this.consulta = consulta;
@@ -37,7 +37,7 @@ public class Diagnostico {
     }
 
     public void setSintomas(ArrayList<String> sintomas) {
-        this.sintomas = sintomas;
+        Diagnostico.sintomas = sintomas;
     }
 
     public String getObservacion() {

@@ -252,6 +252,14 @@ public class Paciente extends Persona{
 		}
 	}
 
+	/* Metodo donde se le solicita un examen al paciente, el cual recibe el examen
+	 * que se desea solicitar, el tipo de medico necesario para realizar el examen y 
+	 * la lista de medicos en plantilla, el cual retorna un numero entero entre el 0 
+	 * y el 2, donde retorna 0 en caso de que al momento que el administrador va a 
+	 * autorizar el examen, no hay medicos con la especialidad necesario para realizar
+	 * el examen, 1 en caso de que el examen si fue asignado con exito y 2 en caso de que
+	 * el administrador no autorizó el examen
+	 */
 	
 	public int solicitarExamen(Examen examen, tipoMedico tipoMed, ArrayList<Medico> medicos) {
 		if(Administrador.autorizarExamen(examen, tipoMed, medicos) == 1) {
@@ -266,9 +274,10 @@ public class Paciente extends Persona{
 	}
 	
 	
+	/*Metodo para consultar la historia clinica*/
 	
-	public HistoriaClinica consultarHistorioaClinica() {
-		return getHistoriaClinica();
+	public String consultarHistorioaClinica() {
+		return getHistoriaClinica().visualizarDatos();
 	}
 
 /*Implementación del metodo abstracto de la interfaz visualiazcion Datos, que implementa la clase padre persona, el cual tiene el mismo objetivo de mostrar un listado de
