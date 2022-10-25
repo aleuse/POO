@@ -112,18 +112,18 @@ public class Paciente extends Persona{
 	}
 
 	//Metodos
-	public String pedirCita(LocalDateTime fecha, tipoCita tipoCita, String motivo) {
-		ArrayList<Medico> medicos = Medico.medicos;
+	public String pedirCita(LocalDateTime fecha, tipoCita tipoCita, String motivo, tipoMedico tipoMed) {
+		ArrayList<Medico> medicos = Administrador.medicos;
 		Medico medico = null;
 		for (int i = 0; i<medicos.size(); i++){
 			//Se recorre la lista de los medicos creados y se va verificando si la especialidad del medico i concuerda con el tipo de cita que
 			//se requiere y tambien se verifica si ese medico esta disponible.
-			if ( medicos.get(i).especialidad == tipoCita && Administrador.verificarDisponibilidadMedico(fecha, medicos.get(i)) == true) {
+			if ( medicos.get(i).especialista == tipoMed && Administrador.verificarDisponibilidadMedico(fecha, medicos.get(i)) == true) {
 				medico = medicos.get(i);
 				break;
 			}
 		}
-		ArrayList<Consultorio> consultorios = Consultorio.consultorios;
+		ArrayList<Consultorio> consultorios = Administrador.consultorios;
 		Consultorio consultorio = null;
 		for (int i = 0; i< consultorios.size(); i++) {
 			//Se recorre la lista de los consultorios creados y se verifica si el consultorio esta disponible en la fecha que se requiere la cita
@@ -160,7 +160,7 @@ public class Paciente extends Persona{
 		}
 		else if(Administrador.verificarDisponibilidadMedico(fechaNueva,cita.getMedico()) == false) {
 			//Se busca un medico con disponibilidad
-			ArrayList<Medico> medicos = Medico.medicos;
+			ArrayList<Medico> medicos = Administrador.medicos;
 			Medico medico = null;
 			for (int i = 0; i<medicos.size(); i++){
 				if ( medicos.get(i).especialidad == cita.getTiposCitas() && Administrador.verificarDisponibilidadMedico(fechaNueva, medicos.get(i)) == true) {
@@ -172,7 +172,7 @@ public class Paciente extends Persona{
 					}
 					//Si el consultorio no esta disponible, se busca un nuevo consultorio
 					else {
-						ArrayList<Consultorio> consultorios = Consultorio.consultorios;
+						ArrayList<Consultorio> consultorios = Administrador.consultorios;
 						Consultorio consultorio = null;
 						for (int j = 0; j< consultorios.size(); j++) {
 							//Se recorre la lista de los consultorios creados y se verifica si el consultorio esta disponible en la fecha que se requiere la cita
@@ -209,7 +209,7 @@ public class Paciente extends Persona{
 			}
 		}
 		//Se busca un medico con disponibilidad
-		ArrayList<Medico> medicos = Medico.medicos;
+		ArrayList<Medico> medicos = Administrador.medicos;
 		Medico medico = null;
 		for(int i = 0; i<medicos.size(); i++) {
 			if(medicos.get(i).especialidad ==  cita.getTiposCitas() && Administrador.verificarDisponibilidadMedico(fecha, medicos.get(i)) == true){
@@ -228,7 +228,7 @@ public class Paciente extends Persona{
 		}
 		//Si el consultorio no esta disponible, se busca un nuevo consultorio
 		else {
-			ArrayList<Consultorio> consultorios = Consultorio.consultorios;
+			ArrayList<Consultorio> consultorios = Administrador.consultorios;
 			Consultorio consultorio = null;
 			for (int i = 0; i< consultorios.size(); i++) {
 				//Se recorre la lista de los consultorios creados y se verifica si el consultorio esta disponible en la fecha que se requiere la cita

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class HistoriaClinica {
     private Paciente paciente;
-    private ArrayList<Diagnostico> diagnosticos;
+    public static ArrayList<Diagnostico> diagnosticos;
     public static ArrayList<HistoriaClinica> historia= new ArrayList<HistoriaClinica>();
     static HistoriaClinica pacEncontrado;
     

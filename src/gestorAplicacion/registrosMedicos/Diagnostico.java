@@ -21,6 +21,13 @@ public class Diagnostico {
         this.id = id;
         this.consulta = consulta;
     }
+    public Diagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, int id,Consulta consulta) {
+        this.persona = persona;
+        this.sintomas = sintomas;
+        this.observacion = observacion;
+        this.id = id;
+        this.consulta = consulta;
+    }
     
 
     public ArrayList<String> getSintomas() {
@@ -75,6 +82,12 @@ public class Diagnostico {
     public void setConsulta(Consulta consulta) {
         this.consulta = consulta;
     }
+    @Override
+	public String toString() {
+		return "El paciente es  " + persona.getNombre() + "\n" +
+         " sus sintomas son: " + sintomas +  "\n" +
+         "su observacion es: " + observacion;
+	}
 
 }
 
