@@ -23,6 +23,7 @@ public class Medico extends Persona{
     public Map<LocalDateTime, Pago> nomina = new TreeMap<LocalDateTime, Pago>();
     private long sueldo;
     public  ArrayList<Medicamentos> medicamiento = new ArrayList<Medicamentos>();
+    public static int num_consultas; 
 
     
     //constructor
