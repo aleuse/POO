@@ -145,6 +145,7 @@ public class Medico extends Persona{
     public void crearDiagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, Medicamentos medicamiento, int id, Consulta consulta){
         Diagnostico diag = new Diagnostico (persona, sintomas, observacion, medicamiento, id, consulta);
         listado.add(diag);
+        persona.getHistoriaClinica().getDiagnosticos().add(diag);
     }
     public static int informesMedicos(tipoMedico solicitado) {// se ingresa el tipo de examen y se busca en la lista cuantos hay
         int tmSolicitado = 0;

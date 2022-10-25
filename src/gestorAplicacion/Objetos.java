@@ -10,6 +10,7 @@ import gestorAplicacion.personas.Paciente;
 import gestorAplicacion.personas.tipoDocumento;
 import gestorAplicacion.personas.tipoMedico;
 import gestorAplicacion.registrosMedicos.Diagnostico;
+import gestorAplicacion.registrosMedicos.HistoriaClinica;
 
 public class Objetos {
 
@@ -165,10 +166,21 @@ public class Objetos {
 		paciente2.getEntregas().put(fecha13, entrega3);
 		paciente3.getEntregas().put(fecha14, entrega4);
 		
+		
 		Medicamentos medicamentos = new Medicamentos(tipoMedicamento.Acetaminofen, paciente1, 2, 3);
 		Diagnostico.sintomas.add("gripa");
 		Diagnostico diagnostico = new Diagnostico(paciente1, Diagnostico.sintomas, "Dolor de cabeza", medicamentos, 1, cita1);
 		Medico.listado.add(diagnostico);
+		Diagnostico diagnostico1 = new Diagnostico(paciente1, Diagnostico.sintomas, "Dolor de cabeza", 2, cita8);
+		Diagnostico diagnostico2 = new Diagnostico(paciente1, Diagnostico.sintomas, "Rodilla Rota", 3, cita15);
+		ArrayList<Diagnostico> diagnosticos = new ArrayList<>();
+		diagnosticos.add(diagnostico1);
+		diagnosticos.add(diagnostico2);
+		HistoriaClinica historiaClinica = new HistoriaClinica(paciente1, diagnosticos);
+		diagnostico1.setPersona(paciente1);
+		diagnostico1.setPersona(paciente1);
+		paciente1.setHistoriaClinica(historiaClinica);
+		
 		
 		medico1.getConsultas().put(fecha1, cita1);
 		medico1.getConsultas().put(fecha2, null);

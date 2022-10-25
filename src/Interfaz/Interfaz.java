@@ -162,10 +162,21 @@ public class Interfaz {
 			paciente2.getEntregas().put(fecha13, entrega3);
 			paciente3.getEntregas().put(fecha14, entrega4);
 			
+			
 			Medicamentos medicamentos = new Medicamentos(tipoMedicamento.Acetaminofen, paciente1, 2, 3);
 			Diagnostico.sintomas.add("gripa");
 			Diagnostico diagnostico = new Diagnostico(paciente1, Diagnostico.sintomas, "Dolor de cabeza", medicamentos, 1, cita1);
 			Medico.listado.add(diagnostico);
+			Diagnostico diagnostico1 = new Diagnostico(paciente1, Diagnostico.sintomas, "Dolor de cabeza", 2, cita8);
+			Diagnostico diagnostico2 = new Diagnostico(paciente1, Diagnostico.sintomas, "Rodilla Rota", 3, cita15);
+			ArrayList<Diagnostico> diagnosticos = new ArrayList<>();
+			diagnosticos.add(diagnostico1);
+			diagnosticos.add(diagnostico2);
+			HistoriaClinica historiaClinica = new HistoriaClinica(paciente1, diagnosticos);
+			diagnostico1.setPersona(paciente1);
+			diagnostico1.setPersona(paciente1);
+			paciente1.setHistoriaClinica(historiaClinica);
+			
 			
 			medico1.getConsultas().put(fecha1, cita1);
 			medico1.getConsultas().put(fecha2, null);
@@ -472,7 +483,7 @@ public class Interfaz {
 				
 		}
 			
-		}
+	}
 
 	static void opcionesCitas() {
 		System.out.format("+-------------------------------------------------+%n");
@@ -848,7 +859,7 @@ public class Interfaz {
 				switch(opcion) {
 				case 1:
 					// Agendar examen
-					System.out.println(medicos);
+					
 					System.out.println(Administrador.asignarExamen(examen, paciente, medicos, consultorios, fechaExamen, tipoMed));
 					System.out.println("¿Desea solicitar otro examen?");
 					System.out.println("Si la respuesta es sí, presione 1");
@@ -1137,45 +1148,45 @@ public class Interfaz {
 	}
 	
 	static void resultados() {
-		LocalDateTime fecha = LocalDateTime.of(2022, Month.NOVEMBER, 25, 15,30);
-		 Paciente paciente = new Paciente("Camilo", "Martinez", tipoDocumento.CEDULA, 1074074689, 25, "masculino", 300762957,"mcm@gmail.com", "cra87#12-34", "SURA", false);
-			Paciente paciente1 = new Paciente("Maria", "Jaramillo", tipoDocumento.CEDULA, 9403862, 43, "femenino", 301762849,"mj@gmail.com", "calle 3", "SURA", false);
-			Medico m1 = new Medico("Sara", "Perez", tipoDocumento.CEDULA, 12345678, 50, "femenino", 6048742, "sp@yahoo.com", "calle 43", 
-					tipoCita.GENERAL, tipoMedico.GENERAL, true);
-			Medico m2 = new Medico("Mauricio", "Fernandez", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.AUDIOMETRIA, tipoMedico.FONOAUDIOLOGO, true);
-			Medico m3 = new Medico("Carlos", "Munera", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.GENERAL, tipoMedico.GENERAL, true);
-			Consultorio c1 = new Consultorio(null, null, null, true, fecha, null);
-			Consultorio c2 = new Consultorio(null, null, null, true, fecha, null);
-			Medicamentos medic = new Medicamentos(tipoMedicamento.Acetaminofen, null, 2, 3);
-	   		Cita cita = new Cita(paciente, "gripa", tipoCita.GENERAL);
-			cita.setPago(new Pago(200000, true));
-			Diagnostico.sintomas.add("gripa");
-			Diagnostico dia = new Diagnostico(null, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
-			Medico.listado.add(dia);
-			Paciente pa = new Paciente("Diana", "Cardenas", tipoDocumento.CEDULA,
-			 12365478, 20, "Masculino", 388030288,
-			  "dc@hotmail.com", "Calle 73", "SURA",
-			   null, null, null, null, false);
-			Cita cita1 = new Cita(null, "Dolor de espalda", m1, null, 
-			fecha, tipoCita.GENERAL);
-			Cita cita2 = new Cita(null, "Dolor", m1, null, 
-			fecha, tipoCita.GENERAL);
-			Diagnostico dia1 = new Diagnostico(null, Diagnostico.sintomas, "Dolor de cabeza", 2, cita1);
-			Diagnostico dia2 = new Diagnostico(null, Diagnostico.sintomas, "Rodilla Rota", 3, cita2);
-			ArrayList<Diagnostico> g = new ArrayList<>();
-			g.add(dia1);
-			g.add(dia2);
-			HistoriaClinica historiaCli = new HistoriaClinica(pa, g);
-			dia1.setPersona(pa);
-			dia2.setPersona(pa);
-			pa.setHistoriaClinica(historiaCli);
+		/*
+		 * LocalDateTime fecha = LocalDateTime.of(2022, Month.NOVEMBER, 25, 15,30);
+		 * Paciente paciente = new Paciente("Camilo", "Martinez", tipoDocumento.CEDULA,
+		 * 1074074689, 25, "masculino", 300762957,"mcm@gmail.com", "cra87#12-34",
+		 * "SURA", false); Paciente paciente1 = new Paciente("Maria", "Jaramillo",
+		 * tipoDocumento.CEDULA, 9403862, 43, "femenino", 301762849,"mj@gmail.com",
+		 * "calle 3", "SURA", false); Medico m1 = new Medico("Sara", "Perez",
+		 * tipoDocumento.CEDULA, 12345678, 50, "femenino", 6048742, "sp@yahoo.com",
+		 * "calle 43", tipoCita.GENERAL, tipoMedico.GENERAL, true); Medico m2 = new
+		 * Medico("Mauricio", "Fernandez", tipoDocumento.CEDULA, 98765432, 60,
+		 * "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.AUDIOMETRIA,
+		 * tipoMedico.FONOAUDIOLOGO, true); Medico m3 = new Medico("Carlos", "Munera",
+		 * tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com",
+		 * "carrera 78", tipoCita.GENERAL, tipoMedico.GENERAL, true); Consultorio c1 =
+		 * new Consultorio(null, null, null, true, fecha, null); Consultorio c2 = new
+		 * Consultorio(null, null, null, true, fecha, null); Medicamentos medic = new
+		 * Medicamentos(tipoMedicamento.Acetaminofen, null, 2, 3); Cita cita = new
+		 * Cita(paciente, "gripa", tipoCita.GENERAL); cita.setPago(new Pago(200000,
+		 * true)); Diagnostico.sintomas.add("gripa"); Diagnostico dia = new
+		 * Diagnostico(null, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
+		 * Medico.listado.add(dia); Paciente pa = new Paciente("Diana", "Cardenas",
+		 * tipoDocumento.CEDULA, 12365478, 20, "Masculino", 388030288, "dc@hotmail.com",
+		 * "Calle 73", "SURA", null, null, null, null, false); Cita cita1 = new
+		 * Cita(null, "Dolor de espalda", m1, null, fecha, tipoCita.GENERAL); Cita cita2
+		 * = new Cita(null, "Dolor", m1, null, fecha, tipoCita.GENERAL); Diagnostico
+		 * dia1 = new Diagnostico(null, Diagnostico.sintomas, "Dolor de cabeza", 2,
+		 * cita1); Diagnostico dia2 = new Diagnostico(null, Diagnostico.sintomas,
+		 * "Rodilla Rota", 3, cita2); ArrayList<Diagnostico> g = new ArrayList<>();
+		 * g.add(dia1); g.add(dia2); HistoriaClinica historiaCli = new
+		 * HistoriaClinica(pa, g); dia1.setPersona(pa); dia2.setPersona(pa);
+		 * pa.setHistoriaClinica(historiaCli);
+		 */
 			System.out.format("+-------------------------------------------------------+%n");
 			System.out.format("|		Escoja una opción			|%n");
 			System.out.format("+-------------------------------------------------------+%n");
 			System.out.format("+-------------------------------------------------------+%n");
 			System.out.format("|		1. Crear diagnostico		  	|%n");
 			System.out.format("|		2. Mostrar diagnósticos			|%n");
-			System.out.format("|		3. Solicitar entra de medicamentos  	|%n");
+			System.out.format("|		3. Solicitar entrega de medicamentos  	|%n");
 			System.out.format("|		4. Ir hacia atrás			|%n");
 			System.out.format("+-------------------------------------------------------+%n");
 			
@@ -1185,26 +1196,26 @@ public class Interfaz {
 		switch (opcion){
 		case 1:
 		System.out.println("Por favor dijite la cedula del medico que creara el diagnostico: ");
-		int cedula = input.nextInt();
-		ArrayList<Medico> medicos = Administrador.medicos;
+		int cedulaMed = input.nextInt();
+		ArrayList<Medico> lista_medicos = medicos;
 		int contador = 1;
-		for (Medico medico : medicos) {
-			if(medico.getNumeroDocumento() == cedula){
+		for (Medico medico : lista_medicos) {
+			if(medico.getNumeroDocumento() == cedulaMed){
 				System.out.println("Por favor dijite la cedula del paciente");
 				int cedulaPa = input.nextInt();
-				Paciente paciente5 = null;
-				ArrayList<Paciente> paciente2 = Administrador.pacientes;
-				for (Paciente pacientes : paciente2) {
-					if (pacientes.getNumeroDocumento() == cedulaPa){
-						paciente5=pacientes;
+				Paciente pacienteX = null;
+				ArrayList<Paciente> lista_pacientes = pacientes;
+				for (Paciente paciente : lista_pacientes) {
+					if (paciente.getNumeroDocumento() == cedulaPa){
+						pacienteX=paciente;
 					}
 				}
-				if(paciente5 == null){
+				if(pacienteX == null){
 					System.out.println("El documento del paciente no se encuentra en la base de datos");
 					resultados();
 				}
 					System.out.println("Inserte los siguientes datos para la fecha de la consulta");
-					LocalDateTime fechaCita = null;
+					LocalDateTime fechaCitaX = null;
 					System.out.println("Año: ");
 					int year = sc.nextInt();
 					System.out.println("Mes (en número): ");
@@ -1216,28 +1227,40 @@ public class Interfaz {
 					switch (mes) {
 					case 1:
 						month = Month.JANUARY;
+						break;
 					case 2:
 						month = Month.FEBRUARY;
+						break;
 					case 3:
 						month = Month.MARCH;
+						break;
 					case 4:
 						month = Month.APRIL;
+						break;
 					case 5:
 						month = Month.MAY;
+						break;
 					case 6:
 						month = Month.JUNE;
+						break;
 					case 7:
 						month = Month.JULY;
+						break;
 					case 8:
 						month = Month.AUGUST;
+						break;
 					case 9:
 						month = Month.SEPTEMBER;
+						break;
 					case 10:
 						month = Month.OCTOBER;
+						break;
 					case 11:
 						month = Month.NOVEMBER;
+						break;
 					case 12:
 						month = Month.DECEMBER;
+						break;
 					}
 					System.out.println("Día: ");
 					int day = sc.nextInt();
@@ -1246,25 +1269,29 @@ public class Interfaz {
 					int hour = sc.nextInt();
 					System.out.println("Minutos: ");
 					int min = sc.nextInt();
-					fechaCita = LocalDateTime.of(year, month, day, hour, min);
-					Consulta consul = paciente5.getConsultas().get(fechaCita);
+					fechaCitaX = LocalDateTime.of(year, month, day, hour, min);
+					Consulta consultaX = pacienteX.getConsultas().get(fechaCitaX);
 				System.out.println("Por favor dijite el medicamento a recetar para el paciente"+ "\n" +
 				"-----------------------------------------------------------------"+ "\n" +
 				"1. Acetaminofen" + "\n" + 
 				"2. Amoxicilina" + "\n" +
 				"3. Ibuprofeno"+ "\n" +
 				"4. Lagrimas Artificiales");
-				tipoMedicamento medicamento = null;
+				tipoMedicamento tipoMedica = null;
 				int  opcion2 = sc.nextInt();
 				switch (opcion2){
 					case 1:
-					medicamento = tipoMedicamento.Acetaminofen;
+						tipoMedica = tipoMedicamento.Acetaminofen;
+						break;
 					case 2:
-					medicamento = tipoMedicamento.Amoxicilina;
+						tipoMedica = tipoMedicamento.Amoxicilina;
+						break;
 					case 3:
-					medicamento = tipoMedicamento.Ibuprofeno;
+						tipoMedica = tipoMedicamento.Ibuprofeno;
+						break;
 					case 4:
-					medicamento = tipoMedicamento.LagrimasArtificiales;
+						tipoMedica = tipoMedicamento.LagrimasArtificiales;
+						break;
 				}
 				System.out.println("Por favor dijite cuantas dosis recetara al paciente");
 				int dosis = input.nextInt();
@@ -1272,13 +1299,12 @@ public class Interfaz {
 				int uso = input.nextInt();
 				System.out.println("Por favor dijite los sintomas del paciente");
 				String sintomas = input.next();
-				ArrayList<String> lista = new ArrayList<String>();
-				lista.add(sintomas);
+				ArrayList<String> listaSintomas = new ArrayList<String>();
+				listaSintomas.add(sintomas);
 				System.out.println("Por favor dijite la observacion del paciente");
 				String observacion = input.next();
-
-				Medicamentos medica = new Medicamentos(medicamento, paciente5, dosis, uso);
-				medico.crearDiagnostico(paciente5,lista,observacion,medica,contador, consul);
+				Medicamentos medicamento = new Medicamentos(tipoMedica, pacienteX, dosis, uso);
+				medico.crearDiagnostico(pacienteX,listaSintomas,observacion,medicamento,contador, consultaX);
 				contador++;
 				System.out.println("El diagnostico ha sido creado con exito");
 				resultados();
@@ -1290,70 +1316,76 @@ public class Interfaz {
 		}
 		case 2:
 			System.out.println("Por favor dijite la cedula del paciente: ");
-			int cedulaPa1 = input.nextInt();
-			Paciente paciente6 = null;
-			ArrayList<Paciente> paciente2 = pacientes;
-			for (Paciente pacientes : paciente2) {
-				if (pacientes.getNumeroDocumento() == cedulaPa1){
-					paciente6=pacientes;
+			int cedulaPaX = input.nextInt();
+			Paciente pacienteX = null;
+			ArrayList<Paciente> listaPacientes = pacientes;
+			for (Paciente paciente : listaPacientes) {
+				if (paciente.getNumeroDocumento() == cedulaPaX){
+					pacienteX = paciente;
+					break;
 				}
 			}
-			if(paciente6 == null){
+			if(pacienteX == null){
 				System.out.println("El documento del paciente no se encuentra en la base de datos");
 				resultados();
+				break;
 			}
-			ArrayList<Diagnostico> h = paciente6.getHistoriaClinica().getDiagnosticos();
-			for (Diagnostico i : h) {
-				System.out.println("El nombre y apellido del paciente es: " + i.getPersona().getNombre() + " " +i.getPersona().getApellido()+ "\n"+
-				"Su observacion fue: "+ i.getObservacion() + "\n"+
-				"Se reporto con los siguientes sintomas: " + i.getSintomas() + "\n"+
-				"Su consulta fue en la fecha: "+ i.getConsulta().getFecha()+ "\n"+
-				"Su medico fue: "+ i.getConsulta().getMedico().getNombre()+ " " +i.getConsulta().getMedico().getApellido() );
-
-			}resultados();
+			ArrayList<Diagnostico> listaDiagnosticos = pacienteX.getHistoriaClinica().getDiagnosticos();
+			for (Diagnostico diagnostico : listaDiagnosticos) {
+				System.out.println("El nombre y apellido del paciente es: " + diagnostico.getPersona().getNombre() + " " +diagnostico.getPersona().getApellido()+ "\n"+
+				"Su observacion fue: "+ diagnostico.getObservacion() + "\n"+
+				"Se reporto con los siguientes sintomas: ");
+				for (int i = 0; i < diagnostico.getSintomas().size(); i++) {
+					System.out.println(diagnostico.getSintomas().get(i) + " ");
+				} 
+				System.out.println("Su consulta fue en la fecha: "+ diagnostico.getConsulta().getFecha()+ "\n"+
+				"Su medico fue: "+ diagnostico.getConsulta().getMedico().getNombre()+ " " + diagnostico.getConsulta().getMedico().getApellido() );
+			}
+			resultados();
+			break;
 
 			
 		case 3:
 		System.out.println("Ingrese el documento del paciente: ");
-		int docu = input.nextInt();
-		ArrayList<Diagnostico> lis = Medico.listado;
+		int cedulaX = input.nextInt();
+		ArrayList<Diagnostico> lista_diagnosticos = Medico.listado;
 		int cont = 1;
 
-		for (Diagnostico medi : lis) {
-			if (medi.getPersona().getNumeroDocumento() == (docu)){
-				System.out.println("Sus medicamentos son: " + medi.medicamiento.getTipoMed());
+		for (Diagnostico diagnostico : lista_diagnosticos) {
+			if (diagnostico.getPersona().getNumeroDocumento() == (cedulaX)){
+				System.out.println("Sus medicamentos son: " + diagnostico.medicamiento.getTipoMed());
 
-				String option;
+				int option;
 				while (true) {
 					System.out.println("¿Deseas confirmar el envio de medicamentos?");
 					System.out.println("1. Si");
 					System.out.println("2. No");
-					option = input.next();
-					if (option.equals("1")) {
-						if (medi.getConsulta().getPago().isPagado() == true){
+					option = input.nextInt();
+					if (option == 1) {
+						if (diagnostico.getConsulta().getPago().isPagado() == true){
 							System.out.println("Por favor ingrese su direccion de domicilio: ");
 							String domicilio1 = input.next();
-							Entrega.crearEntrega(cont,medi.getPersona(), domicilio1, medi.getMedicamiento(), estadoEntrega.EN_CAMINO);
+							Entrega.crearEntrega(cont,diagnostico.getPersona(), domicilio1, diagnostico.getMedicamiento(), estadoEntrega.EN_CAMINO);
 							cont++;
-							Medicamentos.asignarMed(medi.medicamiento.getTipoMed(), 1);
+							Medicamentos.asignarMed(diagnostico.medicamiento.getTipoMed(), 1);
 							System.out.println("El proceso ha sido exitoso");
 							Interfaz.main(null);
 						}
-						else if (medi.getConsulta().getPago().isPagado() == false){
+						else if (diagnostico.getConsulta().getPago().isPagado() == false){
 							System.out.println("Debes pagar la consulta antes de pedir los medicamentos");
 							
-							String option1;
+							int option1;
 							while (true) {
 								System.out.println("¿Deseas pagar la consulta?");
 								System.out.println("1. Si");
 								System.out.println("2. No");
-								option1 = input.next();
-								if (option1.equals("1")) {
+								option1 = input.nextInt();
+								if (option1 == 1) {
 									System.out.println("Se le redirigira al menu de finanzas");
 									finanzas();
 								
 								}
-								if (option1.equals("2")) {
+								if (option1 == 2) {
                                     System.out.println("Proceso finalizado");
                                     resultados();
 								}
@@ -1361,7 +1393,7 @@ public class Interfaz {
 							}
 						}
 					}
-					if (option.equals("2")) {
+					if (option == 2) {
 						resultados();
 					}
 				}
@@ -1369,12 +1401,14 @@ public class Interfaz {
 			else{
 				System.out.println("El documento no se encuentara en la base de datos");
                 resultados();
+                break;
 				
 			}
 		}
 		case 4:
 			System.out.println("\n");
 			Interfaz.main(null);
+			break;
 		
 		}
 	}
