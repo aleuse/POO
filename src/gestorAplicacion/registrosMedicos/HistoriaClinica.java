@@ -55,7 +55,7 @@ public class HistoriaClinica implements VisualizacionDatos{
     public static int buscarPaciente(int solicitado){// se ingresa el num de la cc y se busca en la lista cuantas hay
         for (HistoriaClinica ee : historia) {
             if(ee.getPaciente().getNumeroDocumento()==solicitado){
-                pacEncontrado= ee.getPaciente().consultarHistorioaClinica();
+                pacEncontrado= ee.getPaciente().getHistoriaClinica();
                 return 1;
             }
         }
