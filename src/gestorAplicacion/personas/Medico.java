@@ -11,6 +11,9 @@ import gestorAplicacion.Medicamentos;
 import gestorAplicacion.Pago;
 import gestorAplicacion.tipoCita;
 
+/* Clase Médico, para poder almacenar los atributos y aplicar los metodos respecto a los medicos del sistema, se usan arraylist para almacenar los diagnosticos creados por el 
+ * médico, todos los médicos en plantilla, los listados de consultas y los medicamentos; al igual que se usa un tree map para almacenar la respectiva nomina.
+ */
 public class Medico extends Persona{
 	private static final long serialVersionUID = 1L;
     public static ArrayList<Diagnostico> listado = new ArrayList<Diagnostico>();
@@ -152,6 +155,7 @@ public class Medico extends Persona{
     
     
     //metodos
+    
     public void crearDiagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, Medicamentos medicamiento, int id, Consulta consulta){
         Diagnostico diag = new Diagnostico (persona, sintomas, observacion, medicamiento, id, consulta);
         listado.add(diag);
@@ -168,6 +172,9 @@ public class Medico extends Persona{
     }
 
 
+    /*Implementación del metodo abstracto de la interfaz visualiazcion Datos, que implementa la clase padre persona, el cual tiene el mismo objetivo de mostrar un listado de
+     * todos los datos. 	
+     */
 	@Override
 	public String visualizarDatos() {
 		return getNombre() +" "+ getApellido() + 

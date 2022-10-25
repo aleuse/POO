@@ -1,5 +1,5 @@
 package gestorAplicacion.personas;
-
+/*Finalidad: Guardar los datos en base del las personas del sistema (Paciente y médico)*/
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ public class Persona implements Serializable, VisualizacionDatos{
 	protected String correoElectronico;
 	protected String direccion;
 	
-	
+	//Constructor
 	public Persona(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad, String genero, long telefono, String correoElectronico, String direccion) {
 		setNombre(nombre);
 		setApellido(apellido);
@@ -30,6 +30,10 @@ public class Persona implements Serializable, VisualizacionDatos{
 	public Persona() {
 		this(null,null, null, 0, 0, null, 0, null, null);
 	}
+	
+	//METODOS
+
+	//Getters y setters, usados para poder modificar y obtener los atributos de la clase
 	
 	public String getNombre() {
 		return nombre;
@@ -95,7 +99,7 @@ public class Persona implements Serializable, VisualizacionDatos{
 	}
 	
 	
-	//Implemenatacion metodo abstracto
+	//Implemenatacion metodo abstracto, el cual retorna un listado de los datos (atributos) básicos de la persona
 	
 	public String visualizarDatos() {
 		return getNombre() +" "+ getApellido() + 

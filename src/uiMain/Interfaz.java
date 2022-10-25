@@ -1200,16 +1200,17 @@ public class Interfaz {
                 break;
 
             case 3:
-            //Metod de solicitar medicamnetos
+            //Metodo de solicitar medicamentos
             //En este metodo se pide un numero de documento del paciente, donde comprobara que si este en la base de datos (paciente: Paciente)
-            //luego de comprobar el documetos y verificar que pertenesca a un paciente y este en la base de datos, se procede a mostrar por pantalla
-            //sus respectivos medicamentos.
+            //luego de comprobar el documetos y verificar que pertenesca a un paciente, se procede a mostrar por pantalla sus respectivos medicamentos.
             //Luego de mostrar los medicamento recetados por el medico, se le preguntara al usuario si decea confirmar el enviio de medicamentos,
-            //donde podra elegir entre dos posibles opciones, "si" y "no". si seleccionea "si" se pasa a confirmar que el usuario tena su respectiva consulta
-            //pagada. 
-            //Si el paciente la tiene pagada se procede pedirle una direccion a la cual quiere ahcer llea los medicamentos
-            //a crarle una entrega (entrega: Entrega) donde
-            //
+            //donde podra elegir entre dos posibles opciones, "si" y "no". si seleccionea "si" se pasa a confirmar que el usuario tenga su respectiva consulta pagada. 
+            //Si el paciente la tiene pagada se procede pedirle una direccion a la cual quiere hacer llegar los medicamentos
+            //Luego se pasa a crarle una entrega (entrega: Entrega),y se mostrara por pantalla un mesaje de porceso exitoso. Luego se utiliza el metodo que se encuentra en la clase Medicamentos llamada asignarMed() que lo que hace es
+            // que recibe los tipos de medicamentos solicitados y cuantos se enviaron para luego restar los medacamentos enviados del inventario que se tiene.
+            //Si el paciente no tiene la consulta pagada se muestra un mensaje diciendo: "Debes pagar la consulta antes de pedir los medicamentos",
+            //Luego de mostrar el mensaje se le preguntara si desea pagar su respectiva consulta en caso de que responda afirmativamente se le redirigira al metodo finanzas(). 
+            
                 System.out.println("Ingrese el documento del paciente: ");
                 int cedulaX = input.nextInt();
                 ArrayList<Diagnostico> lista_diagnosticos = Medico.listado;
