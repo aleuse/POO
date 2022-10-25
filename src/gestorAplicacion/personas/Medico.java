@@ -84,8 +84,6 @@ public class Medico extends Persona{
     public Medico(){super();};
 
     
-		// TODO Auto-generated constructor stub
-	
 
 	public Medico(String nombre, String apellido, tipoDocumento documento, long numeroDocumento , int edad, String genero, long telefono,
 			String correoElectronico, String direccion, tipoCita especialidad, boolean disponibilidad) {
