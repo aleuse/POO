@@ -30,13 +30,7 @@ public class Paciente extends Persona{
     public static ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
 	
 //constructores	
-	public Paciente() {
-		this(null,null, null, 0, 0, null, 0,
-		null, null,null, new ArrayList<String>(), null,
-		new TreeMap<LocalDateTime, Consulta>(), new TreeMap<LocalDateTime, Entrega>(), false);
-	}
-
-	public Paciente(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad,
+    public Paciente(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad,
 			String genero, long telefono, String correoElectronico, String direccion, String eps,
 			ArrayList<String> sintomas, HistoriaClinica historiaClinica, Map<LocalDateTime, Consulta> consultas,
 			Map<LocalDateTime, Entrega> entregas, boolean pagado) {
@@ -50,6 +44,13 @@ public class Paciente extends Persona{
 		pacientes.add(this);
 	}
 
+	public Paciente() {
+		this(null,null, null, 0, 0, null, 0,
+		null, null,null, new ArrayList<String>(), null,
+		new TreeMap<LocalDateTime, Consulta>(), new TreeMap<LocalDateTime, Entrega>(), false);
+	}
+
+	
 	public Paciente(String eps, ArrayList<String> sintomas, HistoriaClinica historiaClinica,
 			Map<LocalDateTime, Consulta> consultas, Map<LocalDateTime, Entrega> entregas, boolean pagado) {
 		this.eps = eps;
