@@ -2,11 +2,14 @@ package gestorAplicacion;
 
 import java.io.Serializable;
 
+import gestorAplicacion.personas.Medico;
+
 public class Pago implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private int valor;
 	private Consulta consulta;
+	private Medico medico;
 	private boolean pagado;
 	private Entrega entrega;
 	
@@ -23,6 +26,12 @@ public class Pago implements Serializable{
 		this.setValor(valor);
 		this.setPagado(pagado);
 		this.setConsulta(consulta);
+	}
+	public Pago(int id, int valor, Medico medico, boolean pagado) {
+		this.setId(id);
+		this.setValor( valor);
+		this.setPagado(pagado);
+		this.setMedico(medico);
 	}
 
 	// Getters y Setters
@@ -56,5 +65,13 @@ public class Pago implements Serializable{
 
 	public void setPagado(boolean pagado) {
 		this.pagado = pagado;
+	}
+
+	public Medico getMedico() {
+		return medico;
+	}
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
 	}
 }

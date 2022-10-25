@@ -2,6 +2,7 @@ package gestorAplicacion.personas;
 
 import gestorAplicacion.personas.*;
 import gestorAplicacion.Cita;
+import gestorAplicacion.Consulta;
 import gestorAplicacion.Consultorio;
 import gestorAplicacion.Examen;
 import gestorAplicacion.Pago;
@@ -18,6 +19,15 @@ public class Administrador implements Serializable{
 	private int id;
 	private String nombre;
 	public static long dinero; 
+	// Lista de médicos en el sistema médico
+	public static ArrayList<Medico> medicos = new ArrayList<Medico>();
+	// Lista de consultorios en el sistema médico
+	public static ArrayList<Consultorio> consultorios = new ArrayList<Consultorio>();
+	// Lista de pacientes en el sistema médico
+	public static ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
+	public static ArrayList<LocalDateTime> fechas = new ArrayList<LocalDateTime>();
+	//public static ArrayList<Cita> citas = new ArrayList<Cita>();
+	//public static ArrayList<Examen> examenes = new ArrayList<Examen>();
 	
 	// Constructor
 	public Administrador(int id, String nombre) {
@@ -153,13 +163,13 @@ public class Administrador implements Serializable{
 								examen.setFecha(fecha);
 								examen.setPago(new Pago(37000, examen, false));
 								c.getConsultas().put(fecha, examen);
-								
+								break;
 							}
 						}
 					}
 				}
 				m.getConsultas().put(fecha, examen);
-				return "Examen agendado exitosamente el " + fecha + " con el médico " + examen.getMedico().getNombre() + "" + examen.getMedico().getApellido() + " en el consultorio " + examen.getConsultorio().getId();
+				return "Examen agendado exitosamente el " + fecha + " con el médico " + examen.getMedico().getNombre() + " " + examen.getMedico().getApellido() + " en el consultorio " + examen.getConsultorio().getId();
 			}
 		}
 		return "No se pudo agendar el examen";

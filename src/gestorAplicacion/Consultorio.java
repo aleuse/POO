@@ -49,6 +49,15 @@ public class Consultorio implements Serializable{
     	this.id = (int)(Math.random()*10000+1);
     	consultorios.add(this);
 	}
+    
+    public Consultorio(int id, Medico medico, Paciente paciente, String tipoConsultorio, boolean disponibilidad) {
+    	this.medico = medico;
+        this.paciente = paciente;
+        this.tipoConsultorio = tipoConsultorio;
+        this.disponibilidad = disponibilidad;
+    	this.id = id;
+    	consultorios.add(this);
+	}
 
     //getter & setter     
     
