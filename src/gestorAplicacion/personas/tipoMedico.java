@@ -12,8 +12,14 @@ import gestorAplicacion.tipoExamen;
  * @author Roger Vera
  */
 public enum tipoMedico {//casteamos costos
+    
+    
+    //FALTA MULTIPLICAR POR EL NUMERO DE CONSULTAS QUE REALIZÓ
+    // VALOR_CITA_X * CANTIDAD_CITAS_X * PORCENTAJE
+    
     //el medico general atiende general,prioritaria y rayos x
     // el bacteriologo atiende Sangre,Laboratorio y Citoquimico
+    
     GENERAL      (((int) (tipoCita.GENERAL.getValorCita()*0.5))+
                   ((int) (tipoExamen.RAYOSX.getValorExamen()*0.5))+
                   ((int) (tipoCita.PRIORITARIA.getValorCita()*0.5))),
