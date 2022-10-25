@@ -65,7 +65,7 @@ public class Interfaz implements Serializable{
 			pacientes = new ArrayList<Paciente>();
 			fechas = new ArrayList<LocalDateTime>();
 			consultas = new ArrayList<Consulta>();
-			
+			Serializador.main(null);
 			
 	 }
 	public static void main(String[] args) {
@@ -121,6 +121,7 @@ public class Interfaz implements Serializable{
 		Paciente paciente1 = pacientes.get(0);
 		Paciente paciente2 = pacientes.get(1);
 		Paciente paciente3 = pacientes.get(2);
+		pacientes = new ArrayList<Paciente>();
 
 		// Deserializar medicos
 		medicos = Deserializador.<Medico> deserializar("medicos");
@@ -173,7 +174,124 @@ public class Interfaz implements Serializable{
 		HistoriaClinica historiaClinica1 = historiasClinicas.get(0);
 		HistoriaClinica historiaClinica2 = historiasClinicas.get(1);
 		HistoriaClinica historiaClinica3 = historiasClinicas.get(2);
-		
+		medico1.getConsultas().put(fecha1, cita1); medico1.getConsultas().put(fecha2,
+				  null); medico1.getConsultas().put(fecha3, null);
+				  medico1.getConsultas().put(fecha4, cita6); medico1.getConsultas().put(fecha5,
+				  cita11); medico1.getConsultas().put(fecha6, cita16);
+				  medico1.getConsultas().put(fecha7, null); medico1.getConsultas().put(fecha8,
+				  null); medico1.getConsultas().put(fecha9, null);
+				  medico1.getConsultas().put(fecha10, null);
+				  medico1.getConsultas().put(fecha11, null);
+				  medico1.getConsultas().put(fecha12, null);
+				  medico1.getConsultas().put(fecha13, null);
+				  medico1.getConsultas().put(fecha14, null);
+				  
+				  medico2.getConsultas().put(fecha1, cita2); medico2.getConsultas().put(fecha2,
+				  cita3); medico2.getConsultas().put(fecha3, null);
+				  medico2.getConsultas().put(fecha4, cita7); medico2.getConsultas().put(fecha5,
+				  cita8); medico2.getConsultas().put(fecha6, null);
+				  medico2.getConsultas().put(fecha7, null); medico2.getConsultas().put(fecha8,
+				  null); medico2.getConsultas().put(fecha9, null);
+				  medico2.getConsultas().put(fecha10, null);
+				  medico2.getConsultas().put(fecha11, null);
+				  medico2.getConsultas().put(fecha12, null);
+				  medico2.getConsultas().put(fecha13, null);
+				  medico2.getConsultas().put(fecha14, null);
+				  
+				  medico3.getConsultas().put(fecha1, null); medico3.getConsultas().put(fecha2,
+				  null); medico3.getConsultas().put(fecha3, null);
+				  medico3.getConsultas().put(fecha4, null); medico3.getConsultas().put(fecha5,
+				  cita18); medico3.getConsultas().put(fecha6, null);
+				  medico3.getConsultas().put(fecha7, null); medico3.getConsultas().put(fecha8,
+				  cita12); medico3.getConsultas().put(fecha9, cita13);
+				  medico3.getConsultas().put(fecha10, cita17);
+				  medico3.getConsultas().put(fecha11, null);
+				  medico3.getConsultas().put(fecha12, null);
+				  medico3.getConsultas().put(fecha13, null);
+				  medico3.getConsultas().put(fecha14, null);
+				  
+				  medico4.getConsultas().put(fecha1, null); medico4.getConsultas().put(fecha2,
+				  cita4); medico4.getConsultas().put(fecha3, cita5);
+				  medico4.getConsultas().put(fecha4, null); medico4.getConsultas().put(fecha5,
+				  null); medico4.getConsultas().put(fecha6, cita9);
+				  medico4.getConsultas().put(fecha7, cita10);
+				  medico4.getConsultas().put(fecha8, null); medico4.getConsultas().put(fecha9,
+				  null); medico4.getConsultas().put(fecha10, null);
+				  medico4.getConsultas().put(fecha11, cita14);
+				  medico4.getConsultas().put(fecha12, cita15);
+				  medico4.getConsultas().put(fecha13, cita19);
+				  medico4.getConsultas().put(fecha14, cita20);
+				  consultorio1.getConsultas().put(fecha1, cita1);
+				  consultorio1.getConsultas().put(fecha2, null);
+				  consultorio1.getConsultas().put(fecha3, null);
+				  consultorio1.getConsultas().put(fecha4, cita6);
+				  consultorio1.getConsultas().put(fecha5, cita11);
+				  consultorio1.getConsultas().put(fecha6, cita16);
+				  consultorio1.getConsultas().put(fecha7, null);
+				  consultorio1.getConsultas().put(fecha8, null);
+				  consultorio1.getConsultas().put(fecha9, null);
+				  consultorio1.getConsultas().put(fecha10, null);
+				  consultorio1.getConsultas().put(fecha11, null);
+				  consultorio1.getConsultas().put(fecha12, null);
+				  consultorio1.getConsultas().put(fecha13, null);
+				  consultorio1.getConsultas().put(fecha14, null);
+				  
+				  consultorio2.getConsultas().put(fecha1, cita2);
+				  consultorio2.getConsultas().put(fecha2, cita3);
+				  consultorio2.getConsultas().put(fecha3, null);
+				  consultorio2.getConsultas().put(fecha4, cita7);
+				  consultorio2.getConsultas().put(fecha5, cita8);
+				  consultorio2.getConsultas().put(fecha6, null);
+				  consultorio2.getConsultas().put(fecha7, null);
+				  consultorio2.getConsultas().put(fecha8, null);
+				  consultorio2.getConsultas().put(fecha9, null);
+				  consultorio2.getConsultas().put(fecha10, null);
+				  consultorio2.getConsultas().put(fecha11, null);
+				  consultorio2.getConsultas().put(fecha12, null);
+				  consultorio2.getConsultas().put(fecha13, null);
+				  consultorio2.getConsultas().put(fecha14, null);
+				  
+				  consultorio3.getConsultas().put(fecha1, null);
+				  consultorio3.getConsultas().put(fecha2, null);
+				  consultorio3.getConsultas().put(fecha3, null);
+				  consultorio3.getConsultas().put(fecha4, null);
+				  consultorio3.getConsultas().put(fecha5, cita18);
+				  consultorio3.getConsultas().put(fecha6, null);
+				  consultorio3.getConsultas().put(fecha7, null);
+				  consultorio3.getConsultas().put(fecha8, cita12);
+				  consultorio3.getConsultas().put(fecha9, cita13);
+				  consultorio3.getConsultas().put(fecha10, cita17);
+				  consultorio3.getConsultas().put(fecha11, null);
+				  consultorio3.getConsultas().put(fecha12, null);
+				  consultorio3.getConsultas().put(fecha13, null);
+				  consultorio3.getConsultas().put(fecha14, null);
+				  
+				  consultorio4.getConsultas().put(fecha1, null);
+				  consultorio4.getConsultas().put(fecha2, cita4);
+				  consultorio4.getConsultas().put(fecha3, cita5);
+				  consultorio4.getConsultas().put(fecha4, null);
+				  consultorio4.getConsultas().put(fecha5, null);
+				  consultorio4.getConsultas().put(fecha6, cita9);
+				  consultorio4.getConsultas().put(fecha7, cita10);
+				  consultorio4.getConsultas().put(fecha8, null);
+				  consultorio4.getConsultas().put(fecha9, null);
+				  consultorio4.getConsultas().put(fecha10, null);
+				  consultorio4.getConsultas().put(fecha11, cita14);
+				  consultorio4.getConsultas().put(fecha12, cita15);
+				  consultorio4.getConsultas().put(fecha13, cita19);
+				  consultorio4.getConsultas().put(fecha14, cita20);
+				  
+				  
+				  paciente1.getConsultas().put(fecha1, cita1);
+				  paciente1.getConsultas().put(fecha5, cita8);
+				  paciente1.getConsultas().put(fecha12, cita15);
+				  
+				  paciente2.getConsultas().put(fecha5, cita11);
+				  paciente2.getConsultas().put(fecha8, cita12);
+				  
+				  paciente3.getConsultas().put(fecha4, cita6);
+				  paciente3.getConsultas().put(fecha10, cita17);
+				  paciente3.getConsultas().put(fecha14, cita20);
 		Administrador.dinero = 500000;
 		Administrador.diagnosticos.add(diagnostico);
 		diagnosticos.add(diagnostico);
@@ -256,6 +374,10 @@ public class Interfaz implements Serializable{
 		medicos.add(medico2);
 		medicos.add(medico3);
 		medicos.add(medico4);
+		Medico.medicos.add(medico1);
+		Medico.medicos.add(medico2);
+		Medico.medicos.add(medico3);
+		Medico.medicos.add(medico4);
 		Medico.medicos.add(medico5);
 		Medico.medicos.add(medico6);
 		Medico.medicos.add(medico7);
@@ -266,6 +388,10 @@ public class Interfaz implements Serializable{
 		consultorios.add(consultorio2);
 		consultorios.add(consultorio3);
 		consultorios.add(consultorio4);	
+		Consultorio.consultorios.add(consultorio1);
+		Consultorio.consultorios.add(consultorio2);
+		Consultorio.consultorios.add(consultorio3);
+		Consultorio.consultorios.add(consultorio4);
 		Consultorio.consultorios.add(consultorio5);
 		Consultorio.consultorios.add(consultorio6);
 		Consultorio.consultorios.add(consultorio7);
@@ -1681,32 +1807,33 @@ public class Interfaz implements Serializable{
         System.out.println("______________________00__00_______________________");
         System.out.println("________________________00_________________________");
         
+        //System.out.println(Medico.medicos);
         	// Serializar administrador
      		Serializador.serializar(administrador, "administrador");
 
      		// Serializar fechas
-     		Serializador.serializar(fechas, "fechas");
+     		Serializador.serializar(Administrador.fechas, "fechas");
 
      		// Serializar consultas
-     		Serializador.serializar(consultas, "consultas");
+     		Serializador.serializar(Administrador.consultas, "consultas");
 
      		// Serializar pacientes
-     		Serializador.serializar(pacientes, "pacientes");
+     		Serializador.serializar(Administrador.pacientes, "pacientes");
 
      		// Serializar medicos
-     		Serializador.serializar(medicos, "medicos");
+     		Serializador.serializar(Medico.medicos, "medicos");
 
      		// Serializar consultorios
-     		Serializador.serializar(consultorios, "consultorios");
+     		Serializador.serializar(Consultorio.consultorios, "consultorios");
      		
      		// Serializar medicamentos
-     		Serializador.serializar(medicamentos, "medicamentos");
+     		Serializador.serializar(Administrador.medicamentos, "medicamentos");
      		
      		// Serializar diagnosticos
-     		Serializador.serializar(diagnosticos, "diagnosticos");
+     		Serializador.serializar(Administrador.diagnosticos, "diagnosticos");
      		
      		// Serializar historiasClinicas
-     		Serializador.serializar(historiasClinicas, "historiasClinicas");
+     		Serializador.serializar(Administrador.historiasClinicas, "historiasClinicas");
         sc.close();
 	}
 	

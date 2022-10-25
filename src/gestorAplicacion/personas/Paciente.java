@@ -154,13 +154,16 @@ public class Paciente extends Persona{
 	 *   en este caso se retorna que el cambio de cita fue exitos, sin embargo que se cambio tanto el consultorio como el medico, mostrando los respectivos cambios*/
 	public String reagendarCita(int id, LocalDateTime fechaNueva) {
 		Cita cita = null;
-		ArrayList<Cita> citas = Cita.listaCitas;
+		ArrayList<Consulta> citas = Administrador.consultas;
 		//Se busca la cita que se quiere reagendar
 		for (int i = 0; i<citas.size(); i++) {
 			if (citas.get(i).getPaciente() == this && citas.get(i).getId() == id) {
-				cita = citas.get(i);
+				cita = (Cita) citas.get(i);
 				break;
 			}
+		}
+		if(cita == null) {
+			return "Hubo un problema reagendando su cita, vuelvalo a intentar mas tarde";
 		}
 		//Se verifica que tanto el medico como el consultorio esten disponible en la nueva fecha
 		if(Administrador.verificarDisponibilidadMedico(fechaNueva,cita.getMedico()) == true && Administrador.verificarDisponibilidadConsultorio(fechaNueva, cita.getConsultorio())==true){
