@@ -28,7 +28,7 @@ public class Objetos {
 		System.out.println(paciente1.reagendarCita(id, LocalDateTime.of(2022, Month.NOVEMBER, 25, 16,30)));
 		
 		System.out.println(paciente.reagendarCita(id2, LocalDateTime.of(2022, Month.DECEMBER, 25, 20,00)));
-		System.out.println(c1.consultas);
+		System.out.println(paciente.visualizarDatos());
 	}
 
 }
