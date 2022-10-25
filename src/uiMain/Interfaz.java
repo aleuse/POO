@@ -880,6 +880,12 @@ public class Interfaz {
 
     static void finanzas() {
 
+        /* La funcionalidad de finanzas le da la opcion al paciente a pagar tanto sus consultas como sus entregas.
+        Los objetos que usa esta funcionalidad son: 1. Paciente, 2. Consultas, 3. Entregas, 4. Medico y 5. Administrador
+        En esta funcionalidad tambien se tiene la opcion de visualizar la cantidad de dinero que se encuentra en ese
+        momento en el de sistema y tambien se puede pagar la nomina de los medicos
+        */
+
         System.out.format("+-------------------------------------------------------+%n");
         System.out.format("|	Escoja la accion que desea realizar		|%n");
         System.out.format("+-------------------------------------------------------+%n");
@@ -906,6 +912,9 @@ public class Interfaz {
 
         switch (opcion) {
 
+            /* Para el primer case: Pagar Consultas, primero se lee un array que tiene las consultas de un paciente. Luego vamos a
+             * recorrer la lista y vamos a imprimir por pantalla todas las consultas que estan sin pagar. 
+             */
             case 1:
 
                 ArrayList<Consulta> consultas_paciente = new ArrayList<>(paciente.getConsultas().values());
@@ -917,12 +926,18 @@ public class Interfaz {
                             System.out.println("La consulta numero " + c.getId() + " esta sin pagar");
                         }
                     }
-
+            
+            /* Luego se le pide al usuario que ingrese el ID de la consulta que desea pagar. Si ese ID coincide con un ID de
+             * la lista de consultas que estan sin pagar entonces se le cambia el atributo Pagado a true y posteriormente se
+             * imprime que la consulta se ha pagado correctamente.
+             */
                     System.out.println("Ingrese el ID de la consulta que desea pagar (Para ir hacia atras ingrese el numero -1): ");
                     int id_entrega = sc.nextInt();
                     if (id_entrega == -1) {
                         finanzas();
-                    } else {
+                    } else { /* Aqui se llama a el metodo sumarDinero del Administrador para que el atributo dinero se pueda actualizar. Es decir, 
+                        en el momento que el paciente pague su consulta, el precio de la consulta se va a sumar al dinero del sistema (esto se hace
+                        llamando al metodo sumardinero) */
                         for (Consulta c : consultas_paciente) {
                             if (c.getId() == id_entrega) {
                                 c.getPago().setPagado(true);
@@ -935,6 +950,10 @@ public class Interfaz {
 
             case 2:
 
+            /* En el case 2 del metodo de finanzas() se puede realizar el pago de entregas de un respectivo paciente
+             * Aqui, como en el case anterior, se crea un array con las entregas entregas de un paciente y 
+             * luego se recorre para encontrar aquellas que estan sin pagar.  
+             */
                 ArrayList<Entrega> entregas_paciente = new ArrayList<>(paciente.getEntregas().values());
 
                 while (true) {
@@ -948,7 +967,9 @@ public class Interfaz {
                     int id_entrega = sc.nextInt();
                     if (id_entrega == -1) {
                         finanzas();
-                    } else {
+                    } else { /* Aqui se llama a el metodo sumarDinero del Administrador para que el atributo dinero se pueda actualizar. Es decir, 
+                        en el momento que el paciente pague su entrega, el precio de la entrega se va a sumar al dinero del sistema (esto se hace
+                        llamando al metodo sumardinero) */
                         for (Entrega e : entregas_paciente) {
                             if (e.getId() == id_entrega) {
                                 e.getPago().setPagado(true);
@@ -961,6 +982,8 @@ public class Interfaz {
                 }
 
             case 3:
+
+            /* En el case 3: Consultar Dinero Disponible simplemente se muestra por pantalla el atributo dinero del Administrador */
 
                 System.out.println("\n" + "----------------------------------" + "\n"
                         + "     Bienvenido Administrador	" + "\n"
@@ -975,6 +998,8 @@ public class Interfaz {
 
             case 4:
 
+            /* Para el case 4 se crea una lista con todos los medicos y luego se recorre dicha lista seleccionando solo aquellos a los que no se le han 
+             * pagado*/
                 LocalDateTime fecha = LocalDateTime.of(2022, 10, 1, 00, 00);
                 for (Medico m : Administrador.medicos) {
                     if (m.getNomina().get(fecha).isPagado() == false) {
@@ -991,7 +1016,9 @@ public class Interfaz {
                 for (Medico m : Administrador.medicos) {
                     if (Administrador.dinero < m.getNomina().get(fecha).getValor()) {
                         System.out.println("No hay suficiente dinero en el sistema para pagarle al medico " + m.getNombre() + " con documento " + m.getNumeroDocumento());
-                    } else if (m.getNumeroDocumento() == numeroDocumento) {
+                    } else if (m.getNumeroDocumento() == numeroDocumento) { /* Aqui se llama a el metodo restarDinero del Administrador para que el atributo dinero se pueda actualizar. 
+                        Es decir, en el momento que se decida pagarle a un medico, el valor de pago de el medico se le va a restar al dinero
+                        del sistema (esto se hace llamando al metodo restardinero) */
                         m.getNomina().get(fecha).setPagado(true);
                         Administrador.restarDinero(m.getNomina().get(fecha).getValor());
                         System.out.println("El medico " + m.getNombre() + " con documento " + m.getNumeroDocumento() + " ha sido pagado exitosamente");
