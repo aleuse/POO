@@ -471,10 +471,10 @@ public class Interfaz {
 			System.out.format("+-------------------------------------------------+%n");
 			System.out.format("+-------------------------------------------------+%n");
 			System.out.format("|		1. Citas			  |%n");
-			System.out.format("|		2. Exámenes			  |%n");
+			System.out.format("|		2. Examenes			  |%n");
 			System.out.format("|		3. Finanzas			  |%n");
 			System.out.format("|		4. Resultados y Medicamentos	  |%n");
-			System.out.format("|		5. Administración		  |%n");
+			System.out.format("|		5. Administracipn		  |%n");
 			System.out.format("|		0. Salir del sistema		  |%n");
 			System.out.format("+-------------------------------------------------+%n");
 			
@@ -492,7 +492,7 @@ public class Interfaz {
 			case 5:
 				administracion();
 			case 0:
-                            System.out.println("Se ha terminado");
+                            System.out.println("Finalizado");
                             System.out.println();
                             System.out.println("________00000000000___________000000000000_________");
                             System.out.println("______00000000_____00000___000000_____0000000______");
@@ -523,7 +523,7 @@ public class Interfaz {
 
 	static void opcionesCitas() {
 		System.out.format("+-------------------------------------------------+%n");
-		System.out.format("|		Escoja una opción  		  |%n");
+		System.out.format("|		Escoja una opcion  		  |%n");
 		System.out.format("+-------------------------------------------------+%n");
 		System.out.format("+-------------------------------------------------+%n");
 		System.out.format("|		1. Solicitar cita		  |%n");
@@ -588,7 +588,7 @@ public class Interfaz {
 				month = Month.DECEMBER;
 				break;
 			}
-			System.out.println("Día: ");
+			System.out.println("Dia: ");
 			int dia = sc.nextInt();
 			System.out.println("Ahora inserte la hora, primero la hora y luego los minutos.");
 			System.out.println("Hora: ");
@@ -624,11 +624,11 @@ public class Interfaz {
 				break;
 			}
 			
-			System.out.println("¿Cuál es el motivo de su cita?");
+			System.out.println("¿Cual es el motivo de su cita?");
 			String motivo = sc.next();
 			System.out.println(paciente.pedirCita(fecha, tipo, motivo, tipoMed));
 			System.out.println("¿Desea pedir otra cita?");
-			System.out.println("Si la respuesta es sí, presione 1");
+			System.out.println("Si la respuesta es si, presione 1");
 			System.out.println("Si desea volver al menu principal, presione 2");
 			opcion = sc.nextInt();
 			switch(opcion) {
@@ -686,7 +686,7 @@ public class Interfaz {
 			case 12:
 				month = Month.DECEMBER;
 			}
-			System.out.println("Día: ");
+			System.out.println("Dia: ");
 			dia = sc.nextInt();
 			System.out.println("Ahora inserte la hora, primero la hora y luego los minutos.");
 			System.out.println("Hora: ");
@@ -698,8 +698,8 @@ public class Interfaz {
 			String out = paciente.reagendarCita(idCita, fecha);
 			System.out.println(out);
 			
-			System.out.println("¿Desea continuar en la sección de citas?");
-			System.out.println("Si la respuesta es sí, presione 1");
+			System.out.println("¿Desea continuar en la seccion de citas?");
+			System.out.println("Si la respuesta es si, presione 1");
 			System.out.println("Si desea volver al menu principal, presione 2");
 			opcion = sc.nextInt();
 			switch(opcion) {
@@ -714,7 +714,7 @@ public class Interfaz {
 	static void solicitarExamen() {
 		
 		System.out.format("+-------------------------------------------------+%n");
-		System.out.format("|		Bienvenido a exámenes  		  |%n");
+		System.out.format("|		Bienvenido a examenes  		  |%n");
 		System.out.format("+-------------------------------------------------+%n");
 		//Se pide el documento de identidad para buscar el paciente
 		System.out.println("Inserte su documento de identidad");
@@ -734,7 +734,7 @@ public class Interfaz {
 		System.out.format("|		1. Sangre			  	|%n");
 		System.out.format("|		2. Laboratorio				|%n");
 		System.out.format("|		3. Rayos X			  	|%n");
-		System.out.format("|		4. Citoquímico		  	  	|%n");
+		System.out.format("|		4. Citoquimico		  	  	|%n");
 		System.out.format("|		5. Ir hacia atrás			|%n");
 		System.out.format("+-------------------------------------------------------+%n");
 		
@@ -767,12 +767,12 @@ public class Interfaz {
 			
 		}
 	
-		System.out.println("A continuación se procederá a autorizar su examen");
+		System.out.println("A continuacion se procedera a autorizar su examen");
 		Examen examen = new Examen((int)(Math.random()*10000+1), paciente, tipoEx, false);
 		int solicitudExamen = paciente.solicitarExamen(examen, tipoMed, medicos);
 		// Autorizar el examen
 		if (solicitudExamen == 1) {
-			System.out.println("Examen autorizado con éxito");
+			System.out.println("Examen autorizado con exito");
 			// Buscar fecha más cercana con disponibilidad
 			LocalDateTime fechaExamen = Administrador.verificarDisponibilidadFechaExamen(fechas, tipoMed, medicos, consultorios);
 			if(fechaExamen == null) {
@@ -780,8 +780,8 @@ public class Interfaz {
 				solicitarExamen();
 			}
 			else {
-				System.out.println("La fecha más cercana es: " + fechaExamen + ". ¿Desea agendar la cita en esta fecha?");
-				System.out.println("1. Sí");
+				System.out.println("La fecha mas cercana es: " + fechaExamen + ". ¿Desea agendar la cita en esta fecha?");
+				System.out.println("1. Si");
 				System.out.println("2. No");
 				do {
 		            
@@ -793,7 +793,7 @@ public class Interfaz {
 					
 					System.out.println(Administrador.asignarExamen(examen, paciente, medicos, consultorios, fechaExamen, tipoMed, tipoEx));
 					System.out.println("¿Desea solicitar otro examen?");
-					System.out.println("Si la respuesta es sí, presione 1");
+					System.out.println("Si la respuesta es si, presione 1");
 					System.out.println("Si desea volver al menu principal, presione 2");
 					opcion = sc.nextInt();
 					switch(opcion) {
@@ -853,7 +853,7 @@ public class Interfaz {
 						month = Month.DECEMBER;
 						break;
 					}
-					System.out.println("Día: ");
+					System.out.println("Dia: ");
 					int day = sc.nextInt();
 					System.out.println("Ahora inserte la hora, primero la hora y luego los minutos (en intervalos de 30 minutos).");
 					System.out.println("Hora: ");
@@ -864,7 +864,7 @@ public class Interfaz {
 					// Agendar el examen
 					System.out.println(Administrador.asignarExamen(examen, paciente, medicos, consultorios, fechaExamen, tipoMed, tipoEx));
 					System.out.println("¿Desea solicitar otro examen?");
-					System.out.println("Si la respuesta es sí, presione 1");
+					System.out.println("Si la respuesta es si, presione 1");
 					System.out.println("Si desea volver al menu principal, presione 2");
 					opcion = sc.nextInt();
 					switch(opcion) {
@@ -884,7 +884,7 @@ public class Interfaz {
 			
 		}
 		else {
-			System.out.println("Lo sentimos, en este momento no tenemos médicos que puedan atender su tipo de examen");
+			System.out.println("Lo sentimos, en este momento no tenemos medicos que puedan atender su tipo de examen");
 			solicitarExamen();
 			
 		}
@@ -1072,7 +1072,7 @@ public class Interfaz {
 					LocalDateTime fechaCitaX = null;
 					System.out.println("Año: ");
 					int year = sc.nextInt();
-					System.out.println("Mes (en número): ");
+					System.out.println("Mes (en numero): ");
 					int mes;
 					do {
 			            mes = sc.nextInt();
@@ -1116,7 +1116,7 @@ public class Interfaz {
 						month = Month.DECEMBER;
 						break;
 					}
-					System.out.println("Día: ");
+					System.out.println("Dia: ");
 					int day = sc.nextInt();
 					System.out.println("Ahora inserte la hora, primero la hora y luego los minutos (en intervalos de 30 minutos).");
 					System.out.println("Hora: ");
@@ -1255,7 +1255,7 @@ public class Interfaz {
 				}
 			}
 			else{
-				System.out.println("El documento no se encuentara en la base de datos");
+				System.out.println("El documento no se encuentra en la base de datos");
                 resultados();
                 break;
 				
@@ -1270,17 +1270,21 @@ public class Interfaz {
 	}
 	
     static void administracion() {
+        System.out.println();
         System.out.println("Datos del sistema");
         System.out.println("Se tiene un total de " + Administrador.medicos.size() + " medicos y " + Administrador.consultorios.size() + " consultorios");
         System.out.println("Se han atendido a " + Administrador.pacientes.size() + " pacientes");
         System.out.println("Y se ha facturado hasta ahora " + "$"+ Administrador.dinero);
-        System.out.println("--------------------------------------");
+        System.out.println();
+        System.out.format("+-------------------------------------------------------+%n");
         System.out.println("Desea visualizar las citas, examanes y entregas realizadas? [1]si  [0]no");
         do {
             System.out.print("Ingrese una opcion valida: ");
             opcion = sc.nextInt();
         } while (opcion != 1 & opcion != 0);
         if (opcion == 1) {
+            System.out.println();
+            System.out.format("+-------------------------------------------------------+%n");
             System.out.println("Citas realizadas");
             int cant = Cita.informeCitas(tipoCita.GENERAL);
             int costoUnitario = (tipoCita.GENERAL.getValorCita());
@@ -1305,7 +1309,7 @@ public class Interfaz {
             cant = Cita.informeCitas(tipoCita.PEDIATRIA);
             costoUnitario = (tipoCita.PEDIATRIA.getValorCita());
             System.out.println("Pediatria: " + cant + " citas recaudando $" + cant * costoUnitario );
-            System.out.println("--------------------------------------");
+            System.out.format("+-------------------------------------------------------+%n");
 
             System.out.println("Examenes realizados");
             cant = Examen.informeExamenes(tipoExamen.SANGRE);
@@ -1323,7 +1327,7 @@ public class Interfaz {
             cant = Examen.informeExamenes(tipoExamen.CITOQUIMICO);
             costoUnitario = (tipoExamen.CITOQUIMICO.getValorExamen());
             System.out.println("Citoquimico: " + cant + " examenes recaudando $" + cant * costoUnitario );
-            System.out.println("--------------------------------------");
+            System.out.format("+-------------------------------------------------------+%n");
 
             System.out.println("Estado de las entrega");
             cant = Entrega.informeEntregas(estadoEntrega.PROCESADA);
@@ -1334,16 +1338,20 @@ public class Interfaz {
 
             cant = Entrega.informeEntregas(estadoEntrega.REALIZADA);
             System.out.println("Realizada: " + cant + " entregas");
+            System.out.format("+-------------------------------------------------------+%n");
+            System.out.println();
         }
 	
-        System.out.println("--------------------------------------");
+        System.out.format("+-------------------------------------------------------+%n");
         System.out.println("Con el dinero obtenido hasta ahora " +  "$" + Administrador.dinero + " se puede:");
-        System.out.println("1. Contratar más medicos");
-        System.out.println("2. Adquirir más consultorios");
-        System.out.println("3. Comprar más medicamentos");
-        System.out.println("0. No utilizar el dinero");
+        System.out.format("+-------------------------------------------------------+%n");
+        System.out.format("|		1. Contratar mas medicos		   |%n");
+        System.out.format("|		2. Adquirir mas consultorios		   |%n");
+        System.out.format("|		3. Comprar mas medicamentos		   |%n");
+        System.out.format("|		0. No utilizar el dinero		   |%n");
         System.out.println();
-        System.out.println("¿Que desea hacer?");
+        System.out.format("|		Que desea hacer?		           |%n");
+        System.out.format("+-------------------------------------------------------+%n");
 
         do {
             System.out.print("Ingrese una opcion valida: ");
@@ -1352,14 +1360,19 @@ public class Interfaz {
 
         switch (opcion) {
             case 1:
+                System.out.format("+-------------------------------------------------------+%n");
                 System.out.println("Se tiene un total de " + Administrador.medicos.size() + " medicos");
-
+                System.out.format("+-------------------------------------------------------+%n");
+                
+                //mostrar cada tipo de medico
+                
+                System.out.format("+-------------------------------------------------------+%n");
                 System.out.println("Que especialista desea contratar");
-                System.out.println("1. General");
-                System.out.println("2. Optometra");
-                System.out.println("3. Fonoaudiologo");
-                System.out.println("4. Pediatra");
-                System.out.println("5. Bacteriologo");
+                System.out.format("|		1. General                                 |%n");
+                System.out.format("|		2. Optometra                               |%n");
+                System.out.format("|		3. Fonoaudiologo                           |%n");
+                System.out.format("|		4. Pediatra                                |%n");
+                System.out.format("|		5. Bacteriologo                            |%n");
 
                 do {
                     System.out.print("Ingrese un numero valido: ");
@@ -1386,9 +1399,9 @@ public class Interfaz {
                         nuevo = tipoMedico.BACTERIOLOGO;
                         break;
                 }
-
-                System.out.println("¿Cuantos medicos de especialidad " + nuevo + " desea contratar?");
-                System.out.print("Ingrese un numero: ");
+                System.out.println();
+                System.out.format("+-------------------------------------------------------+%n");
+                System.out.print("Cuantos medicos de especialidad " + nuevo + " desea contratar?: ");
                 nuevosMedicos = sc.nextInt();
                 mn = 0;
                 for (int i = 0; i < nuevosMedicos; i++) {
@@ -1407,23 +1420,35 @@ public class Interfaz {
                     }
                 }
                 if (mn > 0) {
-                    System.out.println("Se han podido contratar " + mn + " especialistas ");
+                    System.out.println();
+                    System.out.println("Se han podido contratar " + mn + " medicos de especialidad " + nuevo);
                     System.out.println("Ahora hay " + Administrador.medicos.size() + " medicos");
                 } else {
+                    System.out.println();
                     System.out.println("No se han podido adquirir nuevos especialistas. Lo sentimos");
+                }
+                System.out.format("+-------------------------------------------------------+%n");
+                try {
+                    //Ponemos a "Dormir" el programa 
+                    Thread.sleep(5 * 1000);
+                } catch (Exception e) {
+                    System.out.println(e);
                 }
                 main(null);
             case 2:
                 int cConsultorio = 100000;
+                System.out.println();
+                System.out.format("+-------------------------------------------------------+%n");
                 System.out.println("Se tiene un total de " + Administrador.consultorios.size() + " consultorios");
                 System.out.println("Actualmente el Dinero Disponible es: $" + Administrador.dinero);
                 System.out.println("Cada consultorio tiene un precio de $" + cConsultorio);
-                System.out.println("¿Cuantos consultorios desea adquirir?");
+                System.out.format("+-------------------------------------------------------+%n");
+                System.out.println("Cuantos consultorios desea adquirir?");
                 System.out.print("Ingrese un numero: ");
                 int nuevosConsultorios = sc.nextInt();
-
                 int cn = 0;
                 if (Administrador.dinero < (nuevosConsultorios * cConsultorio)) {
+                    System.out.println();
                     System.out.println("No hay suficiente dinero para comprar " + nuevosConsultorios + " consultorios");
                     break;
                 } else {
@@ -1444,22 +1469,39 @@ public class Interfaz {
 
                 if (cn > 0) {
                     Administrador.restarDinero((cn * cConsultorio));
+                    System.out.println();
+                    System.out.format("+-------------------------------------------------------+%n");
                     System.out.println("Se han podido adquirir " + cn + " consultorios");
                     System.out.println("Ahora hay " + Administrador.consultorios.size() + " consultorios");
                     System.out.println("Actualmente el Dinero Disponible es: $" + Administrador.dinero);
-                } else {
+                    System.out.format("+-------------------------------------------------------+%n");
+                } else if (cn==0 & nuevosConsultorios!=0) {
+                    System.out.println();
+                    System.out.format("+-------------------------------------------------------+%n");
                     System.out.println("PROBLEMAS EN LA OBRA!!!");
                     System.out.println("No se han podido adquirir consultorios");
+                    System.out.format("+-------------------------------------------------------+%n");
+                }
+                try {
+                    //Ponemos a "Dormir" el programa 
+                    Thread.sleep(5 * 1000);
+                } catch (Exception e) {
+                    System.out.println(e);
                 }
                 main(null);
             case 3:
+                System.out.println();
+                System.out.format("+-------------------------------------------------------+%n");
                 System.out.println("INVENTARIO MEDICAMENTOS");
+                System.out.format("+-------------------------------------------------------+%n");
+                System.out.println();
                 //ACETAMINOFEN
+                System.out.format("+-------------------------------------------------------+%n");
                 int a = Medicamentos.cantAcetaminofen;
                 tipoMedicamento b = tipoMedicamento.Acetaminofen;
                 int c = b.getValorMed();
                 System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: $" + c);
-                System.out.print("¿Cuantos unidades de " + b + " desea comprar? : ");
+                System.out.print("Cuantos unidades de " + b + " desea comprar? : ");
                 int comprar = sc.nextInt();
                 if (c == 0) {
                 } else if (Administrador.dinero < (comprar * c)) {
@@ -1469,13 +1511,14 @@ public class Interfaz {
                     Medicamentos.cantAcetaminofen += comprar;
                     System.out.println("COMPRA EXITOSA");
                 }
-
+                
                 //AMOXICILINA
+                System.out.format("+-------------------------------------------------------+%n");
                 a = Medicamentos.cantAmoxicilina;
                 b = tipoMedicamento.Amoxicilina;
                 c = b.getValorMed();
                 System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: $" + c);
-                System.out.print("¿Cuantos unidades de " + b + " desea comprar? : ");
+                System.out.print("Cuantos unidades de " + b + " desea comprar? : ");
                 comprar = sc.nextInt();
                 if (c == 0) {
                 } else if (Administrador.dinero < (comprar * c)) {
@@ -1487,11 +1530,12 @@ public class Interfaz {
                 }
 
                 //IBUPROFENO
+                System.out.format("+-------------------------------------------------------+%n");
                 a = Medicamentos.cantIbuprofeno;
                 b = tipoMedicamento.Ibuprofeno;
                 c = b.getValorMed();
                 System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: $" + c);
-                System.out.print("¿Cuantos unidades de " + b + " desea comprar? : ");
+                System.out.print("Cuantos unidades de " + b + " desea comprar? : ");
                 comprar = sc.nextInt();
                 if (c == 0) {
                 } else if (Administrador.dinero < (comprar * c)) {
@@ -1503,11 +1547,12 @@ public class Interfaz {
                 }
 
                 //LAGRIMAS ARTIFICIALES
+                System.out.format("+-------------------------------------------------------+%n");
                 a = Medicamentos.cantLagrimasArtificiales;
                 b = tipoMedicamento.LagrimasArtificiales;
                 c = b.getValorMed();
                 System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: $" + c);
-                System.out.print("¿Cuantos unidades de " + b + " desea comprar? : ");
+                System.out.print("Cuantos unidades de " + b + " desea comprar? : ");
                 comprar = sc.nextInt();
                 if (c == 0) {
                 } else if (Administrador.dinero < (comprar * c)) {
@@ -1517,19 +1562,37 @@ public class Interfaz {
                     Medicamentos.cantLagrimasArtificiales += comprar;
                     System.out.println("COMPRA EXITOSA");
                 }
+                System.out.format("+-------------------------------------------------------+%n");
+                System.out.format("+-------------------------------------------------------+%n");
 
-                System.out.println("--- INVENTARIO ACTUALIZADO ---");
+                System.out.println("             INVENTARIO ACTUALIZADO             ");
                 System.out.println("hay en inventario " + Medicamentos.cantAcetaminofen + " unidades de " + tipoMedicamento.Acetaminofen);
                 System.out.println("hay en inventario " + Medicamentos.cantAmoxicilina + " unidades de " + tipoMedicamento.Amoxicilina);
                 System.out.println("hay en inventario " + Medicamentos.cantIbuprofeno + " unidades de " + tipoMedicamento.Ibuprofeno);
                 System.out.println("hay en inventario " + Medicamentos.cantLagrimasArtificiales + " unidades de " + tipoMedicamento.LagrimasArtificiales);
-
+                System.out.format("+-------------------------------------------------------+%n");
+                System.out.format("+-------------------------------------------------------+%n");
+                
                 System.out.println("Actualmente el Dinero Disponible es: $" + Administrador.dinero);
 
-                System.out.println("--------------------------------------");
+                System.out.format("+-------------------------------------------------------+%n");
+                try {
+                    //Ponemos a "Dormir" el programa 
+                    Thread.sleep(5 * 1000);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
                 main(null);;
             case 0:
                 System.out.println("Actualmente el Dinero Disponible es: $" + Administrador.dinero);
+                System.out.format("+-------------------------------------------------------+%n");
+                System.out.println();
+                try {
+                    //Ponemos a "Dormir" el programa 
+                    Thread.sleep(5 * 1000);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
                 main(null);
         }//finaliza el switch de utilizar dinero
 
