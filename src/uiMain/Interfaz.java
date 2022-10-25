@@ -1,4 +1,4 @@
-package Interfaz;
+package uiMain;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
@@ -76,7 +76,7 @@ public class Interfaz {
 					"Masculino", 300762957,"mcm@gmail.com", "cra87#12-34", "SURA", false);
 			
 			
-			Medico medico1 = new Medico("Susana", "Perez", tipoDocumento.CEDULA, 1000758374, 25, "Masculino", 1000758374, 
+			Medico medico1 = new Medico("Susana", "Perez", tipoDocumento.CEDULA, 1000758374, 25, "Femenno", 1000758374, 
 					"susper@gmail.com", "Cra 77 #45 04", tipoCita.GENERAL, tipoMedico.BACTERIOLOGO ,true);
 			Medico medico2 = new Medico("Andres", "Lopez", tipoDocumento.CEDULA, 1254687950, 29, "Masculino", 1254687950, 
 					"andlop@gmail.com", "Calle 113 #55 05", tipoCita.GENERAL, tipoMedico.OPTOMETRA, true);
@@ -84,12 +84,59 @@ public class Interfaz {
 					"margar@gmail.com", "Avenida 7 #8 07", tipoCita.GENERAL, tipoMedico.OPTOMETRA, true);
 			Medico medico4 = new Medico("Mauricio", "Fernandez", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284,
 					"mp@hotmail.com", "carrera 78", tipoCita.AUDIOMETRIA, tipoMedico.FONOAUDIOLOGO, true);
+			medico1.setContratado(true);
+			medico2.setContratado(true);
+			medico3.setContratado(true);
+			medico4.setContratado(true);
+			Medico medico5 = new Medico("María", "Mercedes", tipoDocumento.CEDULA, 154687, 29, "Masculino", 65426548, 
+					"marmer@gmail.com", "Clle 77 #49 04", tipoCita.GENERAL, tipoMedico.GENERAL ,true);
+			Medico medico6 = new Medico("Alejandro", "Valencia", tipoDocumento.CEDULA, 9875642, 38, "Masculino", 236547898, 
+					"alval@gmail.com", "Carrera 111 #25 05", tipoCita.GENERAL, tipoMedico.PEDIATRA, true);
+			Medico medico7 = new Medico("Valentina", "Gomez", tipoDocumento.CEDULA, 2154687, 26, "Femenino", 655984236, 
+					"valgom,@gmail.com", "Avenida 70 #22 07", tipoCita.GENERAL, tipoMedico.BACTERIOLOGO, true);
+			Medico medico8 = new Medico("David", "Herrera", tipoDocumento.CEDULA, 65498752, 50, "Masculino", 87630549,
+					"dherrera@hotmail.com", "Transversal 78 # 69 02", tipoCita.AUDIOMETRIA, tipoMedico.FONOAUDIOLOGO, true);
+			Medico medico9 = new Medico("Juan", "Calvo", tipoDocumento.CEDULA, 12354889, 65, "Masculino", 65698421,
+					"jcalvo@hotmail.com", "carrera 80 # 95 6", tipoCita.AUDIOMETRIA, tipoMedico.OPTOMETRA, true);
+			
+			medico5.setSueldo(70000);
+			medico6.setSueldo(60000);
+			medico7.setSueldo(60000);
+			medico8.setSueldo(80000);
+			medico9.setSueldo(80000);
+			
+			TreeMap<LocalDateTime, Pago> nominaMedico5 = new TreeMap<LocalDateTime, Pago>();
+			nominaMedico5.put(nomina9, new Pago(7, (int) medico5.getSueldo(), medico5, true));
+			nominaMedico5.put(nomina10, new Pago(8, (int) medico5.getSueldo(), medico5, false));
+			TreeMap<LocalDateTime, Pago> nominaMedico6 = new TreeMap<LocalDateTime, Pago>();
+			nominaMedico6.put(nomina9, new Pago(7, (int) medico6.getSueldo(), medico6, true));
+			nominaMedico6.put(nomina10, new Pago(8, (int) medico6.getSueldo(), medico6, false));
+			TreeMap<LocalDateTime, Pago> nominaMedico7 = new TreeMap<LocalDateTime, Pago>();
+			nominaMedico7.put(nomina9, new Pago(7, (int) medico7.getSueldo(), medico7, true));
+			nominaMedico7.put(nomina10, new Pago(8, (int) medico7.getSueldo(), medico7, false));
+			TreeMap<LocalDateTime, Pago> nominaMedico8 = new TreeMap<LocalDateTime, Pago>();
+			nominaMedico8.put(nomina9, new Pago(7, (int) medico8.getSueldo(), medico8, true));
+			nominaMedico8.put(nomina10, new Pago(8, (int) medico8.getSueldo(), medico8, false));
+			TreeMap<LocalDateTime, Pago> nominaMedico9 = new TreeMap<LocalDateTime, Pago>();
+			nominaMedico9.put(nomina9, new Pago(7, (int) medico9.getSueldo(), medico9, true));
+			nominaMedico9.put(nomina10, new Pago(8, (int) medico9.getSueldo(), medico9, false));
+			
+			medico5.setNomina(nominaMedico5);
+			medico6.setNomina(nominaMedico6);
+			medico7.setNomina(nominaMedico7);
+			medico8.setNomina(nominaMedico8);
+			medico9.setNomina(nominaMedico9);
 			
 			
 			Consultorio consultorio1 = new Consultorio(1, null, null, "Laboratorio", true);
 			Consultorio consultorio2 = new Consultorio(2, null, null, "Consultorio Optometría", true);
 			Consultorio consultorio3 = new Consultorio(3, null, null, "Consultorio Optometría", true);
 			Consultorio consultorio4 = new Consultorio(4, null, null, "Consultorio Audiometría", true);
+			
+			Consultorio consultorio5 = new Consultorio(1, null, null, "Laboratorio", false);
+			Consultorio consultorio6 = new Consultorio(2, null, null, "Consultorio Fonoaudología", false);
+			Consultorio consultorio7 = new Consultorio(3, null, null, "Consultorio Pediatria", false);
+			Consultorio consultorio8 = new Consultorio(4, null, null, "Consultorio General", false);
 			
 			
 			Cita cita1 = new Cita(paciente1, "Un laboratorio", medico1, consultorio1, fecha1, tipoCita.LABORATORIO);
@@ -431,18 +478,6 @@ public class Interfaz {
 			System.out.format("|		0. Salir del sistema		  |%n");
 			System.out.format("+-------------------------------------------------+%n");
 			
-			
-//			System.out.println("-------------------------------------" + "\n"+
-//			"Bienvenido a su Sistema Médico" + "\n"+
-//			"-------------------------------------" + "\n"+
-//			"Elija a que Apartado Desea Acceder: " + "\n"+
-//			"1. Citas"  + "\n"+
-//			"2. Exámenes"+ "\n"+
-//			"3. Finanzas"+ "\n"+
-//			"4. Resultados y Medicamentos"+ "\n"+
-//			"5. Administración	"+ "\n"+
-//			"0. Salir del sistema"+ "\n");
-					
 			opcion = sc.nextInt();
 			
 			switch (opcion) {
@@ -478,10 +513,10 @@ public class Interfaz {
                             System.out.println("_________________ __000_____00_____________________");
                             System.out.println("______________________00__00_______________________");
                             System.out.println("________________________00_________________________");
-				break loop;
+				break;
 			}
 
-				
+				break;
 		}
 			
 	}
@@ -495,13 +530,6 @@ public class Interfaz {
 		System.out.format("|		2. Reagendar cita		  |%n");
 		System.out.format("+-------------------------------------------------+%n");
 
-		/*System.out.println("		+-------------------------------------------------------------------------------+	");
-		System.out.println(" 	|								Escoja una Opción:								|   "); 
-		System.out.println("		|   -------------------------------------------------------------------------   |	"); 
-		System.out.println(" 	|								1. Solicitar cita								|   "); 
-		System.out.println(" 	|								2. Reagendar cita								|   "); 
-		System.out.println(" 	+-------------------------------------------------------------------------------+   ");
-		*/
 		opcion = sc.nextInt();
 		switch (opcion){
 		case 1:
@@ -684,91 +712,6 @@ public class Interfaz {
 		}
 	}
 	static void solicitarExamen() {
-		//System.out.println(medicos);
-		//System.out.println(Administrador.medicos);
-		/*	Colocar esto en Main para testing
-		medicos = new ArrayList<Medico>();
-		consultorios = new ArrayList<Consultorio>();
-		pacientes = new ArrayList<Paciente>();
-		fechas = new ArrayList<LocalDateTime>();
-		LocalDateTime fecha1 = LocalDateTime.of(2022, 10, 15, 12, 30);
-		LocalDateTime fecha2 = LocalDateTime.of(2022, 10, 15, 13, 00);
-		LocalDateTime fecha3 = LocalDateTime.of(2022, 10, 16, 12, 30);
-		LocalDateTime fecha4 = LocalDateTime.of(2022, 10, 16, 13, 00);
-		Cita cita1 = new Cita(null, "Un laboratorio", null, null, fecha1, tipoCita.laboratorio);
-		Cita cita2 = new Cita(null, "Revisión visual", null, null, fecha2, tipoCita.Optometria);
-		Cita cita3 = new Cita(null, "Problemas visuales", null, null, fecha1, tipoCita.Optometria);
-		Paciente paciente1 = new Paciente( "Juan",  "Pérez",  tipoDocumento.CEDULA,  1000,  23,
-				 "masculino",  245687523,  "juanper@gmail.com",  "Carrera 68 # 54",  "Sura" , true);
-		
-		Medico medico1 = new Medico("Susana", "Perez", tipoDocumento.CEDULA, 1000758374, 25, "Mujer", 1000758374, 
-				"susper@gmail.com", "Cra 77 #45 04", tipoCita.General, tipoMedico.Bacteriologo ,true);
-		Medico medico2 = new Medico("Andres", "Lopez", tipoDocumento.CEDULA, 1254687950, 29, "Hombre", 1254687950, 
-				"andlop@gmail.com", "Calle 113 #55 05", tipoCita.General, tipoMedico.Optometra, true);
-		Medico medico3 = new Medico("Mariana", "Garcia", tipoDocumento.CEDULA, 656502354, 28, "Mujer", 656502354, 
-				"margar@gmail.com", "Avenida 7 #8 07", tipoCita.General, tipoMedico.Pediatra, true);
-		medico1.getConsultas().put(fecha1, cita1);
-		medico1.getConsultas().put(fecha2, null);
-		medico1.getConsultas().put(fecha3, null);
-		medico1.getConsultas().put(fecha4, null);
-		
-		medico2.getConsultas().put(fecha1, cita3);
-		medico2.getConsultas().put(fecha2, cita2);
-		medico2.getConsultas().put(fecha3, null);
-		medico2.getConsultas().put(fecha4, null);
-		
-		medico3.getConsultas().put(fecha1, null);
-		medico3.getConsultas().put(fecha2, null);
-		medico3.getConsultas().put(fecha3, null);
-		medico3.getConsultas().put(fecha4, null);
-		
-		medicos.add(medico1);
-		medicos.add(medico2);
-		medicos.add(medico3);
-		
-		Consultorio consultorio1 = new Consultorio(null, null, "Laboratorio", true);
-		Consultorio consultorio2 = new Consultorio(null, null, "Consultorio Optometría", true);
-		Consultorio consultorio3 = new Consultorio(null, null, "Consultorio Optometría", true);
-		
-		consultorio1.getConsultas().put(fecha1, cita1);
-		consultorio1.getConsultas().put(fecha2, null);
-		consultorio1.getConsultas().put(fecha3, null);
-		consultorio1.getConsultas().put(fecha4, null);
-		
-		consultorio2.getConsultas().put(fecha1, cita3);
-		consultorio2.getConsultas().put(fecha2, cita2);
-		consultorio2.getConsultas().put(fecha3, null);
-		consultorio2.getConsultas().put(fecha4, null);
-		
-		consultorio3.getConsultas().put(fecha1, null);
-		consultorio3.getConsultas().put(fecha2, null);
-		consultorio3.getConsultas().put(fecha3, null);
-		consultorio3.getConsultas().put(fecha4, null);
-		
-		consultorios.add(consultorio1);
-		consultorios.add(consultorio2);
-		consultorios.add(consultorio3);
-		
-		pacientes.add(paciente1);
-		fechas.add(fecha1);
-		fechas.add(fecha2);
-		fechas.add(fecha3);
-		fechas.add(fecha4);
-		*/
-		
-		/* 	Documento = 1000
-			Se pueden agendar 3 exámenes ya sea de Sangre, Laboratorio o Citoquímico y estos se agendarán con la médica Susana Pérez
-			No se puede agendar examen de Rayos X por disponibilidad médica
-		*/
-		
-		//codigo para solicitar examen
-		// Paciente
-		// Medico especialista bacteriólogo
-		// Medico especialista optometra
-		// Fechas
-		// Consultas
-		// Agregar consultas a medicos
-		// Agregar consultas a consultorios
 		
 		System.out.format("+-------------------------------------------------+%n");
 		System.out.format("|		Bienvenido a exámenes  		  |%n");
@@ -794,21 +737,10 @@ public class Interfaz {
 		System.out.format("|		4. Citoquímico		  	  	|%n");
 		System.out.format("|		5. Ir hacia atrás			|%n");
 		System.out.format("+-------------------------------------------------------+%n");
-		/*System.out.println("	+-------------------------------------------------------------------------------+	");
-		System.out.println("	|					Escoja el tipo de examen que desea solicitar:				|   "); 
-		System.out.println("	|   --------------------------------------------------------------------------  |	"); 
-		System.out.println(" |								1. Sangre										|   "); 
-		System.out.println(" |								2. Laboratorio									|   "); 
-		System.out.println(" |								3. RayosX										|   "); 
-		System.out.println(" |								4. Citoquimico									|   "); 
-		System.out.println(" |								5. Ir hacia atrás								|   "); 
-		System.out.println(" +-------------------------------------------------------------------------------+   ");
-		*/
 		
 		tipoExamen tipoEx = null;
 		tipoMedico tipoMed = null;
-		//System.out.println(tipoEx);
-		//System.out.println(tipoMed);
+		
 		do {
             opcion = sc.nextInt();
         } while (opcion != 1 && opcion != 2 && opcion != 3 && opcion != 4 && opcion != 5);
@@ -832,11 +764,9 @@ public class Interfaz {
 			break;
 		case 5:
 			main(null);
-			break;
+			
 		}
-		//System.out.println(tipoEx);
-		//System.out.println(tipoMed);
-		//System.out.println(medicos);
+	
 		System.out.println("A continuación se procederá a autorizar su examen");
 		Examen examen = new Examen((int)(Math.random()*10000+1), paciente, tipoEx, false);
 		int solicitudExamen = paciente.solicitarExamen(examen, tipoMed, medicos);
@@ -861,7 +791,7 @@ public class Interfaz {
 				case 1:
 					// Agendar examen
 					
-					System.out.println(Administrador.asignarExamen(examen, paciente, medicos, consultorios, fechaExamen, tipoMed));
+					System.out.println(Administrador.asignarExamen(examen, paciente, medicos, consultorios, fechaExamen, tipoMed, tipoEx));
 					System.out.println("¿Desea solicitar otro examen?");
 					System.out.println("Si la respuesta es sí, presione 1");
 					System.out.println("Si desea volver al menu principal, presione 2");
@@ -932,7 +862,7 @@ public class Interfaz {
 					int min = sc.nextInt();
 					fechaExamen = LocalDateTime.of(year, month, day, hour, min);
 					// Agendar el examen
-					System.out.println(Administrador.asignarExamen(examen, paciente, medicos, consultorios, fechaExamen, tipoMed));
+					System.out.println(Administrador.asignarExamen(examen, paciente, medicos, consultorios, fechaExamen, tipoMed, tipoEx));
 					System.out.println("¿Desea solicitar otro examen?");
 					System.out.println("Si la respuesta es sí, presione 1");
 					System.out.println("Si desea volver al menu principal, presione 2");
@@ -967,63 +897,6 @@ public class Interfaz {
 
 	static void finanzas() {
 
-		/*
-		 * Administrador admin = new Administrador(123, "Julian");
-		 * //Administrador.dinero = 100000;
-		 * 
-		 * Paciente paciente1 = new Paciente("Nancy", "Gutierrez", tipoDocumento.CEDULA,
-		 * 1212, 25, "Mujer", 7589, "nanguti@gmail.com", "Calle 88b #54", null, null,
-		 * null, new TreeMap<LocalDateTime, Consulta>(), new TreeMap<LocalDateTime,
-		 * Entrega>(), false);
-		 * 
-		 * LocalDateTime fecha1 = LocalDateTime.of(2022, 10, 2, 00, 00); LocalDateTime
-		 * fecha2 = LocalDateTime.of(2022, 10, 3, 00, 00); LocalDateTime fecha3 =
-		 * LocalDateTime.of(2022, 10, 5, 00, 00);
-		 * 
-		 * Medico medico1 = new Medico("Ana", "Marin", tipoDocumento.CEDULA, 5671, 45,
-		 * "Mujer", 3128, "Anamarin@gmail.com", "Carrera 34 #03", tipoCita.GENERAL,
-		 * tipoMedico.GENERAL, true, null, null, 50000, null);
-		 * 
-		 * Medico medico2 = new Medico("Juan", "Gomez", tipoDocumento.CEDULA, 3416, 45,
-		 * "Hombre", 3128, "Anamarin@gmail.com", "Carrera 34 #03", tipoCita.GENERAL,
-		 * tipoMedico.GENERAL, true, null, null, 50000, null);
-		 * 
-		 * Consultorio consultorio1 = new Consultorio(medico1, paciente1, "xd", true);
-		 * Consultorio consultorio2 = new Consultorio(medico2, paciente1, "xd", true);
-		 * 
-		 * Cita cita1 = new Cita(paciente1, "gripa", medico1, consultorio1, fecha1,
-		 * tipoCita.GENERAL); Cita cita2 = new Cita(paciente1, "gripa", medico2,
-		 * consultorio2, fecha2, tipoCita.GENERAL); Cita cita3 = new Cita(paciente1,
-		 * "gripa", medico1, consultorio1, fecha3, tipoCita.GENERAL);
-		 * 
-		 * cita1.setPago(new Pago(15000, false)); cita2.setPago(new Pago(15000, false));
-		 * cita3.setPago(new Pago(15000, false));
-		 * 
-		 * paciente1.getConsultas().put(fecha1, cita1);
-		 * paciente1.getConsultas().put(fecha2, cita2);
-		 * paciente1.getConsultas().put(fecha3, cita3);
-		 * 
-		 * pacientes.add(paciente1);
-		 * 
-		 * Entrega entrega1 = new Entrega(paciente1, "Calle 88b #54", null,
-		 * estadoEntrega.EN_CAMINO); Entrega entrega2 = new Entrega(paciente1,
-		 * "Calle 88b #54", null, estadoEntrega.EN_CAMINO);
-		 * 
-		 * paciente1.getEntregas().put(fecha1, entrega1);
-		 * paciente1.getEntregas().put(fecha2, entrega2); entrega1.setPago(new
-		 * Pago(10000, false)); entrega2.setPago(new Pago(10000, false));
-		 */
-
-		//Se pide el documento de identidad para buscar el paciente
-		System.out.println("\n"+"Inserte su documento de identidad: ");
-		long id = sc.nextLong();
-		Paciente paciente = null;
-
-		for (int i = 0; i < pacientes.size(); i++) {
-			if (id == pacientes.get(i).getNumeroDocumento()) {
-				paciente = pacientes.get(i);
-			}
-		}
 
 		System.out.format("+-------------------------------------------------------+%n");
 		System.out.format("|	Escoja la accion que desea realizar		|%n");
@@ -1038,6 +911,17 @@ public class Interfaz {
 		
 
 		opcion = sc.nextInt();
+
+		//Se pide el documento de identidad para buscar el paciente
+		System.out.println("\n"+"Inserte su documento de identidad: ");
+		long id = sc.nextLong();
+		Paciente paciente = null;
+
+		for (int i = 0; i < pacientes.size(); i++) {
+			if (id == pacientes.get(i).getNumeroDocumento()) {
+				paciente = pacientes.get(i);
+			}
+		}
 		
 		switch (opcion){
 
@@ -1149,38 +1033,7 @@ public class Interfaz {
 	}
 	
 	static void resultados() {
-		/*
-		 * LocalDateTime fecha = LocalDateTime.of(2022, Month.NOVEMBER, 25, 15,30);
-		 * Paciente paciente = new Paciente("Camilo", "Martinez", tipoDocumento.CEDULA,
-		 * 1074074689, 25, "masculino", 300762957,"mcm@gmail.com", "cra87#12-34",
-		 * "SURA", false); Paciente paciente1 = new Paciente("Maria", "Jaramillo",
-		 * tipoDocumento.CEDULA, 9403862, 43, "femenino", 301762849,"mj@gmail.com",
-		 * "calle 3", "SURA", false); Medico m1 = new Medico("Sara", "Perez",
-		 * tipoDocumento.CEDULA, 12345678, 50, "femenino", 6048742, "sp@yahoo.com",
-		 * "calle 43", tipoCita.GENERAL, tipoMedico.GENERAL, true); Medico m2 = new
-		 * Medico("Mauricio", "Fernandez", tipoDocumento.CEDULA, 98765432, 60,
-		 * "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.AUDIOMETRIA,
-		 * tipoMedico.FONOAUDIOLOGO, true); Medico m3 = new Medico("Carlos", "Munera",
-		 * tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com",
-		 * "carrera 78", tipoCita.GENERAL, tipoMedico.GENERAL, true); Consultorio c1 =
-		 * new Consultorio(null, null, null, true, fecha, null); Consultorio c2 = new
-		 * Consultorio(null, null, null, true, fecha, null); Medicamentos medic = new
-		 * Medicamentos(tipoMedicamento.Acetaminofen, null, 2, 3); Cita cita = new
-		 * Cita(paciente, "gripa", tipoCita.GENERAL); cita.setPago(new Pago(200000,
-		 * true)); Diagnostico.sintomas.add("gripa"); Diagnostico dia = new
-		 * Diagnostico(null, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
-		 * Medico.listado.add(dia); Paciente pa = new Paciente("Diana", "Cardenas",
-		 * tipoDocumento.CEDULA, 12365478, 20, "Masculino", 388030288, "dc@hotmail.com",
-		 * "Calle 73", "SURA", null, null, null, null, false); Cita cita1 = new
-		 * Cita(null, "Dolor de espalda", m1, null, fecha, tipoCita.GENERAL); Cita cita2
-		 * = new Cita(null, "Dolor", m1, null, fecha, tipoCita.GENERAL); Diagnostico
-		 * dia1 = new Diagnostico(null, Diagnostico.sintomas, "Dolor de cabeza", 2,
-		 * cita1); Diagnostico dia2 = new Diagnostico(null, Diagnostico.sintomas,
-		 * "Rodilla Rota", 3, cita2); ArrayList<Diagnostico> g = new ArrayList<>();
-		 * g.add(dia1); g.add(dia2); HistoriaClinica historiaCli = new
-		 * HistoriaClinica(pa, g); dia1.setPersona(pa); dia2.setPersona(pa);
-		 * pa.setHistoriaClinica(historiaCli);
-		 */
+		
 			System.out.format("+-------------------------------------------------------+%n");
 			System.out.format("|		Escoja una opción			|%n");
 			System.out.format("+-------------------------------------------------------+%n");
@@ -1333,6 +1186,7 @@ public class Interfaz {
 			}
 			ArrayList<Diagnostico> listaDiagnosticos = pacienteX.getHistoriaClinica().getDiagnosticos();
 			for (Diagnostico diagnostico : listaDiagnosticos) {
+				System.out.format("+-------------------------------------------------------+%n");
 				System.out.println("El nombre y apellido del paciente es: " + diagnostico.getPersona().getNombre() + " " +diagnostico.getPersona().getApellido()+ "\n"+
 				"Su observacion fue: "+ diagnostico.getObservacion() + "\n"+
 				"Se reporto con los siguientes sintomas: ");
@@ -1341,6 +1195,7 @@ public class Interfaz {
 				} 
 				System.out.println("Su consulta fue en la fecha: "+ diagnostico.getConsulta().getFecha()+ "\n"+
 				"Su medico fue: "+ diagnostico.getConsulta().getMedico().getNombre()+ " " + diagnostico.getConsulta().getMedico().getApellido() );
+				System.out.format("+-------------------------------------------------------+%n");
 			}
 			resultados();
 			break;
@@ -1408,7 +1263,7 @@ public class Interfaz {
 		}
 		case 4:
 			System.out.println("\n");
-			Interfaz.main(null);
+			main(null);
 			break;
 		
 		}
@@ -1416,9 +1271,9 @@ public class Interfaz {
 	
     static void administracion() {
         System.out.println("Datos del sistema");
-        System.out.println("Se tiene un total de " + Medico.medicos.size() + " medicos y " + Consultorio.consultorios.size() + " consultorios");
-        System.out.println("Se han atendido a " + Paciente.pacientes + " pacientes");
-        System.out.println("Y se ha facturado hasta ahora " + "$" + " pesos");
+        System.out.println("Se tiene un total de " + Administrador.medicos.size() + " medicos y " + Administrador.consultorios.size() + " consultorios");
+        System.out.println("Se han atendido a " + Administrador.pacientes.size() + " pacientes");
+        System.out.println("Y se ha facturado hasta ahora " + "$"+ Administrador.dinero);
         System.out.println("--------------------------------------");
         System.out.println("Desea visualizar las citas, examanes y entregas realizadas? [1]si  [0]no");
         do {
@@ -1429,48 +1284,48 @@ public class Interfaz {
             System.out.println("Citas realizadas");
             int cant = Cita.informeCitas(tipoCita.GENERAL);
             int costoUnitario = (tipoCita.GENERAL.getValorCita());
-            System.out.println("General: " + cant + " citas recaudando" + cant * costoUnitario + " pesos");
+            System.out.println("General: " + cant + " citas recaudando $" + cant * costoUnitario );
 
             cant = Cita.informeCitas(tipoCita.PRIORITARIA);
             costoUnitario = (tipoCita.PRIORITARIA.getValorCita());
-            System.out.println("Prioritaria: " + cant + " citas recaudando" + cant * costoUnitario + " pesos");
+            System.out.println("Prioritaria: " + cant + " citas recaudando $" + cant * costoUnitario );
 
             cant = Cita.informeCitas(tipoCita.OPTOMETRIA);
             costoUnitario = (tipoCita.OPTOMETRIA.getValorCita());
-            System.out.println("Optometría: " + cant + " citas recaudando" + cant * costoUnitario + " pesos");
+            System.out.println("Optometría: " + cant + " citas recaudando $" + cant * costoUnitario );
 
             cant = Cita.informeCitas(tipoCita.AUDIOMETRIA);
             costoUnitario = (tipoCita.AUDIOMETRIA.getValorCita());
-            System.out.println("Audiometria: " + cant + " citas recaudando" + cant * costoUnitario + " pesos");
+            System.out.println("Audiometria: " + cant + " citas recaudando $" + cant * costoUnitario );
 
             cant = Cita.informeCitas(tipoCita.LABORATORIO);
             costoUnitario = (tipoCita.LABORATORIO.getValorCita());
-            System.out.println("laboratorio: " + cant + " citas recaudando" + cant * costoUnitario + " pesos");
+            System.out.println("laboratorio: " + cant + " citas recaudando $" + cant * costoUnitario );
 
             cant = Cita.informeCitas(tipoCita.PEDIATRIA);
             costoUnitario = (tipoCita.PEDIATRIA.getValorCita());
-            System.out.println("Pediatria: " + cant + " citas recaudando" + cant * costoUnitario + " pesos");
+            System.out.println("Pediatria: " + cant + " citas recaudando $" + cant * costoUnitario );
             System.out.println("--------------------------------------");
 
             System.out.println("Examenes realizados");
             cant = Examen.informeExamenes(tipoExamen.SANGRE);
             costoUnitario = (tipoExamen.SANGRE.getValorExamen());
-            System.out.println("Sangre: " + cant + " examenes recaudando" + cant * costoUnitario + " pesos");
+            System.out.println("Sangre: " + cant + " examenes recaudando $" + cant * costoUnitario );
 
             cant = Examen.informeExamenes(tipoExamen.LABORATORIO);
             costoUnitario = (tipoExamen.LABORATORIO.getValorExamen());
-            System.out.println("Laboratorio: " + cant + " examenes recaudando" + cant * costoUnitario + " pesos");
+            System.out.println("Laboratorio: " + cant + " examenes recaudando $" + cant * costoUnitario );
 
             cant = Examen.informeExamenes(tipoExamen.RAYOSX);
             costoUnitario = (tipoExamen.RAYOSX.getValorExamen());
-            System.out.println("Rayos X: " + cant + " examenes recaudando" + cant * costoUnitario + " pesos");
+            System.out.println("Rayos X: " + cant + " examenes recaudando $" + cant * costoUnitario );
 
             cant = Examen.informeExamenes(tipoExamen.CITOQUIMICO);
             costoUnitario = (tipoExamen.CITOQUIMICO.getValorExamen());
-            System.out.println("Citoquimico: " + cant + " examenes recaudando" + cant * costoUnitario + " pesos");
+            System.out.println("Citoquimico: " + cant + " examenes recaudando $" + cant * costoUnitario );
             System.out.println("--------------------------------------");
 
-            System.out.println("Estado de la entrega");
+            System.out.println("Estado de las entrega");
             cant = Entrega.informeEntregas(estadoEntrega.PROCESADA);
             System.out.println("Procesada: " + cant + " entregas");
 
@@ -1480,33 +1335,9 @@ public class Interfaz {
             cant = Entrega.informeEntregas(estadoEntrega.REALIZADA);
             System.out.println("Realizada: " + cant + " entregas");
         }
+	
         System.out.println("--------------------------------------");
-        System.out.println("Se tiene un total de " + HistoriaClinica.historia.size() + " historias clinicas");
-        System.out.println("Desea buscar la historia clinica de un paciente? [1]si  [0]no");
-        do {
-            System.out.print("Ingrese una opcion valida: ");
-            opcion = sc.nextInt();
-        } while (opcion != 1 & opcion != 0);
-        if (opcion == 1) {
-            int cc;
-            do {
-                System.out.print("Ingrese numero de intedificacion: ");
-                cc = sc.nextInt();
-                int resp = HistoriaClinica.buscarPaciente(cc);
-                if (resp == 0) {// no se encontró historiaClinica
-                    System.out.println("Paciente no encontrado");
-                    System.out.println("¿Desea volver a buscar paciente? [1]si  [0]no");
-                    cc = sc.nextInt();
-                } else {
-                    System.out.println("paciente encontrado");
-                    System.out.print(HistoriaClinica.getPacEncontrado());
-                    cc = 0;
-                }
-            } while (cc != 0);
-        }
-
-        System.out.println("--------------------------------------");
-        System.out.println("Con el dinero obtenido hasta ahora " + "x" + " $ se puede:");
+        System.out.println("Con el dinero obtenido hasta ahora " +  "$" + Administrador.dinero + " se puede:");
         System.out.println("1. Contratar más medicos");
         System.out.println("2. Adquirir más consultorios");
         System.out.println("3. Comprar más medicamentos");
@@ -1517,27 +1348,11 @@ public class Interfaz {
         do {
             System.out.print("Ingrese una opcion valida: ");
             opcion = sc.nextInt();
-        } while (opcion != 1 & opcion != 2 & opcion != 3 & opcion != 0);
+        } while (opcion != 1 && opcion != 2 && opcion != 3 && opcion != 0);
 
         switch (opcion) {
             case 1:
-                System.out.println("Se tiene un total de " + Medico.medicos.size() + " medicos");
-                System.out.println("A cada medico se le paga un porcentaje por consulta");
-
-                int med = Medico.informesMedicos(tipoMedico.GENERAL);
-                System.out.println("General: " + med + " especialistas. Comision del 50%");
-
-                med = Medico.informesMedicos(tipoMedico.OPTOMETRA);
-                System.out.println("Optometra: " + med + " especialistas. Comision del 60%");
-
-                med = Medico.informesMedicos(tipoMedico.FONOAUDIOLOGO);
-                System.out.println("Fonoaudiologo: " + med + " especialistas. Comision del 60%");
-
-                med = Medico.informesMedicos(tipoMedico.PEDIATRA);
-                System.out.println("Pediatra: " + med + " especialistas. Comision del 70%");
-
-                med = Medico.informesMedicos(tipoMedico.BACTERIOLOGO);
-                System.out.println("Bacteriologo: " + med + " especialistas. Comision del 70%");
+                System.out.println("Se tiene un total de " + Administrador.medicos.size() + " medicos");
 
                 System.out.println("Que especialista desea contratar");
                 System.out.println("1. General");
@@ -1593,16 +1408,16 @@ public class Interfaz {
                 }
                 if (mn > 0) {
                     System.out.println("Se han podido contratar " + mn + " especialistas ");
-                    System.out.println("Ahora hay" + Medico.medicos.size() + " medicos");
+                    System.out.println("Ahora hay " + Administrador.medicos.size() + " medicos");
                 } else {
                     System.out.println("No se han podido adquirir nuevos especialistas. Lo sentimos");
                 }
-                break;
+                main(null);
             case 2:
                 int cConsultorio = 100000;
-                System.out.println("Se tiene un total de " + Consultorio.consultorios.size() + " consultorios");
+                System.out.println("Se tiene un total de " + Administrador.consultorios.size() + " consultorios");
                 System.out.println("Actualmente el Dinero Disponible es: $" + Administrador.dinero);
-                System.out.println("Cada consultorio tiene un precio de " + cConsultorio + " pesos");
+                System.out.println("Cada consultorio tiene un precio de $" + cConsultorio);
                 System.out.println("¿Cuantos consultorios desea adquirir?");
                 System.out.print("Ingrese un numero: ");
                 int nuevosConsultorios = sc.nextInt();
@@ -1630,20 +1445,20 @@ public class Interfaz {
                 if (cn > 0) {
                     Administrador.restarDinero((cn * cConsultorio));
                     System.out.println("Se han podido adquirir " + cn + " consultorios");
-                    System.out.println("Ahora hay " + Consultorio.consultorios.size() + " consultorios");
+                    System.out.println("Ahora hay " + Administrador.consultorios.size() + " consultorios");
                     System.out.println("Actualmente el Dinero Disponible es: $" + Administrador.dinero);
                 } else {
                     System.out.println("PROBLEMAS EN LA OBRA!!!");
                     System.out.println("No se han podido adquirir consultorios");
                 }
-                break;
+                main(null);
             case 3:
                 System.out.println("INVENTARIO MEDICAMENTOS");
                 //ACETAMINOFEN
                 int a = Medicamentos.cantAcetaminofen;
                 tipoMedicamento b = tipoMedicamento.Acetaminofen;
                 int c = b.getValorMed();
-                System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: " + c + " pesos");
+                System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: $" + c);
                 System.out.print("¿Cuantos unidades de " + b + " desea comprar? : ");
                 int comprar = sc.nextInt();
                 if (c == 0) {
@@ -1651,6 +1466,7 @@ public class Interfaz {
                     System.out.println("ERROR FINANCIERO, dinero insuficiente");
                 } else {
                     Administrador.restarDinero((comprar * c));
+                    Medicamentos.cantAcetaminofen += comprar;
                     System.out.println("COMPRA EXITOSA");
                 }
 
@@ -1658,7 +1474,7 @@ public class Interfaz {
                 a = Medicamentos.cantAmoxicilina;
                 b = tipoMedicamento.Amoxicilina;
                 c = b.getValorMed();
-                System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: " + c + " pesos");
+                System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: $" + c);
                 System.out.print("¿Cuantos unidades de " + b + " desea comprar? : ");
                 comprar = sc.nextInt();
                 if (c == 0) {
@@ -1666,6 +1482,7 @@ public class Interfaz {
                     System.out.println("ERROR FINANCIERO, dinero insuficiente");
                 } else {
                     Administrador.restarDinero((comprar * c));
+                    Medicamentos.cantAmoxicilina += comprar;
                     System.out.println("FELICIDADES POR TU COMPRA");
                 }
 
@@ -1673,7 +1490,7 @@ public class Interfaz {
                 a = Medicamentos.cantIbuprofeno;
                 b = tipoMedicamento.Ibuprofeno;
                 c = b.getValorMed();
-                System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: " + c + " pesos");
+                System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: $" + c);
                 System.out.print("¿Cuantos unidades de " + b + " desea comprar? : ");
                 comprar = sc.nextInt();
                 if (c == 0) {
@@ -1681,6 +1498,7 @@ public class Interfaz {
                     System.out.println("ERROR FINANCIERO, dinero insuficiente");
                 } else {
                     Administrador.restarDinero((comprar * c));
+                    Medicamentos.cantIbuprofeno += comprar;
                     System.out.println("ENHORABUENA");
                 }
 
@@ -1688,7 +1506,7 @@ public class Interfaz {
                 a = Medicamentos.cantLagrimasArtificiales;
                 b = tipoMedicamento.LagrimasArtificiales;
                 c = b.getValorMed();
-                System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: " + c + " pesos");
+                System.out.println("hay en inventario " + a + " unidades de " + b + " a un precio unitario de: $" + c);
                 System.out.print("¿Cuantos unidades de " + b + " desea comprar? : ");
                 comprar = sc.nextInt();
                 if (c == 0) {
@@ -1696,6 +1514,7 @@ public class Interfaz {
                     System.out.println("ERROR FINANCIERO, dinero insuficiente");
                 } else {
                     Administrador.restarDinero((comprar * c));
+                    Medicamentos.cantLagrimasArtificiales += comprar;
                     System.out.println("COMPRA EXITOSA");
                 }
 
@@ -1708,10 +1527,10 @@ public class Interfaz {
                 System.out.println("Actualmente el Dinero Disponible es: $" + Administrador.dinero);
 
                 System.out.println("--------------------------------------");
-                break;
+                main(null);;
             case 0:
                 System.out.println("Actualmente el Dinero Disponible es: $" + Administrador.dinero);
-                break;
+                main(null);
         }//finaliza el switch de utilizar dinero
 
     }

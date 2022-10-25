@@ -151,7 +151,7 @@ public class Administrador implements Serializable{
 			
 	}
 	
-	public static String asignarExamen(Examen examen, Paciente paciente, ArrayList<Medico> medicos, ArrayList<Consultorio> consultorios, LocalDateTime fecha, tipoMedico tipoMed) {
+	public static String asignarExamen(Examen examen, Paciente paciente, ArrayList<Medico> medicos, ArrayList<Consultorio> consultorios, LocalDateTime fecha, tipoMedico tipoMed, tipoExamen tipoExa) {
 		if (examen.isAutorizado() == true) {
 			for (Medico m: medicos) {
 				if(m.getEspecialista() == tipoMed) {
@@ -161,7 +161,8 @@ public class Administrador implements Serializable{
 							if(Administrador.verificarDisponibilidadConsultorio(fecha, c)) {
 								examen.setConsultorio(c);
 								examen.setFecha(fecha);
-								examen.setPago(new Pago(37000, examen, false));
+								examen.setPago(new Pago(tipoExa.getValorExamen(), examen, false));
+								paciente.getConsultas().put(fecha, examen);
 								c.getConsultas().put(fecha, examen);
 								break;
 							}

@@ -20,6 +20,7 @@ public class Entrega {
         this.domicilio = domicilio;
         this.medicamentos = medicamentos;
         this.estado = estado;
+        lista.add(this);
     }
     
     public Entrega(Paciente paciente, String domicilio, Medicamentos medicamentos, estadoEntrega estado) {
@@ -28,6 +29,7 @@ public class Entrega {
         this.domicilio = domicilio;
         this.medicamentos = medicamentos;
         this.estado = estado;
+        lista.add(this);
     }
     
     //getter & setter
@@ -73,8 +75,8 @@ public class Entrega {
     
     //metodos
     public static void crearEntrega(int id, Paciente paciente,String domicilio, Medicamentos medicamentos,estadoEntrega estado){
-        Entrega entrega = new Entrega (id, paciente, domicilio, medicamentos, estado);
-        lista.add(entrega);
+        new Entrega (id, paciente, domicilio, medicamentos, estado);
+        
     }
     
     public static int informeEntregas(estadoEntrega solicitado){// se ingresa el tipo de entrega y se busca en la lista cuantas hay
