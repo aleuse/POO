@@ -513,7 +513,8 @@ public class Interfaz {
                             System.out.println("_________________ __000_____00_____________________");
                             System.out.println("______________________00__00_______________________");
                             System.out.println("________________________00_________________________");
-				break;
+                            
+				break loop;
 			}
 
 				break;
@@ -709,6 +710,7 @@ public class Interfaz {
 				main(null);
 				break;
 			}
+			break;
 		}
 	}
 	static void solicitarExamen() {
@@ -764,7 +766,7 @@ public class Interfaz {
 			break;
 		case 5:
 			main(null);
-			
+			break;
 		}
 	
 		System.out.println("A continuación se procederá a autorizar su examen");
@@ -777,6 +779,7 @@ public class Interfaz {
 			LocalDateTime fechaExamen = Administrador.verificarDisponibilidadFechaExamen(fechas, tipoMed, medicos, consultorios);
 			if(fechaExamen == null) {
 				System.out.println("Lo sentimos, en este momento no tenemos disponibilidad");
+				opcion = 0;
 				solicitarExamen();
 			}
 			else {
@@ -798,11 +801,14 @@ public class Interfaz {
 					opcion = sc.nextInt();
 					switch(opcion) {
 					case 1:
+						opcion = 0;
 						solicitarExamen();
 					case 2:
+						opcion = 0;
 						main(null);
 						break;
 					}
+					break;
 				case 2:
 					// Pedirle una fecha al paciente
 					System.out.println("Inserte los siguientes datos para agendar su examen");
@@ -869,29 +875,33 @@ public class Interfaz {
 					opcion = sc.nextInt();
 					switch(opcion) {
 					case 1:
+						opcion = 0;
 						solicitarExamen();
 					case 2:
+						opcion = 0;
 						main(null);
 						break;
 					}
+					break;
 				}
-			}
+				
+			}			
+			
 		}
 		
 		else if (solicitudExamen == 2) {
 			System.out.println("Lo sentimos ha ocurrido un problema y no se ha podido autorizar el examen");
+			opcion = 0;
 			solicitarExamen();
 			
 		}
 		else {
 			System.out.println("Lo sentimos, en este momento no tenemos médicos que puedan atender su tipo de examen");
+			opcion = 0;
 			solicitarExamen();
 			
 		}
-		
-		
-		
-		
+		opcion = 0;
 		
 	}
 
@@ -906,7 +916,7 @@ public class Interfaz {
 		System.out.format("|		2. Pagar entregas			|%n");
 		System.out.format("|		3. Consultar dinero disponibles	  	|%n");
 		System.out.format("|		4. Pago de nomina	  	  	|%n");
-		System.out.format("|		5. Ir hacia atrás			|%n");
+		System.out.format("|		0. Ir hacia atrás			|%n");
 		System.out.format("+-------------------------------------------------------+%n");
 		
 
@@ -959,7 +969,7 @@ public class Interfaz {
 			
 			ArrayList<Entrega>entregas_paciente=new ArrayList<> (paciente.getEntregas().values());
 
-			while(true) {
+			while(paciente.getEntregas().values().size() > 0) {
 				for (Entrega e: entregas_paciente) {
 					if (e.getPago().isPagado() == false) {
 						System.out.println("La entrega numero " + e.getId() + " esta sin pagar");
@@ -980,12 +990,11 @@ public class Interfaz {
 							System.out.println("La entrega numero " + e.getId() + " ha sido pagada exitosamente");
 						}
 					}
-				}
-				 
+				}	 
 			}
+			break;
 			 
 
-			
 		case 3:
 
 			System.out.println("\n" + "----------------------------------" + "\n"+
@@ -997,7 +1006,9 @@ public class Interfaz {
 			int opcion = sc.nextInt();
 			if (opcion == -1) {
 				finanzas();
+				break;
 			} 
+			break;
 
 		case 4:
 
@@ -1030,6 +1041,7 @@ public class Interfaz {
 			break;
 
 		}
+		
 	}
 	
 	static void resultados() {
