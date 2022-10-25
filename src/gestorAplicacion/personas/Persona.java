@@ -3,7 +3,7 @@ package gestorAplicacion.personas;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Persona implements Serializable{
+public class Persona implements Serializable, VisualizacionDatos{
 	private static final long serialVersionUID = 1L;
 	protected String nombre;
 	protected String apellido;
@@ -92,5 +92,19 @@ public class Persona implements Serializable{
 	}
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+	
+	
+	//Implemenatacion metodo abstracto
+	
+	public String visualizarDatos() {
+		return getNombre() +" "+ getApellido() + 
+				"\nTipo de documento: " +getDocumento() +
+				"\nNúmero de documento: " +getNumeroDocumento() + 
+				"\nEdad: " +getEdad() +
+				"\nGénero: " + getGenero()+
+				"\nTeléfono número: "+getTelefono()
+				+"\nCorreo Electrónico: " +getCorreoElectronico()
+				+"\nDirección: " +getDireccion();
 	}
 }

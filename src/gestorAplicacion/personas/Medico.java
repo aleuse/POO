@@ -23,7 +23,8 @@ public class Medico extends Persona{
     public Map<LocalDateTime, Pago> nomina = new TreeMap<LocalDateTime, Pago>();
     private long sueldo;
     public  ArrayList<Medicamentos> medicamiento = new ArrayList<Medicamentos>();
-    public static int num_consultas; 
+    public static int num_consultas;
+    private boolean contratado=false;
 
     
     //constructor
@@ -138,6 +139,15 @@ public class Medico extends Persona{
     public void setEspecialista(tipoMedico especialista) {
         this.especialista = especialista;
     }
+
+    public boolean isContratado() {
+        return contratado;
+    }
+
+    public void setContratado(boolean contratado) {
+        this.contratado = contratado;
+    }
+    
     
     
     
@@ -158,4 +168,17 @@ public class Medico extends Persona{
     }
 
 
+	@Override
+	public String visualizarDatos() {
+		return getNombre() +" "+ getApellido() + 
+				"\nTipo de documento: " +getDocumento() +
+				"\nNúmero de documento: " +getNumeroDocumento() + 
+				"\nEdad: " +getEdad() +
+				"\nGénero: " + getGenero()+
+				"\nTeléfono número: "+getTelefono()
+				+"\nCorreo Electrónico: " +getCorreoElectronico()
+				+"\nDirección: " +getDireccion()+
+				"\nEspecialidad: " +getEspecialidad()+
+				"\nNumero de Consultas totales: " +num_consultas;
+}
 }

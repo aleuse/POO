@@ -30,12 +30,14 @@ public class Objetos {
 		Consultorio c2 = new Consultorio(null, null, null, true, fecha, null);
 		Consultorio c3 = new Consultorio(null, null, null, true, fecha, null);
 		System.out.println(paciente1.pedirCita(LocalDateTime.of(2022, Month.NOVEMBER, 25, 15,30), tipoCita.GENERAL, null));
-		System.out.println(paciente3.pedirCita(LocalDateTime.of(2022, Month.NOVEMBER, 25, 16,30), tipoCita.GENERAL, null));
-		System.out.println(paciente3.pedirCita(LocalDateTime.of(2022, Month.NOVEMBER, 25, 16,30), tipoCita.AUDIOMETRIA, null)); 
+		System.out.println(paciente.pedirCita(LocalDateTime.of(2022, Month.NOVEMBER, 25, 16,30), tipoCita.GENERAL, null));
+		System.out.println(paciente.pedirCita(LocalDateTime.of(2022, Month.NOVEMBER, 25, 16,30), tipoCita.AUDIOMETRIA, null)); 
 		int id = Cita.listaCitas.get(0).getId();
 		int id2 = Cita.listaCitas.get(1).getId();
 		System.out.println(paciente1.reagendarCita(id, LocalDateTime.of(2022, Month.NOVEMBER, 25, 16,30)));
 		
+		System.out.println(paciente.reagendarCita(id2, LocalDateTime.of(2022, Month.DECEMBER, 25, 20,00)));
+		System.out.println(paciente.visualizarDatos());
 		System.out.println(paciente3.reagendarCita(id2, LocalDateTime.of(2022, Month.DECEMBER, 25, 20,00)));
 		System.out.println(c1.consultas);
 		

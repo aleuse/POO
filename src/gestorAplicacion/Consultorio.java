@@ -25,6 +25,7 @@ public class Consultorio implements Serializable{
     private boolean disponibilidad;
     public Map<LocalDateTime, Consulta> consultas = new TreeMap<LocalDateTime, Consulta>();
     public static ArrayList<Consultorio> consultorios = new ArrayList<Consultorio>();
+    private static boolean adquirido=false;
     
     //constructor
 
@@ -85,32 +86,38 @@ public class Consultorio implements Serializable{
         this.tipoConsultorio = tipoConsultorio;
     }
 
-	public int getId() {
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
+    public Map<LocalDateTime, Consulta> getConsultas() {
+        return consultas;
+    }
 
-	public Map<LocalDateTime, Consulta> getConsultas() {
-		return consultas;
-	}
+    public void setConsultas(Map<LocalDateTime, Consulta> consultas) {
+        this.consultas = consultas;
+    }
 
+    public boolean isDisponibilidad() {
+        return disponibilidad;
+    }
 
-	public void setConsultas(Map<LocalDateTime, Consulta> consultas) {
-		this.consultas = consultas;
-	}
-
-
-	public boolean isDisponibilidad() {
-		return disponibilidad;
-	}
-
-
-	public void setDisponibilidad(boolean disponibilidad) {
-		this.disponibilidad = disponibilidad;
-	}
-   
-    //metodos
+    public void setDisponibilidad(boolean disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
     
+    
+
+    //metodos
+
+    public static boolean isAdquirido() {
+        return adquirido;
+    }
+
+    public static void setAdquirido(boolean adquirido) {
+        Consultorio.adquirido = adquirido;
+    }
+
     
     
 }
