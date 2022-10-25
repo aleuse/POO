@@ -16,8 +16,8 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
-
-
+//Clase Paciente, para poder almacenar los atributos y aplicar los metodos respecto a los pacientes del sistema se usan arraylist para almacenar todos los pacientes creados y para tener las lista de los síntomas que tenga el paciente.
+//Al igual se usan tree maps, donde se guardan las consultas con su respectiva fecha y le consulta asignada y las entregas, donde se guardan las fechas y las netregas correspondientes.
 
 public class Paciente extends Persona{
 	private static final long serialVersionUID = 1L;
@@ -112,6 +112,11 @@ public class Paciente extends Persona{
 	}
 
 	//Metodos
+	
+	/*Metodo para poder ejecutar la funcionalidad de pedir cita, el cual recibe la fecha en que se desea pedir la cita, el tipo de la cita, el motivo y el típo de médico 
+	requerido, este retorna un String que indica si el proceso fue exitoso o fallido, en el primer caso, a su vez se devuelve la fecha en que fue asignada la cita, junto con
+	el consultorio en el que será la cita.*/
+	
 	public String pedirCita(LocalDateTime fecha, tipoCita tipoCita, String motivo, tipoMedico tipoMed) {
 		ArrayList<Medico> medicos = Administrador.medicos;
 		Medico medico = null;
@@ -142,7 +147,11 @@ public class Paciente extends Persona{
 		}
 	}
 	
-	
+	/*Método para reagendar una cita, el cual recibe el identificador de la cita que se desea modificar y la nueva fecha a la que se desea hacer el cambio, el retornno de esta
+	 * funcion es un String que muestra si el reagendamiento fue exitoso o no, el caso de exito hay 3 diferentes posibilidades, la primera es en caso que tanto el medico como el
+	 *  consultorio esten disponibles en la nueva fecha, el otro caso es que el consultorio esté disponible, pero no el medico, en este caso se retorna si se pudo reagendar, 
+	 *  pero hbuo cambio de medico y se muestra el nombre y apellido del nuevo medico y el caso final es que ni el consultorio ni el medico original se deben de cambiar,
+	 *   en este caso se retorna que el cambio de cita fue exitos, sin embargo que se cambio tanto el consultorio como el medico, mostrando los respectivos cambios*/
 	public String reagendarCita(int id, LocalDateTime fechaNueva) {
 		Cita cita = null;
 		ArrayList<Cita> citas = Cita.listaCitas;
@@ -256,31 +265,14 @@ public class Paciente extends Persona{
 	}
 	
 	
-//	public String cancelarCita(LocalDateTime fecha, tipoCita tipoCita) {
-//		Cita cita = null;
-//		ArrayList<Cita> citas = Cita.listaCitas;
-//		//Se busca la cita que se quiere reagendar
-//		for (int i = 0; i<citas.size(); i++) {
-//			if (citas.get(i).getPaciente() == this && citas.get(i).getFecha() == fecha && citas.get(i).getTiposCitas() == tipoCita) {
-//				cita = citas.get(i);
-//				break;
-//			}
-//		}
-//		cita.cia
-//	}
 	
 	public HistoriaClinica consultarHistorioaClinica() {
 		return getHistoriaClinica();
 	}
-//	public void solicitarExamen(tipoExamen tipo, LocalDateTime fecha) {
-//		Examen examen = new Examen((int)(Math.random()*10000+1), this, tipo, false);
-//		Administrador.autorizarExamen(examen);
-//		// Filtrar médicos disponibles para la fecha
-//		// Filtrar consultorios disponibles para la fecha
-//		Administrador.asignarExamen(examen, this, medicos, consultorios, fecha);
-//
-//	}
-	
+
+/*Implementación del metodo abstracto de la interfaz visualiazcion Datos, que implementa la clase padre persona, el cual tiene el mismo objetivo de mostrar un listado de
+ * todos los datos. 	
+ */
 	@Override
 	public String visualizarDatos() {
 		return getNombre() +" "+ getApellido() + 
