@@ -280,4 +280,17 @@ public class Paciente extends Persona{
 //		Administrador.asignarExamen(examen, this, medicos, consultorios, fecha);
 //
 //	}
+	
+	@Override
+	public String visualizarDatos() {
+		return getNombre() +" "+ getApellido() + 
+				"\nTipo de documento: " +getDocumento() +
+				"\nNúmero de documento: " +getNumeroDocumento() + 
+				"\nEdad: " +getEdad() +
+				"\nGénero: " + getGenero()+
+				"\nTeléfono número: "+getTelefono()
+				+"\nCorreo Electrónico: " +getCorreoElectronico()
+				+"\nDirección: " +getDireccion()+
+				"\nEPS a la que está afiliado: " +getEps();
+	}
 }

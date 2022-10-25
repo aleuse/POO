@@ -157,4 +157,17 @@ public class Medico extends Persona{
     }
 
 
+	@Override
+	public String visualizarDatos() {
+		return getNombre() +" "+ getApellido() + 
+				"\nTipo de documento: " +getDocumento() +
+				"\nNúmero de documento: " +getNumeroDocumento() + 
+				"\nEdad: " +getEdad() +
+				"\nGénero: " + getGenero()+
+				"\nTeléfono número: "+getTelefono()
+				+"\nCorreo Electrónico: " +getCorreoElectronico()
+				+"\nDirección: " +getDireccion()+
+				"\nEspecialidad: " +getEspecialidad()+
+				"\nNumero de Consultas totales: " +num_consultas;
+}
 }

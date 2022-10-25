@@ -102,9 +102,9 @@ public class Persona implements Serializable, VisualizacionDatos{
 				"\nTipo de documento: " +getDocumento() +
 				"\nNúmero de documento: " +getNumeroDocumento() + 
 				"\nEdad: " +getEdad() +
-				"\nGenero " + getGenero()+
+				"\nGénero: " + getGenero()+
 				"\nTeléfono número: "+getTelefono()
-				+"\nCorreoElectrónico: " +getCorreoElectronico()
+				+"\nCorreo Electrónico: " +getCorreoElectronico()
 				+"\nDirección: " +getDireccion();
 	}
 }
