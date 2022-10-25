@@ -692,12 +692,24 @@ public class Interfaz {
 			Medico m3 = new Medico("Carlos", "Munera", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284 ,"mp@hotmail.com", "carrera 78", tipoCita.GENERAL, tipoMedico.GENERAL, true);
 			Consultorio c1 = new Consultorio(null, null, null, true, fecha, null);
 			Consultorio c2 = new Consultorio(null, null, null, true, fecha, null);
-			Medicamentos medic = new Medicamentos(tipoMedicamento.Acetaminofen, paciente, 2, 3);
+			Medicamentos medic = new Medicamentos(tipoMedicamento.Acetaminofen, null, 2, 3);
 	   		Cita cita = new Cita(paciente, "gripa", tipoCita.GENERAL);
 			cita.setPago(new Pago(200000, true));
 			Diagnostico.sintomas.add("gripa");
-			Diagnostico dia = new Diagnostico(paciente, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
+			Diagnostico dia = new Diagnostico(null, Diagnostico.sintomas, "Dolor de cabeza", medic, 1, cita);
 			Medico.listado.add(dia);
+			Paciente pa = new Paciente("Diana", "Cardenas", tipoDocumento.CEDULA,
+			 12365478, 20, "Masculino", 388030288,
+			  "dc@hotmail.com", "Calle 73", "SURA",
+			   null, null, null, null, false);
+			Cita cita1 = new Cita(null, "Dolor de espalda", m1, null, 
+			fecha, tipoCita.GENERAL);
+			Diagnostico dia1 = new Diagnostico(null, Diagnostico.sintomas, "Dolor de cabeza", 2, cita1);
+			ArrayList<Diagnostico> g = new ArrayList<>();
+			g.add(dia1);
+			HistoriaClinica historiaCli = new HistoriaClinica(pa, g);
+			dia1.setPersona(pa);
+			pa.setHistoriaClinica(historiaCli);
 			System.out.format("+-------------------------------------------------------+%n");
 			System.out.format("|		Escoja una opción			|%n");
 			System.out.format("+-------------------------------------------------------+%n");
@@ -831,14 +843,16 @@ public class Interfaz {
 				System.out.println("El documento del paciente no se encuentra en la base de datos");
 				resultados();
 			}
-			ArrayList<HistoriaClinica> histo = HistoriaClinica.historia;
-			for (HistoriaClinica historia : histo) {
-				if (historia.getPaciente().getNumeroDocumento() == paciente6.getNumeroDocumento()){
-					System.out.println(historia.getDiagnosticos());
-					resultados();
-				}
+			ArrayList<Diagnostico> h = paciente6.getHistoriaClinica().getDiagnosticos();
+			for (Diagnostico i : h) {
+				System.out.println("El nombre y apellido del paciente es: " + i.getPersona().getNombre() + " " +i.getPersona().getApellido()+ "\n"+
+				"Su observacion fue: "+ i.getObservacion() + "\n"+
+				"Se reporto con los siguientes sintomas: " + i.getSintomas() + "\n"+
+				"Su consulta fue en la fecha: "+ i.getConsulta().getFecha()+ "\n"+
+				"Su medico fue: "+ i.getConsulta().getMedico().getNombre()+ " " +i.getConsulta().getMedico().getApellido() );
+				resultados();
 			}
-		break;
+
 			
 		case 3:
 		System.out.println("Ingrese el documento del paciente: ");
