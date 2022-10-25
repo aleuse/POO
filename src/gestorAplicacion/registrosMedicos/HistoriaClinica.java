@@ -2,6 +2,9 @@ package gestorAplicacion.registrosMedicos;
 import gestorAplicacion.personas.Paciente;
 import java.util.ArrayList;
 
+/* La clase Diagnostico tiene como atributos a paciente, un arrayList de diagnostio y otro arraylist de historia al icual que pacEncontrado que
+hace referencia a paciente encontrado. En esta clase se crean los constructores y tambien los getters y setters correspondientes. (La clase no 
+tiene metodos) */
 public class HistoriaClinica {
     private Paciente paciente;
     public static ArrayList<Diagnostico> diagnosticos;

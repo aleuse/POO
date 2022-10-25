@@ -5,6 +5,8 @@ import gestorAplicacion.Consulta;
 import gestorAplicacion.Medicamentos;
 import gestorAplicacion.personas.Paciente;
 
+/* La clase Diagnostico tiene como atributos a persona, un arrayList de sintomas, la observacion, un medicamento, un id y tambien esta asociado 
+ * a la consulta. En esta clase se crean los constructores y tambien los getters y setters correspondientes. (La clase no tiene metodos) */
 public class Diagnostico {
     private Paciente persona;
     public static  ArrayList<String> sintomas = new ArrayList<String>();
