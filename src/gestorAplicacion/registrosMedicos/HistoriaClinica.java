@@ -1,14 +1,12 @@
 package gestorAplicacion.registrosMedicos;
 import gestorAplicacion.personas.Paciente;
-import gestorAplicacion.personas.VisualizacionDatos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-/* La clase Diagnostico tiene como atributos a paciente, un arrayList de diagnostio y otro arraylist de historia al icual que pacEncontrado que
-hace referencia a paciente encontrado. En esta clase se crean los constructores y tambien los getters y setters correspondientes. (La clase no 
-tiene metodos) */
-public class HistoriaClinica implements VisualizacionDatos{
-    private Paciente paciente;
+public class HistoriaClinica implements Serializable{
+    private static final long serialVersionUID = 1L;
+	private Paciente paciente;
     public static ArrayList<Diagnostico> diagnosticos;
     public static ArrayList<HistoriaClinica> historia= new ArrayList<HistoriaClinica>();
     static HistoriaClinica pacEncontrado;
@@ -16,7 +14,7 @@ public class HistoriaClinica implements VisualizacionDatos{
     //constructor
     public HistoriaClinica(Paciente paciente, ArrayList<Diagnostico> diagnosticos) {
         this.paciente = paciente;
-        HistoriaClinica.diagnosticos = diagnosticos;
+        this.diagnosticos = diagnosticos;
     }
     public HistoriaClinica(){}
 
@@ -34,7 +32,7 @@ public class HistoriaClinica implements VisualizacionDatos{
     }
 
     public void setDiagnosticos(ArrayList<Diagnostico> diagnosticos) {
-        HistoriaClinica.diagnosticos = diagnosticos;
+        this.diagnosticos = diagnosticos;
     }
     public static HistoriaClinica getPacEncontrado() {
         return pacEncontrado;
@@ -61,11 +59,5 @@ public class HistoriaClinica implements VisualizacionDatos{
         }
         return 0;
     }
-    
- 
-	@Override
-	public String visualizarDatos() {
-		return getPaciente().visualizarDatos() ;
-	}
     
 }

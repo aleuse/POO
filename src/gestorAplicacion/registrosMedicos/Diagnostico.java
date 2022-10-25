@@ -1,14 +1,14 @@
 package gestorAplicacion.registrosMedicos;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import gestorAplicacion.Consulta;
 import gestorAplicacion.Medicamentos;
 import gestorAplicacion.personas.Paciente;
 
-/* La clase Diagnostico tiene como atributos a persona, un arrayList de sintomas, la observacion, un medicamento, un id y tambien esta asociado 
- * a la consulta. En esta clase se crean los constructores y tambien los getters y setters correspondientes. (La clase no tiene metodos) */
-public class Diagnostico {
-    private Paciente persona;
+public class Diagnostico implements Serializable{
+    private static final long serialVersionUID = 1L;
+	private Paciente persona;
     public static  ArrayList<String> sintomas = new ArrayList<String>();
     private String observacion;
     public  Medicamentos medicamiento;
@@ -17,7 +17,7 @@ public class Diagnostico {
    
     public Diagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, Medicamentos medicamiento, int id,Consulta consulta) {
         this.persona = persona;
-        Diagnostico.sintomas = sintomas;
+        this.sintomas = sintomas;
         this.observacion = observacion;
         this.medicamiento = medicamiento;
         this.id = id;
@@ -25,7 +25,7 @@ public class Diagnostico {
     }
     public Diagnostico(Paciente persona, ArrayList<String> sintomas, String observacion, int id,Consulta consulta) {
         this.persona = persona;
-        Diagnostico.sintomas = sintomas;
+        this.sintomas = sintomas;
         this.observacion = observacion;
         this.id = id;
         this.consulta = consulta;
@@ -37,7 +37,7 @@ public class Diagnostico {
     }
 
     public void setSintomas(ArrayList<String> sintomas) {
-        Diagnostico.sintomas = sintomas;
+        this.sintomas = sintomas;
     }
 
     public String getObservacion() {

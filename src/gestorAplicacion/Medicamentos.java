@@ -4,13 +4,16 @@
  */
 package gestorAplicacion;
 import gestorAplicacion.personas.Paciente;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  *
  * @author Roger Vera
  */
-public class Medicamentos {
-    private tipoMedicamento tipoMed;
+public class Medicamentos implements Serializable{
+    private static final long serialVersionUID = 1L;
+	private tipoMedicamento tipoMed;
     private Paciente paciente;
     private int dosis;//cantidad a consumir
     private int modoUso;//consumir cada x horas

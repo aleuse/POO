@@ -1,11 +1,13 @@
 package gestorAplicacion;
+import java.io.Serializable;
 import java.util.ArrayList;
 import gestorAplicacion.personas.Paciente;
 import gestorAplicacion.Pago;
 
 
-public class Entrega {
-    private int id;
+public class Entrega implements Serializable{
+    private static final long serialVersionUID = 1L;
+	private int id;
     private Paciente paciente;
     private String domicilio;
     private Medicamentos medicamentos;

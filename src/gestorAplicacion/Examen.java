@@ -25,14 +25,14 @@ public class Examen extends Consulta {
     	super(id, paciente, null, null, null, null);
     	this.tipo = tipo;
     	this.autorizado = autorizado;
-    	listaExamenes.add(this);
+    	
     }
     
     public Examen(Paciente paciente, tipoExamen tipo, boolean autorizado) {
     	super(paciente, null, null, null, null);
     	this.tipo = tipo;
     	this.autorizado = autorizado;
-    	listaExamenes.add(this);
+    	
     }
     
     public Examen(int id, Paciente paciente, Medico medico, Consultorio consultorio, LocalDateTime fecha, 
@@ -40,7 +40,7 @@ public class Examen extends Consulta {
     	super(id, paciente, medico, consultorio, fecha, pago);
     	this.tipo = tipo;
     	this.autorizado = autorizado;
-        listaExamenes.add(this);
+        
     }
     
     public Examen(Paciente paciente, Medico medico, Consultorio consultorio, LocalDateTime fecha, 
@@ -48,7 +48,7 @@ public class Examen extends Consulta {
     	super(paciente, medico, consultorio, fecha, pago);
     	this.tipo = tipo;
     	this.autorizado = autorizado;
-        listaExamenes.add(this);
+       
     }
     
     

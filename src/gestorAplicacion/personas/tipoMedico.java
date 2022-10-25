@@ -11,7 +11,6 @@ import gestorAplicacion.tipoExamen;
  *
  * @author Roger Vera
  */
-//Representa las clases de medicos que tenemos 
 public enum tipoMedico {
     GENERAL,OPTOMETRA,FONOAUDIOLOGO,PEDIATRA,BACTERIOLOGO;
     

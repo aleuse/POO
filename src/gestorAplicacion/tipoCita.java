@@ -8,7 +8,6 @@ package gestorAplicacion;
  *
  * @author Roger Vera
  */
-//tipoCita es un enum que representa que clases de citas pueden a ver con su respectivo valor
 public enum tipoCita {
     
     GENERAL(14700), 
