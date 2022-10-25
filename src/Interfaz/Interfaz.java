@@ -732,11 +732,16 @@ public class Interfaz {
 			   null, null, null, null, false);
 			Cita cita1 = new Cita(null, "Dolor de espalda", m1, null, 
 			fecha, tipoCita.GENERAL);
+			Cita cita2 = new Cita(null, "Dolor", m1, null, 
+			fecha, tipoCita.GENERAL);
 			Diagnostico dia1 = new Diagnostico(null, Diagnostico.sintomas, "Dolor de cabeza", 2, cita1);
+			Diagnostico dia2 = new Diagnostico(null, Diagnostico.sintomas, "Rodilla Rota", 3, cita2);
 			ArrayList<Diagnostico> g = new ArrayList<>();
 			g.add(dia1);
+			g.add(dia2);
 			HistoriaClinica historiaCli = new HistoriaClinica(pa, g);
 			dia1.setPersona(pa);
+			dia2.setPersona(pa);
 			pa.setHistoriaClinica(historiaCli);
 			System.out.format("+-------------------------------------------------------+%n");
 			System.out.format("|		Escoja una opción			|%n");
@@ -878,8 +883,8 @@ public class Interfaz {
 				"Se reporto con los siguientes sintomas: " + i.getSintomas() + "\n"+
 				"Su consulta fue en la fecha: "+ i.getConsulta().getFecha()+ "\n"+
 				"Su medico fue: "+ i.getConsulta().getMedico().getNombre()+ " " +i.getConsulta().getMedico().getApellido() );
-				resultados();
-			}
+
+			}resultados();
 
 			
 		case 3:
