@@ -8,6 +8,7 @@ package gestorAplicacion;
  *
  * @author Roger Vera
  */
+//TipoExamen representa las clases de examenes que pueden a ver
 public enum tipoExamen {
     SANGRE(12000),LABORATORIO(14000),RAYOSX(40000),CITOQUIMICO(12000);    
     
