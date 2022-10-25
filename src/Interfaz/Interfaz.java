@@ -1594,7 +1594,7 @@ public class Interfaz {
                 }
 
                 if (cn > 0) {
-                    Administrador.dinero = Administrador.dinero - (cn * cConsultorio);
+                    Administrador.restarDinero((cn * cConsultorio));
                     System.out.println("Se han podido adquirir " + cn + " consultorios");
                     System.out.println("Ahora hay " + Consultorio.consultorios.size() + " consultorios");
                     System.out.println("Actualmente el Dinero Disponible es: $" + Administrador.dinero);
@@ -1616,7 +1616,7 @@ public class Interfaz {
                 } else if (Administrador.dinero < (comprar * c)) {
                     System.out.println("ERROR FINANCIERO, dinero insuficiente");
                 } else {
-                    Administrador.dinero = Administrador.dinero - (comprar * c);
+                    Administrador.restarDinero((comprar * c));
                     System.out.println("COMPRA EXITOSA");
                 }
 
@@ -1631,7 +1631,7 @@ public class Interfaz {
                 } else if (Administrador.dinero < (comprar * c)) {
                     System.out.println("ERROR FINANCIERO, dinero insuficiente");
                 } else {
-                    Administrador.dinero = Administrador.dinero - (comprar * c);
+                    Administrador.restarDinero((comprar * c));
                     System.out.println("FELICIDADES POR TU COMPRA");
                 }
 
@@ -1646,7 +1646,7 @@ public class Interfaz {
                 } else if (Administrador.dinero < (comprar * c)) {
                     System.out.println("ERROR FINANCIERO, dinero insuficiente");
                 } else {
-                    Administrador.dinero = Administrador.dinero - (comprar * c);
+                    Administrador.restarDinero((comprar * c));
                     System.out.println("ENHORABUENA");
                 }
 
@@ -1661,7 +1661,7 @@ public class Interfaz {
                 } else if (Administrador.dinero < (comprar * c)) {
                     System.out.println("ERROR FINANCIERO, dinero insuficiente");
                 } else {
-                    Administrador.dinero = Administrador.dinero - (comprar * c);
+                    Administrador.restarDinero((comprar * c));
                     System.out.println("COMPRA EXITOSA");
                 }
 
