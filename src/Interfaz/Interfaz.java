@@ -20,6 +20,7 @@ import gestorAplicacion.tipoExamen;
 import gestorAplicacion.tipoMedicamento;
 import gestorAplicacion.personas.Administrador;
 import gestorAplicacion.personas.Medico;
+import static gestorAplicacion.personas.Medico.medicos;
 import gestorAplicacion.personas.Paciente;
 import gestorAplicacion.personas.Persona;
 import gestorAplicacion.personas.tipoDocumento;
@@ -78,9 +79,9 @@ public class Interfaz {
 			Medico medico1 = new Medico("Susana", "Perez", tipoDocumento.CEDULA, 1000758374, 25, "Masculino", 1000758374, 
 					"susper@gmail.com", "Cra 77 #45 04", tipoCita.GENERAL, tipoMedico.BACTERIOLOGO ,true);
 			Medico medico2 = new Medico("Andres", "Lopez", tipoDocumento.CEDULA, 1254687950, 29, "Masculino", 1254687950, 
-					"andlop@gmail.com", "Calle 113 #55 05", tipoCita.GENERAL, tipoMedico.OPTOMETRIA, true);
+					"andlop@gmail.com", "Calle 113 #55 05", tipoCita.GENERAL, tipoMedico.OPTOMETRA, true);
 			Medico medico3 = new Medico("Mariana", "Garcia", tipoDocumento.CEDULA, 656502354, 28, "Femenino", 656502354, 
-					"margar@gmail.com", "Avenida 7 #8 07", tipoCita.GENERAL, tipoMedico.OPTOMETRIA, true);
+					"margar@gmail.com", "Avenida 7 #8 07", tipoCita.GENERAL, tipoMedico.OPTOMETRA, true);
 			Medico medico4 = new Medico("Mauricio", "Fernandez", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284,
 					"mp@hotmail.com", "carrera 78", tipoCita.AUDIOMETRIA, tipoMedico.FONOAUDIOLOGO, true);
 			
@@ -571,7 +572,7 @@ public class Interfaz {
 				tipoMed = tipoMedico.GENERAL;
 				break;
 			case OPTOMETRIA:
-				tipoMed = tipoMedico.OPTOMETRIA;
+				tipoMed = tipoMedico.OPTOMETRA;
 				break;
 			case AUDIOMETRIA:
 				tipoMed = tipoMedico.FONOAUDIOLOGO;
@@ -1492,7 +1493,7 @@ public class Interfaz {
                 int med = Medico.informesMedicos(tipoMedico.GENERAL);
                 System.out.println("General: " + med + " especialistas. Comision del 50%");
 
-                med = Medico.informesMedicos(tipoMedico.OPTOMETRIA);
+                med = Medico.informesMedicos(tipoMedico.OPTOMETRA);
                 System.out.println("Optometra: " + med + " especialistas. Comision del 60%");
 
                 med = Medico.informesMedicos(tipoMedico.FONOAUDIOLOGO);
@@ -1524,7 +1525,7 @@ public class Interfaz {
                         nuevo = tipoMedico.GENERAL;
                         break;
                     case 2:
-                        nuevo = tipoMedico.OPTOMETRIA;
+                        nuevo = tipoMedico.OPTOMETRA;
                         break;
                     case 3:
                         nuevo = tipoMedico.FONOAUDIOLOGO;
@@ -1544,11 +1545,16 @@ public class Interfaz {
                 for (int i = 0; i < nuevosMedicos; i++) {
                     double x = Math.random();
                     if (x > 0.3) {
-                        mn++;
-                        //agg nuevo en el tipoMedico
+                        
+                        for (Medico contrato : Medico.medicos) {
+                            if (contrato.isContratado() == false) {// si no está contratado
+                                mn++;
+                                contrato.setContratado(true);
+                                Administrador.medicos.add(contrato);
+                                break;
+                            }
+                        }
 
-                        //Medico(String nombre, String apellido, tipoDocumento documento, long numeroDocumento, int edad,String genero,
-                        //long telefono, String correoElectronico, String direccion, tipoMedico nuevo, boolean disponibilidad)
                     }
                 }
                 if (mn > 0) {
@@ -1575,7 +1581,14 @@ public class Interfaz {
                     for (int i = 0; i < nuevosConsultorios; i++) {
                         double x = Math.random();
                         if (x > 0.4) {
-                            cn++;
+                            for (Consultorio c : Consultorio.consultorios) {
+                                if (c.isDisponibilidad() == false) {// si no está adquirido
+                                    cn++;
+                                    c.setDisponibilidad(true);
+                                    Administrador.consultorios.add(c);
+                                    break;
+                                }
+                            }
                         }
                     }
                 }

@@ -12,6 +12,6 @@ import gestorAplicacion.tipoExamen;
  * @author Roger Vera
  */
 public enum tipoMedico {
-    GENERAL,OPTOMETRA,FONOAUDIOLOGO(),PEDIATRA, BACTERIOLOGO ();
+    GENERAL,OPTOMETRA,FONOAUDIOLOGO,PEDIATRA,BACTERIOLOGO;
     
 }
