@@ -3,19 +3,19 @@ from enum import Enum
 """ 
 La clase tipoDocumento de tipo Enum sirve para definir el tipo de documento que pueden tener los objetos de la 
 clase Persona y sus subclases. Hay 3 posibles objetos que podrán ser creados que son CEDULA, TARJETA_DE_IDENTIDAD
-y CEDULA_DE_EXTRANJERIA que tienen el atributo tipoDoc
+y CEDULA_DE_EXTRANJERIA que tienen el atributo tipoDocumento.
 """
 class tipoDocumento(Enum):
-    CEDULA = "Cédula"
-    TARJETA_DE_IDENTIDAD = "Tarjeta de identidad"
-    CEDULA_DE_EXTRANJERIA = "Cédula de extranjería"
+    CEDULA = "CEDULA"
+    TARJETA_DE_IDENTIDAD = "TARJETA_DE_IDENTIDAD"
+    CEDULA_DE_EXTRANJERIA = "CEDULA_DE_EXTRANJERIA"
     
-    def __init__(self, tipoDoc):
-        self._tipoDoc = tipoDoc
+    def __init__(self, tipoDocumento):
+        self._tipoDocumento = tipoDocumento
         
     # Getters y Setters
-    def getTipoDoc(self):
-        return self._tipoDoc
+    def getTipoDocumento(self):
+        return self._tipoDocumento
     
-    def setTipoDoc(self, tipoDoc):
-        self._tipoDoc = tipoDoc
+    def setTipoDocumento(self, tipoDocumento):
+        self._tipoDocumento = tipoDocumento
