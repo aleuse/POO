@@ -1,3 +1,9 @@
+""" 
+La clase Administrador tiene el fin de llevar la economía del sistema médico asociada al dinero disponible y la 
+administración de este. También se encarga de procesos administrativos y logísticos como verificar la disponibilidad
+de médicos y/o consultorios; asignar citas a los pacientes cuando soliciten una; autorizar y asignar los exámenes
+solicitados por los pacientes; entre otras.
+"""
 class Administrador:
     # Dinero es un atributo de clase público
     dinero = 0
@@ -27,6 +33,10 @@ class Administrador:
         self._nombre = nombre
         
     # Métodos
+    """
+    Los métodos de sumar y restar dinero como indican sus nombres se encargan de agregar o quitar la cantidad
+    de dinero especificada al dinero que hay disponible
+    """
     @classmethod
     def sumarDinero(cls, cantidad):
         cls.dinero += cantidad
