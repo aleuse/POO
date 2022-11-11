@@ -7,6 +7,20 @@ solicitados por los pacientes; entre otras.
 class Administrador:
     # Dinero es un atributo de clase público
     dinero = 0
+    """
+    Los siguientes atributos de clase serán utilizados para guardar la información referente a otras clases, por ejemplo
+    los médicos que hay en planta, los consultorios, etc.
+    """
+    consultas = []
+    consultorios = []
+    diagnosticos = []
+    fechas = []
+    historiasClinicas = []
+    listaSintomas = []
+    medicamentos = []
+    medicos = []
+    pacientes = []
+    
     def __init__(self, id, nombre):
         # Id y Nombre son atributos de instancia privados
         self._id = id
@@ -19,6 +33,69 @@ class Administrador:
     @classmethod
     def setDinero(cls, dinero):
         cls.dinero = dinero
+        
+    @classmethod
+    def getConsultas(cls):
+        return cls.consultas
+    @classmethod
+    def setConsultas(cls, consultas):
+        cls.consultas = consultas
+        
+    @classmethod
+    def getConsultorios(cls):
+        return cls.consultorios
+    @classmethod
+    def setConsultorios(cls, consultorios):
+        cls.consultorios = consultorios
+        
+    @classmethod
+    def getDiagnosticos(cls):
+        return cls.diagnosticos
+    @classmethod
+    def setDiagnosticos(cls, diagnosticos):
+        cls.diagnosticos = diagnosticos
+    
+    @classmethod
+    def getFechas(cls):
+        return cls.fechas
+    @classmethod
+    def setFechas(cls, fechas):
+        cls.fechas = fechas
+    
+    @classmethod
+    def getHistoriasClinicas(cls):
+        return cls.historiasClinicas
+    @classmethod
+    def setHistoriasClinicas(cls, historiasClinicas):
+        cls.historiasClinicas = historiasClinicas
+        
+    @classmethod
+    def getListaSintomas(cls):
+        return cls.listaSintomas
+    @classmethod
+    def setListaSintomas(cls, listaSintomas):
+        cls.listaSintomas = listaSintomas
+    
+    @classmethod
+    def getMedicamentos(cls):
+        return cls.medicamentos
+    @classmethod
+    def setMedicamentos(cls, medicamentos):
+        cls.medicamentos = medicamentos
+        
+    @classmethod
+    def getMedicos(cls):
+        return cls.medicos
+    @classmethod
+    def setMedicos(cls, medicos):
+        cls.medicos = medicos
+        
+    @classmethod
+    def getPacientes(cls):
+        return cls.pacientes
+    @classmethod
+    def setPacientes(cls, pacientes):
+        cls.pacientes = pacientes
     
     def getId(self):
         return self._id
