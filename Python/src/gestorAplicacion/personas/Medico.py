@@ -1,5 +1,6 @@
 
-class Medico(persona):
+from gestorAplicacion.personas.Persona import Persona
+class Medico(Persona):
     def __init__(self,nombre,apellido,documento,numeroDocumento,edad,
     genero,telefono,correoElectronico,direccion,especialidad,
     especialista,disponibilidad,consultas,nomina,sueldo,
@@ -12,7 +13,7 @@ class Medico(persona):
         #medicos.add(this)
         self.nomina = nomina
         self.sueldo = sueldo
-        self.medicamiento = medicamiento
+        self.medicamiento = medicamento
 
     # Getters y Setters
     @classmethod
