@@ -4,6 +4,8 @@ administración de este. También se encarga de procesos administrativos y logí
 de médicos y/o consultorios; asignar citas a los pacientes cuando soliciten una; autorizar y asignar los exámenes
 solicitados por los pacientes; entre otras.
 """
+from gestorAplicacion.personas import Medico
+from gestorAplicacion import Consultorio
 class Administrador:
     # Dinero es un atributo de clase público
     dinero = 0
@@ -122,4 +124,38 @@ class Administrador:
     def restarDinero(cls, cantidad):
         cls.dinero -= cantidad
     
-    
+    """
+    El método verificarTipoMedico se encarga de verificar si el atributo "especialista" de un objeto de la clase Medico 
+    proporcionado es igual a un valor del enum tipoMedico; si es el caso entonces retorna True, de lo contrario False. 
+    El método recibo como parámetros a tipo, que hace referencia al valor del enum tipoMedico; también recibe medico, que
+    es un objeto de la clase Medico al cual se le verificará su especialidad.
+    """
+    def verificarTipoMedico(tipo, medico):
+        if medico.getEspecialista() == tipo:
+            return True
+        else:
+            return False
+            
+    """
+    El método verificarDisponibilidadMedico se encarga de verificar si un médico está disponible para atender una
+    consulta en determinada fecha. Se recibe una fecha y un objeto de tipo Medico como parámetros y se verifica para 
+    el objeto tipo Medico en su diccionario de consultas si el valor (value) para la fecha especificada (key) es igual
+    a None; si es el caso entonces retorna True, de lo contrario False.
+    """
+    def verificarDisponibilidadMedico(fecha, medico):
+        if medico.getConsultas().get(fecha) == None:
+            return True
+        else:
+            return False
+        
+    """
+    El método verificarDisponibilidadConsultorio se encarga de verificar si un consultorio está disponible para atender 
+    una consulta en determinada fecha. Se recibe una fecha y un objeto de tipo Consultorio como parámetros y se 
+    verifica para el objeto tipo Consultorio en su diccionario de consultas si el valor (value) para la fecha 
+    especificada (key) es igual a None; si es el caso entonces retorna True, de lo contrario False.
+    """
+    def verificarDisponibilidadConsultorio(fecha, consultorio):
+        if consultorio.getConsultas().get(fecha) == None:
+            return True
+        else:
+            return False
