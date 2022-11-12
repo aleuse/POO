@@ -10,7 +10,6 @@ class Medico(Persona):
         self._especialista = especialista
         self._disponibilidad = disponibilidad
         self.consultas = consultas
-        #medicos.add(this)
         self.nomina = nomina
         self.sueldo = sueldo
         self.medicamiento = medicamento
