@@ -1,15 +1,20 @@
 
 from gestorAplicacion.personas.Persona import Persona
 class Medico(Persona):
-    def __init__(self,nombre,apellido,documento,numeroDocumento,edad,
-    genero,telefono,correoElectronico,direccion,especialidad,
-    especialista,disponibilidad,consultas,nomina,sueldo,
-    medicamento):
+    def __init__(self, nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico,
+                 direccion, especialidad, especialista, disponibilidad = False, consultas = None, nomina = None, 
+                 sueldo = 50000, medicamento = None):
         super().__init__(nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, direccion)
+        if consultas is None:
+            consultas = {}
+        if nomina is None:
+            nomina = {}
+        if medicamento is None:
+            medicamento = []
         self._especialidad = especialidad
         self._especialista = especialista
         self._disponibilidad = disponibilidad
-        self.consultas = consultas
+        self._consultas = consultas
         #medicos.add(this)
         self.nomina = nomina
         self.sueldo = sueldo
