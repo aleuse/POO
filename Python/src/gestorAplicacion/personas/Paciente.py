@@ -4,10 +4,6 @@
 
 from gestorAplicacion.personas.Administrador import Administrador
 from gestorAplicacion.personas.Persona import Persona
-<<<<<<< Updated upstream
-from gestorAplicacion.personas.Administrador import Administrador
-=======
->>>>>>> Stashed changes
 import datetime as dt
 
 
@@ -81,11 +77,11 @@ class Paciente(Persona):
         for i in medicos:
             #Se recorre la lista de los medicos creados y se va verificando si la especialidad del medico i concuerda con el tipo de cita que
  			#se requiere y tambien se verifica si ese medico esta disponible.
-            if i.especialista == tipoMedico and Administrador.verificarDisponibilidadMedico(fecha, i) == True:
+            if i.getEspecialista()== tipoMedico and Administrador.verificarDisponibilidadMedico(fecha, i) == True:
                 medico = i
                 break
         
-        consultorios = Administrador.consultorios
+        consultorios = Administrador.getConsultorios()
         consultorio = None
         for i in consultorios:
             #Se recorre la lista de los consultorios creados y se verifica si el consultorio esta disponible en la fecha que se requiere la cita
