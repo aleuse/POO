@@ -3,6 +3,7 @@ La clase Consultorio es utilizada para almacenar los atributos y aplciar cambios
 Se tienen atributos como Id, el tipo de consultorio y un diccionario de las consultas que el consultorio tiene asignadas
 en determinadas fechas.
 """
+from gestorAplicacion.personas.Administrador import Administrador
 import random as rd
 class Consultorio():
     def __init__(self, id = int(rd.random() * 10000 + 1), medico = None, paciente = None, tipoConsultorio = None, 
@@ -17,6 +18,7 @@ class Consultorio():
         self._consultas = consultas
         self._adquirido = adquirido
         self._costo = costo
+        Administrador.consultorios.append(self)
     
     # Getters y Setters
     def getId(self):

@@ -24,5 +24,6 @@ print(f"Medico1 en {fecha1} : {Administrador.verificarDisponibilidadMedico(fecha
 print(f"Medico1 en {fecha3} : {Administrador.verificarDisponibilidadMedico(fecha3, medico1)}") # True
 print(f"Consultorio1 en {fecha2} : {Administrador.verificarDisponibilidadConsultorio(fecha2, consultorio1)}") # False
 print(f"Consultorio1 en {fecha4} : {Administrador.verificarDisponibilidadConsultorio(fecha4, consultorio1)}") # True
+print(f"Médicos: {Administrador.medicos} \nConsultorios: {Administrador.consultorios}")
 print(Paciente1.pedirCita(fecha1, tipoCita.GENERAL, "dolor de cabeza", tipoMedico.BACTERIOLOGO))
 

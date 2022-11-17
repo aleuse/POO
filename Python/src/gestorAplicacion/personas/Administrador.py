@@ -4,8 +4,6 @@ administración de este. También se encarga de procesos administrativos y logí
 de médicos y/o consultorios; asignar citas a los pacientes cuando soliciten una; autorizar y asignar los exámenes
 solicitados por los pacientes; entre otras.
 """
-from gestorAplicacion.personas import Medico
-from gestorAplicacion import Consultorio
 class Administrador:
     # Dinero es un atributo de clase público
     dinero = 0

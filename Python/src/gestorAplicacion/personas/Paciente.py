@@ -3,7 +3,7 @@
 #Al igual se usan tree maps, donde se guardan las consultas con su respectiva fecha y le consulta asignada y las entregas, donde se guardan las fechas y las netregas correspondientes.
 
 from gestorAplicacion.personas.Persona import Persona
-from gestorAplicacion.personas import Administrador
+from gestorAplicacion.personas.Administrador import Administrador
 import datetime as dt
 
 
