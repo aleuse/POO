@@ -11,8 +11,14 @@ class Paciente(Persona):
 
 #constructores	
     def __init__(self, nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, 
-        direccion, eps, sintomas, historicaClinica, consultas, entregas, pagado):
-        super.__init__(nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, direccion)
+        direccion, eps, historicaClinica, pagado,sintomas = None, consultas = None, entregas = None):
+        super().__init__(nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, direccion)
+        if sintomas is None:
+            sintomas = []
+        if consultas is None:
+            consultas = {}
+        if entregas is None:
+            entregas = {}
         self.eps = eps
         self.sintomas = sintomas
         self.historiaClinica = historicaClinica

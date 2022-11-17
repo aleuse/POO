@@ -1,4 +1,4 @@
-class Persona(Serializable, VisualizacionDatos):
+class Persona():
 	
 	#Constructor
     def __init__(self, nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, direccion):
