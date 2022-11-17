@@ -102,141 +102,57 @@ class Paciente(Persona):
         pero hbuo cambio de medico y se muestra el nombre y apellido del nuevo medico y el caso final es que ni el consultorio ni el medico original se deben de cambiar,
         en este caso se retorna que el cambio de cita fue exitos, sin embargo que se cambio tanto el consultorio como el medico, mostrando los respectivos cambios*/
         '''
+
+    def reagendarCita(self, id, fecha):
+        cita = None
+        citas = Administrador.getCitas()
+        #Se busca la cita que se quiere reagendar
+        for i in citas:
+            if i.getPaciente() == self and i.getId() == id:
+                cita = i
+                break
+        if cita is None:
+            return "Hubo un problema reagendando su cita, vuelvalo a intentar más tarde"
+
+        #Se verifica que tanto el medico como el consultorio esten disponible en la nueva fecha
+        if Administrador.verificarDisponibilidadMedico(fecha, cita.getMedico()) == True and Administrador.verificarDisponibilidadConsultorio(fecha, cita.getConsultorio()) == True:
+            cita.setFecha(fecha)
+            return "Su cita ha sido reagendada exitosamente y será en el mismo consultorio, con el mismo médico"
+            
+        elif Administrador.verificarDisponibilidadMedico(fecha, cita.getMedico()) == False:
+            #Se busca un medico con disponibilidad
+            medicos = Administrador.getMedicos()
+            medico = None
+            for i in range(len(medicos)):
+                if medicos[i].getEspecialidad() == cita.getTiposCitas() and Administrador.verificarDisponibilidadMedico(fecha, medicos[i]) == True:
+                    medico = medicos[i]
+                    cita.setMedico(medico)
+                    cita.setFecha(fecha)
+                    if Administrador.verificarDisponibilidadConsultorio(fecha, cita.getConsultorio) == True and medico != None:
+                        return f"Su cita ha sido reagendada exitosamente, su nuevo medico será {medico.getNombre()} {medico.getApellido()} en el mismo consultorio \n"        
+                    #Si el conusltorio no esta disponible, se busca un nuevo consultorio
+                    else:
+                        consultorios = Administrador.getConsultorios()
+                        consultorio = None
+                        for i in consultorios:
+                            #Se recorre la lista de los consultorios creados y se verifica si el consultorio esta disponible en la fecha que se requiere la cita
+                            if Administrador.verificarDisponibilidadConsultorio(fecha, i) == True:
+                                consultorio = i
+                                cita.setConsultorio(consultorio)
+                                break
+                        return f"Su cita ha sido reagendada exitosamente, su nuevo medico {medico.getNombre()} {medico.getApellido()} y esta será en el consultorio: {consultorio.getId()} \n"
+
+                elif Administrador.verificarDisponibilidad(fecha, medicos[i]) == False and i == len(medicos)-1:
+                    return "No fue posible reagendar su cita, debido a que no hay disponibilidad de citas, vuelvalo a intentar mas tarde"
+
+        return "Hubo un problema reagendando su cita, vuelvalo a intentar mas tarde"            
     
-# 	public String reagendarCita(int id, LocalDateTime fechaNueva) {
-# 		Cita cita = null;
-# 		ArrayList<Consulta> citas = Administrador.consultas;
-# 		//Se busca la cita que se quiere reagendar
-# 		for (int i = 0; i<citas.size(); i++) {
-# 			if (citas.get(i).getPaciente() == this && citas.get(i).getId() == id) {
-# 				cita = (Cita) citas.get(i);
-# 				break;
-# 			}
-# 		}
-# 		if(cita == null) {
-# 			return "Hubo un problema reagendando su cita, vuelvalo a intentar mas tarde";
-# 		}
-# 		//Se verifica que tanto el medico como el consultorio esten disponible en la nueva fecha
-# 		if(Administrador.verificarDisponibilidadMedico(fechaNueva,cita.getMedico()) == true && Administrador.verificarDisponibilidadConsultorio(fechaNueva, cita.getConsultorio())==true){
-# 			cita.setFecha(fechaNueva);
-# 			return "Su cita ha sido reagendada exitosamente y será en el mismo consultorio, con el mismo médico";
-# 		}
-# 		else if(Administrador.verificarDisponibilidadMedico(fechaNueva,cita.getMedico()) == false) {
-# 			//Se busca un medico con disponibilidad
-# 			ArrayList<Medico> medicos = Administrador.medicos;
-# 			Medico medico = null;
-# 			for (int i = 0; i<medicos.size(); i++){
-# 				if ( medicos.get(i).especialidad == cita.getTiposCitas() && Administrador.verificarDisponibilidadMedico(fechaNueva, medicos.get(i)) == true) {
-# 					medico = medicos.get(i);
-# 					cita.setMedico(medico);
-# 					cita.setFecha(fechaNueva);
-# 					if (Administrador.verificarDisponibilidadConsultorio(fechaNueva, cita.getConsultorio())==true && medico != null) {
-# 						return "Su cita ha sido reagendada exitosamente, su nuevo medico será : "+ medico.getNombre()+" "+medico.getApellido()+ " en el mismo consultorio \n";
-# 					}
-# 					//Si el consultorio no esta disponible, se busca un nuevo consultorio
-# 					else {
-# 						ArrayList<Consultorio> consultorios = Administrador.consultorios;
-# 						Consultorio consultorio = null;
-# 						for (int j = 0; j< consultorios.size(); j++) {
-# 							//Se recorre la lista de los consultorios creados y se verifica si el consultorio esta disponible en la fecha que se requiere la cita
-# 							if(Administrador.verificarDisponibilidadConsultorio(fechaNueva, consultorios.get(j)) == true){
-# 								consultorio = consultorios.get(j);
-# 								cita.setConsultorio(consultorio);
-# 								break;
-# 							}
-# 						}
-# 						return "Su cita ha sido reagendada exitosamente, su nuevo medico será : "+ medico.getNombre()+" "+medico.getApellido()+ " y esta será en el consultorio: "+consultorio.getId()+ "\n";
-# 					}
-					
-# 				}
-# 				else if(Administrador.verificarDisponibilidadMedico(fechaNueva, medicos.get(i)) == false && i== medicos.size()){
-# 					return "No fue posible reagendar su cita, debido a que no hay disponibilidad de citas, vuelvalo a intentar mas tarde";
-# 				}
-# 			}
-# 			}		
-				
-				
-
-# 		return "Hubo un problema reagendando su cita, vuelvalo a intentar mas tarde";					
-# 	}
-	
-# 	//En caso de que el medico no este disponible
-# 	public String reagendarCitaMedico(int id, LocalDateTime fecha) {
-# 		Cita cita = null;
-# 		ArrayList<Cita> citas = Cita.listaCitas;
-# 		//Se busca la cita que se quiere reagendar
-# 		for (int i = 0; i<citas.size(); i++) {
-# 			if (citas.get(i).getPaciente() == this && citas.get(i).getId() == id) {
-# 				cita = citas.get(i);
-# 				break;
-# 			}
-# 		}
-# 		//Se busca un medico con disponibilidad
-# 		ArrayList<Medico> medicos = Administrador.medicos;
-# 		Medico medico = null;
-# 		for(int i = 0; i<medicos.size(); i++) {
-# 			if(medicos.get(i).especialidad ==  cita.getTiposCitas() && Administrador.verificarDisponibilidadMedico(fecha, medicos.get(i)) == true){
-# 				medico = medicos.get(i);
-# 				cita.setMedico(medico);
-# 				cita.setFecha(fecha);
-# 				break;
-# 			}
-# 			else if(Administrador.verificarDisponibilidadMedico(fecha, medicos.get(i)) == false && i== medicos.size()){
-# 				return "No fue posible reagendar su cita, debido a que no hay disponibilidad de citas, vuelvalo a intentar mas tarde";
-# 			}
-# 		}
-# 		//Se verifica si el consultorio esta disponible para la nueva fecha
-# 		if (Administrador.verificarDisponibilidadConsultorio(fecha, cita.getConsultorio())==true && medico != null) {
-# 			return "Su cita ha sido reagendada exitosamente, su nuevo medico será : "+ medico.getNombre()+" "+medico.getApellido()+ " en el mismo consultorio \n";
-# 		}
-# 		//Si el consultorio no esta disponible, se busca un nuevo consultorio
-# 		else {
-# 			ArrayList<Consultorio> consultorios = Administrador.consultorios;
-# 			Consultorio consultorio = null;
-# 			for (int i = 0; i< consultorios.size(); i++) {
-# 				//Se recorre la lista de los consultorios creados y se verifica si el consultorio esta disponible en la fecha que se requiere la cita
-# 				if(Administrador.verificarDisponibilidadConsultorio(fecha, consultorios.get(i)) == true){
-# 					consultorio = consultorios.get(i);
-# 					cita.setConsultorio(consultorio);
-# 					break;
-# 				}
-# 			}
-# 			return "Su cita ha sido reagendada exitosamente, su nuevo medico será : "+ medico.getNombre()+" "+medico.getApellido()+ " y esta será en el consultorio: "+consultorio.getId()+ "\n";
-# 		}
-# 	}
-
-	
-# 	public int solicitarExamen(Examen examen, tipoMedico tipoMed, ArrayList<Medico> medicos) {
-# 		if(Administrador.autorizarExamen(examen, tipoMed, medicos) == 1) {
-# 			return 1;
-# 		}
-# 		else if (Administrador.autorizarExamen(examen, tipoMed, medicos) == 2) {
-# 			return 2;
-# 		}
-# 		else {
-# 			return 0;
-# 		}
-# 	}
-	
-	
-	
-# 	public HistoriaClinica consultarHistorioaClinica() {
-# 		return getHistoriaClinica();
-# 	}
-
-# /*Implementación del metodo abstracto de la interfaz visualiazcion Datos, que implementa la clase padre persona, el cual tiene el mismo objetivo de mostrar un listado de
-#  * todos los datos. 	
-#  */
-# 	@Override
-# 	public String visualizarDatos() {
-# 		return getNombre() +" "+ getApellido() + 
-# 				"\nTipo de documento: " +getDocumento() +
-# 				"\nNúmero de documento: " +getNumeroDocumento() + 
-# 				"\nEdad: " +getEdad() +
-# 				"\nGénero: " + getGenero()+
-# 				"\nTeléfono número: "+getTelefono()
-# 				+"\nCorreo Electrónico: " +getCorreoElectronico()
-# 				+"\nDirección: " +getDireccion()+
-# 				"\nEPS a la que está afiliado: " +getEps();
-# 	}
-# }
+    def solicitarExamen(examen, tipoMedico, medicos):
+        if Administrador.autorizarExamen(examen, tipoMedico, medicos) == 1:
+            return 1
+        elif Administrador.autorizarExamen(examen, tipoMedico, medicos) == 2:
+            return 2
+        else:
+            return 0
+    
+    
