@@ -2,8 +2,12 @@
 #Clase Paciente, para poder almacenar los atributos y aplicar los metodos respecto a los pacientes del sistema se usan arraylist para almacenar todos los pacientes creados y para tener las lista de los síntomas que tenga el paciente.
 #Al igual se usan tree maps, donde se guardan las consultas con su respectiva fecha y le consulta asignada y las entregas, donde se guardan las fechas y las netregas correspondientes.
 
-from gestorAplicacion.personas.Persona import Persona
 from gestorAplicacion.personas.Administrador import Administrador
+from gestorAplicacion.personas.Persona import Persona
+<<<<<<< Updated upstream
+from gestorAplicacion.personas.Administrador import Administrador
+=======
+>>>>>>> Stashed changes
 import datetime as dt
 
 
@@ -70,23 +74,23 @@ class Paciente(Persona):
  	requerido, este retorna un String que indica si el proceso fue exitoso o fallido, en el primer caso, a su vez se devuelve la fecha en que fue asignada la cita, junto con
  	el consultorio en el que será la cita.*/
 	'''
-    def pedirCita(fecha, tipoCita, motivo, tipoMedico):
-        medicos = Administrador.medicos
+    def pedirCita(self, fecha, tipoCita, motivo, tipoMedico):
+        medicos = Administrador.getMedicos()
         medico = None
 
-        for i in range(medicos):
+        for i in medicos:
             #Se recorre la lista de los medicos creados y se va verificando si la especialidad del medico i concuerda con el tipo de cita que
  			#se requiere y tambien se verifica si ese medico esta disponible.
-            if medicos[i].especialista == tipoMedico and Administrador.verificarDisponibilidadMedico(fecha, medicos[i]) == True:
-                medico = medicos[i]
+            if i.especialista == tipoMedico and Administrador.verificarDisponibilidadMedico(fecha, i) == True:
+                medico = i
                 break
         
         consultorios = Administrador.consultorios
         consultorio = None
-        for i in range(consultorios):
+        for i in consultorios:
             #Se recorre la lista de los consultorios creados y se verifica si el consultorio esta disponible en la fecha que se requiere la cita
-            if Administrador.verificarDisponibilidadConsultorio(fecha, consultorio[i]) == True:
-                consultorio = consultorio[i]
+            if Administrador.verificarDisponibilidadConsultorio(fecha, i) == True:
+                consultorio = i
                 break
 
         if medico != None and consultorio != None:

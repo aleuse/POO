@@ -1,4 +1,3 @@
-
 from gestorAplicacion.personas.Persona import Persona
 from gestorAplicacion.personas.Administrador import Administrador
 class Medico(Persona):
@@ -20,6 +19,7 @@ class Medico(Persona):
         self.nomina = nomina
         self.sueldo = sueldo
         self.medicamiento = medicamento
+        
 
     # Getters y Setters
     @classmethod
