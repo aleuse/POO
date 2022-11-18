@@ -129,6 +129,7 @@ class Administrador:
     es un objeto de la clase Medico al cual se le verificará su especialidad.
     """
     def verificarTipoMedico(tipo, medico):
+        from gestorAplicacion.personas.Medico import Medico
         if medico.getEspecialista() == tipo:
             return True
         else:
@@ -141,6 +142,7 @@ class Administrador:
     a None; si es el caso entonces retorna True, de lo contrario False.
     """
     def verificarDisponibilidadMedico(fecha, medico):
+        from gestorAplicacion.personas.Medico import Medico
         if medico.getConsultas().get(fecha) == None:
             return True
         else:
@@ -153,7 +155,23 @@ class Administrador:
     especificada (key) es igual a None; si es el caso entonces retorna True, de lo contrario False.
     """
     def verificarDisponibilidadConsultorio(fecha, consultorio):
+        from gestorAplicacion.Consultorio import Consultorio
         if consultorio.getConsultas().get(fecha) == None:
             return True
         else:
             return False
+    
+    """
+    
+    """
+    def asignarCita(paciente, medico, consultorio, fecha, motivo, tipo): 
+        from gestorAplicacion.personas.Medico import Medico
+        from gestorAplicacion.Consultorio import Consultorio
+        from gestorAplicacion.Cita import Cita
+        from gestorAplicacion.Pago import Pago
+        cita = Cita(None, paciente, motivo, medico, consultorio, fecha, None, tipo)
+        pago = Pago(14700, False)
+        cita.setPago(pago)
+        pago.setConsulta(cita)
+        medico.getConsultas.update(fecha, cita)
+        consultorio.getConsultas.update(fecha, cita)
