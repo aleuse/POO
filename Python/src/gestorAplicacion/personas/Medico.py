@@ -2,9 +2,10 @@ from gestorAplicacion.personas.Persona import Persona
 from gestorAplicacion.personas.Administrador import Administrador
 class Medico(Persona):
     def __init__(self, nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico,
-                 direccion, especialidad, especialista, disponibilidad = False, consultas = None, nomina = None, 
-                 sueldo = 50000, medicamento = None):
-        super().__init__(nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, direccion)
+                 direccion, especialidad, especialista, contratado = False, disponibilidad = False, consultas = None, 
+                 nomina = None, sueldo = 50000, medicamento = None):
+        super().__init__(nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico, 
+                        direccion)
         if consultas is None:
             consultas = {}
         if nomina is None:
@@ -19,6 +20,7 @@ class Medico(Persona):
         self.nomina = nomina
         self.sueldo = sueldo
         self.medicamiento = medicamento
+        self._contratado = contratado
         
 
     # Getters y Setters

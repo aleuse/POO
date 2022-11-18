@@ -91,7 +91,7 @@ class Paciente(Persona):
 
         if medico != None and consultorio != None:
             Administrador.asignarCita(self, medico, consultorio, fecha, motivo, tipoCita)
-            return f"Su cita ha sido agendada exitosamente el: {fecha} con el médico: {medico.nombre} {medico.apellido} en el consultorio {consultorio.id} \n" 
+            return f"Su cita ha sido agendada exitosamente el: {fecha} con el médico: {medico.getNombre()} {medico.getApellido()} en el consultorio {consultorio.getId()} \n" 
         else:
             return "Hubo un error agendando su cita, vuelvalo a intentar. \n"
 
@@ -147,7 +147,7 @@ class Paciente(Persona):
 
         return "Hubo un problema reagendando su cita, vuelvalo a intentar mas tarde"            
     
-    def solicitarExamen(examen, tipoMedico, medicos):
+    def solicitarExamen(self, examen, tipoMedico, medicos):
         if Administrador.autorizarExamen(examen, tipoMedico, medicos) == 1:
             return 1
         elif Administrador.autorizarExamen(examen, tipoMedico, medicos) == 2:

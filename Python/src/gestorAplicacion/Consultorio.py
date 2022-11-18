@@ -7,7 +7,7 @@ from gestorAplicacion.personas.Administrador import Administrador
 import random as rd
 class Consultorio():
     def __init__(self, id = int(rd.random() * 10000 + 1), medico = None, paciente = None, tipoConsultorio = None, 
-                 disponibilidad = True, consultas = None, adquirido = False, costo = 100000):
+                adquirido = False, disponibilidad = True, consultas = None, costo = 100000):
         if consultas is None:
             consultas = {}
         self._id = id

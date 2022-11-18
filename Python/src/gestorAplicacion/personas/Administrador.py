@@ -4,6 +4,7 @@ administración de este. También se encarga de procesos administrativos y logí
 de médicos y/o consultorios; asignar citas a los pacientes cuando soliciten una; autorizar y asignar los exámenes
 solicitados por los pacientes; entre otras.
 """
+import random as rd
 class Administrador:
     # Dinero es un atributo de clase público
     dinero = 0
@@ -164,6 +165,33 @@ class Administrador:
     """
     
     """
+    def verificarDisponibilidadFechaExamen(fechas, tipoMedico, medicos, consultorios):
+        from gestorAplicacion.personas.Medico import Medico
+        from gestorAplicacion.Consultorio import Consultorio
+        # Devuelve la fecha más cercana que cumple con tener un consultorio disponible, un médico disponible y que 
+        # sea especialista del tipo necesario
+        for fecha in fechas:
+            # Buscar un médico disponible
+            for medico in medicos:
+                # Verifica que el médico esté contratado
+                if medico.isContratado():
+                    # Verificar que el médico es un especialista adecuado para dicho examen
+                    if Administrador.verificarTipoMedico(tipoMedico, medico):
+                        # Verificar que el médico tenga disponibilidad
+                        if Administrador.verificarDisponibilidadMedico(fecha, medico):
+                            # Busca un consultorio disponible
+                            for consultorio in consultorios:
+                                # Verifica que el consultorio esté adquirido
+                                if consultorio.isAdquirido():
+                                    # Verificar que el consultorio tenga disponibilidad
+                                    if Administrador.verificarDisponibilidadConsultorio(fecha, consultorio):
+                                        return fecha
+                                
+                        
+    
+    """
+    
+    """
     def asignarCita(paciente, medico, consultorio, fecha, motivo, tipo): 
         from gestorAplicacion.personas.Medico import Medico
         from gestorAplicacion.Consultorio import Consultorio
@@ -173,5 +201,65 @@ class Administrador:
         pago = Pago(14700, False)
         cita.setPago(pago)
         pago.setConsulta(cita)
-        medico.getConsultas.update(fecha, cita)
-        consultorio.getConsultas.update(fecha, cita)
+        medico.getConsultas().update({fecha : cita})
+        consultorio.getConsultas().update({fecha : cita})
+    
+    """
+    
+    """
+    def autorizarExamen(examen, tipoMed, medicos):
+        from gestorAplicacion.personas.Medico import Medico
+        from gestorAplicacion.Examen import Examen
+        for medico in medicos:
+            # Verifica que el médico esté contratado
+            if medico.isContratado():
+                # Si hay al menos un médico con la especialidad necesaria para el examen
+                if medico.getEspecialista() == tipoMed:
+                    # Se genera un número aleatorio para simular posibles fallos a la hora de autorizar el examen
+                    x = rd.random()
+                    # Si el número aleatorio es mayor a 0.2 entonces se asigna el examen
+                    if x > 0.2:
+                        examen.setAutorizado(True)
+                        Examen.listaExamenes.append(examen)
+                        # Autorizado con éxito
+                        return 1
+                    else:
+                        # Lo sentimos ha ocurrido un problema y no se ha podido autorizar el examen
+                        return 2
+            # Lo sentimos, en este momento no tenemos médicos que puedan atender su tipo de examen
+            return 0
+    
+    """
+    
+    """
+    def asignarExamen(examen, paciente, medicos, consultorios, fecha, tipoMedico, tipoExam):
+        from gestorAplicacion.personas.Medico import Medico
+        from gestorAplicacion.Consultorio import Consultorio
+        from gestorAplicacion.personas.Paciente import Paciente
+        from gestorAplicacion.Examen import Examen
+        from gestorAplicacion.tipoExamen import tipoExamen
+        from gestorAplicacion.Pago import Pago
+        # Si el examen está autorizado
+        if examen.isAutorizado():
+            for medico in medicos:
+            # Verifica que el médico esté contratado
+                if medico.isContratado():
+                    # Si hay al menos un médico con la especialidad necesaria para el examen
+                    if medico.getEspecialista() == tipoMedico:
+                        # Si hay un médico disponible en la fecha
+                        if Administrador.verificarDisponibilidadMedico(fecha, medico):
+                            examen.setMedico(medico)
+                            for consultorio in consultorios:
+                                # Verifica que el consultorio esté adquirido
+                                if consultorio.isAdquirido():
+                                    # Si hay un consultorio disponible en la fehca
+                                    if Administrador.verificarDisponibilidadConsultorio(fecha, consultorio):
+                                        examen.setConsultorio(consultorio)
+                                        examen.setFecha(fecha)
+                                        examen.setPago(Pago(None, tipoExam.getValor(), examen))
+                                        paciente.getConsultas().update({fecha : examen})
+                                        consultorio.getConsultas().update({fecha : examen})
+                                        break
+                    medico.getConsultas().update({fecha : examen})
+                    return f"Examen agendado exitosamente el {fecha} con el médico {examen.getMedico().getNombre()} {examen.getMedico().getApellido()} en el consultorio {examen.getConsultorio().getId()}"
+        return "No se pudo agendar el examen"
