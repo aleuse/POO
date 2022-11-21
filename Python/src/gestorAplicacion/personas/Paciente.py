@@ -25,7 +25,7 @@ class Paciente(Persona):
         self.consultas = consultas 
         self.entregas = entregas
         self.pagado = pagado
-
+        Administrador.getPacientes().append(self)
 	#Metodos
     #Getters y setters
 

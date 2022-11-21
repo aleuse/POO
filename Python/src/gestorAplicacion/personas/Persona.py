@@ -33,7 +33,7 @@ class Persona():
         self.documento = documento
 
     def getNumeroDocumento(self):
-        return self.documento
+        return self.numeroDocumento
     
     def setNumeroDocumento(self, numeroDocumento):
         self.numeroDocumento = numeroDocumento

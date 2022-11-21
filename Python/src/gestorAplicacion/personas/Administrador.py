@@ -259,7 +259,9 @@ class Administrador:
                                         examen.setPago(Pago(None, tipoExam.getValor(), examen))
                                         paciente.getConsultas().update({fecha : examen})
                                         consultorio.getConsultas().update({fecha : examen})
-                                        break
-                    medico.getConsultas().update({fecha : examen})
-                    return f"Examen agendado exitosamente el {fecha} con el médico {examen.getMedico().getNombre()} {examen.getMedico().getApellido()} en el consultorio {examen.getConsultorio().getId()}"
+                                        medico.getConsultas().update({fecha : examen})
+                                        return f"Examen agendado exitosamente el {fecha} con el médico {examen.getMedico().getNombre()} {examen.getMedico().getApellido()} en el consultorio {examen.getConsultorio().getId()}"
+                                    
+                                    return "No se pudo agendar el examen"
+                        return "No se pudo agendar el examen"
         return "No se pudo agendar el examen"
