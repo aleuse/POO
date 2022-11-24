@@ -7,9 +7,12 @@ from baseDatos.Serializador import serializar
 from baseDatos.Deserializador import deserializar
 from datetime import datetime
 from PIL import Image, ImageTk
+from excepciones.excepcionPresenciaArchivo import ExcepcionPresenciaArchivos
+from excepciones.excepcionPresenciaImagenes import ExcepcionPresenciaImagenes
 
 deserializar()
 def inicializar():
+    """
     from gestorAplicacion.personas.Administrador import Administrador
     from gestorAplicacion.personas.Medico import Medico
     from gestorAplicacion.personas.Paciente import Paciente
@@ -26,7 +29,7 @@ def inicializar():
     fecha3 = datetime(2022, 10, 15, 13, 30)
     fecha4 = datetime(2022, 10, 15, 14, 00)
     
-    medico1.getConsultas().update({fecha1 : "Una consulta", fecha2 : "Otra consulta", fecha3 : None, fecha4 : "Consulta"})
+    medico1.getConsultas().update({fecha1 : "Una consulta", fecha2 : "Otra consulta", fecha3 : None, fecha4 : None})
     consultorio1.getConsultas().update({fecha1 : "Una consulta", fecha2 : "Otra consulta", fecha3 : None, fecha4 : None})
     
     Administrador.getFechas().append(fecha1)
@@ -34,8 +37,29 @@ def inicializar():
     Administrador.getFechas().append(fecha3)
     Administrador.getFechas().append(fecha4)
     Administrador.setDinero(500000)
+    """
+    imagenes = ["Imagenes/inicio/1.jpg", "Imagenes/inicio/2.jpg", "Imagenes/inicio/3.jpg", "Imagenes/inicio/4.jpg", "Imagenes/inicio/5.jpg"]
+    andres = ["Imagenes/Andres/1.jpg", "Imagenes/Andres/2.jpg", "Imagenes/Andres/3.jpg", "Imagenes/Andres/4.jpg"]
+    luzarait = ["Imagenes/Luzarait/1.jpg", "Imagenes/Luzarait/2.jpg", "Imagenes/Luzarait/3.jpg", "Imagenes/Luzarait/4.jpg"]
+    natalia = ["Imagenes/Natalia/1.jpg", "Imagenes/Natalia/2.jpg", "Imagenes/Natalia/3.jpg", "Imagenes/Natalia/4.jpg"]
+    roger = ["Imagenes/Roger/1.jpg", "Imagenes/Roger/2.jpg", "Imagenes/Roger/3.jpg", "Imagenes/Roger/4.jpg"]
+    yeferson = ["Imagenes/Yeferson/1.jpg", "Imagenes/Yeferson/2.jpg", "Imagenes/Yeferson/3.jpg", "Imagenes/Yeferson/4.jpg"]
+    dir = imagenes + andres + luzarait + natalia + roger + yeferson
+    try:
+        ExcepcionPresenciaArchivos.presenciaArchivos(["baseDatos/temp/administrador", "baseDatos/temp/consultas", 
+        "baseDatos/temp/consultorios","baseDatos/temp/diagnosticos", "baseDatos/temp/fechas", 
+        "baseDatos/temp/historiasClinicas", "baseDatos/temp/listaSintomas", "baseDatos/temp/medicamentos",
+        "baseDatos/temp/medicos", "baseDatos/temp/pacientes"])
+        ExcepcionPresenciaImagenes.presenciaImagenes(dir)
+        deserializar()
+    except ExcepcionPresenciaArchivos:
+        return
+    except ExcepcionPresenciaImagenes:
+        return
 
-#inicializar()
+
+inicializar()
+
 ventana = tk.Tk()
 ventana.title('Sistema gestor médico')
 ventana.geometry("+10+10")
@@ -58,6 +82,11 @@ def cambiarImagen(e):
     LabelFotoInicio.image=FotoInicio
 
 # Poner aquí las biografías
+VidaAndres = ""
+VidaLuzarait = ""
+VidaNatalia = ""
+VidaRoger = ""
+VidaYeferson = ""
 
 posicionVida=0
 def cambiarVida(e):
@@ -83,15 +112,15 @@ def cambiarVida(e):
     LabelFoto4.configure(image=Foto4)
     LabelFoto4.image=Foto4
     if posicionVida==0:
-        CuerpoVida.config(text="VidaAndres")
+        CuerpoVida.config(text=VidaAndres)
     elif posicionVida==1:
-        CuerpoVida.config(text="VidaLuzarait")
+        CuerpoVida.config(text=VidaLuzarait)
     elif posicionVida==2:
-        CuerpoVida.config(text="VidaNatalia")
+        CuerpoVida.config(text=VidaNatalia)
     elif posicionVida==3:
-        CuerpoVida.config(text="VidaRoger")
+        CuerpoVida.config(text=VidaRoger)
     elif posicionVida==4:
-        CuerpoVida.config(text="VidaYeferson")
+        CuerpoVida.config(text=VidaYeferson)
 
 def descripcion():
     descripcion = """En el sistema gestor médico los pacientes podrán solicitar citas o exámenes y reagendar sus citas; también podrán pagar sus consultas, solicitar la entrega de medicamentos y realizar el pago de estas.
@@ -118,6 +147,7 @@ def salir():
                                 message="¿Confirma que desea salir de la aplicación?",
                                 detail="Clic en Sí para salir")
     if finalizar:
+        serializar()
         ventana.destroy()
         serializar()
  
@@ -130,6 +160,23 @@ def salirUsuario():
         ventanaInicio.pack()
         ventana["menu"] = menuVentanaInicio
         
+def aplicacion():
+    descripcion = """En el sistema gestor médico los pacientes podrán solicitar citas o exámenes y reagendar sus citas; también podrán pagar sus consultas, solicitar la entrega de medicamentos y realizar el pago de estas.
+Por otro lado, los médicos podrán crear diagnósticos que añadir a la historia clínica de un paciente.
+Por último, el administrador podrá visualizar información referente a las consultas, exámenes y entregas realizadas; además, podrá contratar nuevos médicos, adquirir nuevos consultorios o comprar medicamentos."""
+    messagebox.showinfo(title="Información básica de la aplicación",
+                        message=descripcion)
+    
+def acerca():
+    autores = """Autores:
+- Andrés Alexis Galvis Herrera
+- Natalia Andrea Alvarez Hoyos
+- Yeferson Steven Aguilar Alvarado
+- Roger Vera Londoño
+- Luzarait Cañas Quintero
+"""
+    messagebox.showinfo(title="Acerca de la aplicación",
+                        message=autores) 
 def solicitarExamen():
     ocultarTodo()
     ventanaExamenes.pack()
@@ -184,15 +231,15 @@ PieVida = Label(master=P5, text="Clic sobre la biografía para cambiar de autor"
                 font="Helvetica 8 italic", fg="blue")
 
 # Se localizan las imágenes iniciales para las relacionadas con la aplicación y para las de hojas de vida de los autores.
-FotoInicio=(Image.open("Imagenes/inicio/1.jpg")).resize((400,400), Image.ANTIALIAS)
+FotoInicio=(Image.open("Imagenes/inicio/1.jpg")).resize((400,400), Image.LANCZOS)
 FotoInicio = ImageTk.PhotoImage(FotoInicio)
-Foto1 =(Image.open("Imagenes/Andres/1.jpg")).resize((200,200), Image.ANTIALIAS)
+Foto1 =(Image.open("Imagenes/Andres/1.jpg")).resize((200,200), Image.LANCZOS)
 Foto1 = ImageTk.PhotoImage(Foto1)
-Foto2 =(Image.open("Imagenes/Andres/2.jpg")).resize((200,200), Image.ANTIALIAS)
+Foto2 =(Image.open("Imagenes/Andres/2.jpg")).resize((200,200), Image.LANCZOS)
 Foto2 = ImageTk.PhotoImage(Foto2)
-Foto3 =(Image.open("Imagenes/Andres/3.jpg")).resize((200,200), Image.ANTIALIAS)
+Foto3 =(Image.open("Imagenes/Andres/3.jpg")).resize((200,200), Image.LANCZOS)
 Foto3 = ImageTk.PhotoImage(Foto3)
-Foto4 =(Image.open("Imagenes/Andres/4.jpg")).resize((200,200), Image.ANTIALIAS)
+Foto4 =(Image.open("Imagenes/Andres/4.jpg")).resize((200,200), Image.LANCZOS)
 Foto4 = ImageTk.PhotoImage(Foto4)
 
 # Se crean los Label para las imágenes relacionadas con la aplicación y para las de hojas de vida de los autores.
@@ -230,7 +277,7 @@ menuVentanaUsuario = Menu(ventana, font="Helvetica 11 bold")
 
 menuArchivo = Menu(menuVentanaUsuario, font="Helvetica 11")
 menuVentanaUsuario.add_cascade(menu=menuArchivo, label="Archivo")
-menuArchivo.add_command(label="Aplicación", command=evento)
+menuArchivo.add_command(label="Aplicación", command=aplicacion)
 menuArchivo.add_command(label="Salir", command=salirUsuario)
 
 
@@ -267,7 +314,7 @@ menuAdministracion.add_command(label="Comprar medicamentos", command=evento)
 
 menuAyuda = Menu(menuVentanaUsuario, font="Helvetica 11")
 menuVentanaUsuario.add_cascade(menu=menuAyuda, label="Ayuda")
-menuAyuda.add_command(label="Acerca de", command=evento)
+menuAyuda.add_command(label="Acerca de", command=acerca)
 
 # Se define el mensaje que aparecerá cuando se accede a la ventana de Usuario desde la ventana de Inicio.
 tutorial = """           (0 0)           

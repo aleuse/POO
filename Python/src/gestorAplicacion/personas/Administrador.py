@@ -129,6 +129,7 @@ class Administrador:
     El método recibo como parámetros a tipo, que hace referencia al valor del enum tipoMedico; también recibe medico, que
     es un objeto de la clase Medico al cual se le verificará su especialidad.
     """
+    @staticmethod
     def verificarTipoMedico(tipo, medico):
         from gestorAplicacion.personas.Medico import Medico
         if medico.getEspecialista() == tipo:
@@ -142,6 +143,7 @@ class Administrador:
     el objeto tipo Medico en su diccionario de consultas si el valor (value) para la fecha especificada (key) es igual
     a None; si es el caso entonces retorna True, de lo contrario False.
     """
+    @staticmethod
     def verificarDisponibilidadMedico(fecha, medico):
         from gestorAplicacion.personas.Medico import Medico
         if medico.getConsultas().get(fecha) == None:
@@ -155,6 +157,7 @@ class Administrador:
     verifica para el objeto tipo Consultorio en su diccionario de consultas si el valor (value) para la fecha 
     especificada (key) es igual a None; si es el caso entonces retorna True, de lo contrario False.
     """
+    @staticmethod
     def verificarDisponibilidadConsultorio(fecha, consultorio):
         from gestorAplicacion.Consultorio import Consultorio
         if consultorio.getConsultas().get(fecha) == None:
@@ -165,6 +168,7 @@ class Administrador:
     """
     
     """
+    @staticmethod
     def verificarDisponibilidadFechaExamen(fechas, tipoMedico, medicos, consultorios):
         from gestorAplicacion.personas.Medico import Medico
         from gestorAplicacion.Consultorio import Consultorio
@@ -192,6 +196,7 @@ class Administrador:
     """
     
     """
+    @staticmethod
     def asignarCita(paciente, medico, consultorio, fecha, motivo, tipo): 
         from gestorAplicacion.personas.Medico import Medico
         from gestorAplicacion.Consultorio import Consultorio
@@ -207,6 +212,7 @@ class Administrador:
     """
     
     """
+    @staticmethod
     def autorizarExamen(examen, tipoMed, medicos):
         from gestorAplicacion.personas.Medico import Medico
         from gestorAplicacion.Examen import Examen
@@ -232,6 +238,7 @@ class Administrador:
     """
     
     """
+    @staticmethod
     def asignarExamen(examen, paciente, medicos, consultorios, fecha, tipoMedico, tipoExam):
         from gestorAplicacion.personas.Medico import Medico
         from gestorAplicacion.Consultorio import Consultorio
@@ -262,6 +269,6 @@ class Administrador:
                                         medico.getConsultas().update({fecha : examen})
                                         return f"Examen agendado exitosamente el {fecha} con el médico {examen.getMedico().getNombre()} {examen.getMedico().getApellido()} en el consultorio {examen.getConsultorio().getId()}"
                                     
-                                    return "No se pudo agendar el examen"
-                        return "No se pudo agendar el examen"
+                                    #return "No se pudo agendar el examen"
+                        #return "No se pudo agendar el examen"
         return "No se pudo agendar el examen"
