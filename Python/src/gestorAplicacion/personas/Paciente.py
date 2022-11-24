@@ -2,6 +2,7 @@
 #Clase Paciente, para poder almacenar los atributos y aplicar los metodos respecto a los pacientes del sistema se usan arraylist para almacenar todos los pacientes creados y para tener las lista de los síntomas que tenga el paciente.
 #Al igual se usan tree maps, donde se guardan las consultas con su respectiva fecha y le consulta asignada y las entregas, donde se guardan las fechas y las netregas correspondientes.
 
+from gestorAplicacion.Cita import Cita
 from gestorAplicacion.personas.Administrador import Administrador
 from gestorAplicacion.personas.Persona import Persona
 import datetime as dt
@@ -105,7 +106,7 @@ class Paciente(Persona):
 
     def reagendarCita(self, id, fecha):
         cita = None
-        citas = Administrador.getCitas()
+        citas = Cita.getCitas()
         #Se busca la cita que se quiere reagendar
         for i in citas:
             if i.getPaciente() == self and i.getId() == id:
@@ -124,7 +125,7 @@ class Paciente(Persona):
             medicos = Administrador.getMedicos()
             medico = None
             for i in range(len(medicos)):
-                if medicos[i].getEspecialidad() == cita.getTiposCitas() and Administrador.verificarDisponibilidadMedico(fecha, medicos[i]) == True:
+                if medicos[i].getEspecialidad() == cita.getTipoCita() and Administrador.verificarDisponibilidadMedico(fecha, medicos[i]) == True:
                     medico = medicos[i]
                     cita.setMedico(medico)
                     cita.setFecha(fecha)
@@ -142,7 +143,7 @@ class Paciente(Persona):
                                 break
                         return f"Su cita ha sido reagendada exitosamente, su nuevo medico {medico.getNombre()} {medico.getApellido()} y esta será en el consultorio: {consultorio.getId()} \n"
 
-                elif Administrador.verificarDisponibilidad(fecha, medicos[i]) == False and i == len(medicos)-1:
+                elif Administrador.verificarDisponibilidadMedico(fecha, medicos[i]) == False and i == len(medicos)-1:
                     return "No fue posible reagendar su cita, debido a que no hay disponibilidad de citas, vuelvalo a intentar mas tarde"
 
         return "Hubo un problema reagendando su cita, vuelvalo a intentar mas tarde"            

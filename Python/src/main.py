@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import *
 from tkinter import messagebox
 from solicitarExamen import solicitarExamen
+from solicitarCita import solicitarCita 
 from baseDatos.Serializador import serializar
 from baseDatos.Deserializador import deserializar
 from datetime import datetime
@@ -42,6 +43,8 @@ ventana.grid_columnconfigure(0, weight=1)
 ventana.grid_columnconfigure(1, weight=1)
 ventanaExamenes = solicitarExamen()
 ventanaExamenes.pack_forget()
+ventanaSolicitarCitas = solicitarCita()
+ventanaSolicitarCitas.pack_forget()
 
 posicionImagen=1
 def cambiarImagen(e):
@@ -130,6 +133,10 @@ def salirUsuario():
 def solicitarExamen():
     ocultarTodo()
     ventanaExamenes.pack()
+
+def solicitarCita():
+    ocultarTodo()
+    ventanaSolicitarCitas.pack()
 
 # Solicitar examen
 
@@ -232,7 +239,7 @@ menuVentanaUsuario.add_cascade(label="Procesos y consultas", menu=menuProcesos)
 
 menuCitas = Menu(menuProcesos, font="Helvetica 11")
 menuProcesos.add_cascade(label="Citas", menu= menuCitas)
-menuCitas.add_command(label="Solicitar cita", command=evento)
+menuCitas.add_command(label="Solicitar cita", command=solicitarCita)
 menuCitas.add_command(label="Reagendar cita", command=evento)
 
 menuProcesos.add_command(label="Exámenes", command=solicitarExamen)

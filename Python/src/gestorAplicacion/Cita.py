@@ -14,6 +14,9 @@ class Cita(Consulta):
         Cita.listaCitas.append(self)
     
     # Getters y Setters
+    @classmethod
+    def getCitas(self):
+        return self.listaCitas
     def getMotivo(self):
         return self._motivo
     

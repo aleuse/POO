@@ -17,6 +17,8 @@ fecha1 = datetime(2022, 10, 15, 12, 30)
 fecha2 = datetime(2022, 10, 15, 13, 00)
 fecha3 = datetime(2022, 10, 15, 13, 30)
 fecha4 = datetime(2022, 10, 15, 14, 00)
+fecha5 = datetime(2023,1,3,10,00)
+fecha6 = datetime(2023, 2,1,23,00)
 
 
 Paciente1 = Paciente("Sara", "Marin", tipoDocumento.CEDULA, 1000000000, 20, "Femenino", 2038487, "sama@gmail.com", "calle 36 #89 53", "SURA", None, True)
@@ -47,7 +49,9 @@ print(f"Consultorio1 en {fecha2} : {Administrador.verificarDisponibilidadConsult
 print(f"Consultorio1 en {fecha4} : {Administrador.verificarDisponibilidadConsultorio(fecha4, consultorio1)}") # True
 print(f"Médicos: {Administrador.medicos} \nConsultorios: {Administrador.consultorios}")
 testExamenes()
-print(Paciente1.pedirCita(fecha3, tipoCita.GENERAL, "dolor de cabeza", tipoMedico.BACTERIOLOGO))
-
+Cita1 = Paciente1.pedirCita(fecha5, tipoCita.GENERAL, "dolor de cabeza", tipoMedico.BACTERIOLOGO)
+cita1 = medico1.getConsultas()[fecha5]
+idcita = cita1.getId()
+print(Paciente1.reagendarCita(idcita,fecha6))
 
 
