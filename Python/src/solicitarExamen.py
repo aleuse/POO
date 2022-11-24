@@ -2,6 +2,9 @@ from tkinter import *
 from tkinter import messagebox
 from gestorAplicacion.fieldFrame import FieldFrame
 from gestorAplicacion.personas.Administrador import Administrador
+from excepciones.excepcionPresenciaDatos import ExcepcionPresenciaDatos
+from excepciones.excepcionTipoString import ExcepcionTipoString
+
 class solicitarExamen(Frame):
     def __init__(self):
         super().__init__()
@@ -53,13 +56,26 @@ class solicitarExamen(Frame):
         tipoEx = self.dialogos.getValue("Tipo de examen")
         
         numDocumento = int(numDocumento)
-        print(numDocumento)
+        #print(numDocumento)
         paciente = None
         tipoExam = None
         tipoMed = None
         
+        valores = [numDocumento, tipoEx]
+        try:
+            ExcepcionPresenciaDatos.presenciaDatos(self.criterios, valores)
+        except ExcepcionPresenciaDatos:
+            return
+        
+        try:
+            ExcepcionTipoString.tipoString(["Documento"], 
+                                     [numDocumento])
+        except ExcepcionTipoString:
+            return
+    
+        
         for pac in Administrador.getPacientes():
-            print(pac.getNumeroDocumento())
+            #print(pac.getNumeroDocumento())
             if pac.getNumeroDocumento() == numDocumento:
                 paciente = pac
                 break
