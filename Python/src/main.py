@@ -3,6 +3,9 @@ from tkinter import *
 from tkinter import messagebox
 from solicitarExamen import solicitarExamen
 from solicitarCita import solicitarCita 
+from mostrarDiagnostico import mostrarDiagnostico
+from solicitarEntregaMedicamentos import solicitarEntregaMedicamentos
+from crearDiagnostico import crearDiagnostico
 from baseDatos.Serializador import serializar
 from baseDatos.Deserializador import deserializar
 from datetime import datetime
@@ -69,6 +72,12 @@ ventanaExamenes = solicitarExamen()
 ventanaExamenes.pack_forget()
 ventanaSolicitarCitas = solicitarCita()
 ventanaSolicitarCitas.pack_forget()
+ventanaMostrar = mostrarDiagnostico()
+ventanaMostrar.pack_forget()
+ventanaSolicitar = solicitarEntregaMedicamentos()
+ventanaSolicitar.pack_forget()
+ventanaCrear = crearDiagnostico()
+ventanaCrear.pack_forget()
 
 posicionImagen=1
 def cambiarImagen(e):
@@ -133,6 +142,9 @@ def ocultarTodo():
     ventanaInicio.pack_forget()
     ventanaUsuario.pack_forget()
     ventanaExamenes.pack_forget()
+    ventanaMostrar.pack_forget()
+    ventanaSolicitar.pack_forget()
+    ventanaCrear.pack_forget()
     
 def ingresar():
     ocultarTodo()
@@ -184,6 +196,18 @@ def solicitarExamen():
 def solicitarCita():
     ocultarTodo()
     ventanaSolicitarCitas.pack()
+
+def mostrarDiagnostico():
+    ocultarTodo()
+    ventanaMostrar.pack()
+
+def solicitarEntregaMedicamentos():
+    ocultarTodo()
+    ventanaSolicitar.pack()
+
+def crearDiagnostico():
+    ocultarTodo()
+    ventanaCrear.pack()
 
 # Solicitar examen
 
@@ -300,9 +324,9 @@ menuFinanzas.add_command(label="Pago de nómina", command=evento)
 
 menuResultadosMedicamentos = Menu(menuProcesos, font="Helvetica 11")
 menuProcesos.add_cascade(label="Resultados y Medicamentos", menu= menuResultadosMedicamentos)
-menuResultadosMedicamentos.add_command(label="Crear diagnóstico", command=evento)
-menuResultadosMedicamentos.add_command(label="Mostrar diagnósticos", command=evento)
-menuResultadosMedicamentos.add_command(label="Solicitar entrega medicamentos", command=evento)
+menuResultadosMedicamentos.add_command(label="Crear diagnóstico", command=crearDiagnostico)
+menuResultadosMedicamentos.add_command(label="Mostrar diagnósticos", command=mostrarDiagnostico)
+menuResultadosMedicamentos.add_command(label="Solicitar entrega medicamentos", command=solicitarEntregaMedicamentos)
 
 menuAdministracion = Menu(menuProcesos, font="Helvetica 11")
 menuProcesos.add_cascade(label="Administración", menu= menuAdministracion)
