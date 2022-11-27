@@ -387,7 +387,12 @@ def cambiarImagen(e):
     LabelFotoInicio.image=FotoInicio
 
 # Poner aquí las biografías
-VidaAndres = ""
+VidaAndres = """Andrés Alexis Galvis Herrera
+Estudiante de Ingeniería de Sistemas e Informática
+Aprendiz de Data Science
+20 años, apasionado por la música, los videojuegos
+y el contar historias a través de los datos. 
+Fiel creyente de que la disciplina vence al talento."""
 VidaLuzarait = ""
 VidaNatalia = ""
 VidaRoger = "Estudiante de ingeniería de sistemas en la Universidad nacional de colombia.Tengo 21 años.Soy de San Carlos y vivo en Envigado.Me gustan los deportes, la musica y soy aficionado al cine. Actualmente estoy realizando un curso de programador junior, tambien estoy estudiando ingles."
@@ -595,7 +600,7 @@ TituloVida = Label(master=P5, text="Breve biografía de los autores",
                 font="Helvetica 11 bold")
 
 # Se crea el Label para el texto de las hojas de vida de los autores.
-CuerpoVida = Label(master=P5, text="Aquí va la hoja de vida", font="Helvetica 10", 
+CuerpoVida = Label(master=P5, text=VidaAndres, font="Helvetica 10", 
                 anchor=W)
 
 # Se crea el Label que contendrá las instrucciones para cambiar entre hojas de vida de los autores.
