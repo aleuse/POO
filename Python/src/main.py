@@ -697,16 +697,36 @@ menuAyuda.add_command(label="Acerca de", command=acerca)
 tutorial = """           (0 0)           
           ---oOO-- (_) ----oOO---        
     ╔════════════════════════════════════════╗  
-    ║ Bienveniedo al Sistema Medico! ♥       ║  
+    ║ Bienvenido al Sistema Medico! ♥        ║  
     ╚════════════════════════════════════════╝  
         --------------       
        |__|__|     
      || ||   
     ooO Ooo"
-    explicacion del programa sobre el sistema medico
-    ...
-    ...
-    ...
+    En la parte superior encontrará la barra de menús.
+    En el menú Archivo podrá acceder a:
+    * Aplicación: seleccionando esta opción obtendrá información básica de lo que puede hacer en la aplicación.
+    * Salir: cerrará esta ventana y volverá a la ventana de Inicio. Si desde la ventana de Inicio selecciona de
+    nuevo la opción Salir entonces finalizará la aplicación.
+    
+    En el menú Procesos y Consultas podrá acceder a:
+    * Citas: desde esta opción un paciente podrá solicitar una nueva cita para la fecha que especifique o podrá
+    reagendar una cita que haya solicitado previamente.
+    * Exámenes: con esta opción un paciente podrá solicitar la autorización y asignación del tipo de examen que
+    requiera el paciente en una fecha dada.
+    * Finanzas: a través de esta opción los pacientes podrán pagar sus consultas y las entregas de sus 
+    medicamentos; el administrador podrá consultar el dinero disponible y hacer el pago de nómina de los 
+    empleados.
+    * Resultados y medicamentos: utilizando esta opción un paciente podrá consultar sus diagnósticos y solicitar
+    la entrega de medicamentos a su domicilio; los médicos podrán crear los diagnósticos de las consultas que
+    realicen.
+    * Administración: seleccionando esta opción el administrador podrá llevar una cuenta de cuántas citas, 
+    exámenes y entregas se han generado y de qué tipo; podrá contratar nuevos médicos para la plantilla y 
+    construir nuevos consultorios; por último, podrá abastecerse de medicamentos.
+    
+    En el menú Ayuda podrá acceder a:
+    * Acerca de: seleccionando esta opción podrá ver el nombre de las personas encargadas del desarrollo de esta
+    aplicación.
     
 """    
 
