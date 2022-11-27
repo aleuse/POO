@@ -4,8 +4,9 @@ estas dos subclases.
 """
 import random as rd
 class Consulta():
-    def __init__(self, id = int(rd.random() * 10000 + 1), paciente = None, medico = None, consultorio = None, 
-                 fecha = None, pago = None):
+    def __init__(self, paciente, medico, consultorio, fecha, id = None, pago = None):
+        if id is None:
+            id = int(rd.random() * 10000 + 1)
         self._id = id
         self._paciente = paciente
         self._medico = medico

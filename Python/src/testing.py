@@ -51,7 +51,9 @@ print(f"Médicos: {Administrador.medicos} \nConsultorios: {Administrador.consult
 testExamenes()
 Cita1 = Paciente1.pedirCita(fecha5, tipoCita.GENERAL, "dolor de cabeza", tipoMedico.BACTERIOLOGO)
 cita1 = medico1.getConsultas()[fecha5]
+#print(Cita1)
 idcita = cita1.getId()
+print(idcita)
 print(Paciente1.reagendarCita(idcita,fecha6))
 
 
