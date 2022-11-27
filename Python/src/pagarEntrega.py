@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+from gestorAplicacion.Entrega import Entrega
 from gestorAplicacion.fieldFrame import FieldFrame
 from gestorAplicacion.personas.Administrador import Administrador
 from gestorAplicacion.personas.Paciente import Paciente
@@ -49,7 +50,9 @@ class pagarEntrega(Frame):
 
         nombre = self.dialogos.getValue("Nombre")
         documento = self.dialogos.getValue("Documento")
+        documento = int(documento)
         id_entrega = self.dialogos.getValue("ID Entrega")
+        id_entrega = int(id_entrega)
 
         paciente = None
 
@@ -60,16 +63,17 @@ class pagarEntrega(Frame):
         if paciente == None:
             messagebox.showerror("Error", "Paciente no encontrado")
 
-        while(Paciente.getEntregas.__sizeof__ > 0):
-            for e in Paciente.getEntregas():
-                if e.getId == id_entrega and e.getPago() == True:
-                    messagebox.showinfo("Aviso", "La entrega ya ha sido pagada")
-                elif e.getId == id_entrega and e.getPago() == False:
-                    e.setPago().setPagado() == True
-                    Administrador.sumarDinero(e.getPago().getValor())
-                    messagebox.showinfo("Aviso", "El pago de la entrega ha sido exitoso")
-                else:
-                    messagebox.showinfo("Avisa", "No se encontraron datos")
-                    break    
-
+        for e in Entrega.lista:
+            print(e.getId())
+            if e.getId() == id_entrega and e.getPago().isPagado() == True:
+                messagebox.showinfo("Aviso", "La entrega ya ha sido pagada")
+                break
+            elif e.getId() == id_entrega and e.getPago().isPagado() == False:
+                e.getPago().setPagado(True) 
+                Administrador.sumarDinero(e.getPago().getValor())
+                messagebox.showinfo("Aviso", "El pago de la entrega ha sido exitoso")
+                break
+            messagebox.showinfo("Avisa", "No se encontraron datos")
+            break    
+            
         self.borrar()

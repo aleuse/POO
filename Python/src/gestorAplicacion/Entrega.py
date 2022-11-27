@@ -4,7 +4,7 @@ class Entrega():
     lista=[]
     # constructor
     def __init__(self, id, paciente, domicilio, medicamentos, estado):
-        self.id = ((rd.random() * 10000 + 1))
+        self.id = id
         self.paciente = paciente
         self.domicilio = domicilio
         self.medicamentos = medicamentos

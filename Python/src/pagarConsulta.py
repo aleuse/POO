@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from gestorAplicacion.fieldFrame import FieldFrame
 from gestorAplicacion.personas.Administrador import Administrador
+from gestorAplicacion.Cita import Cita
 #from gestorAplicacion.Consulta import Consulta
 
 
@@ -60,15 +61,19 @@ class pagarConsulta(Frame):
         if paciente == None:
             messagebox.showerror("Error", "Paciente no encontrado")
 
-        for c in Administrador.getConsultas():    
-            if c.getId == id_consulta and c.getPago().isPagado() == True:
+        for c in Cita.listaCitas:   
+            #print(c.getId())
+            #print(c.getPago().isPagado()) 
+            if c.getId() == id_consulta and c.getPago().isPagado() == True:
                 messagebox.showinfo("Aviso", "La consulta ya ha sido pagada")
-            elif c.getId == id_consulta and c.getPago().isPagado() == False:
+                break
+            elif c.getId() == id_consulta and c.getPago().isPagado() == False:
                 c.getPago().setPagado(True)
                 Administrador.sumarDinero(c.getPago().getValor())
                 messagebox.showinfo("Aviso", "El pago de la consulta ha sido exitoso")
-            else:
-                messagebox.showinfo("Avisa", "No se encontraron datos")
                 break
+            
+            messagebox.showerror("Error", "No se encontraron datos")
+                
                     
         self.borrar()

@@ -113,12 +113,16 @@ def inicializar():
     cita1.setPago(Pago(None, 15000, None, None, True))
     cita6.setPago(Pago(None, 15000));
     cita11.setPago(Pago(None, 15000))
-		  
+    cita16.setPago(Pago(None, 15000))
+    
     cita2 = Cita(None,  medico2, consultorio2, fecha1,"Revisión visual",  tipoCita.OPTOMETRIA,2) 
     cita3 = Cita(None,  medico2, consultorio2, fecha2, "Problemas visuales",tipoCita.OPTOMETRIA,3) 
     cita7 = Cita(None,  medico2, consultorio2, fecha4,"Revisión visual", tipoCita.OPTOMETRIA,7) 
     cita8 = Cita(Paciente1, medico2, consultorio2, fecha5,"Problemas visuales", tipoCita.OPTOMETRIA,8)
     cita8.setPago(Pago(None,15000))
+    cita2.setPago(Pago(None, 15000))
+    cita3.setPago(Pago(None, 15000))
+    cita7.setPago(Pago(None, 15000))
 		  
     cita12 = Cita(Paciente2, medico3, consultorio3,  fecha8,"Revisión visual", tipoCita.OPTOMETRIA,12) 
     cita13 = Cita(None, medico3, consultorio3, fecha9,"Problemas visuales", tipoCita.OPTOMETRIA, 13)
@@ -126,6 +130,8 @@ def inicializar():
     cita18 = Cita(None, medico3, consultorio3, fecha5,"Problemas visuales", tipoCita.OPTOMETRIA,18)
     cita12.setPago(Pago(None, 15000))
     cita17.setPago(Pago(None,15000))
+    cita13.setPago(Pago(None, 15000))
+    cita18.setPago(Pago(None, 15000))
 		  	  
     cita4 = Cita(None,  medico4, consultorio4, fecha2, "Problemas en los oídos",tipoCita.AUDIOMETRIA,4) 
     cita5 = Cita(None, medico4, consultorio4, fecha3,"No escucha", tipoCita.AUDIOMETRIA,5) 
@@ -135,13 +141,19 @@ def inicializar():
     cita15 = Cita(Paciente1, medico4, consultorio4, fecha12, "No escucha",tipoCita.AUDIOMETRIA,15) 
     cita19 = Cita(None, medico4, None, fecha13, "Problemas en los oídos",tipoCita.AUDIOMETRIA, 19) 
     cita20 = Cita(Paciente3,  medico4, consultorio4, fecha14, "No escucha",tipoCita.AUDIOMETRIA,20)
-    cita15.setPago(Pago(None,15000))
-    cita20.setPago(Pago(None,15000))
+    cita4.setPago(Pago(None,15000))
+    cita5.setPago(Pago(None,15000))
+    cita9.setPago(Pago(None, 15000))
+    cita10.setPago(Pago(None, 15000))
+    cita14.setPago(Pago(None, 15000))
+    cita15.setPago(Pago(None, 15000))
+    cita19.setPago(Pago(None, 15000))
+    cita20.setPago(Pago(None, 15000))
     
-    entrega1 = Entrega(None,Paciente1, "calle 36 #89 53", None, estadoEntrega.EN_CAMINO);
-    entrega2 = Entrega(None,Paciente1, "calle 36 #89 53", None, estadoEntrega.EN_CAMINO) 
-    entrega3 = Entrega(None,Paciente2, "Carrera 68 # 54 12", None, estadoEntrega.EN_CAMINO)
-    entrega4 = Entrega(None,Paciente3, "cra87#12-34", None, estadoEntrega.EN_CAMINO)
+    entrega1 = Entrega(1,Paciente1, "calle 36 #89 53", None, estadoEntrega.EN_CAMINO);
+    entrega2 = Entrega(2,Paciente1, "calle 36 #89 53", None, estadoEntrega.EN_CAMINO) 
+    entrega3 = Entrega(3,Paciente2, "Carrera 68 # 54 12", None, estadoEntrega.EN_CAMINO)
+    entrega4 = Entrega(4,Paciente3, "cra87#12-34", None, estadoEntrega.EN_CAMINO)
 		  
     entrega1.setPago(Pago(None,10000))
     entrega2.setPago(Pago(None,10000))
