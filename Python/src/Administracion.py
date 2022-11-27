@@ -100,16 +100,20 @@ class contratarMedicos(Frame):
         valores.pack(fill=BOTH, padx=5, pady=5)
 
         def contratar():
+            cantMedicos = 0
+            for medico in Administrador.medicos:
+                if medico.isContratado() == True:
+                    cantMedicos +=1 
             mc=0
             for i in range(0,int(valores.get())):
                 for contrato in Administrador.medicos:
-                    if((contrato.isContratado()==False) and (contrato.getEspecialista==listado.get())):
+                    if((contrato.isContratado()==False) and (contrato.getEspecialista().value==listado.get())):
                         mc+=1
                         contrato.setContratado(True)
                         break
             if(mc>0):
                 cantMedicos += mc
-                messagebox.showinfo("Contratacion médicos",f"Has contratado a {mc} los medicos\n Ahora se dispone de {cantMedicos} medicos")
+                messagebox.showinfo("Contratacion médicos",f"Has contratado a {mc} medicos\n Ahora se dispone de {cantMedicos} medicos")
             else:
                 messagebox.showerror("Contratacion médicos","no se han podido contratar los medicos")
             
