@@ -17,7 +17,7 @@ class solicitarExamen(Frame):
         descripcion.pack(fill=BOTH, padx=5, pady=5)
         
         # Se especifican los nombres de los criterios que tendrá el FieldFrame de esta funcionalidad.
-        self.criterios = ["Documento", "Tipo de examen"]
+        self.criterios = ["Nombre del paciente", "Tipo de examen"]
         
         # Se especifican los valores que tendrá el FieldFrame de esta funcionalidad para los criterios anteriormente especificados.
         self.valores = [False, False]
@@ -43,7 +43,7 @@ class solicitarExamen(Frame):
         
     # Por medio del método borrar() se limpian todos los campos del FieldFrame, tanto combobox como entry.
     def borrar(self):
-        self.dialogos.getComponente("Documento").delete(0,"end")
+        self.dialogos.getComponente("Nombre del paciente").delete(0,"end")
         self.dialogos.getComponente("Tipo de examen").set("")
     
     def aceptar(self):
@@ -52,31 +52,31 @@ class solicitarExamen(Frame):
         from gestorAplicacion.tipoExamen import tipoExamen
         from gestorAplicacion.personas.tipoMedico import tipoMedico
         
-        numDocumento = self.dialogos.getValue("Documento")
+        nombrePaciente = self.dialogos.getValue("Nombre del paciente")
         tipoEx = self.dialogos.getValue("Tipo de examen")
         
-        numDocumento = int(numDocumento)
+        
         #print(numDocumento)
         paciente = None
         tipoExam = None
         tipoMed = None
         
-        valores = [numDocumento, tipoEx]
+        valores = [nombrePaciente, tipoEx]
         try:
             ExcepcionPresenciaDatos.presenciaDatos(self.criterios, valores)
         except ExcepcionPresenciaDatos:
             return
         
         try:
-            ExcepcionTipoString.tipoString(["Documento"], 
-                                     [numDocumento])
+            ExcepcionTipoString.tipoString(["Nombre del paciente"], 
+                                     [nombrePaciente])
         except ExcepcionTipoString:
             return
     
         
         for pac in Administrador.getPacientes():
             #print(pac.getNumeroDocumento())
-            if pac.getNumeroDocumento() == numDocumento:
+            if pac.getNombre() == nombrePaciente:
                 paciente = pac
                 break
             

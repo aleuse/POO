@@ -49,9 +49,13 @@ class crearDiagnostico(Frame):
     def aceptar(self):
         from gestorAplicacion.Medicamentos import Medicamentos
         from gestorAplicacion.tipoMedicamento import tipoMedicamento
+        from gestorAplicacion.personas.Medico import Medico
+        import random as rd
 
         documentoMe = self.dialogos.getValue("Documento del medico")
+        documentoMe = int(documentoMe)
         documentoPa = self.dialogos.getValue("Documento del paciente")
+        documentoPa = int(documentoPa)
         fecha = self.dialogos.getValue("Fecha")
         medicamento = self.dialogos.getValue("Medicamento a recetar")
         dosis = self.dialogos.getValue("Dosis a recetar")
@@ -89,8 +93,8 @@ class crearDiagnostico(Frame):
                     medicamento1 = tipoMedicamento.LAGRIMAS_ARTIFICIALES
                 consultaX = e.getConsultas().get(fecha)
                 medicamentoX = Medicamentos (medicamento1, paciente, dosis, uso)
-                medico.crearDiagnostico(paciente,sintoma,observacion,medicamentoX,consultaX)
-                messagebox.showinfo("Diagnostico creado con exito")
+                Medico.crearDiagnostico(paciente,observacion,medicamentoX,rd.random() * 5000 + 1,consultaX)
+                messagebox.showinfo("Confirmación", "Diagnostico creado con exito")
 
             self.borrar()
             

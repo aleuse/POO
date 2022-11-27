@@ -9,7 +9,7 @@ class Entrega():
         self.domicilio = domicilio
         self.medicamentos = medicamentos
         self.estado = estado
-        self.lista.add(self)
+        self.lista.append(self)
 
     # getter & setter
     def getId(self):

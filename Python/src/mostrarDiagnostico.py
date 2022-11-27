@@ -54,12 +54,6 @@ class mostrarDiagnostico(Frame):
         from gestorAplicacion.tipoExamen import tipoExamen
         from gestorAplicacion.personas.tipoMedico import tipoMedico
 
-        Paciente1 = Paciente("Sara", "Marin", tipoDocumento.CEDULA, 123, 20, "Femenino", 2038487, "sama@gmail.com", "calle 36 #89 53", "SURA", None, True,None,None,None)
-        medico1 = Medico("Susana", "Perez", tipoDocumento.CEDULA, 1000758374, 25, "Femenino", 1000758374, 
-                 "susper@gmail.com", "Cra 77 #45 04", tipoCita.GENERAL, tipoMedico.BACTERIOLOGO, True)
-        consultorio1 = Consultorio(1, None, None, "Laboratorio", True)   
-        Administrador.medicos.append(medico1)
-        Administrador.pacientes.append(Paciente1)
         
         numDocumento = self.dialogos.getValue("Documento del paciente")
         
@@ -75,14 +69,8 @@ class mostrarDiagnostico(Frame):
         else:
             listaDiagnosticos = paciente.getHistoriaClinica().getDiagnosticos()
             for i in listaDiagnosticos:
-                messagebox.showerror("El nombre y apellido del paciente es: ", i.getPersona().getNombre() , i.getPersona().getApellido(), "\n",
-                "Su observacion fue: ", i.getObservacion() , "\n",
-                "Se reporto con los siguientes sintomas: ")
-                for h in range(0,i.getSintomas().len()):
-                    messagebox.showerror(i.getSintomas().get(h), "\n")
-                
-                messagebox.showerror("Su consulta fue en la fecha: ", i.getConsulta().getFecha(),"\n",
-                "Su medico fue: ", i.getConsulta().getMedico().getNombre(), i.getConsulta().getMedico().getApellido())
+                messagebox.showinfo("Confirmación", f"El nombre y apellido del paciente es: {i.getPersona().getNombre()} {i.getPersona().getApellido()} \nSu observacion fue: {i.getObservacion()}")
+                messagebox.showinfo("Confirmación", f"Su consulta fue en la fecha: {i.getConsulta().getFecha()}\nSu medico fue: {i.getConsulta().getMedico().getNombre()} {i.getConsulta().getMedico().getApellido()}")
 
             self.borrar()
             

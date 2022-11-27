@@ -16,6 +16,7 @@ from excepciones.excepcionPresenciaImagenes import ExcepcionPresenciaImagenes
 deserializar()
 def inicializar():
     """
+    
     from gestorAplicacion.personas.Administrador import Administrador
     from gestorAplicacion.personas.Medico import Medico
     from gestorAplicacion.personas.Paciente import Paciente
@@ -23,23 +24,299 @@ def inicializar():
     from gestorAplicacion.personas.tipoDocumento import tipoDocumento
     from gestorAplicacion.personas.tipoMedico import tipoMedico
     from gestorAplicacion.tipoCita import tipoCita
-    medico1 = Medico("Susana", "Perez", tipoDocumento.CEDULA, 1000758374, 25, "Femenino", 1000758374, 
-                 "susper@gmail.com", "Cra 77 #45 04", tipoCita.GENERAL, tipoMedico.BACTERIOLOGO, True)
-    consultorio1 = Consultorio(1, None, None, "Laboratorio", True)
-    Paciente1 = Paciente("Sara", "Marin", tipoDocumento.CEDULA, 1, 20, "Femenino", 2038487, "sama@gmail.com", "calle 36 #89 53", "SURA", None, True)
+    from gestorAplicacion.Pago import Pago
+    from gestorAplicacion.Cita import Cita
+    from gestorAplicacion.Entrega import Entrega
+    from gestorAplicacion.estadoEntrega import estadoEntrega
+    from gestorAplicacion.registrosMedicos.Diagnostico import Diagnostico
+    from gestorAplicacion.Medicamentos import Medicamentos
+    from gestorAplicacion.tipoMedicamento import tipoMedicamento
+    from gestorAplicacion.registrosMedicos.HistoriaClinica import HistoriaClinica
+    
     fecha1 = datetime(2022, 10, 15, 12, 30)
     fecha2 = datetime(2022, 10, 15, 13, 00)
     fecha3 = datetime(2022, 10, 15, 13, 30)
     fecha4 = datetime(2022, 10, 15, 14, 00)
+    fecha5 = datetime(2022, 10, 15, 14, 30)
+    fecha6 = datetime(2022, 10, 15, 15, 00)
+    fecha7 = datetime(2022, 10, 15, 15, 30)
+    fecha8 = datetime(2022, 10, 16, 12, 30)
+    fecha9 = datetime(2022, 10, 16, 13, 00)
+    fecha10 = datetime(2022, 10, 16, 13, 30)
+    fecha11 = datetime(2022, 10, 16, 14, 00)
+    fecha12 = datetime(2022, 10, 16, 14, 30)
+    fecha13 = datetime(2022, 10, 16, 15, 00)
+    fecha14 = datetime(2022, 10, 16, 15, 30)
+    nomina9 = datetime(2022, 9, 1, 00, 00)
+    nomina10 = datetime(2022, 10, 1, 00, 00)
     
-    medico1.getConsultas().update({fecha1 : "Una consulta", fecha2 : "Otra consulta", fecha3 : None, fecha4 : None})
-    consultorio1.getConsultas().update({fecha1 : "Una consulta", fecha2 : "Otra consulta", fecha3 : None, fecha4 : None})
+    Paciente1 = Paciente("Sara", "Marin", tipoDocumento.CEDULA, 1, 20, "Femenino", 2038487, "sama@gmail.com", "calle 36 #89 53", "SURA", None, True)
+    Paciente2 = Paciente("Juan", "Pérez", tipoDocumento.CEDULA, 2, 30, "Masculino", 245687523, "juanper@gmail.com", "Carrera 68 # 54 12", "SURA", None, True)
+    Paciente3 = Paciente("Camilo", "Martinez", tipoDocumento.CEDULA, 3, 24, "Masculino", 300762957, "mcm@gmail.com", "cra87#12-34", "SURA", None, True)
+    
+    medico1 = Medico("Susana", "Perez", tipoDocumento.CEDULA, 1000758374, 25, "Femenino", 1000758374, 
+                 "susper@gmail.com", "Cra 77 #45 04", tipoCita.GENERAL, tipoMedico.BACTERIOLOGO, True)
+    medico2 = Medico("Andres", "Lopez", tipoDocumento.CEDULA, 1254687950, 29, "Masculino", 1254687950, 
+                 "andlop@gmail.com", "Calle 113 #55 05", tipoCita.GENERAL, tipoMedico.OPTOMETRA, True)
+    medico3 = Medico("Mariana", "Garcia", tipoDocumento.CEDULA, 656502354, 28, "Femenino", 656502354, 
+                 "margar@gmail.com", "Avenida 7 #8 07", tipoCita.GENERAL, tipoMedico.OPTOMETRA, True)
+    medico4 = Medico("Mauricio", "Fernandez", tipoDocumento.CEDULA, 98765432, 60, "Masculino", 388030284,
+                 "mp@hotmail.com", "carrera 78", tipoCita.AUDIOMETRIA, tipoMedico.FONOAUDIOLOGO, True)
+    
+    medico5 = Medico("María", "Mercedes", tipoDocumento.CEDULA, 154687, 29, "Masculino", 65426548, "marmer@gmail.com",
+		  "Clle 77 #49 04", tipoCita.GENERAL, tipoMedico.GENERAL , False)
+    medico6 = Medico("Alejandro", "Valencia", tipoDocumento.CEDULA, 9875642, 38, "Masculino", 236547898, 
+                    "alval@gmail.com", "Carrera 111 #25 05", tipoCita.GENERAL, tipoMedico.PEDIATRA, False)
+    medico7 = Medico("Valentina", "Gomez", tipoDocumento.CEDULA, 2154687, 26, "Femenino", 655984236,
+                    "valgom,@gmail.com", "Avenida 70 #22 07", tipoCita.GENERAL, tipoMedico.BACTERIOLOGO, False)
+    medico8 = Medico("David", "Herrera", tipoDocumento.CEDULA, 65498752, 50, "Masculino", 87630549,
+		  "dherrera@hotmail.com", "Transversal 78 # 69 02", tipoCita.AUDIOMETRIA, tipoMedico.FONOAUDIOLOGO, False)
+    medico9= Medico("Juan", "Calvo", tipoDocumento.CEDULA, 12354889, 65, "Masculino", 65698421,
+		  "jcalvo@hotmail.com", "carrera 80 # 95 6", tipoCita.AUDIOMETRIA, tipoMedico.OPTOMETRA, False)
+    medico5.setSueldo(70000)
+    medico6.setSueldo(60000)
+    medico7.setSueldo(60000)
+    medico8.setSueldo(80000)
+    medico9.setSueldo(80000)
+    
+    medico1.setNomina({nomina9 : Pago(None, medico1.getSueldo(), None, medico1, True), nomina10 : Pago(None, medico1.getSueldo(), None, medico1, True)})
+    medico2.setNomina({nomina9 : Pago(None, medico2.getSueldo(), None, medico2, True), nomina10 : Pago(None, medico2.getSueldo())})
+    medico3.setNomina({nomina9 : Pago(None, medico3.getSueldo(), None, medico3, True), nomina10 : Pago(None, medico3.getSueldo(), None, medico3, True)})
+    medico4.setNomina({nomina9 : Pago(None, medico4.getSueldo(), None, medico4, True), nomina10 : Pago(None, medico4.getSueldo())})
+    
+    medico5.setNomina({nomina9 : Pago(None, medico5.getSueldo()), nomina10 : Pago(None, medico5.getSueldo())})
+    medico6.setNomina({nomina9 : Pago(None, medico6.getSueldo()), nomina10 : Pago(None, medico6.getSueldo())})
+    medico7.setNomina({nomina9 : Pago(None, medico7.getSueldo()), nomina10 : Pago(None, medico7.getSueldo())})
+    medico8.setNomina({nomina9 : Pago(None, medico8.getSueldo()), nomina10 : Pago(None, medico8.getSueldo())})
+    medico9.setNomina({nomina9 : Pago(None, medico9.getSueldo()), nomina10 : Pago(None, medico9.getSueldo())})
+    
+    consultorio1 = Consultorio(1, None, None, "Laboratorio", True)
+    consultorio2 = Consultorio(2, None, None, "Consultorio Optometría", True)
+    consultorio3 = Consultorio(3, None, None, "Consultorio Optometría", True)
+    consultorio4 = Consultorio(4, None, None, "Consultorio Audiometría", True)
+    
+    consultorio5 = Consultorio(5, None, None, "Laboratorio", False)
+    consultorio6 = Consultorio(6, None, None, "Consultorio Fonoaudología", False) 
+    consultorio7 = Consultorio(7, None, None, "Consultorio Pediatria", False)
+    consultorio8 = Consultorio(8, None, None, "Consultorio General", False)
+    
+    cita1 = Cita(1, Paciente1, "Un laboratorio", medico1, consultorio1, fecha1, None, tipoCita.LABORATORIO) 
+    cita6 = Cita(6, Paciente3, "Un laboratorio", medico1, consultorio1, fecha4,None, tipoCita.LABORATORIO) 
+    cita11 = Cita(11, Paciente2, "Un laboratorio", medico1, consultorio1, fecha5,None, tipoCita.LABORATORIO) 
+    cita16 = Cita(16, None, "Un laboratorio", medico1, consultorio1, fecha6, None, tipoCita.LABORATORIO) 
+    cita1.setPago(Pago(None, 15000, None, None, True))
+    cita6.setPago(Pago(None, 15000));
+    cita11.setPago(Pago(None, 15000))
+		  
+    cita2 = Cita(2, None, "Revisión visual", medico2, consultorio2, fecha1,None,  tipoCita.OPTOMETRIA) 
+    cita3 = Cita(3,None, "Problemas visuales", medico2, consultorio2, fecha2, None,tipoCita.OPTOMETRIA) 
+    cita7 = Cita(7,None, "Revisión visual", medico2, consultorio2, fecha4,None, tipoCita.OPTOMETRIA) 
+    cita8 = Cita(8,Paciente1, "Problemas visuales", medico2, consultorio2, fecha5,None, tipoCita.OPTOMETRIA)
+    cita8.setPago(Pago(None,15000))
+		  
+    cita12 = Cita(12,Paciente2, "Revisión visual", medico3, consultorio3,  fecha8,None, tipoCita.OPTOMETRIA) 
+    cita13 = Cita(13,None, "Problemas visuales", medico3, consultorio3, fecha9,None, tipoCita.OPTOMETRIA)
+    cita17 = Cita(17,Paciente3, "Revisión visual", medico3, consultorio3, fecha10,None, tipoCita.OPTOMETRIA) 
+    cita18 = Cita(18,None, "Problemas visuales", medico3, consultorio3, fecha5,None, tipoCita.OPTOMETRIA)
+    cita12.setPago(Pago(None, 15000))
+    cita17.setPago(Pago(None,15000))
+		  	  
+    cita4 = Cita(4, None, "Problemas en los oídos", medico4, consultorio4, fecha2, None,tipoCita.AUDIOMETRIA) 
+    cita5 = Cita(5,None, "No escucha", medico4, consultorio4, fecha3,None, tipoCita.AUDIOMETRIA) 
+    cita9 = Cita(9,None, "Problemas en los oídos", medico4, None, fecha6, None,tipoCita.AUDIOMETRIA) 
+    cita10 = Cita(10,None, "No escucha", medico4,  consultorio4, fecha7, None,tipoCita.AUDIOMETRIA) 
+    cita14 = Cita(14,None,  "Problemas en los oídos", medico4, None, fecha11,None, tipoCita.AUDIOMETRIA)
+    cita15 = Cita(15,Paciente1, "No escucha", medico4, consultorio4, fecha12, None,tipoCita.AUDIOMETRIA) 
+    cita19 = Cita(19,None, "Problemas en los oídos", medico4, None, fecha13, None,tipoCita.AUDIOMETRIA) 
+    cita20 = Cita(20,Paciente3, "No escucha", medico4, consultorio4, fecha14, None,tipoCita.AUDIOMETRIA)
+    cita15.setPago(Pago(None,15000))
+    cita20.setPago(Pago(None,15000))
+    
+    entrega1 = Entrega(None,Paciente1, "calle 36 #89 53", None, estadoEntrega.EN_CAMINO);
+    entrega2 = Entrega(None,Paciente1, "calle 36 #89 53", None, estadoEntrega.EN_CAMINO) 
+    entrega3 = Entrega(None,Paciente2, "Carrera 68 # 54 12", None, estadoEntrega.EN_CAMINO)
+    entrega4 = Entrega(None,Paciente3, "cra87#12-34", None, estadoEntrega.EN_CAMINO)
+		  
+    entrega1.setPago(Pago(None,10000))
+    entrega2.setPago(Pago(None,10000))
+    entrega3.setPago(Pago(None,10000))
+    entrega4.setPago(Pago(None,10000))
+		  
+    Paciente1.getEntregas().update({fecha10 : entrega1})
+    Paciente1.getEntregas().update({fecha11 : entrega2})
+    Paciente2.getEntregas().update({fecha13: entrega3})
+    Paciente3.getEntregas().update({fecha14 : entrega4})
+    
+    medicamento1 = Medicamentos(tipoMedicamento.ACETAMINOFEN, Paciente1, 2, 3)
+    medicamento2 = Medicamentos(tipoMedicamento.IBUPROFENO, Paciente1, 4, 6)
+    medicamento3 = Medicamentos(tipoMedicamento.AMOXICILINA, Paciente1, 1, 8)
+    
+    diagnostico = Diagnostico(Paciente1, "Dolor de cabeza", medicamento1, 1, cita1)
+    diagnostico1 = Diagnostico(Paciente2, "Dolor de cabeza", medicamento2, 2, cita11)
+    diagnostico2 = Diagnostico(Paciente3, "Rodilla Rota", medicamento3, 3, cita6) 
+    
+    diagnosticos1 = [diagnostico]
+    diagnosticos2 = [diagnostico1]
+    diagnosticos3 = [diagnostico2]
+    
+    historiaClinica1 = HistoriaClinica(Paciente1, diagnosticos1)
+    historiaClinica2 = HistoriaClinica(Paciente2, diagnosticos2)
+    historiaClinica3 = HistoriaClinica(Paciente3, diagnosticos3)
+    diagnostico.setPersona(Paciente1)
+    Paciente1.setHistoriaClinica(historiaClinica1)
+    diagnostico1.setPersona(Paciente2)
+    Paciente2.setHistoriaClinica(historiaClinica2)
+    diagnostico2.setPersona(Paciente3)
+    Paciente3.setHistoriaClinica(historiaClinica3)
+    
+    medico1.getConsultas().update({fecha1 : cita1})
+    medico1.getConsultas().update({fecha2: None})
+    medico1.getConsultas().update({fecha3: None})
+    medico1.getConsultas().update({fecha4: cita6}) 
+    medico1.getConsultas().update({fecha5: cita11}) 
+    medico1.getConsultas().update({fecha6: cita16})
+    medico1.getConsultas().update({fecha7: None}) 
+    medico1.getConsultas().update({fecha8: None}) 
+    medico1.getConsultas().update({fecha9: None})
+    medico1.getConsultas().update({fecha10: None})
+    medico1.getConsultas().update({fecha11: None})
+    medico1.getConsultas().update({fecha12: None})
+    medico1.getConsultas().update({fecha13: None})
+    medico1.getConsultas().update({fecha14: None})
+    
+    medico2.getConsultas().update({fecha1: cita2})
+    medico2.getConsultas().update({fecha2: cita3}) 
+    medico2.getConsultas().update({fecha3: None})
+    medico2.getConsultas().update({fecha4: cita7}) 
+    medico2.getConsultas().update({fecha5: cita8}) 
+    medico2.getConsultas().update({fecha6: None})
+    medico2.getConsultas().update({fecha7: None})
+    medico2.getConsultas().update({fecha8: None}) 
+    medico2.getConsultas().update({fecha9: None})
+    medico2.getConsultas().update({fecha10: None})
+    medico2.getConsultas().update({fecha11: None})
+    medico2.getConsultas().update({fecha12: None})
+    medico2.getConsultas().update({fecha13: None})
+    medico2.getConsultas().update({fecha14: None})
+    
+    medico3.getConsultas().update({fecha1: None}) 
+    medico3.getConsultas().update({fecha2: None})
+    medico3.getConsultas().update({fecha3: None})
+    medico3.getConsultas().update({fecha4: None})
+    medico3.getConsultas().update({fecha5: cita18})
+    medico3.getConsultas().update({fecha6: None})
+    medico3.getConsultas().update({fecha7: None}) 
+    medico3.getConsultas().update({fecha8: cita12}) 
+    medico3.getConsultas().update({fecha9: cita13})
+    medico3.getConsultas().update({fecha10: cita17})
+    medico3.getConsultas().update({fecha11: None})
+    medico3.getConsultas().update({fecha12: None})
+    medico3.getConsultas().update({fecha13: None})
+    medico3.getConsultas().update({fecha14: None})
+    
+    medico4.getConsultas().update({fecha1: None})
+    medico4.getConsultas().update({fecha2: cita4}) 
+    medico4.getConsultas().update({fecha3: cita5})
+    medico4.getConsultas().update({fecha4: None}) 
+    medico4.getConsultas().update({fecha5: None}) 
+    medico4.getConsultas().update({fecha6: cita9})
+    medico4.getConsultas().update({fecha7: cita10})
+    medico4.getConsultas().update({fecha8: None})
+    medico4.getConsultas().update({fecha9: None})
+    medico4.getConsultas().update({fecha10: None})
+    medico4.getConsultas().update({fecha11: cita14})
+    medico4.getConsultas().update({fecha12: cita15})
+    medico4.getConsultas().update({fecha13: cita19})
+    medico4.getConsultas().update({fecha14: cita20})
+    
+    consultorio1.getConsultas().update({fecha1: cita1})
+    consultorio1.getConsultas().update({fecha2: None})
+    consultorio1.getConsultas().update({fecha3: None})
+    consultorio1.getConsultas().update({fecha4: cita6})
+    consultorio1.getConsultas().update({fecha5: cita11})
+    consultorio1.getConsultas().update({fecha6: cita16})
+    consultorio1.getConsultas().update({fecha7: None})
+    consultorio1.getConsultas().update({fecha8: None})
+    consultorio1.getConsultas().update({fecha9: None})
+    consultorio1.getConsultas().update({fecha10: None})
+    consultorio1.getConsultas().update({fecha11: None})
+    consultorio1.getConsultas().update({fecha12: None})
+    consultorio1.getConsultas().update({fecha13: None})
+    consultorio1.getConsultas().update({fecha14: None})
+		  
+    consultorio2.getConsultas().update({fecha1: cita2})
+    consultorio2.getConsultas().update({fecha2: cita3})
+    consultorio2.getConsultas().update({fecha3: None})
+    consultorio2.getConsultas().update({fecha4: cita7})
+    consultorio2.getConsultas().update({fecha5: cita8})
+    consultorio2.getConsultas().update({fecha6: None})
+    consultorio2.getConsultas().update({fecha7: None})
+    consultorio2.getConsultas().update({fecha8: None})
+    consultorio2.getConsultas().update({fecha9: None})
+    consultorio2.getConsultas().update({fecha10: None})
+    consultorio2.getConsultas().update({fecha11: None})
+    consultorio2.getConsultas().update({fecha12: None})
+    consultorio2.getConsultas().update({fecha13: None})
+    consultorio2.getConsultas().update({fecha14: None})
+		  
+    consultorio3.getConsultas().update({fecha1: None})
+    consultorio3.getConsultas().update({fecha2: None})
+    consultorio3.getConsultas().update({fecha3: None})
+    consultorio3.getConsultas().update({fecha4: None})
+    consultorio3.getConsultas().update({fecha5: cita18})
+    consultorio3.getConsultas().update({fecha6: None})
+    consultorio3.getConsultas().update({fecha7: None})
+    consultorio3.getConsultas().update({fecha8: cita12})
+    consultorio3.getConsultas().update({fecha9: cita13})
+    consultorio3.getConsultas().update({fecha10: cita17})
+    consultorio3.getConsultas().update({fecha11: None})
+    consultorio3.getConsultas().update({fecha12: None})
+    consultorio3.getConsultas().update({fecha13: None})
+    consultorio3.getConsultas().update({fecha14: None})
+		  
+    consultorio4.getConsultas().update({fecha1: None})
+    consultorio4.getConsultas().update({fecha2: cita4})
+    consultorio4.getConsultas().update({fecha3: cita5})
+    consultorio4.getConsultas().update({fecha4: None})
+    consultorio4.getConsultas().update({fecha5: None})
+    consultorio4.getConsultas().update({fecha6: cita9})
+    consultorio4.getConsultas().update({fecha7: cita10})
+    consultorio4.getConsultas().update({fecha8: None})
+    consultorio4.getConsultas().update({fecha9: None})
+    consultorio4.getConsultas().update({fecha10: None})
+    consultorio4.getConsultas().update({fecha11: cita14})
+    consultorio4.getConsultas().update({fecha12: cita15})
+    consultorio4.getConsultas().update({fecha13: cita19})
+    consultorio4.getConsultas().update({fecha14: cita20})
+		  
+    Paciente1.getConsultas().update({fecha1: cita1})
+    Paciente1.getConsultas().update({fecha5: cita8})
+    Paciente1.getConsultas().update({fecha12: cita15})
+		  
+    Paciente2.getConsultas().update({fecha5: cita11})
+    Paciente2.getConsultas().update({fecha8: cita12})
+		  
+    Paciente3.getConsultas().update({fecha4: cita6})
+    Paciente3.getConsultas().update({fecha10: cita17})
+    Paciente3.getConsultas().update({fecha14: cita20})
     
     Administrador.getFechas().append(fecha1)
     Administrador.getFechas().append(fecha2)
     Administrador.getFechas().append(fecha3)
     Administrador.getFechas().append(fecha4)
+    Administrador.getFechas().append(fecha5)
+    Administrador.getFechas().append(fecha6)
+    Administrador.getFechas().append(fecha7)
+    Administrador.getFechas().append(fecha8)
+    Administrador.getFechas().append(fecha9)
+    Administrador.getFechas().append(fecha10)
+    Administrador.getFechas().append(fecha11)
+    Administrador.getFechas().append(fecha12)
+    Administrador.getFechas().append(fecha13)
+    Administrador.getFechas().append(fecha14)
     Administrador.setDinero(500000)
+    
+    serializar()
     """
     imagenes = ["Imagenes/inicio/1.jpg", "Imagenes/inicio/2.jpg", "Imagenes/inicio/3.jpg", "Imagenes/inicio/4.jpg", "Imagenes/inicio/5.jpg"]
     andres = ["Imagenes/Andres/1.jpg", "Imagenes/Andres/2.jpg", "Imagenes/Andres/3.jpg", "Imagenes/Andres/4.jpg"]
@@ -142,12 +419,18 @@ def ocultarTodo():
     ventanaInicio.pack_forget()
     ventanaUsuario.pack_forget()
     ventanaExamenes.pack_forget()
+    ventanaSolicitarCitas.pack_forget()
     ventanaMostrar.pack_forget()
     ventanaSolicitar.pack_forget()
     ventanaCrear.pack_forget()
     
+def borrarTodo():
+    ventanaExamenes.borrar()
+    ventanaSolicitarCitas.borrar()
+    
 def ingresar():
     ocultarTodo()
+    borrarTodo()
     ventanaUsuario.pack()
     ventana["menu"] = menuVentanaUsuario    
     
@@ -191,10 +474,12 @@ def acerca():
                         message=autores) 
 def solicitarExamen():
     ocultarTodo()
+    borrarTodo()
     ventanaExamenes.pack()
 
 def solicitarCita():
     ocultarTodo()
+    borrarTodo()
     ventanaSolicitarCitas.pack()
 
 def mostrarDiagnostico():
@@ -208,6 +493,7 @@ def solicitarEntregaMedicamentos():
 def crearDiagnostico():
     ocultarTodo()
     ventanaCrear.pack()
+
 
 # Solicitar examen
 

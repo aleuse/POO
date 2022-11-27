@@ -3,15 +3,15 @@
 #cual se le esta creando el diagnostico, la observacion, el medicamento, el
 #id del diagnosito y la consulta
 #Esta clase no tiene metodos asociados
-
+from gestorAplicacion.personas.Administrador import Administrador
 class Diagnostico:
     def __init__(self, persona, observacion, medicamento, id, consulta): 
         self._persona = persona
         self._observacion = observacion
         self.medicamento = medicamento
         self._id = id
-        self.consulta = consulta
-
+        self._consulta = consulta
+        Administrador.diagnosticos.append(self)
     
     #Getters y Setters
     def getPersona(self):
@@ -31,4 +31,10 @@ class Diagnostico:
 
     def setId(self, id):
         self._id = id
+    
+    def getConsulta(self):
+        return self._consulta
+
+    def setConsulta(self, consulta):
+        self._consulta = consulta
 
