@@ -667,7 +667,7 @@ menuFinanzas = Menu(menuProcesos, font="Helvetica 11")
 menuProcesos.add_cascade(label="Finanzas", menu= menuFinanzas)
 menuFinanzas.add_command(label="Pagar consultas", command=pagarConsulta)
 menuFinanzas.add_command(label="Pagar entregas", command=pagarEntrega)
-menuFinanzas.add_command(label="Consultar dinero disponible", command=administracionVisualizarDatos)
+menuFinanzas.add_command(label="Consultar dinero disponible", command=administracionVisualizarDinero)
 menuFinanzas.add_command(label="Pago de nómina", command=evento)
 
 menuResultadosMedicamentos = Menu(menuProcesos, font="Helvetica 11")
