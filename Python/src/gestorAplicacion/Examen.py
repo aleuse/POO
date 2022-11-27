@@ -11,7 +11,7 @@ class Examen(Consulta):
         super().__init__(id, paciente, medico, consultorio, fecha, pago)
         self._tipoExamen = tipoExamen
         self._autorizado = autorizado
-        Examen.listaExamenes.append(self)
+        self.listaExamenes.append(self)
     
     # Getters y Setters
     def getTipoExamen(self):
@@ -31,6 +31,6 @@ class Examen(Consulta):
     def informeExamenes(cls, solicitado):
         tcSolicitada=0
         for tc in Examen.listaExamenes:
-            if(tc.getTipoExamen == solicitado):
+            if(tc.getTipoExamen() == solicitado):
                 tcSolicitada +=1
         return tcSolicitada
