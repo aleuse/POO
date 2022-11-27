@@ -19,7 +19,7 @@ class Consultorio():
         self._consultas = consultas
         self._adquirido = adquirido
         self._costo = costo
-        Consultorio.consultorios.append(self) #estaba->Administrador.consultorios.append(self)
+        Administrador.consultorios.append(self)
     
     # Getters y Setters
     def getId(self):

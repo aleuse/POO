@@ -38,10 +38,14 @@ class visualizarDatos(Frame):
         en1=Entrega.informeEntregas(estadoEntrega.EN_CAMINO)
         en2=Entrega.informeEntregas(estadoEntrega.PROCESADA)
         en3=Entrega.informeEntregas(estadoEntrega.REALIZADA)
-
+        cantMedicos = 0
+        for medico in Administrador.medicos:
+            if medico.isContratado() == True:
+                cantMedicos +=1 
+        
         nombre = Label(master=self, text="Citas | Exámenes | Entregas", font="Helvetica 12 bold")
         info = f"""Datos del sistema.
-        Se tiene un total de {len(Administrador.medicos)} medicos.
+        Se tiene un total de {cantMedicos} medicos.
         Se han atendido a {len(Administrador.pacientes)} pacientes.
         Se ha facturado hasta ahora ${Administrador.dinero}
             
@@ -71,10 +75,14 @@ class visualizarDatos(Frame):
 class contratarMedicos(Frame):
     def __init__(self):
         super().__init__()
+        cantMedicos = 0
+        for medico in Administrador.medicos:
+            if medico.isContratado() == True:
+                cantMedicos +=1 
         nombre = Label(master=self, text="Contratación Medicos", font="Helvetica 12 bold")
         nombre.pack(fill=BOTH, padx=5, pady=5)
         info = f"""Se ha facturado hasta ahora $ {Administrador.dinero}
-        Se tiene un total de {len(Administrador.medicos) } medicos
+        Se tiene un total de {cantMedicos} medicos
         """
         descripcion = Label(master=self, text=info, font="Helvetica 10")
         descripcion.pack(fill=BOTH, padx=5, pady=5)
@@ -94,14 +102,14 @@ class contratarMedicos(Frame):
         def contratar():
             mc=0
             for i in range(0,int(valores.get())):
-                for contrato in Medico.medicos:
+                for contrato in Administrador.medicos:
                     if((contrato.isContratado()==False) and (contrato.getEspecialista==listado.get())):
                         mc+=1
                         contrato.setContratado(True)
-                        Administrador.medicos.apend(contrato)
                         break
             if(mc>0):
-                messagebox.showinfo("Contratacion médicos",f"Has contratado a {mc} los medicos\n Ahora se dispone de {len(Administrador.medicos)} medicos")
+                cantMedicos += mc
+                messagebox.showinfo("Contratacion médicos",f"Has contratado a {mc} los medicos\n Ahora se dispone de {cantMedicos} medicos")
             else:
                 messagebox.showerror("Contratacion médicos","no se han podido contratar los medicos")
             
@@ -112,8 +120,12 @@ class adquirirConsultorios(Frame):
     def __init__(self):
         super().__init__()
         cConsultorio = 100000
+        cantConsultorios = 0
+        for consultorio in Administrador.consultorios:
+            if consultorio.isAdquirido() == True:
+                cantConsultorios += 1
         nombre = Label(master=self, text="adquirir Consultorios", font="Helvetica 12 bold")
-        info = f"""Se tiene un total de {len(Administrador.consultorios)} consultorios
+        info = f"""Se tiene un total de {cantConsultorios} consultorios
         Actualmente el Dinero Disponible es: $ {Administrador.dinero}
 		Cada consultorio tiene un precio de $ {cConsultorio}
 
@@ -124,6 +136,10 @@ class adquirirConsultorios(Frame):
 
         cantidad= StringVar()
         def adquirirConsultorios():
+            cantConsultorios = 0
+            for consultorio in Administrador.consultorios:
+                if consultorio.isAdquirido() == True:
+                    cantConsultorios += 1
             cn=0
             try:
                 costo=int(cantidad.get())*cConsultorio
@@ -142,18 +158,18 @@ class adquirirConsultorios(Frame):
                 messagebox.showerror("Problemas financieros","Dinero insuficiente para comprar los consultorios")
                 entradaTexto.delete(0, tk.END)
             else:
-                for c in Consultorio.consultorios:##duda aparece en la clase Consultorio: Administrador.consultorios
-                    if (c.isDisponibilidad() == False):
+                for c in Administrador.consultorios:##duda aparece en la clase Consultorio: Administrador.consultorios
+                    if (c.isAdquirido() == False):
                         cn+=1
-                        c.setDisponibilidad(True)
-                        Administrador.consultorios.append(c)
+                        c.setAdquirido(True)
                         break
                 if(cn>0):
-                    Administrador.dinero=Administrador.dinero- (cn* cConsultorio)
-                    messagebox.showinfo("Adquisicion de consultorios",f"se han adquirido {int(cantidad.get())} consultorios\n Ahora se dispone de {len(Administrador.consultorios)} consultorios\nDinero Disponible: $ {Administrador.dinero}")
+                    Administrador.restarDinero(cn* cConsultorio)
+                    cantConsultorios += 1
+                    messagebox.showinfo("Adquisicion de consultorios",f"se han adquirido {int(cantidad.get())} consultorios\n Ahora se dispone de {cantConsultorios} consultorios\nDinero Disponible: $ {Administrador.dinero}")
                     
                 else:
-                    messagebox.showerror("Adquisicion de consultorios","no se han podido contratar los medicos")
+                    messagebox.showerror("Adquisicion de consultorios","no se han podido adquirir los consultorios")
                 entradaTexto.delete(0, tk.END)
 
 

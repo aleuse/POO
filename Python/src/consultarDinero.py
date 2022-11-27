@@ -17,10 +17,29 @@ class consultarDinero(Frame):
         nombre.pack(fill=BOTH, padx=5, pady=5)
         descripcion.pack(fill=BOTH, padx=5, pady=5)
 
+        # Por medio del método consultar() se arma la tabla con los datos consultados.
+        def consulta(self):
+            # Se establece el mensaje con la cantidad de dinero disponible.
+            mensaje="Actualmente el Sistema Medico cuenta con $"+str(Administrador.getDinero())+" dinero disponible."
+            self.labelCantidad.configure(text=mensaje)
+            
+            
+            # Primero se eliminan los anteriores datos con los que cuenta la última tabla que se armó, 
+            # esto debido a que puede ser el caso en que haya nuevos datos disponibles para consultar.
+            for i in self.tabla.get_children():
+                self.tabla.delete(i)
+            # Ahora, se obtienen cada uno de los datos.
+            for a in Administrador():
+                datos = (str(Administrador.getNombre), str(Administrador.getId), str(Administrador.getFechas), str(Administrador.getDinero))
+                self.tabla.insert(parent="", index="end", values=datos)
+            # Por último se habilita para ser visualizada la tabla.
+            self.labelCantidad.pack(padx=5, pady=5)
+            self.frameTabla.pack(padx=5, pady=5)
+            
         # Se crea el botón de Consultar para obtener por medio de este la tabla de informacion financiera.
         botones = Frame(master=self)
         consultar = Button(master=botones, text="Borrar", font="Helvetica 11 bold", 
-                        bg="grey", fg="white", borderwidth=3, relief="raised", command= self.consultar)
+                        bg="grey", fg="white", borderwidth=3, relief="raised", command= consulta)
         consultar.pack(padx=5, pady=5)
         # Se crea el label que contendrá el mensaje con la cantidad de dinero con el que se cuenta.
         self.labelCantidad = Label(master=botones, font="Helvetica 10 bold", anchor=CENTER)
@@ -44,24 +63,7 @@ class consultarDinero(Frame):
         bardesp.config(command=self.tabla.yview)
 
 
-        # Por medio del método consultar() se arma la tabla con los datos consultados.
-        def consulta(self):
-            # Se establece el mensaje con la cantidad de dinero disponible.
-            mensaje="Actualmente el Sistema Medico cuenta con $"+str(Administrador.getDinero())+" dinero disponible."
-            self.labelCantidad.configure(text=mensaje)
-            
-            
-            # Primero se eliminan los anteriores datos con los que cuenta la última tabla que se armó, 
-            # esto debido a que puede ser el caso en que haya nuevos datos disponibles para consultar.
-            for i in self.tabla.get_children():
-                self.tabla.delete(i)
-            # Ahora, se obtienen cada uno de los datos.
-            for a in Administrador():
-                datos = (str(Administrador.getNombre), str(Administrador.getId), str(Administrador.getFechas), str(Administrador.getDinero))
-                self.tabla.insert(parent="", index="end", values=datos)
-            # Por último se habilita para ser visualizada la tabla.
-            self.labelCantidad.pack(padx=5, pady=5)
-            self.frameTabla.pack(padx=5, pady=5)
+        
         
         # Por medio del método ocultarTabla() se deshabilita la visualización de las tablas cuando se cambia de menú.
         def ocultarTabla(self):
