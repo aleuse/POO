@@ -21,6 +21,9 @@ def deserializar():
     deserializarMedicamentos()
     deserializarMedicos()
     deserializarPacientes()
+    deserializarCitas()
+    deserializarExamenes()
+    deserializarEntregas()
 
 def deserializarAdministrador():
     # Apertura del archivo de donde se leerán los objetos
@@ -79,10 +82,11 @@ def deserializarListaSintomas():
     archivoListaSintomas.close()
 
 def deserializarMedicamentos():
+    from gestorAplicacion.Medicamentos import Medicamentos
     # Apertura del archivo de donde se leerán los objetos
     archivoMedicamentos = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\medicamentos"), "rb")
     # Se indica la variable que será deserializada. En este, caso la lista de medicamentos
-    Administrador.setMedicamentos(pickle.load(archivoMedicamentos))
+    Medicamentos._medicamiento = pickle.load(archivoMedicamentos)
     # Se cierra el archivo creado
     archivoMedicamentos.close()
     
@@ -101,3 +105,30 @@ def deserializarPacientes():
     Administrador.setPacientes(pickle.load(archivoPacientes))
     # Se cierra el archivo creado
     archivoPacientes.close()
+
+def deserializarCitas():
+    from gestorAplicacion.Cita import Cita
+    # Apertura del archivo de donde se leerán los objetos
+    archivoCitas = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\citas"), "rb")
+    # Se indica la variable que será deserializada. En este, caso la lista de pacientes
+    Cita.listaCitas = pickle.load(archivoCitas)
+    # Se cierra el archivo creado
+    archivoCitas.close()
+    
+def deserializarExamenes():
+    from gestorAplicacion.Examen import Examen
+    # Apertura del archivo de donde se leerán los objetos
+    archivoExamenes = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\examenes"), "rb")
+    # Se indica la variable que será deserializada. En este, caso la lista de pacientes
+    Examen.listaExamenes = pickle.load(archivoExamenes)
+    # Se cierra el archivo creado
+    archivoExamenes.close()
+    
+def deserializarEntregas():
+    from gestorAplicacion.Entrega import Entrega
+    # Apertura del archivo de donde se leerán los objetos
+    archivoEntregas = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\entregas"), "rb")
+    # Se indica la variable que será deserializada. En este, caso la lista de pacientes
+    Entrega.lista = pickle.load(archivoEntregas)
+    # Se cierra el archivo creado
+    archivoEntregas.close()

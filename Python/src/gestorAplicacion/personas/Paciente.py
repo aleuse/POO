@@ -106,7 +106,8 @@ class Paciente(Persona):
 
     def reagendarCita(self, id, fecha):
         cita = None
-        citas = Cita.getCitas()
+        citas = Cita.listaCitas
+        #print(citas)
         #Se busca la cita que se quiere reagendar
         for i in citas:
             if i.getPaciente() == self and i.getId() == id:

@@ -10,7 +10,7 @@ class Cita(Consulta):
         super().__init__(paciente, medico, consultorio, fecha, id, pago)
         self._motivo = motivo
         self._tipoCita = tipoCita
-        self.listaCitas.append(self)
+        Cita.listaCitas.append(self)
     
     # Getters y Setters
     @classmethod
