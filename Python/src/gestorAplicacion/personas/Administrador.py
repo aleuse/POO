@@ -202,12 +202,13 @@ class Administrador:
         from gestorAplicacion.Consultorio import Consultorio
         from gestorAplicacion.Cita import Cita
         from gestorAplicacion.Pago import Pago
-        cita = Cita(None, paciente, motivo, medico, consultorio, fecha, None, tipo)
+        cita = Cita(paciente, medico, consultorio, fecha,motivo, tipo)
         pago = Pago(14700, False)
         cita.setPago(pago)
         pago.setConsulta(cita)
         medico.getConsultas().update({fecha : cita})
         consultorio.getConsultas().update({fecha : cita})
+        print(cita.getId())
     
     """
     
