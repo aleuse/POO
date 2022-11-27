@@ -73,7 +73,7 @@ class solicitarEntregaMedicamentos(Frame):
             for i in Medico.listado:
                 if i.getPersona().getNumeroDocumento() == numDocumento:
                     per = i
-                    messagebox.showerror("Sus medicamentos son: ", i.medicamento.getTipoMed())
+                    messagebox.showerror("Aviso","Sus medicamentos son: ", i.medicamento.getTipoMed())
 
             if re == "No":
                 messagebox.showerror("Error", "Envio no confirmado")
@@ -82,9 +82,9 @@ class solicitarEntregaMedicamentos(Frame):
                     Entrega.crearEntrega(cont,per.getPersona(), direccion, per.getMedicamiento(), estadoEntrega.EN_CAMINO)
                     cont=cont+1
                     Medicamentos.asignarMed(per.medicamiento.getTipoMed(), 1)
-                    messagebox.showerror("El proceso ha sido exitoso")
+                    messagebox.showinfo("Confirmación","El proceso ha sido exitoso")
                 else:
-                    messagebox.showerror("Debes pagar la consulta antes de pedir los medicamentos")
+                    messagebox.showerror("Error","Debes pagar la consulta antes de pedir los medicamentos")
                                 
         self.borrar()   
                 
