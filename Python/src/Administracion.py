@@ -77,13 +77,13 @@ class visualizarDinero(Frame):
         super().__init__()
         tutorial=""" texto aqui
         """
-        nombre = Administrador.getNombre(self)
+        name = Administrador.getNombre(self)
         id = Administrador.getId(self)
         dinero = Administrador.getDinero(self)
 
         
         nombre = Label(master=self, text="Dinero Disponible", font="Helvetica 12 bold")
-        info = f"""Bienvenido Administrador {nombre}. Identificacion: {id}.
+        info = f"""Bienvenido Administrador {name}. Identificacion: {id}.
 
         Actualmente, el Sistema Medico cuenta con ${dinero} dinero disponible.
         """
