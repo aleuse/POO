@@ -4,6 +4,10 @@ from tkinter import messagebox
 from reagendarCita import reagendarCita
 from solicitarExamen import solicitarExamen
 from solicitarCita import solicitarCita 
+from mostrarDiagnostico import mostrarDiagnostico
+from solicitarEntregaMedicamentos import solicitarEntregaMedicamentos
+from crearDiagnostico import crearDiagnostico
+from pagarConsulta import pagarConsulta
 from baseDatos.Serializador import serializar
 from baseDatos.Deserializador import deserializar
 from datetime import datetime
@@ -72,6 +76,14 @@ ventanaSolicitarCitas = solicitarCita()
 ventanaSolicitarCitas.pack_forget()
 ventanaReagendarCitas = reagendarCita()
 ventanaReagendarCitas.pack_forget()
+ventanaMostrar = mostrarDiagnostico()
+ventanaMostrar.pack_forget()
+ventanaSolicitar = solicitarEntregaMedicamentos()
+ventanaSolicitar.pack_forget()
+ventanaCrear = crearDiagnostico()
+ventanaCrear.pack_forget()
+ventanaPagarConsulta = pagarConsulta()
+ventanaPagarConsulta.pack_forget()
 
 posicionImagen=1
 def cambiarImagen(e):
@@ -139,6 +151,11 @@ def ocultarTodo():
     ventanaReagendarCitas.pack_forget()
     ventanaSolicitarCitas.pack_forget()
     
+    ventanaMostrar.pack_forget()
+    ventanaSolicitar.pack_forget()
+    ventanaCrear.pack_forget()
+    ventanaPagarConsulta.pack_forget()
+
 def ingresar():
     ocultarTodo()
     ventanaUsuario.pack()
@@ -193,6 +210,21 @@ def solicitarCita():
 def reagendarCita():
     ocultarTodo()
     ventanaReagendarCitas.pack()
+def mostrarDiagnostico():
+    ocultarTodo()
+    ventanaMostrar.pack()
+
+def solicitarEntregaMedicamentos():
+    ocultarTodo()
+    ventanaSolicitar.pack()
+
+def crearDiagnostico():
+    ocultarTodo()
+    ventanaCrear.pack()
+
+def pagarConsulta():
+    ocultarTodo()
+    ventanaPagarConsulta.pack()
 
 # Solicitar examen
 
@@ -302,16 +334,16 @@ menuProcesos.add_command(label="Exámenes", command=solicitarExamen)
 
 menuFinanzas = Menu(menuProcesos, font="Helvetica 11")
 menuProcesos.add_cascade(label="Finanzas", menu= menuFinanzas)
-menuFinanzas.add_command(label="Pagar consultas", command=evento)
+menuFinanzas.add_command(label="Pagar consultas", command=pagarConsulta)
 menuFinanzas.add_command(label="Pagar entregas", command=evento)
 menuFinanzas.add_command(label="Consultar dinero disponible", command=evento)
 menuFinanzas.add_command(label="Pago de nómina", command=evento)
 
 menuResultadosMedicamentos = Menu(menuProcesos, font="Helvetica 11")
 menuProcesos.add_cascade(label="Resultados y Medicamentos", menu= menuResultadosMedicamentos)
-menuResultadosMedicamentos.add_command(label="Crear diagnóstico", command=evento)
-menuResultadosMedicamentos.add_command(label="Mostrar diagnósticos", command=evento)
-menuResultadosMedicamentos.add_command(label="Solicitar entrega medicamentos", command=evento)
+menuResultadosMedicamentos.add_command(label="Crear diagnóstico", command=crearDiagnostico)
+menuResultadosMedicamentos.add_command(label="Mostrar diagnósticos", command=mostrarDiagnostico)
+menuResultadosMedicamentos.add_command(label="Solicitar entrega medicamentos", command=solicitarEntregaMedicamentos)
 
 menuAdministracion = Menu(menuProcesos, font="Helvetica 11")
 menuProcesos.add_cascade(label="Administración", menu= menuAdministracion)

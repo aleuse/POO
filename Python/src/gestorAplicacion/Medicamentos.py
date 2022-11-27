@@ -1,4 +1,4 @@
-import tipoMedicamento
+from gestorAplicacion.tipoMedicamento import tipoMedicamento
 class Medicamentos:
     cantAcetaminofen =100
     cantAmoxicilina =100

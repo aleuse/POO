@@ -1,6 +1,8 @@
 from gestorAplicacion.personas.Persona import Persona
 from gestorAplicacion.personas.Administrador import Administrador
+from gestorAplicacion.registrosMedicos import Diagnostico
 class Medico(Persona):
+    medicos=[]
     def __init__(self, nombre, apellido, documento, numeroDocumento, edad, genero, telefono, correoElectronico,
                  direccion, especialidad, especialista, contratado = False, disponibilidad = False, consultas = None, 
                  nomina = None, sueldo = 50000, medicamento = None):
@@ -66,3 +68,16 @@ class Medico(Persona):
     
     def setContratado(self, contratado):
         self._contratado = contratado
+
+    listado=[]
+    @staticmethod
+    def crearDiagnostico(persona, sintomas, observacion, medicamiento, consulta):
+        from gestorAplicacion.personas.Medico import Medico
+        diag = Diagnostico (persona, sintomas, observacion, medicamiento, consulta)
+        Medico.listado.append(diag)
+
+    #metodos
+    def crearDiagnostico():
+        pass
+    def informesMedicos():
+        pass
