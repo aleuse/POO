@@ -16,7 +16,7 @@ from datetime import datetime
 from PIL import Image, ImageTk
 from excepciones.excepcionPresenciaArchivo import ExcepcionPresenciaArchivos
 from excepciones.excepcionPresenciaImagenes import ExcepcionPresenciaImagenes
-from Administracion import visualizarDatos,contratarMedicos,adquirirConsultorios,comprarMedicamentos
+from Administracion import visualizarDatos,contratarMedicos,adquirirConsultorios,comprarMedicamentos, visualizarDinero
 
 deserializar()
 def inicializar():
@@ -372,6 +372,7 @@ ventanaVisualizarDatos = visualizarDatos() #R
 ventanaContratarMedicos= contratarMedicos()#R
 ventanaAdquirirConsultorios= adquirirConsultorios()#R
 ventanaComprarMedicamentos=comprarMedicamentos()#R
+ventanaVisualizarDinero = visualizarDinero()
 
 posicionImagen=1
 def cambiarImagen(e):
@@ -448,6 +449,7 @@ def ocultarTodo():
     ventanaContratarMedicos.pack_forget()#R
     ventanaAdquirirConsultorios.pack_forget()#R
     ventanaComprarMedicamentos.pack_forget()#R
+    ventanaVisualizarDinero.pack_forget()
     
 def borrarTodo():
     ventanaExamenes.borrar()
@@ -549,6 +551,10 @@ def administracionAdquirirConsultorios():#R
 def administracionComprarMedicamentos():#R
     ocultarTodo()
     ventanaComprarMedicamentos.pack()
+
+def administracionVisualizarDinero():#R
+    ocultarTodo()
+    ventanaVisualizarDinero.pack()
 
 # Solicitar examen
 
@@ -660,7 +666,7 @@ menuFinanzas = Menu(menuProcesos, font="Helvetica 11")
 menuProcesos.add_cascade(label="Finanzas", menu= menuFinanzas)
 menuFinanzas.add_command(label="Pagar consultas", command=pagarConsulta)
 menuFinanzas.add_command(label="Pagar entregas", command=pagarEntrega)
-menuFinanzas.add_command(label="Consultar dinero disponible", command=evento)
+menuFinanzas.add_command(label="Consultar dinero disponible", command=administracionVisualizarDatos)
 menuFinanzas.add_command(label="Pago de nómina", command=evento)
 
 menuResultadosMedicamentos = Menu(menuProcesos, font="Helvetica 11")
