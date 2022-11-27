@@ -9,6 +9,7 @@ from solicitarEntregaMedicamentos import solicitarEntregaMedicamentos
 from crearDiagnostico import crearDiagnostico
 from pagarConsulta import pagarConsulta
 from pagarEntrega import pagarEntrega
+from consultarDinero import consultarDinero
 from baseDatos.Serializador import serializar
 from baseDatos.Deserializador import deserializar
 from datetime import datetime
@@ -364,6 +365,8 @@ ventanaPagarConsulta = pagarConsulta()
 ventanaPagarConsulta.pack_forget()
 ventanaPagarEntrega = pagarEntrega()
 ventanaPagarEntrega.pack_forget()
+ventanaConsultarDinero = consultarDinero()
+ventanaConsultarDinero.pack_forget()
 
 posicionImagen=1
 def cambiarImagen(e):
@@ -435,6 +438,7 @@ def ocultarTodo():
     ventanaCrear.pack_forget()
     ventanaPagarConsulta.pack_forget()
     ventanaPagarEntrega.pack_forget()
+    ventanaConsultarDinero.pack_forget()
     
 def borrarTodo():
     ventanaExamenes.borrar()
@@ -516,6 +520,10 @@ def pagarConsulta():
 def pagarEntrega():
     ocultarTodo()
     ventanaPagarEntrega.pack()
+
+def consultarDinero():
+    ocultarTodo()
+    ventanaConsultarDinero.pack()
 
 # Solicitar examen
 
