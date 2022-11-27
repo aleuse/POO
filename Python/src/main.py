@@ -388,7 +388,7 @@ def cambiarImagen(e):
 VidaAndres = ""
 VidaLuzarait = ""
 VidaNatalia = ""
-VidaRoger = ""
+VidaRoger = "Estudiante de ingeniería de sistemas en la Universidad nacional de colombia.Tengo 21 años.Soy de San Carlos y vivo en Envigado.Me gustan los deportes, la musica y soy aficionado al cine. Actualmente estoy realizando un curso de programador junior, tambien estoy estudiando ingles."
 VidaYeferson = ""
 
 posicionVida=0
