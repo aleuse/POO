@@ -6,9 +6,8 @@ from gestorAplicacion.Consulta import Consulta
 class Cita(Consulta):
     numeroCitas = 0
     listaCitas = []
-    def __init__(self, id = int(rd.random() * 10000 + 1), paciente = None, motivo = None, medico = None, 
-                 consultorio = None, fecha = None, pago = None, tipoCita = None):
-        super().__init__(id, paciente, medico, consultorio, fecha, pago)
+    def __init__(self, paciente, medico, consultorio, fecha, motivo, tipoCita, id = None, pago = None ):
+        super().__init__(paciente, medico, consultorio, fecha, id, pago)
         self._motivo = motivo
         self._tipoCita = tipoCita
         Cita.listaCitas.append(self)
