@@ -10,21 +10,21 @@ class solicitarExamen(Frame):
         super().__init__()
     
         nombre = Label(master=self, text="Solicitar examen", font="Helvetica 11 bold")
-        info = """XXXXXXXXXXXXXXX.
+        info = """Solicite la autorización y asignación de sus exámenes médicos.
             """
         descripcion = Label(master=self, text=info, font="Helvetica 10")
         nombre.pack(fill=BOTH, padx=5, pady=5)
         descripcion.pack(fill=BOTH, padx=5, pady=5)
         
         # Se especifican los nombres de los criterios que tendrá el FieldFrame de esta funcionalidad.
-        self.criterios = ["Nombre del paciente", "Tipo de examen"]
+        self.criterios = ["Nombre del paciente", "Apellido","Tipo de examen"]
         
         # Se especifican los valores que tendrá el FieldFrame de esta funcionalidad para los criterios anteriormente especificados.
-        self.valores = [False, False]
+        self.valores = [False, False ,False]
         # Igualmente, se especifican los valores que estarán habilitados para ser editados por el usuario.
-        self.habilitados = [True, True]
+        self.habilitados = [True, True, True]
         # Ahora, se especifican las listas de selección que usa la GUI para que el usuario elija entre los valores de la lista.
-        self.combobox = [False, ["Sangre", "Laboratorio", "Rayos X", "Citoquimico"]]
+        self.combobox = [False, False, ["Sangre", "Laboratorio", "Rayos X", "Citoquimico"]]
         # Se crea el FieldFrame para esta funcionalidad con los parámetros anteriormente especificados.
         self.dialogos = FieldFrame(self, "Criterios", self.criterios, "Valores", self.valores, self.habilitados, self.combobox)
         self.dialogos.pack(padx=5, pady=5)
@@ -44,6 +44,7 @@ class solicitarExamen(Frame):
     # Por medio del método borrar() se limpian todos los campos del FieldFrame, tanto combobox como entry.
     def borrar(self):
         self.dialogos.getComponente("Nombre del paciente").delete(0,"end")
+        self.dialogos.getComponente("Apellido").delete(0,"end")
         self.dialogos.getComponente("Tipo de examen").set("")
     
     def aceptar(self):
@@ -53,6 +54,7 @@ class solicitarExamen(Frame):
         from gestorAplicacion.personas.tipoMedico import tipoMedico
         
         nombrePaciente = self.dialogos.getValue("Nombre del paciente")
+        apellido = self.dialogos.getValue("Apellido")
         tipoEx = self.dialogos.getValue("Tipo de examen")
         
         
@@ -61,7 +63,7 @@ class solicitarExamen(Frame):
         tipoExam = None
         tipoMed = None
         
-        valores = [nombrePaciente, tipoEx]
+        valores = [nombrePaciente, apellido, tipoEx]
         try:
             ExcepcionPresenciaDatos.presenciaDatos(self.criterios, valores)
         except ExcepcionPresenciaDatos:
@@ -72,11 +74,17 @@ class solicitarExamen(Frame):
                                      [nombrePaciente])
         except ExcepcionTipoString:
             return
+        
+        try:
+            ExcepcionTipoString.tipoString(["Apellido"], 
+                                     [apellido])
+        except ExcepcionTipoString:
+            return
     
         
         for pac in Administrador.getPacientes():
             #print(pac.getNumeroDocumento())
-            if pac.getNombre() == nombrePaciente:
+            if pac.getNombre() == nombrePaciente and pac.getApellido() == apellido:
                 paciente = pac
                 break
             

@@ -21,11 +21,10 @@ class Administrador:
     medicamentos = []
     medicos = []
     pacientes = []
+    id = 1
+    nombre = "Juan"
     
-    def __init__(self, id, nombre):
-        # Id y Nombre son atributos de instancia privados
-        self._id = id
-        self._nombre = nombre
+        
     
     # Getters y Setters
     @classmethod
@@ -98,17 +97,19 @@ class Administrador:
     def setPacientes(cls, pacientes):
         cls.pacientes = pacientes
     
-    def getId(self):
-        return self._id
+    @classmethod
+    def getId(cls):
+        return cls.id
+    @classmethod
+    def setId(cls, id):
+        cls.id = id
     
-    def setId(self, id):
-        self._id = id
-    
-    def getNombre(self):
-        return self._nombre
-    
-    def setNombre(self, nombre):
-        self._nombre = nombre
+    @classmethod
+    def getNombre(cls):
+        return cls.nombre
+    @classmethod
+    def setNombre(cls, nombre):
+        cls.nombre = nombre
         
     # Métodos
     """

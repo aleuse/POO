@@ -45,11 +45,11 @@ class Medicamentos:
     #resta la cantidad de medicamento asignado del inventario de medicamentos
     @staticmethod
     def asignarMed(eleccion, cantidad):
-        if eleccion == tipoMedicamento.tipoMedicamento.ACETAMINOFEN.value[0]: #"ACETAMINOFEN"
+        if eleccion == tipoMedicamento.ACETAMINOFEN.getTipoMedicamento(): #"ACETAMINOFEN"
             Medicamentos.cantAcetaminofen=Medicamentos.cantAcetaminofen-cantidad
-        elif eleccion == tipoMedicamento.tipoMedicamento.AMOXICILINA.value[0]:
+        elif eleccion == tipoMedicamento.AMOXICILINA.getTipoMedicamento():
             Medicamentos.cantAmoxicilina=Medicamentos.cantAmoxicilina-cantidad
-        elif eleccion == tipoMedicamento.tipoMedicamento.IBUPROFENO.value[0]:
+        elif eleccion == tipoMedicamento.IBUPROFENO.getTipoMedicamento():
             Medicamentos.cantIbuprofeno=Medicamentos.cantIbuprofeno-cantidad
         else:
             Medicamentos.cantLagrimasArtificiales=Medicamentos.cantLagrimasArtificiales-cantidad

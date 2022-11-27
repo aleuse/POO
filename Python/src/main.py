@@ -305,6 +305,7 @@ def inicializar():
     Paciente3.getConsultas().update({fecha10: cita17})
     Paciente3.getConsultas().update({fecha14: cita20})
     
+    #admin = Administrador(1, "Juan")
     Administrador.getFechas().append(fecha1)
     Administrador.getFechas().append(fecha2)
     Administrador.getFechas().append(fecha3)

@@ -77,9 +77,10 @@ class visualizarDinero(Frame):
         super().__init__()
         tutorial=""" texto aqui
         """
-        nombre = Administrador.getNombre(self)
-        id = Administrador.getId(self)
-        dinero = Administrador.getDinero(self)
+        
+        nombre = Administrador.getNombre()
+        id = Administrador.getId()
+        dinero = Administrador.getDinero()
 
         
         nombre = Label(master=self, text="Dinero Disponible", font="Helvetica 12 bold")
