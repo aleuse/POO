@@ -71,7 +71,27 @@ class visualizarDatos(Frame):
         descripcion = Label(master=self, text=info, font="Helvetica 10")
         nombre.pack(fill=BOTH, padx=5, pady=5)
         descripcion.pack(fill=BOTH, padx=5, pady=5)
+
+class visualizarDinero(Frame):
+    def __init__(self):
+        super().__init__()
+        tutorial=""" texto aqui
+        """
         
+        name = Administrador.getNombre()
+        id = Administrador.getId()
+        dinero = Administrador.getDinero()
+
+        
+        nombre = Label(master=self, text="Dinero Disponible", font="Helvetica 12 bold")
+        info = f"""Bienvenido Administrador {name}. Identificacion: {id}.
+
+        Actualmente, el Sistema Medico cuenta con ${dinero} dinero disponible.
+        """
+        descripcion = Label(master=self, text=info, font="Helvetica 10")
+        nombre.pack(fill=BOTH, padx=5, pady=5)
+        descripcion.pack(fill=BOTH, padx=5, pady=5)
+
 class contratarMedicos(Frame):
     def __init__(self):
         super().__init__()
@@ -100,16 +120,20 @@ class contratarMedicos(Frame):
         valores.pack(fill=BOTH, padx=5, pady=5)
 
         def contratar():
+            cantMedicos = 0
+            for medico in Administrador.medicos:
+                if medico.isContratado() == True:
+                    cantMedicos +=1 
             mc=0
             for i in range(0,int(valores.get())):
                 for contrato in Administrador.medicos:
-                    if((contrato.isContratado()==False) and (contrato.getEspecialista==listado.get())):
+                    if((contrato.isContratado()==False) and (contrato.getEspecialista().value==listado.get())):
                         mc+=1
                         contrato.setContratado(True)
                         break
             if(mc>0):
                 cantMedicos += mc
-                messagebox.showinfo("Contratacion médicos",f"Has contratado a {mc} los medicos\n Ahora se dispone de {cantMedicos} medicos")
+                messagebox.showinfo("Contratacion médicos",f"Has contratado a {mc} medicos\n Ahora se dispone de {cantMedicos} medicos")
             else:
                 messagebox.showerror("Contratacion médicos","no se han podido contratar los medicos")
             

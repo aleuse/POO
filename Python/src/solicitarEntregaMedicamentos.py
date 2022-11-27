@@ -70,18 +70,18 @@ class solicitarEntregaMedicamentos(Frame):
             messagebox.showerror("Error", "Paciente no encontrado")
         else:
             per = None
-            for i in Medico.listado:
+            for i in Administrador.diagnosticos:
                 if i.getPersona().getNumeroDocumento() == numDocumento:
                     per = i
-                    messagebox.showerror("Aviso","Sus medicamentos son: ", i.medicamento.getTipoMed())
+                    messagebox.showinfo("Aviso",f"Sus medicamentos son: {i.medicamento.getTipoMed().getTipoMedicamento()}")
 
             if re == "No":
                 messagebox.showerror("Error", "Envio no confirmado")
             elif re=="Si":
                 if per.getConsulta().getPago().isPagado() == True:
-                    Entrega.crearEntrega(cont,per.getPersona(), direccion, per.getMedicamiento(), estadoEntrega.EN_CAMINO)
+                    Entrega.crearEntrega(cont,per.getPersona(), direccion, per.medicamento, estadoEntrega.EN_CAMINO)
                     cont=cont+1
-                    Medicamentos.asignarMed(per.medicamiento.getTipoMed(), 1)
+                    Medicamentos.asignarMed(per.medicamento.getTipoMed().getTipoMedicamento(), 1)
                     messagebox.showinfo("Confirmación","El proceso ha sido exitoso")
                 else:
                     messagebox.showerror("Error","Debes pagar la consulta antes de pedir los medicamentos")

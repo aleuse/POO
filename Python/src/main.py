@@ -8,6 +8,7 @@ from mostrarDiagnostico import mostrarDiagnostico
 from solicitarEntregaMedicamentos import solicitarEntregaMedicamentos
 from crearDiagnostico import crearDiagnostico
 from pagarConsulta import pagarConsulta
+from pagoNomina import pagoNomina
 from pagarEntrega import pagarEntrega
 from consultarDinero import consultarDinero
 from baseDatos.Serializador import serializar
@@ -16,7 +17,7 @@ from datetime import datetime
 from PIL import Image, ImageTk
 from excepciones.excepcionPresenciaArchivo import ExcepcionPresenciaArchivos
 from excepciones.excepcionPresenciaImagenes import ExcepcionPresenciaImagenes
-from Administracion import visualizarDatos,contratarMedicos,adquirirConsultorios,comprarMedicamentos
+from Administracion import visualizarDatos,contratarMedicos,adquirirConsultorios,comprarMedicamentos, visualizarDinero
 
 deserializar()
 def inicializar():
@@ -305,6 +306,7 @@ def inicializar():
     Paciente3.getConsultas().update({fecha10: cita17})
     Paciente3.getConsultas().update({fecha14: cita20})
     
+    #admin = Administrador(1, "Juan")
     Administrador.getFechas().append(fecha1)
     Administrador.getFechas().append(fecha2)
     Administrador.getFechas().append(fecha3)
@@ -372,6 +374,10 @@ ventanaVisualizarDatos = visualizarDatos() #R
 ventanaContratarMedicos= contratarMedicos()#R
 ventanaAdquirirConsultorios= adquirirConsultorios()#R
 ventanaComprarMedicamentos=comprarMedicamentos()#R
+ventanaVisualizarDinero = visualizarDinero()
+ventanaPagoNomina = pagoNomina()
+ventanaPagoNomina.pack_forget()
+
 
 posicionImagen=1
 def cambiarImagen(e):
@@ -385,7 +391,12 @@ def cambiarImagen(e):
     LabelFotoInicio.image=FotoInicio
 
 # Poner aquí las biografías
-VidaAndres = ""
+VidaAndres = """Andrés Alexis Galvis Herrera
+Estudiante de Ingeniería de Sistemas e Informática
+Aprendiz de Data Science
+20 años, apasionado por la música, los videojuegos
+y el contar historias a través de los datos. 
+Fiel creyente de que la disciplina vence al talento."""
 VidaLuzarait = ""
 VidaNatalia = ""
 VidaRoger = "Estudiante de ingeniería de sistemas en la Universidad nacional de colombia.Tengo 21 años.Soy de San Carlos y vivo en Envigado.Me gustan los deportes, la musica y soy aficionado al cine. Actualmente estoy realizando un curso de programador junior, tambien estoy estudiando ingles."
@@ -448,6 +459,8 @@ def ocultarTodo():
     ventanaContratarMedicos.pack_forget()#R
     ventanaAdquirirConsultorios.pack_forget()#R
     ventanaComprarMedicamentos.pack_forget()#R
+    ventanaVisualizarDinero.pack_forget()
+    ventanaPagoNomina.pack_forget()
     
 def borrarTodo():
     ventanaExamenes.borrar()
@@ -550,6 +563,14 @@ def administracionComprarMedicamentos():#R
     ocultarTodo()
     ventanaComprarMedicamentos.pack()
 
+def administracionVisualizarDinero():#R
+    ocultarTodo()
+    ventanaVisualizarDinero.pack()
+
+def pagoNomina():
+    ocultarTodo()
+    ventanaPagoNomina.pack()
+
 # Solicitar examen
 
 
@@ -588,7 +609,7 @@ TituloVida = Label(master=P5, text="Breve biografía de los autores",
                 font="Helvetica 11 bold")
 
 # Se crea el Label para el texto de las hojas de vida de los autores.
-CuerpoVida = Label(master=P5, text="Aquí va la hoja de vida", font="Helvetica 10", 
+CuerpoVida = Label(master=P5, text=VidaAndres, font="Helvetica 10", 
                 anchor=W)
 
 # Se crea el Label que contendrá las instrucciones para cambiar entre hojas de vida de los autores.
@@ -660,8 +681,8 @@ menuFinanzas = Menu(menuProcesos, font="Helvetica 11")
 menuProcesos.add_cascade(label="Finanzas", menu= menuFinanzas)
 menuFinanzas.add_command(label="Pagar consultas", command=pagarConsulta)
 menuFinanzas.add_command(label="Pagar entregas", command=pagarEntrega)
-menuFinanzas.add_command(label="Consultar dinero disponible", command=evento)
-menuFinanzas.add_command(label="Pago de nómina", command=evento)
+menuFinanzas.add_command(label="Consultar dinero disponible", command=administracionVisualizarDinero)
+menuFinanzas.add_command(label="Pago de nómina", command=pagoNomina)
 
 menuResultadosMedicamentos = Menu(menuProcesos, font="Helvetica 11")
 menuProcesos.add_cascade(label="Resultados y Medicamentos", menu= menuResultadosMedicamentos)
@@ -685,16 +706,36 @@ menuAyuda.add_command(label="Acerca de", command=acerca)
 tutorial = """           (0 0)           
           ---oOO-- (_) ----oOO---        
     ╔════════════════════════════════════════╗  
-    ║ Bienveniedo al Sistema Medico! ♥       ║  
+    ║ Bienvenido al Sistema Medico! ♥        ║  
     ╚════════════════════════════════════════╝  
         --------------       
        |__|__|     
      || ||   
     ooO Ooo"
-    explicacion del programa sobre el sistema medico
-    ...
-    ...
-    ...
+    En la parte superior encontrará la barra de menús.
+    En el menú Archivo podrá acceder a:
+    * Aplicación: seleccionando esta opción obtendrá información básica de lo que puede hacer en la aplicación.
+    * Salir: cerrará esta ventana y volverá a la ventana de Inicio. Si desde la ventana de Inicio selecciona de
+    nuevo la opción Salir entonces finalizará la aplicación.
+    
+    En el menú Procesos y Consultas podrá acceder a:
+    * Citas: desde esta opción un paciente podrá solicitar una nueva cita para la fecha que especifique o podrá
+    reagendar una cita que haya solicitado previamente.
+    * Exámenes: con esta opción un paciente podrá solicitar la autorización y asignación del tipo de examen que
+    requiera el paciente en una fecha dada.
+    * Finanzas: a través de esta opción los pacientes podrán pagar sus consultas y las entregas de sus 
+    medicamentos; el administrador podrá consultar el dinero disponible y hacer el pago de nómina de los 
+    empleados.
+    * Resultados y medicamentos: utilizando esta opción un paciente podrá consultar sus diagnósticos y solicitar
+    la entrega de medicamentos a su domicilio; los médicos podrán crear los diagnósticos de las consultas que
+    realicen.
+    * Administración: seleccionando esta opción el administrador podrá llevar una cuenta de cuántas citas, 
+    exámenes y entregas se han generado y de qué tipo; podrá contratar nuevos médicos para la plantilla y 
+    construir nuevos consultorios; por último, podrá abastecerse de medicamentos.
+    
+    En el menú Ayuda podrá acceder a:
+    * Acerca de: seleccionando esta opción podrá ver el nombre de las personas encargadas del desarrollo de esta
+    aplicación.
     
 """    
 

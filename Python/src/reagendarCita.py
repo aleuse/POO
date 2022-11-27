@@ -48,6 +48,7 @@ class reagendarCita(Frame):
         apellido = self.dialogos.getValue("Apellido")
         fecha = self.dialogos.getValue("Nueva fecha")
         id_cita = self.dialogos.getValue("Id de la cita")
+        id_cita = int(id_cita)
         
         paciente = None
         

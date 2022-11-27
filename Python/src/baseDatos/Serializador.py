@@ -21,6 +21,9 @@ def serializar():
     serializarMedicamentos()
     serializarMedicos()
     serializarPacientes()
+    serializarCitas()
+    serializarExamenes()
+    serializarEntregas()
 
 def serializarAdministrador():
     # Creación y apertura del archivo donde serán guardados los objetos
@@ -79,10 +82,11 @@ def serializarListaSintomas():
     archivoListaSintomas.close()
 
 def serializarMedicamentos():
+    from gestorAplicacion.Medicamentos import Medicamentos
     # Creación y apertura del archivo donde serán guardados los objetos
     archivoMedicamentos = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\medicamentos"), "wb")
     # Se indica el objeto que será serializado. En este caso, la lista de medicamentos
-    pickle.dump(Administrador.getMedicamentos(), archivoMedicamentos)
+    pickle.dump(Medicamentos._medicamiento, archivoMedicamentos)
     # Se cierra el archivo creado
     archivoMedicamentos.close()
     
@@ -101,3 +105,30 @@ def serializarPacientes():
     pickle.dump(Administrador.getPacientes(), archivoPacientes)
     # Se cierra el archivo creado
     archivoPacientes.close()
+
+def serializarCitas():
+    from gestorAplicacion.Cita import Cita
+    # Creación y apertura del archivo donde serán guardados los objetos
+    archivoCitas = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\citas"), "wb")
+    # Se indica el objeto que será serializado. En este caso, la lista de pacientes
+    pickle.dump(Cita.listaCitas, archivoCitas)
+    # Se cierra el archivo creado
+    archivoCitas.close()
+
+def serializarExamenes():
+    from gestorAplicacion.Examen import Examen
+    # Creación y apertura del archivo donde serán guardados los objetos
+    archivoExamenes = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\examenes"), "wb")
+    # Se indica el objeto que será serializado. En este caso, la lista de pacientes
+    pickle.dump(Examen.listaExamenes, archivoExamenes)
+    # Se cierra el archivo creado
+    archivoExamenes.close()
+    
+def serializarEntregas():
+    from gestorAplicacion.Entrega import Entrega
+    # Creación y apertura del archivo donde serán guardados los objetos
+    archivoEntregas = open(os.path.join(pathlib.Path(__file__).parent.absolute(), "temp\\entregas"), "wb")
+    # Se indica el objeto que será serializado. En este caso, la lista de pacientes
+    pickle.dump(Entrega.lista, archivoEntregas)
+    # Se cierra el archivo creado
+    archivoEntregas.close()

@@ -48,8 +48,9 @@ class pagarConsulta(Frame):
 
         nombre = self.dialogos.getValue("Nombre")
         documento = self.dialogos.getValue("Documento")
+        documento = int(documento)
         id_consulta = self.dialogos.getValue("ID Consulta")
-
+        id_consulta = int(id_consulta)
         paciente = None
 
         for i in Administrador.getPacientes():
@@ -60,10 +61,10 @@ class pagarConsulta(Frame):
             messagebox.showerror("Error", "Paciente no encontrado")
 
         for c in Administrador.getConsultas():    
-            if c.getId == id_consulta and c.getPago() == True:
+            if c.getId == id_consulta and c.getPago().isPagado() == True:
                 messagebox.showinfo("Aviso", "La consulta ya ha sido pagada")
-            elif c.getId == id_consulta and c.getPago() == False:
-                c.setPago().setPagado() == True
+            elif c.getId == id_consulta and c.getPago().isPagado() == False:
+                c.getPago().setPagado(True)
                 Administrador.sumarDinero(c.getPago().getValor())
                 messagebox.showinfo("Aviso", "El pago de la consulta ha sido exitoso")
             else:
