@@ -25,3 +25,12 @@ class Examen(Consulta):
     
     def setAutorizado(self, autorizado):
         self._autorizado = autorizado
+
+    #metodos
+    @classmethod
+    def informeExamenes(cls, solicitado):
+        tcSolicitada=0
+        for tc in Examen.listaExamenes:
+            if(tc.getTipoExamen == solicitado):
+                tcSolicitada +=1
+        return tcSolicitada
