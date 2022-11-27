@@ -6,6 +6,7 @@ en determinadas fechas.
 from gestorAplicacion.personas.Administrador import Administrador
 import random as rd
 class Consultorio():
+    consultorios=[]
     def __init__(self, id = int(rd.random() * 10000 + 1), medico = None, paciente = None, tipoConsultorio = None, 
                 adquirido = False, disponibilidad = True, consultas = None, costo = 100000):
         if consultas is None:
@@ -18,7 +19,7 @@ class Consultorio():
         self._consultas = consultas
         self._adquirido = adquirido
         self._costo = costo
-        Administrador.consultorios.append(self)
+        Consultorio.consultorios.append(self) #estaba->Administrador.consultorios.append(self)
     
     # Getters y Setters
     def getId(self):

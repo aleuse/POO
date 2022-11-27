@@ -69,11 +69,16 @@ class Medico(Persona):
     def setContratado(self, contratado):
         self._contratado = contratado
 
+    #metodos
     listado=[]
     @staticmethod
     def crearDiagnostico(persona, sintomas, observacion, medicamiento, consulta):
         from gestorAplicacion.personas.Medico import Medico
         diag = Diagnostico(persona, sintomas, observacion, medicamiento, consulta)
         Medico.listado.append(diag)
+
+    def informesMedicos():
+        pass
+
 
     

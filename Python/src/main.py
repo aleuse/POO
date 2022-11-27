@@ -16,6 +16,7 @@ from datetime import datetime
 from PIL import Image, ImageTk
 from excepciones.excepcionPresenciaArchivo import ExcepcionPresenciaArchivos
 from excepciones.excepcionPresenciaImagenes import ExcepcionPresenciaImagenes
+from Administracion import visualizarDatos,contratarMedicos,adquirirConsultorios,comprarMedicamentos
 
 deserializar()
 def inicializar():
@@ -367,6 +368,10 @@ ventanaPagarEntrega = pagarEntrega()
 ventanaPagarEntrega.pack_forget()
 ventanaConsultarDinero = consultarDinero()
 ventanaConsultarDinero.pack_forget()
+ventanaVisualizarDatos = visualizarDatos() #R
+ventanaContratarMedicos= contratarMedicos()#R
+ventanaAdquirirConsultorios= adquirirConsultorios()#R
+ventanaComprarMedicamentos=comprarMedicamentos()#R
 
 posicionImagen=1
 def cambiarImagen(e):
@@ -439,6 +444,10 @@ def ocultarTodo():
     ventanaPagarConsulta.pack_forget()
     ventanaPagarEntrega.pack_forget()
     ventanaConsultarDinero.pack_forget()
+    ventanaVisualizarDatos.pack_forget()#R
+    ventanaContratarMedicos.pack_forget()#R
+    ventanaAdquirirConsultorios.pack_forget()#R
+    ventanaComprarMedicamentos.pack_forget()#R
     
 def borrarTodo():
     ventanaExamenes.borrar()
@@ -524,6 +533,22 @@ def pagarEntrega():
 def consultarDinero():
     ocultarTodo()
     ventanaConsultarDinero.pack()
+
+def administracionVisualizarDatos():#R
+    ocultarTodo()
+    ventanaVisualizarDatos.pack()
+
+def administracionContratarMedicos():#R
+    ocultarTodo()
+    ventanaContratarMedicos.pack()
+
+def administracionAdquirirConsultorios():#R
+    ocultarTodo()
+    ventanaAdquirirConsultorios.pack()
+
+def administracionComprarMedicamentos():#R
+    ocultarTodo()
+    ventanaComprarMedicamentos.pack()
 
 # Solicitar examen
 
@@ -646,10 +671,10 @@ menuResultadosMedicamentos.add_command(label="Solicitar entrega medicamentos", c
 
 menuAdministracion = Menu(menuProcesos, font="Helvetica 11")
 menuProcesos.add_cascade(label="Administración", menu= menuAdministracion)
-menuAdministracion.add_command(label="Visualizar citas, exámenes y entregas", command=evento)
-menuAdministracion.add_command(label="Contratar médicos", command=evento)
-menuAdministracion.add_command(label="Adquirir consultorios", command=evento)
-menuAdministracion.add_command(label="Comprar medicamentos", command=evento)
+menuAdministracion.add_command(label="Visualizar citas, exámenes y entregas", command=administracionVisualizarDatos)
+menuAdministracion.add_command(label="Contratar médicos", command=administracionContratarMedicos)
+menuAdministracion.add_command(label="Adquirir consultorios", command=administracionAdquirirConsultorios)
+menuAdministracion.add_command(label="Comprar medicamentos", command=administracionComprarMedicamentos)
 
 
 menuAyuda = Menu(menuVentanaUsuario, font="Helvetica 11")
