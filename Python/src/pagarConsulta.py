@@ -2,18 +2,11 @@ from tkinter import *
 from tkinter import messagebox
 from gestorAplicacion.fieldFrame import FieldFrame
 from gestorAplicacion.personas.Administrador import Administrador
-from gestorAplicacion.personas.tipoMedico import tipoMedico
-from gestorAplicacion.tipoCita import tipoCita
-from gestorAplicacion.Cita import Cita
 from gestorAplicacion.Consulta import Consulta
-from gestorAplicacion.Consultorio import Consultorio
-from gestorAplicacion.Entrega import Entrega
-from gestorAplicacion.Examen import Examen
-from gestorAplicacion.Medicamentos import Medicamentos
-from gestorAplicacion.Pago import Pago
 
 
-class solicitarCita(Frame):
+
+class pagarConsulta(Frame):
     def __init__(self):
         super().__init__()
     
@@ -32,7 +25,7 @@ class solicitarCita(Frame):
         # Igualmente, se especifican los valores que estarán habilitados para ser editados por el usuario.
         self.habilitados = [True, True, True]
         #Se especifican las listas de selección que una la GUI para que el usuario elija entre los valores de la lista
-        self.combobox = [False, False, Consulta.getId()]
+        self.combobox = [False, False, False]
         # Se crea el FieldFrame para esta funcionalidad con los parámetros anteriormente especificados.
         self.dialogos = FieldFrame(self, "Criterios", self.criterios, "Valores", self.valores, self.habilitados, self.combobox)
         self.dialogos.pack(padx=5, pady=5)
@@ -49,9 +42,10 @@ class solicitarCita(Frame):
     def borrar(self):
         self.dialogos.getComponente("Nombre").delete(0,"end")
         self.dialogos.getComponente("Documento").delete(0,"end")
-        self.dialogos.getComponente("ID Consulta").set("")
+        self.dialogos.getComponente("ID Consulta").delete(0,"end")
 
     def pagar(self):
+
         nombre = self.dialogos.getValue("Nombre")
         documento = self.dialogos.getValue("Documento")
         id_consulta = self.dialogos.getValue("ID Consulta")
