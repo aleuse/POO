@@ -8,6 +8,7 @@ from mostrarDiagnostico import mostrarDiagnostico
 from solicitarEntregaMedicamentos import solicitarEntregaMedicamentos
 from crearDiagnostico import crearDiagnostico
 from pagarConsulta import pagarConsulta
+from pagoNomina import pagoNomina
 from pagarEntrega import pagarEntrega
 from consultarDinero import consultarDinero
 from baseDatos.Serializador import serializar
@@ -374,6 +375,9 @@ ventanaContratarMedicos= contratarMedicos()#R
 ventanaAdquirirConsultorios= adquirirConsultorios()#R
 ventanaComprarMedicamentos=comprarMedicamentos()#R
 ventanaVisualizarDinero = visualizarDinero()
+ventanaPagoNomina = pagoNomina()
+ventanaPagoNomina.pack_forget()
+
 
 posicionImagen=1
 def cambiarImagen(e):
@@ -456,6 +460,7 @@ def ocultarTodo():
     ventanaAdquirirConsultorios.pack_forget()#R
     ventanaComprarMedicamentos.pack_forget()#R
     ventanaVisualizarDinero.pack_forget()
+    ventanaPagoNomina.pack_forget()
     
 def borrarTodo():
     ventanaExamenes.borrar()
@@ -561,6 +566,10 @@ def administracionComprarMedicamentos():#R
 def administracionVisualizarDinero():#R
     ocultarTodo()
     ventanaVisualizarDinero.pack()
+
+def pagoNomina():
+    ocultarTodo()
+    ventanaPagoNomina.pack()
 
 # Solicitar examen
 
@@ -673,7 +682,7 @@ menuProcesos.add_cascade(label="Finanzas", menu= menuFinanzas)
 menuFinanzas.add_command(label="Pagar consultas", command=pagarConsulta)
 menuFinanzas.add_command(label="Pagar entregas", command=pagarEntrega)
 menuFinanzas.add_command(label="Consultar dinero disponible", command=administracionVisualizarDinero)
-menuFinanzas.add_command(label="Pago de nómina", command=evento)
+menuFinanzas.add_command(label="Pago de nómina", command=pagoNomina)
 
 menuResultadosMedicamentos = Menu(menuProcesos, font="Helvetica 11")
 menuProcesos.add_cascade(label="Resultados y Medicamentos", menu= menuResultadosMedicamentos)
