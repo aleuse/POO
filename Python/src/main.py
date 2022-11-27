@@ -8,6 +8,7 @@ from mostrarDiagnostico import mostrarDiagnostico
 from solicitarEntregaMedicamentos import solicitarEntregaMedicamentos
 from crearDiagnostico import crearDiagnostico
 from pagarConsulta import pagarConsulta
+from pagarEntrega import pagarEntrega
 from baseDatos.Serializador import serializar
 from baseDatos.Deserializador import deserializar
 from datetime import datetime
@@ -361,6 +362,8 @@ ventanaCrear = crearDiagnostico()
 ventanaCrear.pack_forget()
 ventanaPagarConsulta = pagarConsulta()
 ventanaPagarConsulta.pack_forget()
+ventanaPagarEntrega = pagarEntrega()
+ventanaPagarEntrega.pack_forget()
 
 posicionImagen=1
 def cambiarImagen(e):
@@ -431,6 +434,7 @@ def ocultarTodo():
     ventanaSolicitar.pack_forget()
     ventanaCrear.pack_forget()
     ventanaPagarConsulta.pack_forget()
+    ventanaPagarEntrega.pack_forget()
     
 def borrarTodo():
     ventanaExamenes.borrar()
@@ -508,6 +512,10 @@ def crearDiagnostico():
 def pagarConsulta():
     ocultarTodo()
     ventanaPagarConsulta.pack()
+
+def pagarEntrega():
+    ocultarTodo()
+    ventanaPagarEntrega.pack()
 
 # Solicitar examen
 
@@ -618,7 +626,7 @@ menuProcesos.add_command(label="Exámenes", command=solicitarExamen)
 menuFinanzas = Menu(menuProcesos, font="Helvetica 11")
 menuProcesos.add_cascade(label="Finanzas", menu= menuFinanzas)
 menuFinanzas.add_command(label="Pagar consultas", command=pagarConsulta)
-menuFinanzas.add_command(label="Pagar entregas", command=evento)
+menuFinanzas.add_command(label="Pagar entregas", command=pagarEntrega)
 menuFinanzas.add_command(label="Consultar dinero disponible", command=evento)
 menuFinanzas.add_command(label="Pago de nómina", command=evento)
 
