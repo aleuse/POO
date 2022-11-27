@@ -90,7 +90,7 @@ class crearDiagnostico(Frame):
                 consultaX = e.getConsultas().get(fecha)
                 medicamentoX = Medicamentos (medicamento1, paciente, dosis, uso)
                 medico.crearDiagnostico(paciente,sintoma,observacion,medicamentoX,consultaX)
-                messagebox.showinfo("Diagnostico creado con exito")
+                messagebox.showinfo("Aviso","Diagnostico creado con exito")
 
             self.borrar()
             
