@@ -3,6 +3,7 @@ La clase Cita se utiliza para almacenar los atributos y métodos de las citas ag
 """
 import random as rd
 from gestorAplicacion.Consulta import Consulta
+from gestorAplicacion.personas.Administrador import Administrador
 class Cita(Consulta):
     numeroCitas = 0
     listaCitas = []
@@ -10,7 +11,7 @@ class Cita(Consulta):
         super().__init__(paciente, medico, consultorio, fecha, id, pago)
         self._motivo = motivo
         self._tipoCita = tipoCita
-        self.listaCitas.append(self)
+        Administrador.getConsultas().append(self)
     
     # Getters y Setters
     @classmethod
