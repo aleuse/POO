@@ -1,7 +1,10 @@
 from tkinter import *
 from tkinter import messagebox
+from excepciones.excepcionTipoDatoInt import excepcionTipoDatoInt
 from gestorAplicacion.fieldFrame import FieldFrame
 from gestorAplicacion.personas.Administrador import Administrador
+from excepciones.excepcionPersistenciaDatos import excepcionPersistenciaDatos
+from excepciones.excepcionTipoDatoString import excepcionTipoDatoString
 class crearDiagnostico(Frame):
     def __init__(self):
         super().__init__()
@@ -64,6 +67,49 @@ class crearDiagnostico(Frame):
         observacion = self.dialogos.getValue("Observacion del paciente")
 
         medico = None
+
+        valores = [documentoMe, documentoMe, documentoPa,fecha,medicamento,dosis,uso,observacion]
+        try:
+            excepcionPersistenciaDatos.persistenciaDatos(self.criterios, valores)
+        except excepcionPersistenciaDatos:
+            return
+
+        try:
+            excepcionTipoDatoInt.tipoDatoInt(["Documento del medico"], 
+                                     [documentoMe])
+        except excepcionTipoDatoInt:
+            return
+        
+        try:
+            excepcionTipoDatoInt.tipoDatoInt(["Documento del paciente"], 
+                                     [documentoPa])
+        except excepcionTipoDatoInt:
+            return
+
+        try:
+            excepcionTipoDatoInt.tipoDatoInt(["Dosis a recetar"], 
+                                     [dosis])
+        except excepcionTipoDatoInt:
+            return
+
+        try:
+            excepcionTipoDatoInt.tipoDatoInt(["Modo de uso recomienda"], 
+                                     [uso])
+        except excepcionTipoDatoInt:
+            return
+
+        try:
+            excepcionTipoDatoString.tipoDatoString(["Sintoma del paciente"], 
+                                     [sintoma])
+        except excepcionTipoDatoString:
+            return
+
+        try:
+            excepcionTipoDatoString.tipoDatoString(["Observacion del paciente"], 
+                                     [observacion])
+        except excepcionTipoDatoString:
+            return
+
         for i in Administrador.getMedicos():
             if i.getNumeroDocumento() == documentoMe:
                 medico = i

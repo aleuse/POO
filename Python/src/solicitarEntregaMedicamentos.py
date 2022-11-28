@@ -1,6 +1,9 @@
 #solicitarEntregaMedicamentos
 from tkinter import *
 from tkinter import messagebox
+from excepciones.excepcionPersistenciaDatos import excepcionPersistenciaDatos
+from excepciones.excepcionTipoDatoInt import excepcionTipoDatoInt
+from excepciones.excepcionTipoDatoString import excepcionTipoDatoString
 from gestorAplicacion.Entrega import Entrega
 from gestorAplicacion.estadoEntrega import estadoEntrega
 from gestorAplicacion.fieldFrame import FieldFrame
@@ -57,10 +60,27 @@ class solicitarEntregaMedicamentos(Frame):
         re = self.dialogos.getValue("¿Deseas confirmar?")
         direccion = self.dialogos.getValue("Ingrese su direccion de domicilio")
         
-        numDocumento = self.dialogos.getValue("Documento del paciente")
-        
         numDocumento = int(numDocumento)
         paciente = None
+
+        valores = [numDocumento,re,direccion]
+        try:
+            excepcionPersistenciaDatos.persistenciaDatos(self.criterios, valores)
+        except excepcionPersistenciaDatos:
+            return
+
+        try:
+            excepcionTipoDatoInt.tipoDatoInt(["Documento del paciente"], 
+                                     [numDocumento])
+        except excepcionTipoDatoInt:
+            return
+
+        try:
+            excepcionTipoDatoString.tipoDatoString(["Ingrese su direccion de domicilio"], 
+                                     [direccion])
+        except excepcionTipoDatoString:
+            return
+
         cont = 0
         for e in Administrador.getPacientes():
             if e.getNumeroDocumento() == numDocumento:

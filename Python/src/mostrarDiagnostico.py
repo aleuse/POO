@@ -1,6 +1,8 @@
 #mostrarDiagnostico
 from tkinter import *
 from tkinter import messagebox
+from excepciones.excepcionTipoDatoInt import excepcionTipoDatoInt
+from excepciones.excepcionPersistenciaDatos import excepcionPersistenciaDatos
 from gestorAplicacion.Consultorio import Consultorio
 from gestorAplicacion.fieldFrame import FieldFrame
 from gestorAplicacion.personas.Administrador import Administrador
@@ -59,6 +61,18 @@ class mostrarDiagnostico(Frame):
         
         numDocumento = int(numDocumento)
         paciente = None
+
+        valores = [numDocumento]
+        try:
+            excepcionPersistenciaDatos.persistenciaDatos(self.criterios, valores)
+        except excepcionPersistenciaDatos:
+            return
+
+        try:
+            excepcionTipoDatoInt.tipoDatoInt(["Documento del paciente"], 
+                                     [numDocumento])
+        except excepcionTipoDatoInt:
+            return
         
         for e in Administrador.getPacientes():
             if e.getNumeroDocumento() == numDocumento:
