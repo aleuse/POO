@@ -12,7 +12,7 @@ class pagarConsulta(Frame):
         super().__init__()
     
         nombre = Label(master=self, text="Pagar Consulta", font="Helvetica 11 bold")
-        info = """XXXXXXXXXXXXXXX.
+        info = """Ingrese los datos necesarios para realizar el pago de consulta.
             """
         descripcion = Label(master=self, text=info, font="Helvetica 10")
         nombre.pack(fill=BOTH, padx=5, pady=5)
@@ -73,7 +73,7 @@ class pagarConsulta(Frame):
                 messagebox.showinfo("Aviso", "El pago de la consulta ha sido exitoso")
                 break
             
-            messagebox.showerror("Error", "No se encontraron datos")
+        messagebox.showerror("Error", "No se encontraron datos")
                 
                     
         self.borrar()

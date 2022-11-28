@@ -13,7 +13,7 @@ class pagarEntrega(Frame):
         super().__init__()
     
         nombre = Label(master=self, text="Pagar Entrega", font="Helvetica 11 bold")
-        info = """XXXXXXXXXXXXXXX.
+        info = """Ingrese los datos necesarios para realizar el pago de entrega.
             """
         descripcion = Label(master=self, text=info, font="Helvetica 10")
         nombre.pack(fill=BOTH, padx=5, pady=5)
