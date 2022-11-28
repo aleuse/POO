@@ -2,8 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 from gestorAplicacion.fieldFrame import FieldFrame
 from gestorAplicacion.personas.Administrador import Administrador
-from excepciones.excepcionPresenciaDatos import ExcepcionPresenciaDatos
-from excepciones.excepcionTipoString import ExcepcionTipoString
+from excepciones.excepcionPersistenciaDatos import excepcionPersistenciaDatos
+from excepciones.excepcionTipoDatoString import excepcionTipoDatoString
 
 class solicitarExamen(Frame):
     def __init__(self):
@@ -65,20 +65,20 @@ class solicitarExamen(Frame):
         
         valores = [nombrePaciente, apellido, tipoEx]
         try:
-            ExcepcionPresenciaDatos.presenciaDatos(self.criterios, valores)
-        except ExcepcionPresenciaDatos:
+            excepcionPersistenciaDatos.persistenciaDatos(self.criterios, valores)
+        except excepcionPersistenciaDatos:
             return
         
         try:
-            ExcepcionTipoString.tipoString(["Nombre del paciente"], 
+            excepcionTipoDatoString.tipoDatoString(["Nombre del paciente"], 
                                      [nombrePaciente])
-        except ExcepcionTipoString:
+        except excepcionTipoDatoString:
             return
         
         try:
-            ExcepcionTipoString.tipoString(["Apellido del paciente"], 
+            excepcionTipoDatoString.tipoDatoString(["Apellido del paciente"], 
                                      [apellido])
-        except ExcepcionTipoString:
+        except excepcionTipoDatoString:
             return
     
         

@@ -15,8 +15,8 @@ from baseDatos.Serializador import serializar
 from baseDatos.Deserializador import deserializar
 from datetime import datetime
 from PIL import Image, ImageTk
-from excepciones.excepcionPresenciaArchivo import ExcepcionPresenciaArchivos
-from excepciones.excepcionPresenciaImagenes import ExcepcionPresenciaImagenes
+from excepciones.excepcionPersistenciaArchivos import excepcionPersistenciaArchivos
+from excepciones.excepcionPersistenciaImagenes import excepcionPersistenciaImagenes
 from Administracion import visualizarDatos,contratarMedicos,adquirirConsultorios,comprarMedicamentos, visualizarDinero
 
 deserializar()
@@ -345,15 +345,15 @@ def inicializar():
     yeferson = ["Imagenes/Yeferson/1.jpg", "Imagenes/Yeferson/2.jpg", "Imagenes/Yeferson/3.jpg", "Imagenes/Yeferson/4.jpg"]
     dir = imagenes + andres + luzarait + natalia + roger + yeferson
     try:
-        ExcepcionPresenciaArchivos.presenciaArchivos(["baseDatos/temp/administrador", "baseDatos/temp/consultas", 
+        excepcionPersistenciaArchivos.persistenciaArchivos(["baseDatos/temp/administrador", "baseDatos/temp/consultas", 
         "baseDatos/temp/consultorios","baseDatos/temp/diagnosticos", "baseDatos/temp/fechas", 
         "baseDatos/temp/historiasClinicas", "baseDatos/temp/listaSintomas", "baseDatos/temp/medicamentos",
         "baseDatos/temp/medicos", "baseDatos/temp/pacientes"])
-        ExcepcionPresenciaImagenes.presenciaImagenes(dir)
+        excepcionPersistenciaImagenes.persistenciaImagenes(dir)
         deserializar()
-    except ExcepcionPresenciaArchivos:
+    except excepcionPersistenciaArchivos:
         return
-    except ExcepcionPresenciaImagenes:
+    except excepcionPersistenciaImagenes:
         return
 
 

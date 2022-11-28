@@ -1,4 +1,4 @@
-class ErrorAplicacion(Exception):
+class errorAplicacion(Exception):
     
     def __init__(self, mensaje):
         self._mensaje = mensaje
