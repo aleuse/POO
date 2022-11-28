@@ -83,11 +83,11 @@ class pagoNomina(Frame):
         self.labelCantidad.pack(padx=5, pady=5)
         self.frameTabla.pack(padx=5, pady=5)
 
-    def pagar():
+    def pagar(self):
         for medico in Administrador.medicos:
             if medico.isContratado() == True:
-                if medico.getNomina().get(datetime(2022, 10, 1, 00, 00)).isPagago() == False:
-                    medico.getNomina().get(datetime(2022, 10, 1, 00, 00)).isPagago() == True
+                if medico.getNomina().get(datetime(2022, 10, 1, 00, 00)).isPagado() == False:
+                    medico.getNomina().get(datetime(2022, 10, 1, 00, 00)).setPagado(True)
                     messagebox.showinfo("Aviso", "Se ha realizado el pago de nomina exitosamente")
                 else:
                     messagebox.showinfo("Aviso", "Ya se le ha realizado el pago de nomina a este medico")                    

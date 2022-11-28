@@ -220,6 +220,7 @@ class Administrador:
         from gestorAplicacion.Examen import Examen
         for medico in medicos:
             # Verifica que el médico esté contratado
+            #print(medico.getNombre())
             if medico.isContratado():
                 # Si hay al menos un médico con la especialidad necesaria para el examen
                 if medico.getEspecialista() == tipoMed:
@@ -235,7 +236,7 @@ class Administrador:
                         # Lo sentimos ha ocurrido un problema y no se ha podido autorizar el examen
                         return 2
             # Lo sentimos, en este momento no tenemos médicos que puedan atender su tipo de examen
-            return 0
+        return 0
     
     """
     

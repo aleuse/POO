@@ -1,3 +1,4 @@
+from datetime import datetime
 import tkinter as tk
 from tkinter import *
 from tkinter import messagebox
@@ -130,6 +131,34 @@ class contratarMedicos(Frame):
                     if((contrato.isContratado()==False) and (contrato.getEspecialista().value==listado.get())):
                         mc+=1
                         contrato.setContratado(True)
+                        fecha1 = datetime(2022, 10, 15, 12, 30)
+                        fecha2 = datetime(2022, 10, 15, 13, 00)
+                        fecha3 = datetime(2022, 10, 15, 13, 30)
+                        fecha4 = datetime(2022, 10, 15, 14, 00)
+                        fecha5 = datetime(2022, 10, 15, 14, 30)
+                        fecha6 = datetime(2022, 10, 15, 15, 00)
+                        fecha7 = datetime(2022, 10, 15, 15, 30)
+                        fecha8 = datetime(2022, 10, 16, 12, 30)
+                        fecha9 = datetime(2022, 10, 16, 13, 00)
+                        fecha10 = datetime(2022, 10, 16, 13, 30)
+                        fecha11 = datetime(2022, 10, 16, 14, 00)
+                        fecha12 = datetime(2022, 10, 16, 14, 30)
+                        fecha13 = datetime(2022, 10, 16, 15, 00)
+                        fecha14 = datetime(2022, 10, 16, 15, 30)
+                        contrato.getConsultas().update({fecha1: None})
+                        contrato.getConsultas().update({fecha2: None})
+                        contrato.getConsultas().update({fecha3: None})
+                        contrato.getConsultas().update({fecha4: None})
+                        contrato.getConsultas().update({fecha5: None})
+                        contrato.getConsultas().update({fecha6: None})
+                        contrato.getConsultas().update({fecha7: None})
+                        contrato.getConsultas().update({fecha8: None})
+                        contrato.getConsultas().update({fecha9: None})
+                        contrato.getConsultas().update({fecha10: None})
+                        contrato.getConsultas().update({fecha11: None})
+                        contrato.getConsultas().update({fecha12: None})
+                        contrato.getConsultas().update({fecha13: None})
+                        contrato.getConsultas().update({fecha14: None})
                         break
             if(mc>0):
                 cantMedicos += mc
