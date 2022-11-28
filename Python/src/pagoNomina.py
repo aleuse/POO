@@ -37,10 +37,10 @@ class pagoNomina(Frame):
 
         # Se crea la tabla de los medicos.
         self.frameTabla = Frame(master=self)
-        self.tabla = ttk.Treeview(master=self.frameTabla, columns=(1, 2, 3, 4, 5), show='headings')
+        self.tabla = ttk.Treeview(master=self.frameTabla, columns=(1, 2, 3, 4), show='headings')
         self.tabla.pack(side=LEFT)
         # Se especifican los escabezados de la tabla.
-        encabezados = ("Medico", "Nombre", "Apellido", "Documento", "Nomina")
+        encabezados = ("Nombre", "Apellido", "Documento", "Nomina")
         
         # De acuerdo a los encabezados especificados, estos son ingresados como encabezados de la tabla.
         for i in range(len(encabezados)):
@@ -69,7 +69,8 @@ class pagoNomina(Frame):
             self.tabla.delete(i)
         # Ahora, se obtienen cada uno de los datos de los medicos existentes para ser ingresados en la tabla por filas.
         for med in Administrador.getMedicos():
-            datos = str(med.nombre(), med.apellido(), med.numeroDocumento(), med.getNomina())
+            datos = (med.getNombre(), med.getApellido(), 
+                    str(med.getNumeroDocumento()), str(med.getNomina()))
             self.tabla.insert(parent="", index="end", values=datos)
         # Por último se habilita para ser visualizada la tabla y el mensaje de la cantidad de medicos con los que se cuenta.
         self.labelCantidad.pack(padx=5, pady=5)
