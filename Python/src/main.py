@@ -415,8 +415,8 @@ Su unica meta es pasar POO"""
 VidaNatalia = ""
 VidaRoger = "Estudiante de ingeniería de sistemas en la Universidad nacional de colombia.Tengo 21 años.Soy de San Carlos y vivo en Envigado.Me gustan los deportes, la musica y soy aficionado al cine. Actualmente estoy realizando un curso de programador junior, tambien estoy estudiando ingles."
 VidaYeferson = """Yeferson Steven Aguilar Alvarado
-Estudiante de ingeniería de sistemas e informática
-Le gusta viajar, conocer nuevos lugares, las estrellas y los atardeceres 
+Estudiante de ingeniería de sistemas e informática.
+21 años, le gusta viajar, conocer nuevos lugares, las estrellas y los atardeceres 
 Su meta es viajar por el mundo"""
 
 posicionVida=0
