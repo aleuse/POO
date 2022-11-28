@@ -15,7 +15,7 @@ class pagoNomina(Frame):
         cantMedicos = 0
         for medico in Administrador.medicos:
             if medico.isContratado() == True:
-                print(medico)
+                #print(medico)
                 cantMedicos +=1 
         nombre = Label(master=self, text="Realizar Pago de Nomina", font="Helvetica 12 bold")
         nombre.pack(fill=BOTH, padx=5, pady=5)

@@ -397,7 +397,7 @@ def cambiarImagen(e):
     posicionImagen += 1
     if posicionImagen == 6:
         posicionImagen = 1
-    FotoInicio=(Image.open("Imagenes/inicio/" + str(posicionImagen) + ".jpg")).resize((400,400), Image.ANTIALIAS)
+    FotoInicio=(Image.open("Imagenes/inicio/" + str(posicionImagen) + ".jpg")).resize((400,400))
     FotoInicio = ImageTk.PhotoImage(FotoInicio)
     LabelFotoInicio.configure(image=FotoInicio)
     LabelFotoInicio.image=FotoInicio
@@ -421,13 +421,13 @@ def cambiarVida(e):
     if posicionVida == 5:
         posicionVida = 0
     ListaFotos=["Andres", "Luzarait", "Natalia", "Roger", "Yeferson"]
-    Foto1 =(Image.open("Imagenes/" + ListaFotos[posicionVida] + "/1.jpg")).resize((200,200), Image.ANTIALIAS)
+    Foto1 =(Image.open("Imagenes/" + ListaFotos[posicionVida] + "/1.jpg")).resize((200,200))
     Foto1 = ImageTk.PhotoImage(Foto1)
-    Foto2 =(Image.open("Imagenes/" + ListaFotos[posicionVida] + "/2.jpg")).resize((200,200), Image.ANTIALIAS)
+    Foto2 =(Image.open("Imagenes/" + ListaFotos[posicionVida] + "/2.jpg")).resize((200,200))
     Foto2 = ImageTk.PhotoImage(Foto2)
-    Foto3 =(Image.open("Imagenes/" + ListaFotos[posicionVida] + "/3.jpg")).resize((200,200), Image.ANTIALIAS)
+    Foto3 =(Image.open("Imagenes/" + ListaFotos[posicionVida] + "/3.jpg")).resize((200,200))
     Foto3 = ImageTk.PhotoImage(Foto3)
-    Foto4 =(Image.open("Imagenes/" + ListaFotos[posicionVida] + "/4.jpg")).resize((200,200), Image.ANTIALIAS)
+    Foto4 =(Image.open("Imagenes/" + ListaFotos[posicionVida] + "/4.jpg")).resize((200,200))
     Foto4 = ImageTk.PhotoImage(Foto4)
     LabelFoto1.configure(image=Foto1)
     LabelFoto1.image=Foto1
@@ -629,15 +629,15 @@ PieVida = Label(master=P5, text="Clic sobre la biografía para cambiar de autor"
                 font="Helvetica 8 italic", fg="blue")
 
 # Se localizan las imágenes iniciales para las relacionadas con la aplicación y para las de hojas de vida de los autores.
-FotoInicio=(Image.open("Imagenes/inicio/1.jpg")).resize((400,400), Image.LANCZOS)
+FotoInicio=(Image.open("Imagenes/inicio/1.jpg")).resize((400,400))
 FotoInicio = ImageTk.PhotoImage(FotoInicio)
-Foto1 =(Image.open("Imagenes/Andres/1.jpg")).resize((200,200), Image.LANCZOS)
+Foto1 =(Image.open("Imagenes/Andres/1.jpg")).resize((200,200))
 Foto1 = ImageTk.PhotoImage(Foto1)
-Foto2 =(Image.open("Imagenes/Andres/2.jpg")).resize((200,200), Image.LANCZOS)
+Foto2 =(Image.open("Imagenes/Andres/2.jpg")).resize((200,200))
 Foto2 = ImageTk.PhotoImage(Foto2)
-Foto3 =(Image.open("Imagenes/Andres/3.jpg")).resize((200,200), Image.LANCZOS)
+Foto3 =(Image.open("Imagenes/Andres/3.jpg")).resize((200,200))
 Foto3 = ImageTk.PhotoImage(Foto3)
-Foto4 =(Image.open("Imagenes/Andres/4.jpg")).resize((200,200), Image.LANCZOS)
+Foto4 =(Image.open("Imagenes/Andres/4.jpg")).resize((200,200))
 Foto4 = ImageTk.PhotoImage(Foto4)
 
 # Se crean los Label para las imágenes relacionadas con la aplicación y para las de hojas de vida de los autores.
