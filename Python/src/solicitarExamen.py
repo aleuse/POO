@@ -17,14 +17,14 @@ class solicitarExamen(Frame):
         descripcion.pack(fill=BOTH, padx=5, pady=5)
         
         # Se especifican los nombres de los criterios que tendrá el FieldFrame de esta funcionalidad.
-        self.criterios = ["Nombre del paciente", "Apellido","Tipo de examen"]
+        self.criterios = ["Documento", "Nombre del paciente", "Apellido", "Tipo de examen"]
         
         # Se especifican los valores que tendrá el FieldFrame de esta funcionalidad para los criterios anteriormente especificados.
-        self.valores = [False, False ,False]
+        self.valores = [False, False ,False ,False]
         # Igualmente, se especifican los valores que estarán habilitados para ser editados por el usuario.
-        self.habilitados = [True, True, True]
+        self.habilitados = [False, True, True,True]
         # Ahora, se especifican las listas de selección que usa la GUI para que el usuario elija entre los valores de la lista.
-        self.combobox = [False, False, ["Sangre", "Laboratorio", "Rayos X", "Citoquimico"]]
+        self.combobox = [False, False, False, ["Sangre", "Laboratorio", "Rayos X", "Citoquimico"]]
         # Se crea el FieldFrame para esta funcionalidad con los parámetros anteriormente especificados.
         self.dialogos = FieldFrame(self, "Criterios", self.criterios, "Valores", self.valores, self.habilitados, self.combobox)
         self.dialogos.pack(padx=5, pady=5)
@@ -43,6 +43,7 @@ class solicitarExamen(Frame):
         
     # Por medio del método borrar() se limpian todos los campos del FieldFrame, tanto combobox como entry.
     def borrar(self):
+        self.dialogos.getComponente("Documento").delete(0,"end")
         self.dialogos.getComponente("Nombre del paciente").delete(0,"end")
         self.dialogos.getComponente("Apellido").delete(0,"end")
         self.dialogos.getComponente("Tipo de examen").set("")
