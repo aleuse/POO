@@ -73,7 +73,7 @@ class pagarConsulta(Frame):
                 messagebox.showinfo("Aviso", "El pago de la consulta ha sido exitoso")
                 break
             
-            messagebox.showerror("Error", "No se encontraron datos")
+        messagebox.showerror("Error", "No se encontraron datos")
                 
                     
         self.borrar()
