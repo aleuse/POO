@@ -32,21 +32,16 @@ class pagoNomina(Frame):
                          command=self.consultar)
         consultar.pack(padx=5, pady=5)
 
-        pagar = Button(master=botones, text="Pagar", font="Helvetica 11 bold", 
-                         bg="grey", fg="white", borderwidth=3, relief="raised",
-                         command=self.pagar)
-        pagar.pack(side=RIGHT, padx=5, pady=5)
-
         # Se crea el label que contendrá el mensaje con la cantidad de medicos con los que se cuenta.
         self.labelCantidad = Label(master=botones, font="Helvetica 10 bold", anchor=CENTER)
         botones.pack(padx=5, pady=5)
 
         # Se crea la tabla de los medicos.
         self.frameTabla = Frame(master=self)
-        self.tabla = ttk.Treeview(master=self.frameTabla, columns=(1, 2, 3, 4, 5), show='headings')
+        self.tabla = ttk.Treeview(master=self.frameTabla, columns=(1, 2, 3, 4), show='headings')
         self.tabla.pack(side=LEFT)
         # Se especifican los escabezados de la tabla.
-        encabezados = ("Nombre", "Apellido", "Documento", "Pagado", " ")
+        encabezados = ("Nombre", "Apellido", "Documento", "Pagado")
         
         # De acuerdo a los encabezados especificados, estos son ingresados como encabezados de la tabla.
         for i in range(len(encabezados)):
@@ -82,6 +77,13 @@ class pagoNomina(Frame):
         # Por último se habilita para ser visualizada la tabla y el mensaje de la cantidad de medicos con los que se cuenta.
         self.labelCantidad.pack(padx=5, pady=5)
         self.frameTabla.pack(padx=5, pady=5)
+
+        botones = Frame(master=self)
+        pagar = Button(master=botones, text="Pagar a los Medicos", font="Helvetica 11 bold", 
+                         bg="grey", fg="white", borderwidth=3, relief="raised",
+                         command=self.pagar)
+        pagar.pack(side=LEFT, padx=5, pady=5)
+        botones.pack(padx=5, pady=5)
 
     def pagar(self):
         for medico in Administrador.medicos:

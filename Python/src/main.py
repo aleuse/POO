@@ -409,7 +409,9 @@ Aprendiz de Data Scientist
 20 años, apasionado por la música, los videojuegos
 y el contar historias a través de los datos. 
 Fiel creyente de que la disciplina vence al talento."""
-VidaLuzarait = ""
+VidaLuzarait = """Luzarait Canas es estudiante de Sistemas en la UNAL. 
+Disfruta leer y disfutar con su familia. 
+Su unica meta es pasar POO"""
 VidaNatalia = ""
 VidaRoger = "Estudiante de ingeniería de sistemas en la Universidad nacional de colombia.Tengo 21 años.Soy de San Carlos y vivo en Envigado.Me gustan los deportes, la musica y soy aficionado al cine. Actualmente estoy realizando un curso de programador junior, tambien estoy estudiando ingles."
 VidaYeferson = ""
