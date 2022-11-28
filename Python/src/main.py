@@ -414,7 +414,10 @@ Disfruta leer y pasar tiempo con su familia.
 Su unica meta es pasar POO"""
 VidaNatalia = ""
 VidaRoger = "Estudiante de ingeniería de sistemas en la Universidad nacional de colombia.Tengo 21 años.Soy de San Carlos y vivo en Envigado.Me gustan los deportes, la musica y soy aficionado al cine. Actualmente estoy realizando un curso de programador junior, tambien estoy estudiando ingles."
-VidaYeferson = ""
+VidaYeferson = """Yeferson Steven Aguilar Alvarado
+Estudiante de ingeniería de sistemas e informática
+Le gusta viajar, conocer nuevos lugares, las estrellas y los atardeceres 
+Su meta es viajar por el mundo"""
 
 posicionVida=0
 def cambiarVida(e):
