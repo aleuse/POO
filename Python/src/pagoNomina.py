@@ -1,3 +1,4 @@
+from datetime import datetime
 import tkinter as tk
 from tkinter import *
 from tkinter import messagebox
@@ -40,7 +41,7 @@ class pagoNomina(Frame):
         self.tabla = ttk.Treeview(master=self.frameTabla, columns=(1, 2, 3, 4), show='headings')
         self.tabla.pack(side=LEFT)
         # Se especifican los escabezados de la tabla.
-        encabezados = ("Nombre", "Apellido", "Documento", "Nomina")
+        encabezados = ("Nombre", "Apellido", "Documento", "Pagado")
         
         # De acuerdo a los encabezados especificados, estos son ingresados como encabezados de la tabla.
         for i in range(len(encabezados)):
@@ -58,7 +59,7 @@ class pagoNomina(Frame):
         cantMedicos = 0
         for medico in Administrador.medicos:
             if medico.isContratado() == True:
-                print(medico)
+                #print(medico)
                 cantMedicos +=1 
         # Se establece el mensaje con la cantidad de medicos con los que se cuenta.
         mensaje="Actualmente el Sistema Medico cuenta con "+str(cantMedicos)+" medicos. Los siguientes son los datos de los medicos."
@@ -69,9 +70,10 @@ class pagoNomina(Frame):
             self.tabla.delete(i)
         # Ahora, se obtienen cada uno de los datos de los medicos existentes para ser ingresados en la tabla por filas.
         for med in Administrador.getMedicos():
-            datos = (med.getNombre(), med.getApellido(), 
-                    str(med.getNumeroDocumento()), str(med.getNomina()))
-            self.tabla.insert(parent="", index="end", values=datos)
+            if med.isContratado() == True:
+                datos = (med.getNombre(), med.getApellido(), 
+                        str(med.getNumeroDocumento()), med.getNomina().get(datetime(2022, 10, 1, 00, 00)).isPagado())
+                self.tabla.insert(parent="", index="end", values=datos)
         # Por último se habilita para ser visualizada la tabla y el mensaje de la cantidad de medicos con los que se cuenta.
         self.labelCantidad.pack(padx=5, pady=5)
         self.frameTabla.pack(padx=5, pady=5)

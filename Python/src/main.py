@@ -405,7 +405,7 @@ def cambiarImagen(e):
 # Poner aquí las biografías
 VidaAndres = """Andrés Alexis Galvis Herrera
 Estudiante de Ingeniería de Sistemas e Informática
-Aprendiz de Data Science
+Aprendiz de Data Scientist
 20 años, apasionado por la música, los videojuegos
 y el contar historias a través de los datos. 
 Fiel creyente de que la disciplina vence al talento."""
@@ -718,12 +718,13 @@ menuAyuda.add_command(label="Acerca de", command=acerca)
 tutorial = """           (0 0)           
           ---oOO-- (_) ----oOO---        
     ╔════════════════════════════════════════╗  
-    ║ Bienvenido al Sistema Medico! ♥        ║  
+      ║\t\tBienvenido al Sistema Medico!♥\t\t║  
     ╚════════════════════════════════════════╝  
         --------------       
        |__|__|     
      || ||   
     ooO Ooo"
+    
     En la parte superior encontrará la barra de menús.
     En el menú Archivo podrá acceder a:
     * Aplicación: seleccionando esta opción obtendrá información básica de lo que puede hacer en la aplicación.
