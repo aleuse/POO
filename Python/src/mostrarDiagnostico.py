@@ -59,7 +59,6 @@ class mostrarDiagnostico(Frame):
         
         numDocumento = self.dialogos.getValue("Documento del paciente")
         
-        numDocumento = int(numDocumento)
         paciente = None
 
         valores = [numDocumento]
@@ -73,7 +72,8 @@ class mostrarDiagnostico(Frame):
                                      [numDocumento])
         except excepcionTipoDatoInt:
             return
-        
+            
+        numDocumento = int(numDocumento)
         for e in Administrador.getPacientes():
             if e.getNumeroDocumento() == numDocumento:
                 paciente = e

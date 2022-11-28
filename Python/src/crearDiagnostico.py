@@ -56,9 +56,7 @@ class crearDiagnostico(Frame):
         import random as rd
 
         documentoMe = self.dialogos.getValue("Documento del medico")
-        documentoMe = int(documentoMe)
         documentoPa = self.dialogos.getValue("Documento del paciente")
-        documentoPa = int(documentoPa)
         fecha = self.dialogos.getValue("Fecha")
         medicamento = self.dialogos.getValue("Medicamento a recetar")
         dosis = self.dialogos.getValue("Dosis a recetar")
@@ -109,6 +107,9 @@ class crearDiagnostico(Frame):
                                      [observacion])
         except excepcionTipoDatoString:
             return
+
+        documentoMe = int(documentoMe)
+        documentoPa = int(documentoPa)
 
         for i in Administrador.getMedicos():
             if i.getNumeroDocumento() == documentoMe:

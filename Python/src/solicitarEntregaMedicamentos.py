@@ -60,7 +60,6 @@ class solicitarEntregaMedicamentos(Frame):
         re = self.dialogos.getValue("¿Deseas confirmar?")
         direccion = self.dialogos.getValue("Ingrese su direccion de domicilio")
         
-        numDocumento = int(numDocumento)
         paciente = None
 
         valores = [numDocumento,re,direccion]
@@ -81,6 +80,7 @@ class solicitarEntregaMedicamentos(Frame):
         except excepcionTipoDatoString:
             return
 
+        numDocumento = int(numDocumento)
         cont = 0
         for e in Administrador.getPacientes():
             if e.getNumeroDocumento() == numDocumento:
