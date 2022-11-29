@@ -412,7 +412,10 @@ Fiel creyente de que la disciplina vence al talento."""
 VidaLuzarait = """Luzarait Canas es estudiante de Sistemas en la UNAL. 
 Disfruta leer y pasar tiempo con su familia. 
 Su unica meta es pasar POO"""
-VidaNatalia = "XXXX"
+VidaNatalia = """Natalia Álvarez
+Estudiante de Ingeniería de Sistemas en la Universidad Nacional
+20 años, le gusta la música y aprender nuevos idiomas,
+Su mayor meta es poder viajar por todo el mundo y conocer sus diferentes culturas"""
 VidaRoger = """Roger Vera Londoño
 Estudiante de ingeniería de sistemas en la 
 Universidad nacional de colombia.

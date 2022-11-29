@@ -1,5 +1,8 @@
 from tkinter import *
 from tkinter import messagebox
+from excepciones.excepcionPersistenciaDatos import excepcionPersistenciaDatos
+from excepciones.excepcionTipoDatoInt import excepcionTipoDatoInt
+from excepciones.excepcionTipoDatoString import excepcionTipoDatoString
 from gestorAplicacion.fieldFrame import FieldFrame
 from gestorAplicacion.personas.Administrador import Administrador
 from gestorAplicacion.personas.tipoMedico import tipoMedico
@@ -9,7 +12,7 @@ class reagendarCita(Frame):
         super().__init__()
     
         nombre = Label(master=self, text="Reagendar cita", font="Helvetica 11 bold")
-        info = """XXXXXXXXXXXXXXX.
+        info = """Ingrese los datos requeridos para reagendar la citas que tenía previamente asignada.
             """
         descripcion = Label(master=self, text=info, font="Helvetica 10")
         nombre.pack(fill=BOTH, padx=5, pady=5)
@@ -43,13 +46,38 @@ class reagendarCita(Frame):
         self.dialogos.getComponente("Id de la cita").delete(0,"end")
         self.dialogos.getComponente("Nueva fecha").set("")
 
+        
+
     def aceptar(self):
         nombre = self.dialogos.getValue("Nombre")
         apellido = self.dialogos.getValue("Apellido")
         fecha = self.dialogos.getValue("Nueva fecha")
         id_cita = self.dialogos.getValue("Id de la cita")
-        id_cita = int(id_cita)
         
+        
+        valores = [nombre, apellido, fecha, id_cita]
+
+        try:
+            excepcionPersistenciaDatos.persistenciaDatos(self.criterios, valores)
+        except excepcionPersistenciaDatos:
+            return
+            
+        try:
+            excepcionTipoDatoString.tipoDatoString(["Nombre"],[nombre])
+        except excepcionTipoDatoString:
+            return
+
+        try:
+            excepcionTipoDatoString.tipoDatoString(["Apellido"],[apellido])
+        except excepcionTipoDatoString:
+            return
+        
+        try:
+            excepcionTipoDatoInt.tipoDatoInt(["id_cita"], [id_cita])
+        except excepcionTipoDatoInt:
+            return
+
+        id_cita = int(id_cita)
         paciente = None
         
         for i in Administrador.getPacientes():

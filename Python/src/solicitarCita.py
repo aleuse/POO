@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
+from excepciones.excepcionPersistenciaDatos import excepcionPersistenciaDatos
+from excepciones.excepcionTipoDatoString import excepcionTipoDatoString
 from gestorAplicacion.fieldFrame import FieldFrame
 from gestorAplicacion.personas.Administrador import Administrador
 from gestorAplicacion.personas.tipoMedico import tipoMedico
@@ -9,7 +11,7 @@ class solicitarCita(Frame):
         super().__init__()
     
         nombre = Label(master=self, text="Solicitar cita", font="Helvetica 11 bold")
-        info = """XXXXXXXXXXXXXXX.
+        info = """Ingrese los datos requeridos para pedir una cita
             """
         descripcion = Label(master=self, text=info, font="Helvetica 10")
         nombre.pack(fill=BOTH, padx=5, pady=5)
@@ -51,6 +53,28 @@ class solicitarCita(Frame):
         tCita = self.dialogos.getValue("Tipo de Cita")
         motivo = self.dialogos.getValue("Motivo")
 
+        valores  = [nombre, apellido, fecha, tCita, motivo]
+
+        try:
+            excepcionPersistenciaDatos.persistenciaDatos(self.criterios, valores)
+        except excepcionPersistenciaDatos:
+            return
+
+        try:
+            excepcionTipoDatoString.tipoDatoString(["Nombre"],[nombre])
+        except excepcionTipoDatoString:
+            return
+
+        try:
+            excepcionTipoDatoString.tipoDatoString(["Apellido"],[apellido])
+        except excepcionTipoDatoString:
+            return
+
+        try:
+            excepcionTipoDatoString.tipoDatoString(["Motivo"],[motivo])
+        except excepcionTipoDatoString:
+            return
+        
         paciente = None
         tMedico = None
         t_Cita = None
