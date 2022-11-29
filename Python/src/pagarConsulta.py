@@ -8,8 +8,6 @@ from excepciones.excepcionTipoDatoString import excepcionTipoDatoString
 from excepciones.excepcionTipoDatoInt import excepcionTipoDatoInt
 #from gestorAplicacion.Consulta import Consulta
 
-
-
 class pagarConsulta(Frame):
     def __init__(self):
         super().__init__()
@@ -25,7 +23,7 @@ class pagarConsulta(Frame):
         self.criterios = ["Nombre", "Documento", "ID Consulta"]
 
         # Se especifican los valores que tendrá el FieldFrame de esta funcionalidad para los criterios anteriormente especificados.
-        self.valores = ["", False, False]
+        self.valores = ["", "", ""]
         # Igualmente, se especifican los valores que estarán habilitados para ser editados por el usuario.
         self.habilitados = [True, True, True]
         #Se especifican las listas de selección que una la GUI para que el usuario elija entre los valores de la lista
@@ -52,9 +50,9 @@ class pagarConsulta(Frame):
 
         nombre = self.dialogos.getValue("Nombre")
         documento = self.dialogos.getValue("Documento")
-        documento = int(documento)
+        #documento = int(documento)
         id_consulta = self.dialogos.getValue("ID Consulta")
-        id_consulta = int(id_consulta)
+        #id_consulta = int(id_consulta)
         paciente = None
 
         valores = [nombre, documento, id_consulta]
