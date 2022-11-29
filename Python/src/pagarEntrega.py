@@ -4,6 +4,10 @@ from gestorAplicacion.Entrega import Entrega
 from gestorAplicacion.fieldFrame import FieldFrame
 from gestorAplicacion.personas.Administrador import Administrador
 from gestorAplicacion.personas.Paciente import Paciente
+from excepciones.excepcionPersistenciaDatos import excepcionPersistenciaDatos
+from excepciones.excepcionTipoDatoString import excepcionTipoDatoString
+from excepciones.excepcionTipoDatoInt import excepcionTipoDatoInt
+
 #from gestorAplicacion.Consulta import Consulta
 
 
@@ -53,6 +57,30 @@ class pagarEntrega(Frame):
         documento = int(documento)
         id_entrega = self.dialogos.getValue("ID Entrega")
         id_entrega = int(id_entrega)
+
+        valores = [nombre, documento, id_entrega]
+        try:
+            excepcionPersistenciaDatos.persistenciaDatos(self.criterios, valores)
+        except excepcionPersistenciaDatos:
+            return
+        
+        try:
+            excepcionTipoDatoString.tipoDatoString(["Nombre"], 
+                                     [nombre])
+        except excepcionTipoDatoString:
+            return
+        
+        try:
+            excepcionTipoDatoInt.tipoDatoInt(["Documento"], 
+                                     [documento])
+        except excepcionTipoDatoInt:
+            return
+
+        try:
+            excepcionTipoDatoInt.tipoDatoInt(["ID Consulta"], 
+                                     [id_entrega])
+        except excepcionTipoDatoInt:
+            return
 
         paciente = None
 

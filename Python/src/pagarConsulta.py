@@ -3,6 +3,9 @@ from tkinter import messagebox
 from gestorAplicacion.fieldFrame import FieldFrame
 from gestorAplicacion.personas.Administrador import Administrador
 from gestorAplicacion.Cita import Cita
+from excepciones.excepcionPersistenciaDatos import excepcionPersistenciaDatos
+from excepciones.excepcionTipoDatoString import excepcionTipoDatoString
+from excepciones.excepcionTipoDatoInt import excepcionTipoDatoInt
 #from gestorAplicacion.Consulta import Consulta
 
 
@@ -53,6 +56,30 @@ class pagarConsulta(Frame):
         id_consulta = self.dialogos.getValue("ID Consulta")
         id_consulta = int(id_consulta)
         paciente = None
+
+        valores = [nombre, documento, id_consulta]
+        try:
+            excepcionPersistenciaDatos.persistenciaDatos(self.criterios, valores)
+        except excepcionPersistenciaDatos:
+            return
+        
+        try:
+            excepcionTipoDatoString.tipoDatoString(["Nombre"], 
+                                     [nombre])
+        except excepcionTipoDatoString:
+            return
+        
+        try:
+            excepcionTipoDatoInt.tipoDatoInt(["Documento"], 
+                                     [documento])
+        except excepcionTipoDatoInt:
+            return
+
+        try:
+            excepcionTipoDatoInt.tipoDatoInt(["ID Consulta"], 
+                                     [id_consulta])
+        except excepcionTipoDatoInt:
+            return
 
         for i in Administrador.getPacientes():
             if i.getNumeroDocumento() == documento:
