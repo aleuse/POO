@@ -412,8 +412,14 @@ Fiel creyente de que la disciplina vence al talento."""
 VidaLuzarait = """Luzarait Canas es estudiante de Sistemas en la UNAL. 
 Disfruta leer y pasar tiempo con su familia. 
 Su unica meta es pasar POO"""
-VidaNatalia = ""
-VidaRoger = "Estudiante de ingeniería de sistemas en la Universidad nacional de colombia.Tengo 21 años.Soy de San Carlos y vivo en Envigado.Me gustan los deportes, la musica y soy aficionado al cine. Actualmente estoy realizando un curso de programador junior, tambien estoy estudiando ingles."
+VidaNatalia = "XXXX"
+VidaRoger = """Roger Vera Londoño
+Estudiante de ingeniería de sistemas en la 
+Universidad nacional de colombia.
+Tengo 21 años.Soy de San Carlos y vivo en Envigado.
+Me gustan los deportes, la musica y soy aficionado al 
+cine. Actualmente estoy realizando un curso de programador 
+junior, tambien estoy estudiando ingles."""
 VidaYeferson = """Yeferson Steven Aguilar Alvarado
 Estudiante de ingeniería de sistemas e informática.
 21 años, le gusta viajar, conocer nuevos lugares,
