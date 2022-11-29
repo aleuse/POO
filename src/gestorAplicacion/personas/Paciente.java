@@ -269,7 +269,7 @@ public class Paciente extends Persona{
 	
 	
 	
-	public HistoriaClinica consultarHistoriaClinica() {
+	public HistoriaClinica consultarHistorioaClinica() {
 		return getHistoriaClinica();
 	}
 
